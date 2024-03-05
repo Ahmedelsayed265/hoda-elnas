@@ -1,0 +1,47 @@
+/*+++++++++ fonts +++++++++*/
+/*+++++++++ mixins +++++++++*/
+/*+++++++++ global +++++++++*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  line-height: 32px;
+  scroll-behavior: smooth;
+  font-family: "", sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background-color: unset;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eee;
+  height: 300px;
+}
+
+/*+++++++++ colors +++++++++*//*# sourceMappingURL=global.css.map */
