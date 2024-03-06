@@ -51,6 +51,9 @@ body {
   direction: rtl;
   position: relative;
   overflow-x: hidden;
+  &.en {
+    direction: ltr;
+  }
 }
 ul {
   list-style: none;
@@ -106,11 +109,25 @@ header {
     height: 100%;
     .logo {
       flex: 1;
+      gap: 32px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       img {
         height: 80px;
+      }
+      .lang_toggler {
+        border-radius: 12px;
+        border: 1px solid $secondary;
+        padding: 4px 12px;
+        color: $secondary;
+        font-size: 16px;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        img {
+          height: 18px;
+        }
       }
     }
     .nav_links {
@@ -125,17 +142,18 @@ header {
           padding: 0 16px;
           a {
             font-size: 16px;
-            font-weight: 600;
             color: $main;
-            &.active {
+            transition: .2s ease-in-out;
+            &.active,
+            &:hover {
               color: $secondary;
             }
           }
           .drop {
             font-size: 16px;
-            font-weight: 600;
             color: $main;
             cursor: pointer;
+            position: relative;
           }
         }
       }
@@ -151,7 +169,7 @@ header {
         li {
           height: 100%;
           @include centerFlex();
-          padding: 0 4px;
+          padding: 0 6px;
           a {
             color: $main;
           }
@@ -168,6 +186,21 @@ header {
             }
           }
         }
+      }
+    }
+  }
+  .drop_menu {
+    position: absolute;
+    top: 40px;
+    background: $white;
+    padding: 8px 20px 8px 36px;
+    border-radius: 12px;
+    box-shadow: $mainShadow;
+    ul {
+      flex-direction: column;
+      .nav_link {
+        padding: 0;
+        justify-content: flex-start;
       }
     }
   }

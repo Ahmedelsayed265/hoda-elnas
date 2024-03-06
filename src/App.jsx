@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import Subscriptions from "./pages/Subscriptions";
-import Promotions from "./pages/Promotions";
+import Visuals from "./pages/Visuals";
 import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -25,7 +25,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/subscriptions" element={<Subscriptions />} />
-            <Route path="/promotions" element={<Promotions />} />
+            <Route path="/visuals" element={<Visuals />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<ErrorPage />} />

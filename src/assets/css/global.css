@@ -31,6 +31,9 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+body.en {
+  direction: ltr;
+}
 
 ul {
   list-style: none;
@@ -82,12 +85,26 @@ header nav {
 }
 header nav .logo {
   flex: 1;
+  gap: 32px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 header nav .logo img {
   height: 80px;
+}
+header nav .logo .lang_toggler {
+  border-radius: 12px;
+  border: 1px solid #81a63d;
+  padding: 4px 12px;
+  color: #81a63d;
+  font-size: 16px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+header nav .logo .lang_toggler img {
+  height: 18px;
 }
 header nav .nav_links {
   flex: 2;
@@ -108,17 +125,17 @@ header nav .nav_links ul li {
 }
 header nav .nav_links ul li a {
   font-size: 16px;
-  font-weight: 600;
   color: #31535a;
+  transition: 0.2s ease-in-out;
 }
-header nav .nav_links ul li a.active {
+header nav .nav_links ul li a.active, header nav .nav_links ul li a:hover {
   color: #81a63d;
 }
 header nav .nav_links ul li .drop {
   font-size: 16px;
-  font-weight: 600;
   color: #31535a;
   cursor: pointer;
+  position: relative;
 }
 header nav .utils {
   flex: 1;
@@ -135,7 +152,7 @@ header nav .utils ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
+  padding: 0 6px;
 }
 header nav .utils ul li a {
   color: #31535a;
@@ -153,6 +170,21 @@ header nav .utils ul li .search_btn {
 header nav .utils ul li .search_btn i {
   color: #81a63d;
   font-size: 14px;
+}
+header .drop_menu {
+  position: absolute;
+  top: 40px;
+  background: #fff;
+  padding: 8px 20px 8px 36px;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+header .drop_menu ul {
+  flex-direction: column;
+}
+header .drop_menu ul .nav_link {
+  padding: 0;
+  justify-content: flex-start;
 }
 
 main {
