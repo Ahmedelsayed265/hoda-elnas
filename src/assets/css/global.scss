@@ -1,5 +1,9 @@
 /*+++++++++ fonts +++++++++*/
-
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+  font-family: "din";
+  src: url('../webfonts/din-next-lt-w23-regular.ttf');
+}
 /*+++++++++ mixins +++++++++*/
 @mixin centerFlex {
   display: flex;
@@ -22,6 +26,17 @@
   background: none;
   outline: none;
 }
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(0);
+  }
+}
+
 /*+++++++++ global +++++++++*/
 * {
   padding: 0;
@@ -29,10 +44,11 @@
   box-sizing: border-box;
   line-height: 32px;
   scroll-behavior: smooth;
-  font-family: "", sans-serif;
+  font-family: "din", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 body {
+  direction: rtl;
   position: relative;
   overflow-x: hidden;
 }
@@ -68,4 +84,95 @@ $gray: #777777;
 $lightGray: #eeeeee;
 $white: #fff;
 $inputStroke: #f2f2f2;
+$mainShadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 $transation: 0.3s ease-in-out;
+
+header {
+  width: 100%;
+  height: 100px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: $white;
+  box-shadow: $mainShadow;
+  transition: position 0.3s ease-in-out;
+  &.sticky {
+    position: fixed;
+    animation: fadeInDown 0.5s ease-in-out forwards;
+  }
+  nav {
+    display: flex;
+    padding: 0;
+    height: 100%;
+    .logo {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      img {
+        height: 80px;
+      }
+    }
+    .nav_links {
+      flex: 2;
+      @include centerFlex();
+      ul {
+        height: 100%;
+        display: flex;
+        li {
+          height: 100%;
+          @include centerFlex();
+          padding: 0 16px;
+          a {
+            font-size: 16px;
+            font-weight: 600;
+            color: $main;
+            &.active {
+              color: $secondary;
+            }
+          }
+          .drop {
+            font-size: 16px;
+            font-weight: 600;
+            color: $main;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .utils {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      ul {
+        height: 100%;
+        display: flex;
+        li {
+          height: 100%;
+          @include centerFlex();
+          padding: 0 4px;
+          a {
+            color: $main;
+          }
+          .search_btn {
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid $secondary;
+            @include centerFlex();
+            i {
+              color: $secondary;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+main {
+  padding-top: 100px;
+  min-height: calc(200vh - 100px);
+}
