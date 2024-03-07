@@ -16,7 +16,7 @@ const Nav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 120) {
+      if (window.scrollY > 100) {
         header.current.classList.add("sticky");
       } else {
         header.current.classList.remove("sticky");

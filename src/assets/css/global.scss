@@ -47,14 +47,6 @@
   font-family: "din", sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
-body {
-  direction: rtl;
-  position: relative;
-  overflow-x: hidden;
-  &.en {
-    direction: ltr;
-  }
-}
 ul {
   list-style: none;
   padding: 0;
@@ -87,125 +79,383 @@ $gray: #777777;
 $lightGray: #eeeeee;
 $white: #fff;
 $inputStroke: #f2f2f2;
+$dark: #1f1f1f;
 $mainShadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 $transation: 0.3s ease-in-out;
 
-header {
-  width: 100%;
-  height: 100px;
-  top: 0;
-  left: 0;
-  position: absolute;
-  background: $white;
-  box-shadow: $mainShadow;
-  transition: position 0.3s ease-in-out;
-  &.sticky {
-    position: fixed;
-    animation: fadeInDown 0.5s ease-in-out forwards;
-  }
-  nav {
-    display: flex;
-    padding: 0;
-    height: 100%;
-    .logo {
-      flex: 1;
-      gap: 32px;
+body {
+  direction: rtl;
+  position: relative;
+  overflow-x: hidden;
+  header {
+    width: 100%;
+    height: 100px;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    position: absolute;
+    background: $white;
+    box-shadow: $mainShadow;
+    transition: position 0.3s ease-in-out;
+    &.sticky {
+      position: fixed;
+      animation: fadeInDown 0.5s ease-in-out forwards;
+    }
+    nav {
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      img {
-        height: 80px;
-      }
-      .lang_toggler {
-        border-radius: 12px;
-        border: 1px solid $secondary;
-        padding: 4px 12px;
-        color: $secondary;
-        font-size: 16px;
+      padding: 0;
+      height: 100%;
+      .logo {
+        flex: 1;
+        gap: 32px;
         display: flex;
-        gap: 8px;
         align-items: center;
+        justify-content: flex-start;
         img {
-          height: 18px;
+          height: 80px;
+        }
+        .lang_toggler {
+          border-radius: 12px;
+          border: 1px solid $secondary;
+          padding: 4px 12px;
+          color: $secondary;
+          font-size: 16px;
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          img {
+            height: 18px;
+          }
+        }
+      }
+      .nav_links {
+        flex: 2;
+        @include centerFlex();
+        ul {
+          height: 100%;
+          display: flex;
+          li {
+            height: 100%;
+            @include centerFlex();
+            padding: 0 16px;
+            a {
+              font-size: 16px;
+              color: $main;
+              transition: .2s ease-in-out;
+              &.active,
+              &:hover {
+                color: $secondary;
+              }
+            }
+            .drop {
+              font-size: 16px;
+              color: $main;
+              cursor: pointer;
+              position: relative;
+            }
+          }
+        }
+        @media (max-width: 992px) {
+          display: none;
+        }
+      }
+      .utils {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        ul {
+          height: 100%;
+          display: flex;
+          li {
+            height: 100%;
+            @include centerFlex();
+            padding: 0 6px;
+            a {
+              color: $main;
+            }
+            .search_btn {
+              cursor: pointer;
+              width: 36px;
+              height: 36px;
+              border-radius: 50%;
+              border: 1px solid $secondary;
+              @include centerFlex();
+              i {
+                color: $secondary;
+                font-size: 14px;
+              }
+            }
+          }
         }
       }
     }
-    .nav_links {
-      flex: 2;
-      @include centerFlex();
+    .drop_menu {
+      position: absolute;
+      top: 40px;
+      background: $white;
+      padding: 8px 20px 8px 36px;
+      border-radius: 12px;
+      box-shadow: $mainShadow;
       ul {
-        height: 100%;
+        flex-direction: column;
+        .nav_link {
+          padding: 0;
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+  main {
+    padding-top: 100px;
+    min-height: calc(100vh - 100px);
+    .auth {
+      background-image: url(../images/auth-bg.jpg);
+      background-size: cover;
+      background-position: center;
+      padding: 60px 0;
+      @include centerFlex();
+      .form_wrapper {
+        width: min(100% - 32px, 1042px);
+        min-height: 524px;
+        background: $white;
+        border-radius: 24px;
+        box-shadow: $mainShadow;
         display: flex;
-        li {
-          height: 100%;
-          @include centerFlex();
-          padding: 0 16px;
-          a {
-            font-size: 16px;
+        overflow: hidden;
+        .form_container {
+          width: 50%;
+          padding: 32px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          .logo {
+            width: 100%;
+            @include centerFlex();
+            img {
+              height: 100px;
+            }
+          }
+          .welcome {
+            h4 {
+              color: $dark;
+              font-size: 28px;
+              font-weight: 600;
+            }
+            p {
+              color: $gray;
+              margin-bottom: 0;
+            }
+          }
+          .forgot a {
             color: $main;
-            transition: .2s ease-in-out;
-            &.active,
+            transition: $transation;
             &:hover {
               color: $secondary;
             }
           }
-          .drop {
+          .continue {
+            text-align: center;
+            width: 70%;
+            line-height: 26px;
+            margin-bottom: 0;
             font-size: 16px;
             color: $main;
-            cursor: pointer;
-            position: relative;
+            a {
+              line-height: inherit;
+              color: $secondary;
+            }
           }
         }
-      }
-    }
-    .utils {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      ul {
-        height: 100%;
-        display: flex;
-        li {
-          height: 100%;
-          @include centerFlex();
-          padding: 0 6px;
-          a {
-            color: $main;
-          }
-          .search_btn {
-            cursor: pointer;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid $secondary;
-            @include centerFlex();
-            i {
-              color: $secondary;
-              font-size: 14px;
+        .page_preif {
+          width: 50%;
+          background-image: linear-gradient(#000000d6, #000000ce),
+            url(../images/auth_thumb.jpeg);
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding: 0 32px;
+          .content {
+            z-index: 2;
+            .circle {
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              background: $white;
+            }
+            h1 {
+              margin-top: 12px;
+              color: $white;
+              font-size: 48px;
+              margin-bottom: 16px;
+            }
+            p {
+              color: $white;
+              font-size: 18px;
+              margin-bottom: 4px;
+            }
+            h6 {
+              font-size: 18px;
+              color: $white;
+              a {
+                color: $secondary;
+              }
             }
           }
         }
       }
     }
   }
-  .drop_menu {
-    position: absolute;
-    top: 40px;
-    background: $white;
-    padding: 8px 20px 8px 36px;
-    border-radius: 12px;
-    box-shadow: $mainShadow;
-    ul {
+  .form-ui {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .input-field {
+      width: 100%;
+      display: flex;
       flex-direction: column;
-      .nav_link {
-        padding: 0;
-        justify-content: flex-start;
+      .pass-group {
+        display: flex;
+        button {
+          @include clearInput();
+          width: 60px;
+          height: 54px;
+          border: 1px solid $inputStroke;
+          background: $inputBG;
+          border-right: 0;
+          border-radius: 12px 0 0 12px !important;
+          color: $inputHint;
+        }
+        input {
+          border-left: 0 !important;
+          border-radius: 0 12px 12px 0 !important;
+        }
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        height: 54px;
+        direction: rtl;
+        outline: none;
+        border: 1px solid $inputStroke;
+        border-radius: 12px;
+        background: $inputBG;
+        padding: 12px 16px;
+      }
+      textarea {
+        height: 152px;
+      }
+      label {
+        color: $dark;
+        font-weight: 500;
+      }
+    }
+    .phone-group {
+      .PhoneInput {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 12px;
+        input {
+          direction: ltr;
+        }
+        .PhoneInputCountryIcon {
+          position: relative;
+        }
+        .PhoneInputCountryIconImg {
+          width: 20px;
+          position: absolute;
+          top: -32px;
+          left: 14px;
+        }
+        select {
+          appearance: none;
+          text-align: left;
+          padding: 12px 6px 12px 42px;
+        }
+      }
+      .phone-code {
+        height: 54px;
+        border-radius: 4px;
+      }
+    }
+    .image-change-wrapper {
+      border-radius: 12px;
+      border: 1px solid $inputStroke;
+      @include centerFlex();
+      flex-direction: column;
+      padding: 16px;
+      .img-wrap {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        border: 1px solid $inputStroke;
+        overflow: hidden;
+        @include centerFlex();
+        img {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 1/1;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
+      .upload {
+        input {
+          display: none;
+        }
+        .plus {
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          background-color: $secondary;
+          @include centerFlex();
+          cursor: pointer;
+          i {
+            font-size: 14px;
+            color: $white;
+          }
+        }
+      }
+    }
+    .save {
+      width: 100%;
+      height: 54px;
+      border-radius: 12px;
+      background: $secondary;
+      color: $white;
+      margin-top: 12px;
+    }
+  }
+  // ltr mode override
+  &.en {
+    direction: ltr;
+    header {
+      .drop_menu {
+        padding: 8px 36px 8px 20px;
+      }
+    }
+    .form-ui {
+      .input-field {
+        input {
+          direction: ltr;
+        }
+        .pass-group {
+          button {
+            border-radius: 0 12px 12px 0 !important;
+            border-left: 0 !important;
+            border-right: 1px solid $inputStroke !important;
+          }
+          input {
+            border-radius: 12px 0 0 12px !important;
+            border-right: 0 !important;
+            border-left: 1px solid $inputStroke !important;
+          }
+        }
       }
     }
   }
-}
-main {
-  padding-top: 100px;
-  min-height: calc(200vh - 100px);
 }

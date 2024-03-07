@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const NavDropDown = ({ isOpen, setIsOpen }) => {
+  const { t } = useTranslation();
   const dropdownRef = useRef(null);
   const variants = {
     open: {
@@ -34,13 +36,13 @@ const NavDropDown = ({ isOpen, setIsOpen }) => {
     >
       <ul>
         <li className="nav_link">
-          <NavLink to="/students">الطلاب</NavLink>
+          <NavLink to="/students">{t("students")}</NavLink>
         </li>
         <li className="nav_link">
-          <NavLink to="/settings">الإعدادات</NavLink>
+          <NavLink to="/settings">{t("settings")}</NavLink>
         </li>
         <li className="nav_link">
-          <NavLink to="/jobs">الوظائف</NavLink>
+          <NavLink to="/jobs">{t("jobs")}</NavLink>
         </li>
       </ul>
     </motion.div>
