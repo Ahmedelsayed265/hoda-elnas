@@ -48,8 +48,7 @@ const Login = () => {
               icon={<i className="fa-sharp fa-light fa-phone"></i>}
             />
             <PasswordField
-              label={t("auth.phone")}
-              placeholder={t("auth.phonePlaceHolder")}
+              label={t("auth.password")}
               htmlFor="password"
               id="password"
               value={formData.password}

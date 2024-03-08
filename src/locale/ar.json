@@ -31,11 +31,26 @@
         "privacyPolicy": "سياسة الخصوصية",
         "and": "و",
         "byContinue": "بمواصلتك، فإنك توافق على",
-        "reltiveToApp": "الخاصة بالتطبيق",
         "personalPhoto": "الصورة شخصية",
         "changePassword": "تغيير كلمة المرور",
         "confirm": "تاكيد",
         "send": "إرسال",
-        "enterPhoneToGetCode": "ادخل رقم الجوال المسجل لدينا لإرسال كود تغير كلمة المرور ."
+        "enterPhoneToGetCode": "ادخل رقم الجوال المسجل لدينا لإرسال كود تغير كلمة المرور .",
+        "enterOtp": "ادخل رمز التحقق",
+        "password": "كلمة المرور",
+        "newPassword": "كلمة المرور الجديدة",
+        "confirmNewPassword": "تاكيد كلمة المرور ",
+        "enterCodeTitle": "ادخل رمز التحقق المرسل على رقم الجوال المسجل",
+        "pleaseEnterCode": "من فضلك ادخل رمز التحقق المرسل الي رقم الجوال",
+        "resendCode": "اعادة ارسال الرمز",
+        "addNewPass": "إنشاء كلمة مرور جديدة",
+        "addNewPassSubTitle": "إنشاء كلمة مرور جديدة قوية وسهلة الحفظ",
+        "whatsapp": " الواتساب",
+        "firstName": "الاسم الاول",
+        "lastName": "الاسم الأخير",
+        "abdallah": "عبدالله",
+        "rashed": "راشد",
+        "male": "ذكر",
+        "female": "انثى"
     }
 }

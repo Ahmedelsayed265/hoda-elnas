@@ -4,18 +4,23 @@ import { Link } from "react-router-dom";
 import InputField from "../components/ui/form-elements/InputField";
 import SubmitButton from "../components/ui/form-elements/SubmitButton";
 import PhoneField from "../components/ui/form-elements/PhoneField";
-import ImageUpload from "./../components/ui/form-elements/ImageUpload";
+import PasswordField from "../components/ui/form-elements/PasswordField";
+import NameField from "../components/ui/form-elements/NameField";
+import Gender from "../components/ui/form-elements/Gender";
 
 const Register = () => {
   const [loading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    lastname: "",
+    phone_number: "",
     email: "",
-    phone: "",
-    image: null
+    password: "",
+    confirm_password: "",
+    whatsapp_number: "",
+    gender: ""
   });
   const { t } = useTranslation();
-
   return (
     <section className="auth">
       <div className="form_wrapper">
@@ -31,18 +36,8 @@ const Register = () => {
         </div>
         <div className="form_container">
           <form className="form-ui">
-            <ImageUpload formData={formData} setFormData={setFormData} />
             {/* name */}
-            <InputField
-              label={t("auth.name")}
-              placeholder={t("auth.namePlaceHolder")}
-              htmlFor="name"
-              value={formData.name}
-              formData={formData}
-              id={"name"}
-              setFormData={setFormData}
-              icon={<i className="fa-light fa-user"></i>}
-            />
+            <NameField setFormData={setFormData} formData={formData} />
             {/* email */}
             <InputField
               label={t("auth.email")}
@@ -50,7 +45,7 @@ const Register = () => {
               htmlFor="email"
               value={formData.email}
               formData={formData}
-              id={"emial"}
+              id={"email"}
               setFormData={setFormData}
               icon={<i className="fa-light fa-envelope"></i>}
             />
@@ -60,21 +55,47 @@ const Register = () => {
               icon={<i className="fa-sharp fa-light fa-phone"></i>}
               formData={formData}
               setFormData={setFormData}
-              value={formData.phone}
+              value={formData.phone_number}
               id="phone"
             />
-            {/* agreement and submit */}
-            <div className="d-flex justify-content-center">
-              <p className="continue">
-                {t("auth.byContinue")}{" "}
-                <Link to="/terms-conditions">
-                  {t("auth.termsAndCondition")}
-                </Link>{" "}
-                {t("auth.and")}{" "}
-                <Link to="/privacy-policy">{t("auth.privacyPolicy")}</Link>{" "}
-                {t("auth.reltiveToApp")}
-              </p>
+            {/* whats app */}
+            <PhoneField
+              label={t("auth.whatsapp")}
+              icon={<i class="fa-brands fa-whatsapp"></i>}
+              formData={formData}
+              setFormData={setFormData}
+              value={formData.whatsapp_number}
+              id="whatsapp_number"
+            />
+            <div className="form_group">
+              <PasswordField
+                label={t("auth.password")}
+                htmlFor="password"
+                id="password"
+                value={formData.password}
+                formData={formData}
+                setFormData={setFormData}
+                icon={<i className="fa-regular fa-lock-keyhole"></i>}
+              />
+              <PasswordField
+                label={t("auth.confirmNewPassword")}
+                htmlFor="confirm_password"
+                id="confirm_password"
+                value={formData.confirm_password}
+                formData={formData}
+                setFormData={setFormData}
+                icon={<i className="fa-regular fa-lock-keyhole"></i>}
+              />
             </div>
+            {/* gender */}
+            <Gender setFormData={setFormData} formData={formData} />
+            {/* agreement and submit */}
+            <p className="continue">
+              {t("auth.byContinue")}{" "}
+              <Link to="/terms-conditions">{t("auth.termsAndCondition")}</Link>{" "}
+              {t("auth.and")}{" "}
+              <Link to="/privacy-policy">{t("auth.privacyPolicy")}</Link>
+            </p>
             <SubmitButton name={t("register")} loading={loading} />
           </form>
         </div>

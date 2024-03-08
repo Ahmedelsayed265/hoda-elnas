@@ -203,7 +203,7 @@ body main .auth {
 }
 body main .auth .form_wrapper {
   width: min(100% - 32px, 1042px);
-  min-height: 524px;
+  min-height: 460px;
   background: #fff;
   border-radius: 24px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
@@ -212,7 +212,7 @@ body main .auth .form_wrapper {
 }
 body main .auth .form_wrapper .form_container {
   width: 50%;
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -243,8 +243,6 @@ body main .auth .form_wrapper .form_container .forgot a:hover {
   color: #81a63d;
 }
 body main .auth .form_wrapper .form_container .continue {
-  text-align: center;
-  width: 70%;
   line-height: 26px;
   margin-bottom: 0;
   font-size: 16px;
@@ -253,6 +251,34 @@ body main .auth .form_wrapper .form_container .continue {
 body main .auth .form_wrapper .form_container .continue a {
   line-height: inherit;
   color: #81a63d;
+}
+body main .auth .form_wrapper .form_container .reset_otp_title {
+  padding: 0 16px;
+  text-align: center;
+  margin-top: 24px;
+}
+body main .auth .form_wrapper .form_container .reset_otp_title p {
+  font-size: 18px;
+  color: #31535a;
+  margin-bottom: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+body main .auth .form_wrapper .form_container .reset_otp_title p span {
+  color: #81a63d;
+}
+body main .auth .form_wrapper .form_container .resend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #1f1f1f;
+  font-size: 16px;
+}
+body main .auth .form_wrapper .form_container .resend p {
+  margin-bottom: 0;
+}
+body main .auth .form_wrapper .form_container .resend .counterDown {
+  font-weight: 600;
 }
 body main .auth .form_wrapper .page_preif {
   width: 50%;
@@ -332,6 +358,7 @@ body .form-ui .input-field select {
   border-radius: 12px;
   background: #f8f8f8;
   padding: 12px 16px;
+  font-size: 14px;
 }
 body .form-ui .input-field textarea {
   height: 152px;
@@ -339,11 +366,12 @@ body .form-ui .input-field textarea {
 body .form-ui .input-field label {
   color: #1f1f1f;
   font-weight: 500;
+  font-size: 14px;
 }
 body .form-ui .phone-group .PhoneInput {
   display: flex;
   flex-direction: row-reverse;
-  gap: 12px;
+  gap: 8px;
 }
 body .form-ui .phone-group .PhoneInput input {
   direction: ltr;
@@ -367,6 +395,10 @@ body .form-ui .phone-group .PhoneInput select {
 body .form-ui .phone-group .phone-code {
   height: 54px;
   border-radius: 4px;
+}
+body .form-ui .form_group {
+  display: flex;
+  gap: 8px;
 }
 body .form-ui .image-change-wrapper {
   border-radius: 12px;
@@ -413,6 +445,29 @@ body .form-ui .image-change-wrapper .upload .plus i {
   font-size: 14px;
   color: #fff;
 }
+body .form-ui .otp-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  direction: ltr !important;
+}
+body .form-ui .otp-container .otp-input {
+  border-radius: 12px;
+  flex: 1;
+  width: inherit;
+  height: 80px !important;
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  background: #f8f8f8;
+  font-size: 28px;
+  font-weight: 600;
+  color: #31535a !important;
+  outline: none;
+}
+body .form-ui .otp-container .otp-input::-webkit-inner-spin-button {
+  display: none;
+}
 body .form-ui .save {
   width: 100%;
   height: 54px;
@@ -420,6 +475,47 @@ body .form-ui .save {
   background: #81a63d;
   color: #fff;
   margin-top: 12px;
+}
+body .gender_select {
+  display: flex;
+  flex-direction: column;
+}
+body .gender_select .gender_card {
+  display: flex;
+  gap: 8px;
+  background-color: #f8f8f8;
+  color: #1f1f1f;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid #f2f2f2;
+  padding: 12px 16px;
+  transition: 0.3s;
+  cursor: pointer;
+  font-weight: 400 !important;
+  font-size: 14px;
+  width: 100%;
+}
+body .gender_select .gender_card img {
+  height: 30px;
+  width: 30px;
+}
+body .gender_select .gender_card:hover {
+  background-color: #dce9c4;
+}
+body .gender_select .gender_card.active {
+  border: 1px solid #81a63d;
+  background-color: #dce9c4;
+}
+body .gender_select > div {
+  display: flex;
+  gap: 8px;
+}
+body .gender_select input {
+  visibility: hidden;
+}
+body .gender_select label {
+  font-weight: 500;
 }
 body.en {
   direction: ltr;

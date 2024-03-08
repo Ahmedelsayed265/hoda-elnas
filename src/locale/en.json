@@ -31,11 +31,26 @@
         "privacyPolicy": "Privacy Policy",
         "and": "and",
         "byContinue": "By continuing, you agree to",
-        "reltiveToApp": "of the app",
         "personalPhoto": "Personal Photo",
         "changePassword": "Change Password",
         "confirm": "Confirm",
         "send": "Send",
-        "enterPhoneToGetCode": "Enter your phone number registered with us to receive a code to change your password."
+        "enterPhoneToGetCode": "Enter your phone number registered with us to receive a code to change your password.",
+        "enterOtp": "Enter the code received",
+        "password": "Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "enterCodeTitle": "Enter the code sent to your phone number",
+        "pleaseEnterCode": "Please enter the code sent to your phone number",
+        "resendCode": "Resend Code",
+        "addNewPass": "Create a new password",
+        "addNewPassSubTitle": "Create a New Strong, Memorable Password",
+        "whatsapp": "Whatsapp",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "abdallah": "Abdallah",
+        "rashed": "Rashid",
+        "male": "Male",
+        "female": "Female"
     }
 }
