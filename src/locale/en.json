@@ -7,8 +7,15 @@
     "students": "Students",
     "settings": "Settings",
     "jobs": "Jobs",
+    "about": "About",
+    "contact": "Contact Us",
+    "faqs": "FAQs",
     "login": "Login",
     "register": "Register",
+    "siteName": "Hoda Elnas",
+    "allRightsDeserved" : "All Rights Reserved For",
+    "footerAbout": "Hoda Elnas is an online platform that takes students' knowledge and experience to explain and prepare the existing scientific material used in lectures.",
+    "importLinks": "Import Links",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -58,6 +65,11 @@
         "loginByEmail": "Login with Email",
         "loginByPhone": "Login with Phone",
         "loginSuccessfully": "Login Successfully",
-        "emailOrPasswordIsWrong": "Email or Password is wrong"
+        "emailOrPasswordIsWrong": "Email or Password is wrong",
+        "sendByEmail": "Send by Email",
+        "sendByPhone": "Send by Phone",
+        "emailNotExist": "Email does not exist",
+        "phoneNotExist": "Phone number does not exist",
+        "otpIsNotCorrect": "The code you entered is not correct"
     }
 }

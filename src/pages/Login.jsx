@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 
 import EmailForm from "../components/auth/EmailForm";
-import PhoneFormLogin from "../components/auth/PhoneFormLogin";
+import PhoneForm from "../components/auth/PhoneForm";
 
 const Login = () => {
   const [formType, setFormType] = useState("email");
@@ -13,7 +13,7 @@ const Login = () => {
   if (formType === "email") {
     formComponent = <EmailForm />;
   } else {
-    formComponent = <PhoneFormLogin />;
+    formComponent = <PhoneForm />;
   }
   return (
     <section className="auth">

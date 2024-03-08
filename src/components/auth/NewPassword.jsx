@@ -4,7 +4,12 @@ import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.png";
 import PasswordField from "../ui/form-elements/PasswordField";
 
-const NewPassword = ({ formData, setFormData }) => {
+const NewPassword = () => {
+  const [formData, setFormData] = useState({
+    function: "resetpassword",
+    password: "",
+    confirmpassword: ""
+  });
   const [loading] = useState(false);
   const { t } = useTranslation();
   return (
@@ -23,18 +28,18 @@ const NewPassword = ({ formData, setFormData }) => {
         <form className="form-ui">
           <PasswordField
             label={t("auth.newPassword")}
-            htmlFor="new_password"
+            htmlFor="password"
             id="new_password"
-            value={formData.new_password}
+            value={formData.password}
             formData={formData}
             setFormData={setFormData}
             icon={<i className="fa-regular fa-lock-keyhole"></i>}
           />
           <PasswordField
             label={t("auth.confirmNewPassword")}
-            htmlFor="confirm_password"
+            htmlFor="confirmpassword"
             id="confirm_password"
-            value={formData.confrimed_password}
+            value={formData.confirmpassword}
             formData={formData}
             setFormData={setFormData}
             icon={<i className="fa-regular fa-lock-keyhole"></i>}

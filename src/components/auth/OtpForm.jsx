@@ -4,9 +4,35 @@ import SubmitButton from "../ui/form-elements/SubmitButton";
 import logo from "../../assets/images/logo.png";
 import Otpcontainer from "./OtpContainer";
 
-const OtpForm = ({ formData, setFormData }) => {
-  const [loading] = useState(false);
+import { toast } from "react-toastify";
+import axios from "./../../util/axios";
+
+const OtpForm = ({ setFormComponent, email, phone }) => {
+  const [formData, setFormData] = useState({
+    function: "checkotp",
+    otp: ""
+  });
+  const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const dataToSend = { ...formData };
+      if (email !== "") {
+        dataToSend.email = email;
+      } else {
+        dataToSend.phone = phone;
+      }
+      await axios.post("/accounts/resetpass/", dataToSend);
+    } catch (error) {
+      toast.error(t("auth.otpIsNotCorrect"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="form_wrapper">
       <div className="page_preif">
@@ -25,7 +51,7 @@ const OtpForm = ({ formData, setFormData }) => {
             {t("auth.pleaseEnterCode")} <span>+9960123456</span>
           </p>
         </div>
-        <form className="form-ui">
+        <form className="form-ui" onSubmit={handleSubmit}>
           <Otpcontainer formData={formData} setFormData={setFormData} />
           <div className="resend">
             <p>{t("auth.resendCode")}</p>

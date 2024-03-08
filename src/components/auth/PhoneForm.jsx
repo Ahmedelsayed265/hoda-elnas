@@ -1,43 +1,41 @@
 import React, { useState } from "react";
+import PasswordField from "../ui/form-elements/PasswordField";
 import { useTranslation } from "react-i18next";
-import SubmitButton from "../ui/form-elements/SubmitButton";
-import logo from "../../assets/images/logo.png";
 import PhoneField from "../ui/form-elements/PhoneField";
+import { Link } from "react-router-dom";
+import SubmitButton from "../ui/form-elements/SubmitButton";
 
-const PhoneForm = ({ formData, setFormData }) => {
+const PhoneForm = () => {
   const [loading] = useState(false);
+  const [formData, setFormData] = useState({
+    phone: "",
+    password: ""
+  });
   const { t } = useTranslation();
   return (
-    <div className="form_wrapper">
-      <div className="page_preif">
-        <div className="content">
-          <div className="circle" />
-          <h1>{t("auth.forgotPassword")}</h1>
-          <p>{t("auth.enterYourPhone")}</p>
-        </div>
+    <form className="form-ui">
+      <PhoneField
+        label={t("auth.phone")}
+        icon={<i className="fa-sharp fa-light fa-phone"></i>}
+        formData={formData}
+        setFormData={setFormData}
+        value={formData.phone}
+        id="phone"
+      />
+      <PasswordField
+        label={t("auth.password")}
+        htmlFor="password"
+        id="password"
+        value={formData.password}
+        formData={formData}
+        setFormData={setFormData}
+        icon={<i className="fa-regular fa-lock-keyhole"></i>}
+      />
+      <div className="d-flex justify-content-end forgot">
+        <Link to="/reset-password">{t("auth.forgotPassword")}</Link>
       </div>
-      <div className="form_container">
-        <div className="logo">
-          <img src={logo} alt="logo" />
-        </div>
-        <div className="welcome">
-          <h4>{t("auth.changePassword")}</h4>
-          <p>{t("auth.enterPhoneToGetCode")}</p>
-        </div>
-        <form className="form-ui">
-          {/* phone */}
-          <PhoneField
-            label={t("auth.phone")}
-            icon={<i className="fa-sharp fa-light fa-phone"></i>}
-            formData={formData}
-            setFormData={setFormData}
-            value={formData.phone}
-            id="phone"
-          />
-          <SubmitButton name={t("auth.send")} loading={loading} />
-        </form>
-      </div>
-    </div>
+      <SubmitButton name={t("login")} loading={loading} />
+    </form>
   );
 };
 
