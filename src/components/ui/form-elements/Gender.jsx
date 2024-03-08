@@ -5,7 +5,7 @@ export default function Gender({ formData, setFormData }) {
   const { t } = useTranslation();
   return (
     <div className="gender_select">
-      <label>Gender</label>
+      <label><i className="fa-regular fa-venus-mars"></i> {t("auth.gender")}</label>
       <div>
         <label
           htmlFor="female"

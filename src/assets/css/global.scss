@@ -291,6 +291,37 @@ body {
               font-weight: 600;
             }
           }
+          .tabs {
+            width: 100%;
+            border-bottom: 2px solid $inputStroke;
+            margin-bottom: 12px;
+            button {
+              @include clearInput();
+              padding: 0 12px;
+              position: relative;
+              font-size: 16px;
+              font-weight: 500;
+              transition: $transation;
+              color: $dark;
+              &::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                width: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 2px;
+                background: $main;
+                transition: $transation;
+              }
+              &.active {
+                color: $main;
+                &::after {
+                  width: 100%;
+                }
+              }
+            }
+          }
         }
         .page_preif {
           width: 50%;
@@ -486,6 +517,9 @@ body {
   }
   .gender_select {
     display: flex;
+    label {
+      font-size: 14px;
+    }
     flex-direction: column;
     .gender_card {
       display: flex;

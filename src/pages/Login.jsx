@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
-import InputField from "../components/ui/form-elements/InputField";
-import PasswordField from "../components/ui/form-elements/PasswordField";
-import SubmitButton from "./../components/ui/form-elements/SubmitButton";
+
+import EmailForm from "../components/auth/EmailForm";
+import PhoneFormLogin from "../components/auth/PhoneFormLogin";
 
 const Login = () => {
-  const [loading] = useState(false);
-  const [formData, setFormData] = useState({
-    phone: "",
-    password: ""
-  });
+  const [formType, setFormType] = useState("email");
   const { t } = useTranslation();
+  let formComponent;
+  if (formType === "email") {
+    formComponent = <EmailForm />;
+  } else {
+    formComponent = <PhoneFormLogin />;
+  }
   return (
     <section className="auth">
       <div className="form_wrapper">
@@ -35,32 +37,21 @@ const Login = () => {
             <h4>{t("auth.welcome")}</h4>
             <p>{t("auth.enterYourInfo")}</p>
           </div>
-          <form className="form-ui">
-            <InputField
-              label={t("auth.phone")}
-              placeholder={t("auth.phonePlaceHolder")}
-              type="tel"
-              htmlFor="phone"
-              value={formData.phone}
-              formData={formData}
-              id={"phone"}
-              setFormData={setFormData}
-              icon={<i className="fa-sharp fa-light fa-phone"></i>}
-            />
-            <PasswordField
-              label={t("auth.password")}
-              htmlFor="password"
-              id="password"
-              value={formData.password}
-              formData={formData}
-              setFormData={setFormData}
-              icon={<i className="fa-regular fa-lock-keyhole"></i>}
-            />
-            <div className="d-flex justify-content-end forgot">
-              <Link to="/reset-password">{t("auth.forgotPassword")}</Link>
-            </div>
-            <SubmitButton name={t("login")} loading={loading} />
-          </form>
+          <div className="tabs">
+            <button
+              className={formType === "email" ? "active" : ""}
+              onClick={() => setFormType("email")}
+            >
+              {t("auth.loginByEmail")}
+            </button>
+            <button
+              className={formType === "phone" ? "active" : ""}
+              onClick={() => setFormType("phone")}
+            >
+              {t("auth.loginByPhone")}
+            </button>
+          </div>
+          {formComponent}
         </div>
       </div>
     </section>

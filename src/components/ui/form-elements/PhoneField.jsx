@@ -21,7 +21,7 @@ const PhoneField = ({ formData, setFormData, id, value, label, icon }) => {
           onChange={handlePhoneNumberChange}
           countryOptionsOrder={["SA", "AE"]}
           defaultCountry="SA"
-          id="phone"
+          id={id}
           name="phone"
         />
       </div>

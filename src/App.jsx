@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { CookiesProvider } from "react-cookie";
 import LocalizeRoute from "./pages/LocalizeRoute";
 import { store } from "./redux/store";
+import { ToastContainer } from "react-toastify";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -18,6 +19,7 @@ import ResetPassword from "./pages/ResetPassword";
 const App = () => {
   return (
     <CookiesProvider>
+      <ToastContainer />
       <Provider store={store}>
         <Nav />
         <main>

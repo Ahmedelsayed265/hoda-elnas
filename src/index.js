@@ -7,6 +7,8 @@ import "./assets/css/all.min.css";
 /*---------- bootstrap ------------*/
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
+/*---------- toastify css ---------*/
+import "../node_modules/react-toastify/dist/ReactToastify.css";
 /*---------- app style global -----*/
 import "./assets/css/global.css";
 /*---------- i18n -----*/

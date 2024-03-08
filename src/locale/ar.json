@@ -50,7 +50,14 @@
         "lastName": "الاسم الأخير",
         "abdallah": "عبدالله",
         "rashed": "راشد",
+        "gender": "النوع",
         "male": "ذكر",
-        "female": "انثى"
+        "female": "انثى",
+        "accountCreatedSuccessfully": "تم انشاء الحساب بنجاح",
+        "someThingWentWrong": "حدث خطأ ما ، حاول مرة اخرى",
+        "loginByEmail": "تسجيل الدخول بالبريد ",
+        "loginByPhone": "تسجيل الدخول بالهاتف",
+        "loginSuccessfully": "تم تسجيل الدخول بنجاح",
+        "emailOrPasswordIsWrong": "البريد الالكتروني او كلمة المرور غير صحيحة"
     }
 }

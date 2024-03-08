@@ -50,7 +50,14 @@
         "lastName": "Last Name",
         "abdallah": "Abdallah",
         "rashed": "Rashid",
+        "gender": "Gender",
         "male": "Male",
-        "female": "Female"
+        "female": "Female",
+        "accountCreatedSuccessfully": "Account Created Successfully",
+        "someThingWentWrong": "Something went wrong, please try again",
+        "loginByEmail": "Login with Email",
+        "loginByPhone": "Login with Phone",
+        "loginSuccessfully": "Login Successfully",
+        "emailOrPasswordIsWrong": "Email or Password is wrong"
     }
 }

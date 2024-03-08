@@ -280,6 +280,39 @@ body main .auth .form_wrapper .form_container .resend p {
 body main .auth .form_wrapper .form_container .resend .counterDown {
   font-weight: 600;
 }
+body main .auth .form_wrapper .form_container .tabs {
+  width: 100%;
+  border-bottom: 2px solid #f2f2f2;
+  margin-bottom: 12px;
+}
+body main .auth .form_wrapper .form_container .tabs button {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0 12px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease-in-out;
+  color: #1f1f1f;
+}
+body main .auth .form_wrapper .form_container .tabs button::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: #31535a;
+  transition: 0.3s ease-in-out;
+}
+body main .auth .form_wrapper .form_container .tabs button.active {
+  color: #31535a;
+}
+body main .auth .form_wrapper .form_container .tabs button.active::after {
+  width: 100%;
+}
 body main .auth .form_wrapper .page_preif {
   width: 50%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8392156863), rgba(0, 0, 0, 0.8078431373)), url(../images/auth_thumb.jpeg);
@@ -479,6 +512,9 @@ body .form-ui .save {
 body .gender_select {
   display: flex;
   flex-direction: column;
+}
+body .gender_select label {
+  font-size: 14px;
 }
 body .gender_select .gender_card {
   display: flex;

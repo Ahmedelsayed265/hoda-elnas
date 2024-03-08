@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import axios from "../util/axios";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import InputField from "../components/ui/form-elements/InputField";
 import SubmitButton from "../components/ui/form-elements/SubmitButton";
 import PhoneField from "../components/ui/form-elements/PhoneField";
@@ -9,7 +11,7 @@ import NameField from "../components/ui/form-elements/NameField";
 import Gender from "../components/ui/form-elements/Gender";
 
 const Register = () => {
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -21,6 +23,20 @@ const Register = () => {
     gender: ""
   });
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post("/accounts/register/", formData);
+      toast.success(t("auth.accountCreatedSuccessfully"));
+      navigate("/login");
+    } catch (error) {
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className="auth">
       <div className="form_wrapper">
@@ -35,7 +51,7 @@ const Register = () => {
           </div>
         </div>
         <div className="form_container">
-          <form className="form-ui">
+          <form className="form-ui" onSubmit={handleSubmit}>
             {/* name */}
             <NameField setFormData={setFormData} formData={formData} />
             {/* email */}
@@ -56,12 +72,12 @@ const Register = () => {
               formData={formData}
               setFormData={setFormData}
               value={formData.phone_number}
-              id="phone"
+              id="phone_number"
             />
             {/* whats app */}
             <PhoneField
               label={t("auth.whatsapp")}
-              icon={<i class="fa-brands fa-whatsapp"></i>}
+              icon={<i className="fa-brands fa-whatsapp"></i>}
               formData={formData}
               setFormData={setFormData}
               value={formData.whatsapp_number}
