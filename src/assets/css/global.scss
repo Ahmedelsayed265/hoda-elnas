@@ -128,6 +128,59 @@ body {
             height: 18px;
           }
         }
+        .menu-btn {
+          cursor: pointer;
+          width: 30px;
+          height: 30px;
+          display: none;
+          z-index: 2;
+          flex: 1;
+          @media (max-width: 992px) {
+            @include centerFlex();
+            justify-content: flex-end;
+          }
+          .menu-bar {
+            position: relative;
+            height: 2px;
+            width: 28px;
+            background-color: $secondary;
+            transition: 0.5s ease;
+            &::before {
+              content: "";
+              display: block;
+              position: absolute;
+              top: -9px;
+              left: 0;
+              height: 2px;
+              width: 100%;
+              background-color: $secondary;
+              transition: 0.5s ease;
+            }
+            &::after {
+              content: "";
+              display: block;
+              position: absolute;
+              bottom: -9px;
+              left: 0;
+              height: 2px;
+              width: 100%;
+              background-color: $secondary;
+              transition: 0.5s ease;
+            }
+            &.active {
+              background-color: transparent;
+              transform: rotate(90deg);
+              &::before {
+                -webkit-transform: translate(0px, 10px) rotate(135deg);
+                transform: translate(0px, 9px) rotate(135deg);
+              }
+              &::after {
+                -webkit-transform: translate(0px, -10px) rotate(-135deg);
+                transform: translate(0px, -9px) rotate(-135deg);
+              }
+            }
+          }
+        }
         @media (max-width: 992px) {
           justify-content: space-between;
         }
@@ -160,7 +213,24 @@ body {
           }
         }
         @media (max-width: 992px) {
-          display: none;
+          background: $white;
+          margin-top: 100px;
+          height: calc(100vh - 100px);
+          position: absolute;
+          right: -100%;
+          width: 100%;
+          transition: $transation;
+          ul {
+            flex-direction: column;
+            justify-content: center;
+            li {
+              height: fit-content;
+              padding: 12px 0;
+            }
+          }
+          &.active {
+            right: 0;
+          }
         }
       }
       .utils {

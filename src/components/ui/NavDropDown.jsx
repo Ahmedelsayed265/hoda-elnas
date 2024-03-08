@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
-const NavDropDown = ({ isOpen, setIsOpen }) => {
+const NavDropDown = ({ isOpen, setIsOpen, setIsTogglerActive }) => {
   const { t } = useTranslation();
   const dropdownRef = useRef(null);
   const variants = {
@@ -36,13 +36,19 @@ const NavDropDown = ({ isOpen, setIsOpen }) => {
     >
       <ul>
         <li className="nav_link">
-          <NavLink to="/students">{t("students")}</NavLink>
+          <NavLink to="/students" onClick={() => setIsTogglerActive(false)}>
+            {t("students")}
+          </NavLink>
         </li>
         <li className="nav_link">
-          <NavLink to="/settings">{t("settings")}</NavLink>
+          <NavLink to="/settings" onClick={() => setIsTogglerActive(false)}>
+            {t("settings")}
+          </NavLink>
         </li>
         <li className="nav_link">
-          <NavLink to="/jobs">{t("jobs")}</NavLink>
+          <NavLink to="/jobs" onClick={() => setIsTogglerActive(false)}>
+            {t("jobs")}
+          </NavLink>
         </li>
       </ul>
     </motion.div>

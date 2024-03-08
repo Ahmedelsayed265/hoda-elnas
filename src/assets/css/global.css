@@ -103,6 +103,61 @@ body header nav .logo .lang_toggler {
 body header nav .logo .lang_toggler img {
   height: 18px;
 }
+body header nav .logo .menu-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: none;
+  z-index: 2;
+  flex: 1;
+}
+@media (max-width: 992px) {
+  body header nav .logo .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-end;
+  }
+}
+body header nav .logo .menu-btn .menu-bar {
+  position: relative;
+  height: 2px;
+  width: 28px;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .logo .menu-btn .menu-bar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -9px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .logo .menu-btn .menu-bar::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .logo .menu-btn .menu-bar.active {
+  background-color: transparent;
+  transform: rotate(90deg);
+}
+body header nav .logo .menu-btn .menu-bar.active::before {
+  transform: translate(0px, 9px) rotate(135deg);
+}
+body header nav .logo .menu-btn .menu-bar.active::after {
+  transform: translate(0px, -9px) rotate(-135deg);
+}
 @media (max-width: 992px) {
   body header nav .logo {
     justify-content: space-between;
@@ -141,7 +196,25 @@ body header nav .nav_links ul li .drop {
 }
 @media (max-width: 992px) {
   body header nav .nav_links {
-    display: none;
+    background: #fff;
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    position: absolute;
+    right: -100%;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+  }
+  body header nav .nav_links ul {
+    flex-direction: column;
+    justify-content: center;
+  }
+  body header nav .nav_links ul li {
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 12px 0;
+  }
+  body header nav .nav_links.active {
+    right: 0;
   }
 }
 body header nav .utils {

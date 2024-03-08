@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { setLanguage } from "../redux/slices/language";
@@ -8,7 +8,8 @@ import NavDropDown from "./ui/NavDropDown";
 import langIcon from "../assets/images/lang.svg";
 import logo from "../assets/images/logo.png";
 const Nav = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isTogglerActive, setIsTogglerActive] = useState(false);
   const lang = useSelector((state) => state.language.lang);
   const header = useRef(null);
   const { t } = useTranslation();
@@ -45,31 +46,54 @@ const Nav = () => {
       <nav className="container">
         <div className="logo">
           <img src={logo} alt="logo" />
-          <button className="lang_toggler" onClick={handleLang}>
-            {lang === "ar" ? "English" : "العربية"}
-            <img src={langIcon} alt="lang" />
-          </button>
+          <div className="d-flex align-items-center gap-3">
+            <button className="lang_toggler" onClick={handleLang}>
+              {lang === "ar" ? "English" : "العربية"}
+              <img src={langIcon} alt="lang" />
+            </button>
+            <div
+              className="menu-btn"
+              onClick={() => setIsTogglerActive(!isTogglerActive)}
+            >
+              <div
+                className={`menu-bar ${isTogglerActive ? "active" : ""}`}
+              ></div>
+            </div>
+          </div>
         </div>
-        <div className="nav_links">
+        <div className={`nav_links ${isTogglerActive ? "active" : ""}`}>
           <ul>
             <li className="nav_link">
-              <NavLink to="/" end>
+              <NavLink to="/" end onClick={() => setIsTogglerActive(false)}>
                 {t("home")}
               </NavLink>
             </li>
             <li className="nav_link">
-              <NavLink to="/courses">{t("courses")}</NavLink>
+              <NavLink to="/courses" onClick={() => setIsTogglerActive(false)}>
+                {t("courses")}
+              </NavLink>
             </li>
             <li className="nav_link">
-              <NavLink to="/subscriptions">{t("subscriptions")}</NavLink>
+              <NavLink
+                to="/subscriptions"
+                onClick={() => setIsTogglerActive(false)}
+              >
+                {t("subscriptions")}
+              </NavLink>
             </li>
             <li className="nav_link">
-              <NavLink to="/visuals">{t("visuals")}</NavLink>
+              <NavLink to="/visuals" onClick={() => setIsTogglerActive(false)}>
+                {t("visuals")}
+              </NavLink>
             </li>
             <li className="nav_link">
               <div className="drop" onClick={() => setIsOpen(!isOpen)}>
                 {t("more")} <i className="fa-regular fa-angle-down"></i>
-                <NavDropDown isOpen={isOpen} setIsOpen={setIsOpen} />
+                <NavDropDown
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  setIsTogglerActive={setIsTogglerActive}
+                />
               </div>
             </li>
           </ul>
