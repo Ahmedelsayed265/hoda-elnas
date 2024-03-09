@@ -3,14 +3,33 @@ import SubmitButton from "../ui/form-elements/SubmitButton";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.png";
 import PasswordField from "../ui/form-elements/PasswordField";
+import { toast } from "react-toastify";
+import axios from "./../../util/axios";
+import { useNavigate } from "react-router-dom";
 
-const NewPassword = () => {
+const NewPassword = ({ emailToSend, phoneToSend }) => {
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     function: "resetpassword",
     password: "",
-    confirmpassword: ""
+    confirmpassword: "",
+    email: emailToSend,
+    phone: phoneToSend
   });
-  const [loading] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await axios.post("/accounts/resetpass/", formData);
+      toast.success(t("auth.passwordChangedSuccessfully"));
+      navigate("/login");
+    } catch (error) {
+      console.log("error =>", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   const { t } = useTranslation();
   return (
     <div className="form_wrapper">
@@ -25,7 +44,7 @@ const NewPassword = () => {
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
-        <form className="form-ui">
+        <form className="form-ui" onSubmit={handleSubmit}>
           <PasswordField
             label={t("auth.newPassword")}
             htmlFor="password"

@@ -43,7 +43,7 @@ const Otpcontainer = ({ formData, setFormData }) => {
   };
   return (
     <div className="otp-container">
-      {[1, 2, 3, 4, 5].map(index =>
+      {[1, 2, 3, 4, 5, 6].map((index) => (
         <input
           key={index}
           id={`input${index}`}
@@ -54,10 +54,10 @@ const Otpcontainer = ({ formData, setFormData }) => {
           pattern="[0-9]"
           required
           value={otpValue[index - 1] || ""}
-          onChange={e => handleInput(index, e)}
-          onKeyDown={e => handleKeyDown(index, e)}
+          onChange={(e) => handleInput(index, e)}
+          onKeyDown={(e) => handleKeyDown(index, e)}
         />
-      )}
+      ))}
     </div>
   );
 };

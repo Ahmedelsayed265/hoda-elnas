@@ -20,15 +20,15 @@ const ResetPassword = () => {
     component = (
       <OtpForm
         setFormComponent={setFormComponent}
-        eamil={email}
-        phone={phone}
+        emailToSend={email}
+        phoneToSend={phone}
       />
     );
   } else if (formComponent === "new-password") {
     component = (
       <NewPassword
-        eamil={email}
-        phone={phone}
+        emailToSend={email}
+        phoneToSend={phone}
       />
     );
   }

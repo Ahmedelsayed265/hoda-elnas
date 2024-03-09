@@ -7,10 +7,12 @@ import Otpcontainer from "./OtpContainer";
 import { toast } from "react-toastify";
 import axios from "./../../util/axios";
 
-const OtpForm = ({ setFormComponent, email, phone }) => {
+const OtpForm = ({ setFormComponent, emailToSend, phoneToSend }) => {
   const [formData, setFormData] = useState({
     function: "checkotp",
-    otp: ""
+    otp: "",
+    email: emailToSend,
+    phone: phoneToSend
   });
   const [loading, setLoading] = useState(false);
   const { t } = useTranslation();
@@ -19,13 +21,8 @@ const OtpForm = ({ setFormComponent, email, phone }) => {
     e.preventDefault();
     setLoading(true);
     try {
-      const dataToSend = { ...formData };
-      if (email !== "") {
-        dataToSend.email = email;
-      } else {
-        dataToSend.phone = phone;
-      }
-      await axios.post("/accounts/resetpass/", dataToSend);
+      await axios.post("/accounts/resetpass/", formData);
+      setFormComponent("new-password");
     } catch (error) {
       toast.error(t("auth.otpIsNotCorrect"));
     } finally {

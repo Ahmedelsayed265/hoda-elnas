@@ -70,6 +70,7 @@
         "sendByPhone": "ارسال بالهاتف",
         "emailNotExist": "البريد الالكتروني غير موجود",
         "phoneNotExist": "رقم الهاتف غير موجود",
-        "otpIsNotCorrect": "الكود الذي ادخلته غير صحيح"
+        "otpIsNotCorrect": "الكود الذي ادخلته غير صحيح",
+        "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح"
     }
 }
