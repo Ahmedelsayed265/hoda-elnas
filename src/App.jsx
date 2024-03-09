@@ -26,10 +26,10 @@ const App = () => {
   useEffect(() => {
     if (decodedToken && !isExpired) {
       const userId = decodedToken?.user_id;
-      const setAuthorizationHeader = async (token) => {
+      const setAuthorizationHeader = async () => {
         try {
           const res = await axios.post("/api/token/refresh/", {
-            refresh: token
+            refresh: refreshToken
           });
           dispatch(setToken(res.data.access));
           axios.defaults.headers.common[
@@ -39,14 +39,14 @@ const App = () => {
           console.log(error);
         }
       };
-      const getAuthedUser = async () => {
-        const user = await axios.get(`/list_users/?user_id=${userId}`);
-        dispatch(setUser(user.data));
-      };
+      // const getAuthedUser = async () => {
+      //   const user = await axios.get(`/list_users/?user_id=${userId}`);
+      //   dispatch(setUser(user.data));
+      // };
       setAuthorizationHeader(refreshToken);
-      getAuthedUser();
+      // getAuthedUser();
     } else if (isExpired) {
-      removeCookie("refreshToken");
+      removeCookie();
     }
   }, [decodedToken, isExpired, dispatch, refreshToken, removeCookie]);
 

@@ -82,6 +82,7 @@ $white: #fff;
 $inputStroke: #f2f2f2;
 $dark: #1f1f1f;
 $mainShadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+$lightShadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 $transation: 0.3s ease-in-out;
 
 body {
@@ -296,7 +297,7 @@ body {
       background-image: url(../images/auth-bg.jpg);
       background-size: cover;
       background-position: center;
-      padding: 60px 0;
+      padding: 40px 8px;
       @include centerFlex();
       .form_wrapper {
         width: min(100% - 32px, 1042px);
@@ -469,10 +470,7 @@ body {
       }
     }
     .hero_section {
-      padding: 60px 0;
-      @media (max-width: 576px) {
-        padding: 24px 0;
-      }
+      padding: 40px 8px;
       .video_wrapper {
         width: 100%;
         height: 100%;
@@ -564,9 +562,118 @@ body {
         }
       }
     }
+    .section-header {
+      width: 100%;
+      height: 140px;
+      background: linear-gradient(
+          0deg,
+          rgba(129, 166, 61, 0.77),
+          rgba(129, 166, 61, 0.875)
+        ),
+        url('../images/trial.png');
+      background-size: cover;
+      background-position: 50% 50%;
+      .container {
+        @include space-between();
+        height: 100%;
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          h1 {
+            color: $white;
+            margin-bottom: 4px;
+          }
+          p {
+            margin: 0;
+            color: $white;
+            a {
+              color: $white;
+            }
+          }
+        }
+        .thunb {
+          height: 120px;
+          width: 120px;
+          border-radius: 50%;
+          background: $white;
+          @include centerFlex();
+          img {
+            height: 90%;
+          }
+        }
+      }
+    }
+    .courses {
+      padding: 40px 8px;
+      .inner_search__form {
+        width: 100%;
+        margin-bottom: 12px;
+        position: relative;
+        &::before {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 16px;
+          color: $secondary;
+          content: "\f002";
+          font-family: "Font Awesome 6 pro";
+        }
+        input {
+          width: 100%;
+          height: 56px;
+          background: $inputBG;
+          padding: 0 48px 0;
+          outline: none;
+          border-radius: 8px;
+          border: 1px solid $inputStroke;
+          font-size: 14px;
+        }
+      }
+    }
+    .course-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: $lightShadow;
+      .img {
+        width: 100%;
+        img {
+          aspect-ratio: 3 / 2;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .content {
+        padding: 16px;
+        h4 {
+          font-size: 24px;
+          color: $secondary;
+        }
+        a {
+          width: 28px;
+          font-size: 14px;
+          height: 28px;
+          background: $secondary;
+          color: $white;
+          @include centerFlex();
+          border-radius: 50%;
+        }
+        p {
+          margin: 0;
+          font-weight: 500;
+          color: $main;
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
   }
   footer {
-    padding: 60px 8px 16px;
+    padding: 40px 8px 16px;
+    border-top: 1px solid $inputStroke;
     .img {
       img {
         height: 120px;
@@ -888,9 +995,6 @@ body {
     }
   }
 }
-.Toastify__toast-body > div:last-child {
-  line-height: 24px;
-}
 .button-86 {
   all: unset;
   width: 100px;
@@ -966,6 +1070,9 @@ body {
     width: 100%;
     height: 300px;
   }
+}
+.Toastify__toast-body > div:last-child {
+  line-height: 24px;
 }
 @media only screen and (max-width: 480px) {
   .Toastify__toast-container {
