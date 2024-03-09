@@ -285,7 +285,7 @@ body main .auth {
   background-image: url(../images/auth-bg.jpg);
   background-size: cover;
   background-position: center;
-  padding: 40px 8px;
+  padding: 40px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,7 +477,7 @@ body main .auth .form_wrapper .page_preif .content h6 a {
   }
 }
 body main .hero_section {
-  padding: 40px 8px;
+  padding: 40px 0;
 }
 body main .hero_section .video_wrapper {
   width: 100%;
@@ -607,7 +607,7 @@ body main .section-header .container .thunb img {
   height: 90%;
 }
 body main .courses {
-  padding: 40px 8px;
+  padding: 40px 0;
 }
 body main .courses .inner_search__form {
   width: 100%;

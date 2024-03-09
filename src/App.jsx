@@ -26,25 +26,27 @@ const App = () => {
   useEffect(() => {
     if (decodedToken && !isExpired) {
       const userId = decodedToken?.user_id;
-      const setAuthorizationHeader = async () => {
-        try {
-          const res = await axios.post("/api/token/refresh/", {
-            refresh: refreshToken
-          });
+      const token = axios.post(`/api/token/refresh/`, {
+        refresh: refreshToken
+      });
+      token
+        .then((res) => {
           dispatch(setToken(res.data.access));
           axios.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${res.data.access}`;
-        } catch (error) {
-          console.log(error);
-        }
-      };
-      // const getAuthedUser = async () => {
-      //   const user = await axios.get(`/list_users/?user_id=${userId}`);
-      //   dispatch(setUser(user.data));
-      // };
-      setAuthorizationHeader(refreshToken);
-      // getAuthedUser();
+          const user = axios.get(`/accounts/list_users/?user_id=${userId}`);
+          user
+            .then((res) => {
+              dispatch(setUser(res.data.message[0]));
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else if (isExpired) {
       removeCookie();
     }

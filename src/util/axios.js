@@ -7,4 +7,36 @@ axios.defaults.headers.common["Accept-Language"] = "ar";
 axios.defaults.headers.common["x-api-key"] =
   "3f80d796-eec7-4163-91c2-991550076cbf";
 
+let refresh = false;
+const cookies = document.cookie;
+const listOfCookies = cookies.split(";");
+let refreshToken = "";
+listOfCookies.forEach((e) => {
+  if (e.includes("refreshToken")) {
+    refreshToken = e.split("=")[1];
+  }
+});
+
+axios.interceptors.response.use(
+  (res) => {
+    return res;
+  },
+  async (err) => {
+    if (err.response?.status === 401 && !refresh) {
+      refresh = true;
+      const res = await axios.post("/api/token/refresh/", {
+        refresh: refreshToken
+      });
+      if (res?.status === 200) {
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${res.data.access}`;
+        return axios(err.config);
+      }
+    }
+    refresh = false;
+    return err;
+  }
+);
+
 export default axios;
