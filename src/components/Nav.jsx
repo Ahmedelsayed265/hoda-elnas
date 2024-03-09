@@ -45,7 +45,9 @@ const Nav = () => {
     <header ref={header}>
       <nav className="container">
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
           <div className="d-flex align-items-center gap-3">
             <button className="lang_toggler" onClick={handleLang}>
               {lang === "ar" ? "English" : "العربية"}
