@@ -194,6 +194,9 @@ body header nav .nav_links ul li .drop {
   cursor: pointer;
   position: relative;
 }
+body header nav .nav_links ul li.hide-lg {
+  display: none;
+}
 @media (max-width: 992px) {
   body header nav .nav_links {
     background: #fff;
@@ -211,7 +214,10 @@ body header nav .nav_links ul li .drop {
   body header nav .nav_links ul li {
     height: -moz-fit-content;
     height: fit-content;
-    padding: 12px 0;
+    padding: 8px 0;
+  }
+  body header nav .nav_links ul li.hide-lg {
+    display: flex;
   }
   body header nav .nav_links.active {
     right: 0;

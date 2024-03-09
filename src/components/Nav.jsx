@@ -88,6 +88,16 @@ const Nav = () => {
                 {t("visuals")}
               </NavLink>
             </li>
+            <li className="nav_link hide-lg">
+              <NavLink to="/login" onClick={() => setIsTogglerActive(false)}>
+                {t("login")}
+              </NavLink>
+            </li>
+            <li className="nav_link hide-lg">
+              <NavLink to="/register" onClick={() => setIsTogglerActive(false)}>
+                {t("register")}
+              </NavLink>
+            </li>
             <li className="nav_link">
               <div className="drop" onClick={() => setIsOpen(!isOpen)}>
                 {t("more")} <i className="fa-regular fa-angle-down"></i>
