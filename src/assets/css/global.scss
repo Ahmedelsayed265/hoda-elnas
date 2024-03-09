@@ -470,6 +470,9 @@ body {
     }
     .hero_section {
       padding: 60px 0;
+      @media (max-width: 576px) {
+        padding: 24px 0;
+      }
       .video_wrapper {
         width: 100%;
         height: 100%;
@@ -962,5 +965,11 @@ body {
   video {
     width: 100%;
     height: 300px;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    right: 0;
+    left: initial;
   }
 }

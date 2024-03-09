@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { setLanguage } from "../redux/slices/language";
+import { setLanguage } from "../../redux/slices/language";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import NavDropDown from "./ui/NavDropDown";
-import langIcon from "../assets/images/lang.svg";
-import logo from "../assets/images/logo.png";
+import NavDropDown from "../ui/NavDropDown";
+import langIcon from "../../assets/images/lang.svg";
+import logo from "../../assets/images/logo.png";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isTogglerActive, setIsTogglerActive] = useState(false);

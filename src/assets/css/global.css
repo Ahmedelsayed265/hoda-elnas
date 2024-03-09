@@ -479,6 +479,11 @@ body main .auth .form_wrapper .page_preif .content h6 a {
 body main .hero_section {
   padding: 60px 0;
 }
+@media (max-width: 576px) {
+  body main .hero_section {
+    padding: 24px 0;
+  }
+}
 body main .hero_section .video_wrapper {
   width: 100%;
   height: 100%;
@@ -974,4 +979,11 @@ body.en footer ul li {
 .modal-body video {
   width: 100%;
   height: 300px;
+}
+
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    right: 0;
+    left: initial;
+  }
 }/*# sourceMappingURL=global.css.map */

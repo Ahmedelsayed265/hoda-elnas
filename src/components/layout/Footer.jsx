@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
-import x from "../assets/images/x.svg";
+import logo from "../../assets/images/logo.png";
+import x from "../../assets/images/x.svg";
 import { useTranslation } from "react-i18next";
 
 const Footer = () => {
