@@ -7,12 +7,18 @@ import i18next from "i18next";
 import NavDropDown from "../ui/NavDropDown";
 import langIcon from "../../assets/images/lang.svg";
 import logo from "../../assets/images/logo.png";
+import avatar from "../../assets/images/user.png";
+import ProfileDropDown from "../ui/ProfileDropDown";
+
 const Nav = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isProfileDropDownOpen, setIsProfileDropDownOpen] = useState(false);
   const [isTogglerActive, setIsTogglerActive] = useState(false);
-  const lang = useSelector((state) => state.language.lang);
+  const [isOpen, setIsOpen] = useState(false);
   const header = useRef(null);
   const { t } = useTranslation();
+
+  const logged = useSelector((state) => state.authedUser.logged);
+  const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,16 +35,12 @@ const Nav = () => {
     };
   }, []);
 
-  const handleLang = (e) => {
-    if (lang === "ar") {
-      dispatch(setLanguage("en"));
-      i18next.changeLanguage("en");
-      document.querySelector("body").classList.add("en");
-    } else {
-      dispatch(setLanguage("ar"));
-      i18next.changeLanguage("ar");
-      document.querySelector("body").classList.remove("en");
-    }
+  const handleLang = () => {
+    const newLang = lang === "ar" ? "en" : "ar";
+    dispatch(setLanguage(newLang));
+    i18next.changeLanguage(newLang);
+    document.querySelector("body").classList.toggle("en", newLang === "en");
+    setIsTogglerActive(false);
   };
 
   return (
@@ -88,40 +90,90 @@ const Nav = () => {
                 {t("visuals")}
               </NavLink>
             </li>
-            <li className="nav_link hide-lg">
-              <NavLink to="/login" onClick={() => setIsTogglerActive(false)}>
-                {t("login")}
-              </NavLink>
-            </li>
-            <li className="nav_link hide-lg">
-              <NavLink to="/register" onClick={() => setIsTogglerActive(false)}>
-                {t("register")}
-              </NavLink>
-            </li>
-            <li className="nav_link">
+            {logged === false && (
+              <>
+                <li className="nav_link hide-lg">
+                  <NavLink
+                    to="/login"
+                    onClick={() => setIsTogglerActive(false)}
+                  >
+                    {t("login")}
+                  </NavLink>
+                </li>
+                <li className="nav_link hide-lg">
+                  <NavLink
+                    to="/register"
+                    onClick={() => setIsTogglerActive(false)}
+                  >
+                    {t("register")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {logged === true && (
+              <>
+                <li className="nav_link hide-lg">
+                  <NavLink
+                    to="/profile"
+                    onClick={() => setIsTogglerActive(false)}
+                  >
+                    {t("personalProfile")}
+                  </NavLink>
+                </li>
+                <li className="nav_link hide-lg">
+                  <NavLink
+                    to="/logout"
+                    onClick={() => setIsTogglerActive(false)}
+                  >
+                    {t("logout")}
+                  </NavLink>
+                </li>
+              </>
+            )}
+            <li key="more" className="nav_link">
               <div className="drop" onClick={() => setIsOpen(!isOpen)}>
-                {t("more")} <i className="fa-regular fa-angle-down"></i>
-                <NavDropDown
-                  isOpen={isOpen}
-                  setIsOpen={setIsOpen}
-                  setIsTogglerActive={setIsTogglerActive}
-                />
+                {t("more")} <i className="far fa-angle-down"></i>
               </div>
+              <NavDropDown
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                setIsTogglerActive={setIsTogglerActive}
+              />
             </li>
           </ul>
         </div>
         <div className="utils">
           <ul>
-            <li>
-              <Link to="/login">{t("login")}</Link>
-            </li>
-            <li>|</li>
-            <li>
-              <Link to="/register">{t("register")}</Link>
-            </li>
+            {logged === false && (
+              <>
+                <li>
+                  <Link to="/login">{t("login")}</Link>
+                </li>
+                <li>|</li>
+                <li>
+                  <Link to="/register">{t("register")}</Link>
+                </li>
+              </>
+            )}
+            {logged === true && (
+              <li>
+                <div
+                  className="profile"
+                  onClick={() =>
+                    setIsProfileDropDownOpen(!isProfileDropDownOpen)
+                  }
+                >
+                  <img src={avatar} alt="user_avatar" />
+                  <ProfileDropDown
+                    isOpen={isProfileDropDownOpen}
+                    setIsOpen={setIsProfileDropDownOpen}
+                  />
+                </div>
+              </li>
+            )}
             <li>
               <div className="search_btn">
-                <i className="fa-regular fa-magnifying-glass"></i>
+                <i className="far fa-search"></i>
               </div>
             </li>
           </ul>

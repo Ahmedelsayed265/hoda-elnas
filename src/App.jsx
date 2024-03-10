@@ -14,8 +14,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import { useJwt } from "react-jwt";
-import { setToken, setUser } from "./redux/slices/authedUser";
+import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
 import axios from "./util/axios";
+import Logout from "./util/logout";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -35,6 +36,7 @@ const App = () => {
           axios.defaults.headers.common[
             "Authorization"
           ] = `Bearer ${res.data.access}`;
+          dispatch(setLogged(true));
           const user = axios.get(`/accounts/list_users/?user_id=${userId}`);
           user
             .then((res) => {
@@ -57,7 +59,7 @@ const App = () => {
       <Nav />
       <main>
         <Routes>
-          <Route path="/:locale/*" element={<LocalizeRoute />} />
+          {/* pages */}
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
@@ -65,7 +67,10 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          {/* utils */}
+          <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<ErrorPage />} />
+          <Route path="/:locale/*" element={<LocalizeRoute />} />
         </Routes>
       </main>
       <Footer />

@@ -7,6 +7,8 @@ import SubmitButton from "./../ui/form-elements/SubmitButton";
 import axios from "./../../util/axios";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { setLogged } from "../../redux/slices/authedUser";
 
 const EmailForm = () => {
   const [loading, setLoading] = useState(false);
@@ -16,6 +18,7 @@ const EmailForm = () => {
   });
 
   const [, setCookie] = useCookies(["token"]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -30,6 +33,7 @@ const EmailForm = () => {
         path: "/",
         secure: true
       });
+      dispatch(setLogged(true));
     } catch (error) {
       toast.error(t("auth.emailOrPasswordIsWrong"));
     } finally {
