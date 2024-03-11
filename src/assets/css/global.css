@@ -283,12 +283,13 @@ body header .drop_menu {
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
-  padding: 8px 20px 8px 36px;
+  padding: 12px 24px;
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 body header .drop_menu ul {
   flex-direction: column;
+  gap: 4px;
 }
 body header .drop_menu ul .nav_link {
   padding: 0;
@@ -1022,6 +1023,9 @@ body.en footer .about {
 body.en footer ul li {
   padding-left: 0;
   padding-right: 16px;
+}
+body.en main .course-card .content a i {
+  transform: scale(-1);
 }
 
 .button-86 {

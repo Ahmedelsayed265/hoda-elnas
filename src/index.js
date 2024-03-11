@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { CookiesProvider } from "react-cookie";
+import ToTopOnNavigation from "./util/ToTopOnNavigation";
 
 /*---------- styles ----------*/
 /*----------------------------*/
@@ -28,6 +29,7 @@ root.render(
     <CookiesProvider>
       <ToastContainer />
       <Provider store={store}>
+        <ToTopOnNavigation />
         <App />
       </Provider>
     </CookiesProvider>

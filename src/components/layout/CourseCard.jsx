@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const CourseCard = () => {
   return (
     <div className="course-card">
-      <div className="img">
+      <Link to="/courses/1" className="img">
         <img src={course} alt="course" />
-      </div>
+      </Link>
       <div className="content">
         <div className="d-flex qlign-items-center justify-content-between">
           <h4>كورس صفات المؤمن</h4>

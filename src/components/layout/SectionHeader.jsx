@@ -2,14 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import thumb from "../../assets/images/quranIcon.png";
 
-const SectionHeader = () => {
+const SectionHeader = ({ pageName, backLinks }) => {
   return (
     <section className="section-header">
       <div className="container">
         <div className="content">
-          <h1>الكورسات</h1>
+          <h1>{pageName}</h1>
           <p>
-            <Link to="/">الرئيسية</Link> / <span>الكورسات</span>
+            {backLinks.map((link, index) => (
+              <>
+                <Link to={link.path}>{link.name}</Link> /{" "}
+              </>
+            ))}
+            <span>{pageName}</span>
           </p>
         </div>
         <div className="thunb">

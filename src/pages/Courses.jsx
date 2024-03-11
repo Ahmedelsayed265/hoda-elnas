@@ -1,11 +1,19 @@
 import React from "react";
 import SectionHeader from "../components/layout/SectionHeader";
 import CourseCard from "../components/layout/CourseCard";
+import { useTranslation } from "react-i18next";
 
 const Courses = () => {
+  const { t } = useTranslation();
+  const backLinks = [
+    {
+      name: t("home"),
+      path: "/"
+    }
+  ];
   return (
     <>
-      <SectionHeader />
+      <SectionHeader pageName={t("courses")} backLinks={backLinks} />
       <section className="courses">
         <div className="container">
           <div className="row">
