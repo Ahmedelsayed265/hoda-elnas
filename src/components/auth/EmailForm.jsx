@@ -14,7 +14,7 @@ const EmailForm = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const [, setCookie] = useCookies(["token"]);
@@ -27,13 +27,17 @@ const EmailForm = () => {
     setLoading(true);
     try {
       const res = await axios.post("/accounts/login/", formData);
-      toast.success(t("auth.loginSuccessfully"));
-      navigate("/");
-      setCookie("refreshToken", res.data.refresh_token, {
-        path: "/",
-        secure: true
-      });
-      dispatch(setLogged(true));
+      if (res.status === 200) {
+        toast.success(t("auth.loginSuccessfully"));
+        navigate("/");
+        setCookie("refreshToken", res.data.refresh_token, {
+          path: "/",
+          secure: true,
+        });
+        dispatch(setLogged(true));
+      } else {
+        toast.error(t("auth.emailOrPasswordIsWrong"));
+      }
     } catch (error) {
       toast.error(t("auth.emailOrPasswordIsWrong"));
     } finally {
