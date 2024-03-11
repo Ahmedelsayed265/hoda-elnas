@@ -11,7 +11,7 @@ const CourseCard = () => {
       <div className="content">
         <div className="d-flex qlign-items-center justify-content-between">
           <h4>كورس صفات المؤمن</h4>
-          <Link to="cousre-details/1">
+          <Link to="/courses/1">
             <i className="fa-regular fa-arrow-left-long"></i>
           </Link>
         </div>

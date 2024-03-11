@@ -17,6 +17,7 @@ import { useJwt } from "react-jwt";
 import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
 import axios from "./util/axios";
 import Logout from "./util/logout";
+import CourseDetails from "./pages/CourseDetails";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -62,6 +63,7 @@ const App = () => {
           {/* pages */}
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/login" element={<Login />} />
