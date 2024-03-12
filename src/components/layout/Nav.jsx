@@ -4,16 +4,14 @@ import { Link, NavLink } from "react-router-dom";
 import { setLanguage } from "../../redux/slices/language";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import NavDropDown from "../ui/NavDropDown";
 import langIcon from "../../assets/images/lang.svg";
 import logo from "../../assets/images/logo.png";
-import avatar from "../../assets/images/user.png";
+import avatar from "../../assets/images/avatar.jpg";
 import ProfileDropDown from "../ui/ProfileDropDown";
 
 const Nav = () => {
   const [isProfileDropDownOpen, setIsProfileDropDownOpen] = useState(false);
   const [isTogglerActive, setIsTogglerActive] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const header = useRef(null);
   const { t } = useTranslation();
 
@@ -50,20 +48,6 @@ const Nav = () => {
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
-          <div className="d-flex align-items-center gap-3">
-            <button className="lang_toggler" onClick={handleLang}>
-              {lang === "ar" ? "English" : "العربية"}
-              <img src={langIcon} alt="lang" />
-            </button>
-            <div
-              className="menu-btn"
-              onClick={() => setIsTogglerActive(!isTogglerActive)}
-            >
-              <div
-                className={`menu-bar ${isTogglerActive ? "active" : ""}`}
-              ></div>
-            </div>
-          </div>
         </div>
         <div className={`nav_links ${isTogglerActive ? "active" : ""}`}>
           <ul>
@@ -78,11 +62,8 @@ const Nav = () => {
               </NavLink>
             </li>
             <li className="nav_link">
-              <NavLink
-                to="/subscriptions"
-                onClick={() => setIsTogglerActive(false)}
-              >
-                {t("subscriptions")}
+              <NavLink to="/audios" onClick={() => setIsTogglerActive(false)}>
+                {t("audios")}
               </NavLink>
             </li>
             <li className="nav_link">
@@ -90,6 +71,11 @@ const Nav = () => {
                 {t("visuals")}
               </NavLink>
             </li>
+            <li className="nav_link">
+              <NavLink to="/jobs" onClick={() => setIsTogglerActive(false)}>
+                {t("jobs")}
+              </NavLink>
+            </li>{" "}
             {logged === false && (
               <>
                 <li className="nav_link hide-lg">
@@ -110,42 +96,12 @@ const Nav = () => {
                 </li>
               </>
             )}
-            {logged === true && (
-              <>
-                <li className="nav_link hide-lg">
-                  <NavLink
-                    to="/profile"
-                    onClick={() => setIsTogglerActive(false)}
-                  >
-                    {t("personalProfile")}
-                  </NavLink>
-                </li>
-                <li className="nav_link hide-lg">
-                  <NavLink
-                    to="/logout"
-                    onClick={() => setIsTogglerActive(false)}
-                  >
-                    {t("logout")}
-                  </NavLink>
-                </li>
-              </>
-            )}
-            <li key="more" className="nav_link">
-              <div className="drop" onClick={() => setIsOpen(!isOpen)}>
-                {t("more")} <i className="far fa-angle-down"></i>
-              </div>
-              <NavDropDown
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-                setIsTogglerActive={setIsTogglerActive}
-              />
-            </li>
           </ul>
         </div>
         <div className="utils">
           <ul>
             {logged === false && (
-              <>
+              <ul className="hide-sm">
                 <li>
                   <Link to="/login">{t("login")}</Link>
                 </li>
@@ -153,8 +109,14 @@ const Nav = () => {
                 <li>
                   <Link to="/register">{t("register")}</Link>
                 </li>
-              </>
+              </ul>
             )}
+            <li>
+              <button className="lang_toggler" onClick={handleLang}>
+                <span>{lang === "ar" ? "عربي" : "English"}</span>
+                <img src={langIcon} alt="lang" />
+              </button>
+            </li>
             {logged === true && (
               <li>
                 <div
@@ -172,8 +134,13 @@ const Nav = () => {
               </li>
             )}
             <li>
-              <div className="search_btn">
-                <i className="far fa-search"></i>
+              <div
+                className="menu-btn"
+                onClick={() => setIsTogglerActive(!isTogglerActive)}
+              >
+                <div
+                  className={`menu-bar ${isTogglerActive ? "active" : ""}`}
+                ></div>
               </div>
             </li>
           </ul>

@@ -41,6 +41,11 @@ const ProfileDropDown = ({ isOpen, setIsOpen }) => {
           </NavLink>
         </li>
         <li className="nav_link">
+          <NavLink to="/students">
+          <i class="fa-light fa-users"></i> {t("students")}
+          </NavLink>
+        </li>
+        <li className="nav_link">
           <NavLink to="/logout">
             <i className="fa-regular fa-arrow-right-from-bracket"></i>{" "}
             {t("logout")}

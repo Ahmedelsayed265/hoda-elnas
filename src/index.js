@@ -9,10 +9,6 @@ import { store } from "./redux/store";
 import { CookiesProvider } from "react-cookie";
 import ToTopOnNavigation from "./util/ToTopOnNavigation";
 
-/*---------- styles ----------*/
-/*----------------------------*/
-/*----------------------------*/
-/*----------------------------*/
 /*---------- fontawesome ----------*/
 import "./assets/css/all.min.css";
 /*---------- bootstrap ------------*/

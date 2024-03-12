@@ -90,81 +90,8 @@ body header nav .logo {
 body header nav .logo img {
   height: 80px;
 }
-body header nav .logo .lang_toggler {
-  border-radius: 12px;
-  border: 1px solid #81a63d;
-  padding: 4px 12px;
-  color: #81a63d;
-  font-size: 16px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-body header nav .logo .lang_toggler img {
-  height: 18px;
-}
-body header nav .logo .menu-btn {
-  cursor: pointer;
-  width: 30px;
-  height: 30px;
-  display: none;
-  z-index: 2;
-  flex: 1;
-}
-@media (max-width: 992px) {
-  body header nav .logo .menu-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: flex-end;
-  }
-}
-body header nav .logo .menu-btn .menu-bar {
-  position: relative;
-  height: 2px;
-  width: 28px;
-  background-color: #81a63d;
-  transition: 0.5s ease;
-}
-body header nav .logo .menu-btn .menu-bar::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -9px;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #81a63d;
-  transition: 0.5s ease;
-}
-body header nav .logo .menu-btn .menu-bar::after {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -9px;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background-color: #81a63d;
-  transition: 0.5s ease;
-}
-body header nav .logo .menu-btn .menu-bar.active {
-  background-color: transparent;
-  transform: rotate(90deg);
-}
-body header nav .logo .menu-btn .menu-bar.active::before {
-  transform: translate(0px, 9px) rotate(135deg);
-}
-body header nav .logo .menu-btn .menu-bar.active::after {
-  transform: translate(0px, -9px) rotate(-135deg);
-}
-@media (max-width: 992px) {
-  body header nav .logo {
-    justify-content: space-between;
-  }
-}
 body header nav .nav_links {
-  flex: 2;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,20 +172,6 @@ body header nav .utils ul li {
 body header nav .utils ul li a {
   color: #31535a;
 }
-body header nav .utils ul li .search_btn {
-  cursor: pointer;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #81a63d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-body header nav .utils ul li .search_btn i {
-  color: #81a63d;
-  font-size: 14px;
-}
 body header nav .utils ul li .profile {
   cursor: pointer;
   width: 36px;
@@ -272,9 +185,78 @@ body header nav .utils ul li .profile img {
   -o-object-fit: cover;
      object-fit: cover;
 }
+body header nav .utils ul li .lang_toggler {
+  border-radius: 10px;
+  color: #81a63d;
+  gap: 8px;
+  border: 1px solid #81a63d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 2px 12px;
+}
+body header nav .utils ul li .lang_toggler img {
+  height: 16px;
+}
+body header nav .utils ul li .menu-btn {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: none;
+  z-index: 2;
+  flex: 1;
+}
 @media (max-width: 992px) {
-  body header nav .utils {
-    display: none;
+  body header nav .utils ul li .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-end;
+  }
+}
+body header nav .utils ul li .menu-btn .menu-bar {
+  position: relative;
+  height: 2px;
+  width: 28px;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .utils ul li .menu-btn .menu-bar::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -9px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .utils ul li .menu-btn .menu-bar::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #81a63d;
+  transition: 0.5s ease;
+}
+body header nav .utils ul li .menu-btn .menu-bar.active {
+  background-color: transparent;
+  transform: rotate(90deg);
+}
+body header nav .utils ul li .menu-btn .menu-bar.active::before {
+  transform: translate(0px, 9px) rotate(135deg);
+}
+body header nav .utils ul li .menu-btn .menu-bar.active::after {
+  transform: translate(0px, -9px) rotate(-135deg);
+}
+@media (max-width: 992px) {
+  body header nav .utils ul .hide-sm {
+    display: none !important;
   }
 }
 body header .drop_menu {
@@ -498,73 +480,6 @@ body main .auth .form_wrapper .page_preif .content h6 a {
 body main .hero_section {
   padding: 40px 0;
 }
-body main .hero_section .video_wrapper {
-  width: 100%;
-  height: 100%;
-  min-height: 330px;
-  border-radius: 6px;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  isolation: isolate;
-}
-body main .hero_section .video_wrapper .play-btn {
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  background: #81a63d;
-  border-radius: 50%;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-}
-body main .hero_section .video_wrapper .play-btn i {
-  font-size: 28px;
-  color: #fff;
-}
-body main .hero_section .video_wrapper .waves {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  background: rgba(255, 255, 255, 0.4274509804);
-  opacity: 0;
-  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  border-radius: 100%;
-  right: -50px;
-  bottom: -50px;
-  z-index: -1;
-  animation: waves 3s ease-in-out infinite;
-}
-body main .hero_section .video_wrapper .wave-1 {
-  animation-delay: 0s;
-}
-body main .hero_section .video_wrapper .wave-2 {
-  animation-delay: 1s;
-}
-body main .hero_section .video_wrapper .wave-3 {
-  animation-delay: 2s;
-}
-@keyframes waves {
-  0% {
-    transform: scale(0.2, 0.2);
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-  50% {
-    opacity: 0.9;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-  }
-  100% {
-    transform: scale(0.9, 0.9);
-    opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  }
-}
 body main .hero_section .content {
   height: 100%;
   display: flex;
@@ -693,6 +608,89 @@ body main .course-card .content p {
   color: #31535a;
   font-size: 16px;
   line-height: 24px;
+}
+body main .video_wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 330px;
+  border-radius: 6px;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+body main .video_wrapper .play-btn {
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  background: #81a63d;
+  border-radius: 50%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+body main .video_wrapper .play-btn i {
+  font-size: 28px;
+  color: #fff;
+}
+body main .video_wrapper .waves {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: rgba(255, 255, 255, 0.4274509804);
+  opacity: 0;
+  filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  border-radius: 100%;
+  right: -50px;
+  bottom: -50px;
+  z-index: -1;
+  animation: waves 3s ease-in-out infinite;
+}
+body main .video_wrapper .wave-1 {
+  animation-delay: 0s;
+}
+body main .video_wrapper .wave-2 {
+  animation-delay: 1s;
+}
+body main .video_wrapper .wave-3 {
+  animation-delay: 2s;
+}
+@keyframes waves {
+  0% {
+    transform: scale(0.2, 0.2);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+  50% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+  100% {
+    transform: scale(0.9, 0.9);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  }
+}
+body main .course-details {
+  padding: 40px 0;
+}
+body main .course-details .content h4 {
+  font-size: 28px;
+  color: #81a63d;
+}
+body main .course-details .content P {
+  font-size: 14px;
+  color: #31535a;
+  line-height: 24px;
+}
+body main .course-details .content h6 {
+  font-size: 18px;
+  color: #81a63d;
 }
 body footer {
   padding: 40px 8px 16px;
