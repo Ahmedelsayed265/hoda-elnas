@@ -62,7 +62,10 @@ const Nav = () => {
               </NavLink>
             </li>
             <li className="nav_link">
-              <NavLink to="/audios" onClick={() => setIsTogglerActive(false)}>
+              <NavLink
+                to="/acoustics"
+                onClick={() => setIsTogglerActive(false)}
+              >
                 {t("audios")}
               </NavLink>
             </li>

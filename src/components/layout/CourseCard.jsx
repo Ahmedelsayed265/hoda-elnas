@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const CourseCard = () => {
   return (
-    <div className="course-card">
+    <div className="custom-card">
       <Link to="/courses/1" className="img">
         <img src={course} alt="course" />
       </Link>

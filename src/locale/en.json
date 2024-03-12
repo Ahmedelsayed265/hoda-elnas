@@ -75,5 +75,15 @@
         "phoneNotExist": "Phone number does not exist",
         "otpIsNotCorrect": "The code you entered is not correct",
         "passwordChangedSuccessfully": "Password Changed Successfully"
+    },
+    "homePage": {
+        "bestCourses": "Best Courses",
+        "bestAudios": "Best Acoustics",
+        "bestVisuals": "Best Visuals",
+        "allCourses": "All Courses",
+        "allAudios": "All Audios",
+        "allVisuals": "All Visuals",
+        "library": "Library",
+        "librarySectionSubtitle": "We have a large library of high-quality audio and visual content that will change your life."
     }
 }

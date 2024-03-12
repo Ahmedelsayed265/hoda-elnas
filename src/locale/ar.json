@@ -75,5 +75,15 @@
         "phoneNotExist": "رقم الهاتف غير موجود",
         "otpIsNotCorrect": "الكود الذي ادخلته غير صحيح",
         "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح"
+    },
+    "homePage": {
+        "bestCourses": "افضل الكورسات",
+        "bestAudios": "افضل الصوتيات",
+        "bestVisuals": "افضل المرئيات",
+        "allCourses": "كل الكورسات",
+        "allAudios": "كل الصوتيات",
+        "allVisuals": "كل المرئيات",
+        "library": "المكتبة",
+        "librarySectionSubtitle": "يوجد لدينا مكنبة ضخمة من افضل الصوتيات والمرئيات التى سوف تغير حياتك."
     }
 }

@@ -562,11 +562,11 @@ body {
         }
       }
     }
-    .course-card {
+    .custom-card {
       width: 100%;
       display: flex;
       flex-direction: column;
-      border-radius: 16px;
+      border-radius: 12px;
       overflow: hidden;
       box-shadow: $lightShadow;
       .img {
@@ -598,6 +598,78 @@ body {
           color: $main;
           font-size: 16px;
           line-height: 24px;
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          img {
+            height: 16px;
+          }
+        }
+      }
+      &.longImg {
+        .img {
+          img {
+            aspect-ratio: 1 / 1;
+          }
+        }
+        .content {
+          h4 {
+            margin: 0;
+            font-size: 18px;
+            @media (max-width: 576px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    .audio-card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: $lightShadow;
+      .img {
+        width: 100%;
+        img {
+          aspect-ratio: 2 / 2;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+      .content {
+        padding: 16px;
+        h4 {
+          font-size: 22px;
+          margin-bottom: 12px;
+          color: $secondary;
+        }
+        .play_btn {
+          width: 36px;
+          height: 36px;
+          font-size: 14px;
+          i {
+            transform: translateX(1px);
+          }
+          cursor: pointer;
+          background: $secondary;
+          color: $white;
+          @include centerFlex();
+          border-radius: 50%;
+        }
+        p {
+          margin: 0;
+          font-weight: 500;
+          color: $main;
+          font-size: 16px;
+          line-height: 24px;
+          display: flex;
+          gap: 8px;
+          align-items: center;
+          img {
+            height: 16px;
+          }
         }
       }
     }
@@ -691,6 +763,182 @@ body {
           color: $secondary;
         }
       }
+    }
+    .section_title {
+      @include space-between();
+      h3 {
+        color: $secondary;
+        font-size: 24px;
+      }
+      a {
+        color: $main;
+        transition: $transation;
+        &:hover {
+          color: $secondary;
+        }
+        i {
+          margin-right: 4px;
+          transform: translateY(2px);
+        }
+      }
+    }
+    .swiper {
+      padding: 0 4px 60px;
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: $secondary;
+      }
+    }
+    .feature_and_statistics {
+      padding: 60px 0;
+      .img {
+        width: min(250px, 250px);
+        height: min(250px, 250px);
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: $mainShadow;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+      }
+      .features {
+        display: flex;
+        gap: 60px;
+        flex-direction: column;
+        &.toTop {
+          transform: translateY(-20px);
+        }
+        &.toBottom {
+          transform: translateY(20px);
+        }
+        @media (max-width: 768px) {
+          gap: 24px;
+        }
+        .feature {
+          padding: 16px;
+          width: 100%;
+          background: $white;
+          box-shadow: $lightShadow;
+          border-radius: 12px;
+          p {
+            font-size: 14px;
+            line-height: 24px;
+            color: $main;
+            margin: 0;
+          }
+          h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: $main;
+          }
+        }
+      }
+      .statistic {
+        padding: 24px;
+        background: $inputBG;
+        border-radius: 12px;
+        @include centerFlex();
+        flex-direction: column;
+        p {
+          font-size: 18px;
+          margin: 0;
+          color: $main;
+          @media (max-width: 576px) {
+            font-size: 14px;
+          }
+        }
+        h3 {
+          font-size: 36px;
+          font-weight: 600;
+          margin: 0;
+          color: $secondary;
+        }
+      }
+      .good_Experience {
+        @include centerFlex();
+        gap: 16px;
+        flex-direction: column;
+        .notSatisfied {
+          padding: 12px 24px;
+          border-radius: 49% 51% 51% 49% / 48% 51% 49% 52%;
+          border: 2px solid $secondary;
+          h5 {
+            margin: 0;
+            color: $secondary;
+            font-size: 16px;
+          }
+        }
+        .solutions {
+          display: flex;
+          gap: 32px;
+          margin-top: 24px;
+          width: 100%;
+          @media (max-width: 576px) {
+            flex-direction: column;
+            gap: 16px;
+          }
+          .solution {
+            padding: 12px;
+            border-radius: 12px;
+            width: 100%;
+            display: flex;
+            gap: 12px;
+            background: $main;
+            flex: 1;
+            .icon {
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              background: $white;
+              @include centerFlex();
+              img {
+                width: 50px;
+              }
+            }
+            .text {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              p {
+                margin: 0;
+                color: $white;
+              }
+              h6 {
+                font-size: 18px;
+                margin-bottom: 4px;
+                color: $white;
+              }
+            }
+            &:nth-child(2) {
+              background: $secondary;
+            }
+          }
+        }
+      }
+    }
+    .library {
+      padding: 60px 0 0;
+      .title {
+        width: 100%;
+        text-align: center;
+        color: $secondary;
+        margin-bottom: 0;
+      }
+      .section_subtitle {
+        width: 100%;
+        text-align: center;
+        color: $main;
+        margin-bottom: 32px;
+        line-height: 24px;
+      }
+    }
+    .offers {
+      padding: 60px 0;
     }
   }
   footer {
@@ -1016,7 +1264,15 @@ body {
       }
     }
     main {
+      .section_title a i {
+        transform: translateY(2px) scale(-1);
+        margin-left: 4px;
+      }
+      .swiper {
+        direction: rtl;
+      }
       .course-card {
+        direction: ltr !important;
         .content a i {
           transform: scale(-1);
         }
