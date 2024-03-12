@@ -9,7 +9,7 @@ const CourseCard = () => {
         <img src={course} alt="course" />
       </Link>
       <div className="content">
-        <div className="d-flex qlign-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between">
           <h4>كورس صفات المؤمن</h4>
           <Link to="/courses/1">
             <i className="fa-regular fa-arrow-left-long"></i>

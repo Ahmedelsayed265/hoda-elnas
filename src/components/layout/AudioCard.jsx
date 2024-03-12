@@ -10,7 +10,7 @@ const AudioCard = () => {
         <img src={audioPoster} alt="course" />
       </Link>
       <div className="content">
-        <div className="d-flex qlign-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between">
           <Link to="/courses/1">
             <h4>تفسير القران الكريم</h4>
           </Link>

@@ -18,6 +18,7 @@ import axios from "./util/axios";
 import Logout from "./util/logout";
 import CourseDetails from "./pages/CourseDetails";
 import Acoustics from "./pages/Acoustics";
+import Jobs from "./pages/Jobs";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -66,6 +67,8 @@ const App = () => {
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
+          <Route path="/jobs" element={<Jobs />} />
+          {/* auth pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/reset-password" element={<ResetPassword />} />

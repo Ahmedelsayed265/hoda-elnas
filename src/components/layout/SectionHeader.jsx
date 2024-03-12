@@ -11,7 +11,10 @@ const SectionHeader = ({ pageName, backLinks }) => {
           <p>
             {backLinks.map((link, index) => (
               <>
-                <Link to={link.path}>{link.name}</Link> /{" "}
+                <Link key={index} to={link.path}>
+                  {link.name}
+                </Link>{" "}
+                /{" "}
               </>
             ))}
             <span>{pageName}</span>

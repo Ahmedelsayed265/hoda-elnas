@@ -20,7 +20,7 @@ const Courses = () => {
             <div className="col-12 p-2">
               <div className="search">
                 <form action="" className="inner_search__form">
-                  <input type="text" placeholder="إبحث عن كورس" />
+                  <input type="text" placeholder={t("lookingForSomthing")} />
                 </form>
               </div>
             </div>

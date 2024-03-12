@@ -9,7 +9,7 @@ const VisualCard = () => {
         <img src={book} alt="course" />
       </div>
       <div className="content">
-        <div className="d-flex qlign-items-center justify-content-between">
+        <div className="d-flex align-items-center justify-content-between">
           <h4>كورس صفات المؤمن</h4>
         </div>
         <p>
