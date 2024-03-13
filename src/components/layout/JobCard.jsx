@@ -11,10 +11,8 @@ const JobCard = () => {
         <img src={job} alt="course" />
       </div>
       <div className="content">
-        <div className="d-flex align-items-center justify-content-between mb-3">
-          <h4>معلم قران كريم</h4>
-          <p>دوام كامل</p>
-        </div>
+        <h4>معلم قران كريم</h4>
+        <p>دوام كامل</p>
         <Link to={"/jobs/1"}>{t("applyForJob")}</Link>
       </div>
     </div>

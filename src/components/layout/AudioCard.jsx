@@ -18,7 +18,7 @@ const AudioCard = () => {
             <i className="fa-duotone fa-play"></i>
           </div>
         </div>
-        <p>بصوت الشيخ وليث الريان</p>
+        <p>بصوت الشيخ وليد الريان</p>
         <p>
           <img src={sound} alt="sound" />
           <span>20 دقيقة</span>

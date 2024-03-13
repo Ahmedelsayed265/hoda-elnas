@@ -499,6 +499,29 @@ body main .hero_section .content h1 {
 body main .hero_section .content p {
   color: #31535a;
 }
+body main .title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+body main .title h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+body main .title p {
+  color: #31535a;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: center;
+}
+body main .title h3 {
+  font-size: 20px;
+  color: #1f1f1f;
+  text-align: center;
+}
 body main .section-header {
   width: 100%;
   height: 140px;
@@ -653,7 +676,8 @@ body main .audio-card .content h4 {
   color: #81a63d;
 }
 body main .audio-card .content .play_btn {
-  width: 36px;
+  min-width: 36px;
+  max-width: 36px;
   height: 36px;
   font-size: 14px;
   cursor: pointer;
@@ -711,9 +735,7 @@ body main .job-card .content p {
   color: #31535a;
   font-size: 16px;
   line-height: 24px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
+  margin-bottom: 8px;
 }
 body main .job-card .content a {
   width: 100%;
@@ -1003,21 +1025,97 @@ body main .offers {
 body main .jobs_page {
   padding: 60px 0;
 }
-body main .jobs_page .title {
+body main .what_we_offer {
+  padding-bottom: 60px;
+}
+body main .what_we_offer .table_container {
+  overflow: scroll;
+  width: 100%;
+}
+body main .what_we_offer .table_container::-webkit-scrollbar {
+  display: none;
+}
+body main .what_we_offer table {
+  white-space: nowrap;
+  width: 100%;
+  border: 1px solid #f2f2f2;
+  border-collapse: collapse;
+  border-radius: 16px;
+}
+body main .what_we_offer table thead tr th img {
+  height: 80px;
+}
+body main .what_we_offer table td,
+body main .what_we_offer table th {
+  padding: 8px 16px;
+  border: 1px solid #f2f2f2;
+  position: relative;
+}
+body main .what_we_offer table td i,
+body main .what_we_offer table th i {
+  color: #f02020;
+}
+body main .what_we_offer table td.circled,
+body main .what_we_offer table th.circled {
+  padding: 8px 24px;
+}
+body main .what_we_offer table td.circled:before,
+body main .what_we_offer table th.circled:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  right: 8px;
+  height: 8px;
+  background: #81a63d;
+  border-radius: 50%;
+}
+body main .testimonials {
+  padding: 60px 0;
+  background: rgba(129, 166, 61, 0.1411764706);
+}
+body main .testimonials .testimonial_card {
+  border: 1px solid #31535a;
+  padding: 16px;
+  gap: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 16px;
+  border-radius: 12px;
 }
-body main .jobs_page .title h1 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #1f1f1f;
+body main .testimonials .testimonial_card p {
+  margin: 0;
 }
-body main .jobs_page .title p {
-  color: #31535a;
-  font-size: 16px;
+body main .testimonials .testimonial_card .play_btn {
+  min-width: 36px;
+  max-width: 36px;
+  height: 36px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #81a63d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+body main .testimonials .testimonial_card .play_btn i {
+  transform: translateX(1px);
+}
+body main .testimonials .testimonial_card .sound {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+body main .testimonials .testimonial_card .sound .img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .testimonials .testimonial_card .sound img {
+  max-width: 80%;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -1449,4 +1547,14 @@ body.en main .course-card .content a i {
     right: 0;
     left: initial;
   }
+}
+.stars {
+  display: flex;
+  gap: 4px;
+}
+.stars li {
+  color: #aaaaaa;
+}
+.stars li.star {
+  color: #ffd500;
 }/*# sourceMappingURL=global.css.map */

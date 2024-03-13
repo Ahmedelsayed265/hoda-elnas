@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
-import LocalizeRoute from "./pages/LocalizeRoute";
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
@@ -75,7 +74,6 @@ const App = () => {
           {/* utils */}
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/:locale/*" element={<LocalizeRoute />} />
         </Routes>
       </main>
       <Footer />

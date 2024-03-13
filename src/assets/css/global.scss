@@ -73,6 +73,7 @@ button {
 $main: #31535a;
 $secondary: #81a63d;
 $second20: #dce9c4;
+$second10: #81A63D24;
 $border: #dddddd;
 $inputBG: #f8f8f8;
 $inputHint: #aaaaaa;
@@ -80,6 +81,7 @@ $gray: #777777;
 $lightGray: #eeeeee;
 $white: #fff;
 $inputStroke: #f2f2f2;
+$gold: #ffd500;
 $dark: #1f1f1f;
 $mainShadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 $lightShadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -493,6 +495,27 @@ body {
         }
       }
     }
+    .title {
+      @include centerFlex();
+      flex-direction: column;
+      margin-bottom: 16px;
+      h1 {
+        font-size: 24px;
+        font-weight: 600;
+        color: $dark;
+      }
+      p {
+        color: $main;
+        font-size: 16px;
+        line-height: 28px;
+        text-align: center;
+      }
+      h3 {
+        font-size: 20px;
+        color: $dark;
+        text-align: center;
+      }
+    }
     .section-header {
       width: 100%;
       height: 140px;
@@ -646,7 +669,8 @@ body {
           color: $secondary;
         }
         .play_btn {
-          width: 36px;
+          min-width: 36px;
+          max-width: 36px;
           height: 36px;
           font-size: 14px;
           i {
@@ -701,9 +725,7 @@ body {
           color: $main;
           font-size: 16px;
           line-height: 24px;
-          display: flex;
-          gap: 8px;
-          align-items: center;
+          margin-bottom: 8px;
         }
         a {
           width: 100%;
@@ -984,18 +1006,93 @@ body {
     }
     .jobs_page {
       padding: 60px 0;
-      .title {
+    }
+    .what_we_offer {
+      padding-bottom: 60px;
+      .table_container {
+        overflow: scroll;
+        width: 100%;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      table {
+        white-space: nowrap;
+        width: 100%;
+        border: 1px solid $inputStroke;
+        border-collapse: collapse;
+        border-radius: 16px;
+        thead {
+          tr {
+            th {
+              img {
+                height: 80px;
+              }
+            }
+          }
+        }
+        td,
+        th {
+          padding: 8px 16px;
+          border: 1px solid $inputStroke;
+          position: relative;
+          i {
+            color: #f02020;
+          }
+          &.circled {
+            padding: 8px 24px;
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 8px;
+              right: 8px;
+              height: 8px;
+              background: $secondary;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+    .testimonials {
+      padding: 60px 0;
+      background: $second10;
+      .testimonial_card {
+        border: 1px solid $main;
+        padding: 16px;
+        gap: 4px;
         @include centerFlex();
         flex-direction: column;
-        margin-bottom: 16px;
-        h1 {
-          font-size: 24px;
-          font-weight: 600;
-          color: $dark;
-        }
+        border-radius: 12px;
         p {
-          color: $main;
-          font-size: 16px;
+          margin: 0;
+        }
+        .play_btn {
+          min-width: 36px;
+          max-width: 36px;
+          height: 36px;
+          font-size: 14px;
+          i {
+            transform: translateX(1px);
+          }
+          cursor: pointer;
+          background: $secondary;
+          color: $white;
+          @include centerFlex();
+          border-radius: 50%;
+        }
+        .sound {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          .img {
+            @include centerFlex();
+          }
+          img {
+            max-width: 80%;
+          }
         }
       }
     }
@@ -1422,5 +1519,15 @@ body {
   .Toastify__toast-container {
     right: 0;
     left: initial;
+  }
+}
+.stars {
+  display: flex;
+  gap: 4px;
+  li {
+    color: $inputHint;
+    &.star {
+      color: $gold;
+    }
   }
 }

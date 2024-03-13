@@ -4,6 +4,8 @@ import BestCourses from "../components/home/BestCourses";
 import FeatureAndStatistics from "../components/home/FeatureAndStatistics";
 import Library from "../components/home/Library";
 import Offers from "../components/home/Offers";
+import WhatWeOffer from "../components/home/WhatWeOffer";
+import Testimonials from "../components/home/Testimonials";
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
       <BestCourses />
       <FeatureAndStatistics />
       <Library />
+      <WhatWeOffer />
+      <Testimonials />
       <Offers />
     </>
   );
