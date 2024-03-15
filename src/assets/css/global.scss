@@ -820,19 +820,64 @@ body {
     }
     .course-details {
       padding: 40px 0;
+      .btn {
+        width: 100%;
+        @include centerFlex();
+        background: $main;
+        color: $white;
+        padding: 10px 0;
+        margin-top: 12px;
+        transition: $transation;
+        &:hover {
+          background: $secondary;
+        }
+      }
+      .alreadySub{
+        margin-top: 12px;
+        a{
+          color: $secondary;
+        }
+      }
+      .video_wrapper {
+        height: unset;
+        position: relative;
+        span {
+          position: relative;
+          top: 8px;
+          right: 8px;
+          background: $secondary;
+          color: $white;
+          padding: 4px 8px;
+          position: absolute;
+          border-radius: 8px;
+        }
+      }
       .content {
         h4 {
           font-size: 28px;
           color: $secondary;
         }
         P {
-          font-size: 14px;
+          font-size: 16px;
           color: $main;
-          line-height: 24px;
+          line-height: 28px;
         }
         h6 {
           font-size: 18px;
           color: $secondary;
+        }
+        ul {
+          li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: $main;
+            &::before {
+              content: "\f00c";
+              font-family: "Font Awesome 6 pro";
+              color: $secondary;
+            }
+          }
         }
       }
     }

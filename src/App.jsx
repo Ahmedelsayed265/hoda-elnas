@@ -37,7 +37,7 @@ const App = () => {
   const getAllData = async () => {
     const courses = axios.get("/learningcenter/list_courses/");
     const [coursesData] = await Promise.all([courses]);
-    dispatch(setCourses(coursesData.data));
+    dispatch(setCourses(coursesData.data.message));
   };
 
   useEffect(() => {

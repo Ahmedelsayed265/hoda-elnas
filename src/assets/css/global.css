@@ -825,17 +825,62 @@ body main .video_wrapper .wave-3 {
 body main .course-details {
   padding: 40px 0;
 }
+body main .course-details .btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #31535a;
+  color: #fff;
+  padding: 10px 0;
+  margin-top: 12px;
+  transition: 0.3s ease-in-out;
+}
+body main .course-details .btn:hover {
+  background: #81a63d;
+}
+body main .course-details .alreadySub {
+  margin-top: 12px;
+}
+body main .course-details .alreadySub a {
+  color: #81a63d;
+}
+body main .course-details .video_wrapper {
+  height: unset;
+  position: relative;
+}
+body main .course-details .video_wrapper span {
+  position: relative;
+  top: 8px;
+  right: 8px;
+  background: #81a63d;
+  color: #fff;
+  padding: 4px 8px;
+  position: absolute;
+  border-radius: 8px;
+}
 body main .course-details .content h4 {
   font-size: 28px;
   color: #81a63d;
 }
 body main .course-details .content P {
-  font-size: 14px;
+  font-size: 16px;
   color: #31535a;
-  line-height: 24px;
+  line-height: 28px;
 }
 body main .course-details .content h6 {
   font-size: 18px;
+  color: #81a63d;
+}
+body main .course-details .content ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #31535a;
+}
+body main .course-details .content ul li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 pro";
   color: #81a63d;
 }
 body main .section_title {
