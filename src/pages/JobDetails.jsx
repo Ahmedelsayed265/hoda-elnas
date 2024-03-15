@@ -20,7 +20,7 @@ const JobDetails = () => {
       <SectionHeader pageName="معلم قرءان كريم" backLinks={backLinks} />
       <section className="job_details">
         <div className="container">
-          <div className="row">
+          <div className="row m-0">
             <div className="col-lg-10 col-12 p-2">
               <div className="content">
                 <div className="job_title">

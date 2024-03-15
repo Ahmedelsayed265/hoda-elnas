@@ -26,6 +26,8 @@
     "applyNow": "Apply Now",
     "jobResponsibilities": "Job Responsibilities :",
     "jobRequirements": "Job Requirements :",
+    "contactTitle": "We have a support team of 24 hours to help you with anything you need.",
+    "send": "Send",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -83,7 +85,10 @@
         "emailNotExist": "Email does not exist",
         "phoneNotExist": "Phone number does not exist",
         "otpIsNotCorrect": "The code you entered is not correct",
-        "passwordChangedSuccessfully": "Password Changed Successfully"
+        "passwordChangedSuccessfully": "Password Changed Successfully",
+        "subject": "Subject",
+        "enterSubject": "Enter Subject",
+        "message": "Your Message"
     },
     "homePage": {
         "bestCourses": "Best Courses",

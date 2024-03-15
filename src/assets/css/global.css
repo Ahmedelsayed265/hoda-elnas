@@ -1245,13 +1245,47 @@ body main .job_details .content .about_job ul {
 body main .job_details .content .about_job ul li {
   line-height: 28px;
 }
-body main .apply-for-job {
+body main .apply-for-job,
+body main .contact_section {
   padding: 40px 0;
 }
-body main .apply-for-job .form-ui {
+body main .apply-for-job .form-ui,
+body main .contact_section .form-ui {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 16px;
   padding: 32px 24px;
+}
+@media (max-width: 576px) {
+  body main .apply-for-job .form-ui .form_group,
+  body main .contact_section .form-ui .form_group {
+    flex-direction: column;
+  }
+}
+body main .apply-for-job .contact_info h3,
+body main .contact_section .contact_info h3 {
+  color: #31535a;
+  font-size: 20px;
+}
+body main .terms_section {
+  padding: 40px 0;
+}
+body main .terms_section h4 {
+  font-size: 20px;
+  color: #81a63d;
+}
+body main .terms_section p {
+  color: #777777;
+}
+body main .terms_section p a {
+  color: #81a63d;
+}
+body main .terms_section ul {
+  margin-bottom: 16px;
+  list-style: decimal;
+  padding-right: 16px;
+}
+body main .terms_section ul li {
+  color: #31535a;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -1423,6 +1457,7 @@ body .form-ui .phone-group .phone-code {
   border-radius: 4px;
 }
 body .form-ui .form_group {
+  width: 100%;
   display: flex;
   gap: 8px;
 }
@@ -1556,6 +1591,59 @@ body .gender_select input {
 body .gender_select label {
   font-weight: 500;
 }
+body .accordion-button {
+  box-shadow: none !important;
+  padding: 16px 16px;
+}
+body .accordion {
+  border: none !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: none !important;
+}
+body .accordion-item {
+  border: 1px solid #eeeeee !important;
+  border-radius: 12px !important;
+  overflow: auto;
+}
+body .accordion-button:not(.collapsed) {
+  background-color: transparent;
+  color: #81a63d;
+}
+body .accordion-button {
+  text-align: start;
+}
+body .accordion-button .form-switch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body .accordion-button .form-switch input {
+  box-shadow: none !important;
+}
+body .accordion-button::after {
+  content: "\f107";
+  font-family: "Font Awesome 6 pro";
+  background-image: none;
+  transform: none !important;
+  margin-left: 0;
+  margin-right: auto;
+}
+body .accordion-button:not(.collapsed)::after {
+  content: "\f106";
+  background: none;
+}
+body .accordion-body {
+  padding: 0 12px 12px;
+}
+body .accordion-body p {
+  color: #777777;
+  font-size: 16px;
+}
+body .accordion-body p a {
+  color: #81a63d;
+}
 body.en {
   direction: ltr;
 }
@@ -1603,6 +1691,14 @@ body.en main .courses .inner_search__form::before {
 body.en main .job_details .content .about_job ul {
   padding-right: 0;
   padding-left: 16px;
+}
+body.en main .terms_section ul {
+  padding-right: 0;
+  padding-left: 16px;
+}
+body.en .accordion-button::after {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .button-86 {

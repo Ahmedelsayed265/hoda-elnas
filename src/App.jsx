@@ -26,6 +26,7 @@ import Contact from "./pages/Contact";
 import JobDetails from "./pages/JobDetails";
 import ApplyForJob from "./pages/ApplyForJob";
 import { setCourses } from "./redux/slices/courses";
+import Profile from "./pages/Profile";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -82,6 +83,7 @@ const App = () => {
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
           <Route path="/jobs/:id/apply" element={<ApplyForJob />} />

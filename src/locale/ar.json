@@ -26,6 +26,8 @@
     "applyNow": "قدم الان",
     "jobResponsibilities": "مهام الوظيفة :",
     "jobRequirements": "متطلبات الوظيفة :",
+    "contactTitle": "  لدينا دعم على مدار ٢٤ ساعه لا تتردد فى التواصل والاستفسار عن اى شىء",
+    "send":"إرسال",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -83,7 +85,10 @@
         "emailNotExist": "البريد الالكتروني غير موجود",
         "phoneNotExist": "رقم الهاتف غير موجود",
         "otpIsNotCorrect": "الكود الذي ادخلته غير صحيح",
-        "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح"
+        "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+        "subject": "الموضوع",
+        "enterSubject": "ادخل الموضوع",
+        "message": "رسالتك"
     },
     "homePage": {
         "bestCourses": "افضل الكورسات",

@@ -1,6 +1,7 @@
 import React from "react";
 import poster from "../../assets/images/videoPoster.png";
 import VideoModal from "../ui/VideoModal";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -14,13 +15,7 @@ const HeroSection = () => {
                 className="video_wrapper"
                 style={{ backgroundImage: `url(${poster})` }}
               >
-                <div
-                  rel="noreferrer"
-                  target="_blank"
-                  data-fancybox="about-us-video"
-                  className="play-btn"
-                  onClick={() => setShowModal(true)}
-                >
+                <div className="play-btn" onClick={() => setShowModal(true)}>
                   <i className="fa-light fa-play"></i>{" "}
                   <div className="waves-block">
                     <div className="waves wave-1"></div>
@@ -40,7 +35,9 @@ const HeroSection = () => {
                   الكافية لشرح وإعداد المادة العلمية الموجودة المستخدمة في
                   المحاضرات.
                 </p>
-                <button className="button-86">إنضم الينا</button>
+                <Link to="/courses" className="button-86">
+                  إنضم الينا
+                </Link>
               </div>
             </div>
           </div>

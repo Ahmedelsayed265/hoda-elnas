@@ -1223,12 +1223,45 @@ body {
         }
       }
     }
-    .apply-for-job {
+    .apply-for-job,
+    .contact_section {
       padding: 40px 0;
       .form-ui {
         box-shadow: $lightShadow;
         border-radius: 16px;
         padding: 32px 24px;
+        .form_group {
+          @media (max-width: 576px) {
+            flex-direction: column;
+          }
+        }
+      }
+      .contact_info {
+        h3 {
+          color: $main;
+          font-size: 20px;
+        }
+      }
+    }
+    .terms_section {
+      padding: 40px 0;
+      h4 {
+        font-size: 20px;
+        color: $secondary;
+      }
+      p {
+        color: $gray;
+        a {
+          color: $secondary;
+        }
+      }
+      ul {
+        margin-bottom: 16px;
+        list-style: decimal;
+        padding-right: 16px;
+        li {
+          color: $main;
+        }
       }
     }
   }
@@ -1393,6 +1426,7 @@ body {
       }
     }
     .form_group {
+      width: 100%;
       display: flex;
       gap: 8px;
     }
@@ -1517,6 +1551,60 @@ body {
       font-weight: 500;
     }
   }
+  // accordion globals
+  .accordion-button {
+    box-shadow: none !important;
+    padding: 16px 16px;
+  }
+  .accordion {
+    border: none !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: none !important;
+  }
+  .accordion-item {
+    border: 1px solid $lightGray !important;
+    border-radius: 12px !important;
+    overflow: auto;
+  }
+  .accordion-button:not(.collapsed) {
+    background-color: transparent;
+    color: $secondary;
+  }
+  .accordion-button {
+    text-align: start;
+    .form-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      input {
+        box-shadow: none !important;
+      }
+    }
+    &::after {
+      content: "\f107";
+      font-family: "Font Awesome 6 pro";
+      background-image: none;
+      transform: none !important;
+      margin-left: 0;
+      margin-right: auto;
+    }
+    &:not(.collapsed)::after {
+      content: "\f106";
+      background: none;
+    }
+  }
+  .accordion-body {
+    padding: 0 12px 12px;
+    p {
+      color: $gray;
+      font-size: 16px;
+      a {
+        color: $secondary;
+      }
+    }
+  }
   // ltr mode override
   &.en {
     direction: ltr;
@@ -1576,6 +1664,14 @@ body {
         padding-right: 0;
         padding-left: 16px;
       }
+      .terms_section ul {
+        padding-right: 0;
+        padding-left: 16px;
+      }
+    }
+    .accordion-button::after {
+      margin-left: auto;
+      margin-right: 0;
     }
   }
 }
