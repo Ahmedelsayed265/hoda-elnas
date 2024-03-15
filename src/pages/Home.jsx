@@ -3,9 +3,9 @@ import HeroSection from "../components/home/HeroSection";
 import BestCourses from "../components/home/BestCourses";
 import FeatureAndStatistics from "../components/home/FeatureAndStatistics";
 import Library from "../components/home/Library";
-import Offers from "../components/home/Offers";
 import WhatWeOffer from "../components/home/WhatWeOffer";
 import Testimonials from "../components/home/Testimonials";
+import OurParteners from "../components/home/OurParteners";
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       <Library />
       <WhatWeOffer />
       <Testimonials />
-      <Offers />
+      <OurParteners />
     </>
   );
 };

@@ -287,11 +287,19 @@ body {
       box-shadow: $mainShadow;
       ul {
         flex-direction: column;
-        gap: 4px;
         .nav_link {
           padding: 0;
           white-space: nowrap;
           justify-content: flex-start;
+          a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            i {
+              color: $secondary;
+            }
+          }
         }
       }
     }
@@ -1001,8 +1009,61 @@ body {
         line-height: 24px;
       }
     }
-    .offers {
+    .our_parteners {
       padding: 60px 0;
+      .slider_wrapper {
+        background: $secondary;
+        border-radius: 16px;
+        padding: 32px;
+        @include centerFlex();
+        flex-direction: column;
+        h3 {
+          color: $white;
+          font-size: 32px;
+          margin-bottom: 8px;
+        }
+        p {
+          color: $white;
+        }
+        .slider {
+          width: 100%;
+          .swiper {
+            padding: 0;
+          }
+          .img {
+            width: 100%;
+            height: 140px;
+            @include centerFlex();
+            img {
+              width: 100%;
+              object-fit: contain;
+              filter: brightness(0) invert(1);
+              transition: $transation;
+            }
+            &::after {
+              content: "";
+              display: flex;
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              height: 0%;
+              background-color: $white;
+              transition: $transation;
+              z-index: -1;
+            }
+            &:hover {
+              img {
+                filter: none;
+              }
+              &::after {
+                content: "";
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
     }
     .jobs_page {
       padding: 60px 0;
@@ -1057,10 +1118,10 @@ body {
       }
     }
     .testimonials {
-      padding: 60px 0;
+      padding: 60px 0 30px;
       background: $second10;
       .testimonial_card {
-        border: 1px solid $main;
+        border: 1px solid $second10;
         padding: 16px;
         gap: 4px;
         @include centerFlex();
@@ -1094,6 +1155,80 @@ body {
             max-width: 80%;
           }
         }
+      }
+    }
+    .job_details {
+      padding: 40px 0;
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .job_title {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+          h4 {
+            font-size: 28px;
+            margin-bottom: 0;
+            color: $main;
+            i {
+              color: $secondary;
+              font-size: 20px;
+            }
+          }
+          a {
+            background: $secondary;
+            color: $white;
+            padding: 4px 16px;
+            border-radius: 8px;
+            transition: $transation;
+            &:hover {
+              background: $main;
+            }
+          }
+          li {
+            color: $main;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            position: relative;
+            &::before {
+              content: "";
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: $secondary;
+            }
+          }
+        }
+        .about_job {
+          p {
+            color: $gray;
+          }
+          h6 {
+            color: $main;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          ul {
+            list-style: disc;
+            color: $gray;
+            padding-right: 16px;
+            margin-bottom: 16px;
+            li {
+              line-height: 28px;
+            }
+          }
+        }
+      }
+    }
+    .apply-for-job {
+      padding: 40px 0;
+      .form-ui {
+        box-shadow: $lightShadow;
+        border-radius: 16px;
+        padding: 32px 24px;
       }
     }
   }
@@ -1432,6 +1567,14 @@ body {
         .content a i {
           transform: scale(-1);
         }
+      }
+      .courses .inner_search__form::before {
+        right: unset;
+        left: 16px;
+      }
+      .job_details .content .about_job ul {
+        padding-right: 0;
+        padding-left: 16px;
       }
     }
   }

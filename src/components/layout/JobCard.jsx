@@ -13,7 +13,7 @@ const JobCard = () => {
       <div className="content">
         <h4>معلم قران كريم</h4>
         <p>دوام كامل</p>
-        <Link to={"/jobs/1"}>{t("applyForJob")}</Link>
+        <Link to={"/jobs/1"}>{t("details")}</Link>
       </div>
     </div>
   );

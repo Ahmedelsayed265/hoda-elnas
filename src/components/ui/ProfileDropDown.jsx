@@ -37,12 +37,12 @@ const ProfileDropDown = ({ isOpen, setIsOpen }) => {
       <ul>
         <li className="nav_link">
           <NavLink to="/profile">
-            <i className="fa-light fa-user"></i> {t("personalProfile")}
+          <i className="fa-light fa-circle-user"></i> {t("personalProfile")}
           </NavLink>
         </li>
         <li className="nav_link">
           <NavLink to="/students">
-          <i className="fa-light fa-users"></i> {t("students")}
+          <i className="fa-light fa-user-group"></i> {t("students")}
           </NavLink>
         </li>
         <li className="nav_link">

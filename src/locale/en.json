@@ -22,7 +22,10 @@
     "lookingForSomthing": "Looking for something?",
     "availbleJobs": "Available Jobs",
     "availableJobsSubTitle": "If you're interested in joining a team, we're happy to work with you.",
-    "applyForJob": "Apply For Job",
+    "details": "Details",
+    "applyNow": "Apply Now",
+    "jobResponsibilities": "Job Responsibilities :",
+    "jobRequirements": "Job Requirements :",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -41,6 +44,8 @@
         "namePlaceHolder": "Example : Abdallah",
         "email": "Email",
         "emailPlaceHolder": "Example : example@example.com",
+        "fullName": "Full Name",
+        "enterYourName": "Enter your name",
         "termsAndCondition": "Terms and Conditions",
         "privacyPolicy": "Privacy Policy",
         "and": "and",
@@ -92,6 +97,14 @@
         "whatWeOffer": "Our Unbeatable Offer for Your Child's Education.!",
         "competitors": "Other Companies",
         "testimonialsTitle": "What Our Clients Say About Us!",
-        "testimonialsSubTitle": "We provide your children with an easy experience and unparalleled quality at every step."
+        "testimonialsSubTitle": "We provide your children with an easy experience and unparalleled quality at every step.",
+        "ourPartners": "Success Partners",
+        "ourPartnersSubTitle": "Bonds of trust, with which we build a better future"
+    },
+    "jobsPage": {
+        "whyYouWantToJoin": "Why You Want To Join",
+        "aboutYou": "About You",
+        "uploadYourCv": "Upload Your CV",
+        "submit": "Submit"
     }
 }

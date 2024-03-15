@@ -1,6 +1,6 @@
 import React from "react";
 import StarsList from "./StarsList";
-import waves from "../../assets/images/sound.svg";
+import waves from "../../assets/images/waves.svg";
 
 const TestimonialCard = () => {
   return (

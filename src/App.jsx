@@ -18,12 +18,26 @@ import Logout from "./util/logout";
 import CourseDetails from "./pages/CourseDetails";
 import Acoustics from "./pages/Acoustics";
 import Jobs from "./pages/Jobs";
+import About from "./pages/About";
+import Faqs from "./pages/Faqs";
+import TermsConditions from "./pages/TermsConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Contact from "./pages/Contact";
+import JobDetails from "./pages/JobDetails";
+import ApplyForJob from "./pages/ApplyForJob";
+import { setCourses } from "./redux/slices/courses";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
   const dispatch = useDispatch();
   const refreshToken = cookies?.refreshToken;
   const { decodedToken, isExpired } = useJwt(refreshToken || "");
+
+  const getAllData = async () => {
+    const courses = axios.get("/learningcenter/list_courses/");
+    const [coursesData] = await Promise.all([courses]);
+    dispatch(setCourses(coursesData.data));
+  };
 
   useEffect(() => {
     if (decodedToken && !isExpired) {
@@ -53,6 +67,8 @@ const App = () => {
     } else if (isExpired) {
       removeCookie();
     }
+    getAllData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [decodedToken, isExpired, dispatch, refreshToken, removeCookie]);
 
   return (
@@ -67,6 +83,13 @@ const App = () => {
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/jobs" element={<Jobs />} />
+          <Route path="/jobs/:id" element={<JobDetails />} />
+          <Route path="/jobs/:id/apply" element={<ApplyForJob />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/faqs" element={<Faqs />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/contact-us" element={<Contact />} />
           {/* auth pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

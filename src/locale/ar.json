@@ -22,7 +22,10 @@
     "lookingForSomthing": "تبحث عن شيء؟",
     "availbleJobs": "الوظائف المتاحة",
     "availableJobsSubTitle": "إذا كنت شغوفًا ومستعدًا لاحداث فرق ، فنحن نحب مقابلتك.",
-    "applyForJob": "قدم للوظيفة",
+    "details": "التفاصيل",
+    "applyNow": "قدم الان",
+    "jobResponsibilities": "مهام الوظيفة :",
+    "jobRequirements": "متطلبات الوظيفة :",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -41,6 +44,8 @@
         "namePlaceHolder": "مثال : عبدالله",
         "email": "البريد الالكتروني",
         "emailPlaceHolder": "مثال : example@example.com",
+        "fullName": "الاسم بالكامل",
+        "enterYourName": "ادخل اسمك",
         "termsAndCondition": "الشروط والاحكام",
         "privacyPolicy": "سياسة الخصوصية",
         "and": "و",
@@ -92,6 +97,14 @@
         "whatWeOffer": "ماذا نقدم لك لنكون الاخيار الافضل لتعليم اولادك.!",
         "competitors": "الشركات الأخرى",
         "testimonialsTitle": "اسمع من عملائنا عنّا!",
-        "testimonialsSubTitle": "نوفر لأبناءك تجربة سهلة وجودة ما لها مثيل في كل خطوة."
+        "testimonialsSubTitle": "نوفر لأبناءك تجربة سهلة وجودة ما لها مثيل في كل خطوة.",
+        "ourPartners": "شركاء النجاح",
+        "ourPartnersSubTitle": "روابط من الثقة، نبني بها مستقبلًا أفضل"
+    },
+    "jobsPage": {
+        "whyYouWantToJoin": "لماذا تريد الانضمام",
+        "aboutYou": "نبذة عنك",
+        "uploadYourCv": "ارفع ملف cv",
+        "submit": "ارسال"
     }
 }
