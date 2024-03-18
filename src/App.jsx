@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
+import Logout from "./util/logout";
+import axios from "./util/axios";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
+import { useJwt } from "react-jwt";
+// =========== layout =========== //
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
+import Loader from "./components/layout/Loader";
+// =========== pages ============ //
 import Home from "./pages/Home";
 import Courses from "./pages/Courses";
 import Visuals from "./pages/Visuals";
@@ -11,33 +17,44 @@ import ErrorPage from "./pages/ErrorPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
-import { useJwt } from "react-jwt";
-import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
-import axios from "./util/axios";
-import Logout from "./util/logout";
 import CourseDetails from "./pages/CourseDetails";
 import Acoustics from "./pages/Acoustics";
 import Jobs from "./pages/Jobs";
 import About from "./pages/About";
 import Faqs from "./pages/Faqs";
-import TermsConditions from "./pages/TermsConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 import Contact from "./pages/Contact";
 import JobDetails from "./pages/JobDetails";
 import ApplyForJob from "./pages/ApplyForJob";
-import { setCourses } from "./redux/slices/courses";
 import Profile from "./pages/Profile";
+// =========== redux =========== //
+import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
+import { setCourses } from "./redux/slices/courses";
+import { setHighLightedCourses } from "./redux/slices/highlightedCourses";
+import { setHomeIntro } from "./redux/slices/homeIntro";
 
 const App = () => {
+  const lang = useSelector((state) => state.language.lang);
+  const [loading, setLoading] = React.useState(true);
   const [cookies, , removeCookie] = useCookies();
   const dispatch = useDispatch();
   const refreshToken = cookies?.refreshToken;
   const { decodedToken, isExpired } = useJwt(refreshToken || "");
 
   const getAllData = async () => {
+    setLoading(true);
+    const homeIntro = axios.get("/landingpages/List_app_intro/");
     const courses = axios.get("/learningcenter/list_courses/");
-    const [coursesData] = await Promise.all([courses]);
-    dispatch(setCourses(coursesData.data.message));
+    const highlightedCourses = axios.get(
+      "/learningcenter/list_courses/?highlight=true"
+    );
+    const [coursesData, homeIntroData, highlightedCoursesData] =
+      await Promise.all([courses, homeIntro, highlightedCourses]);
+    dispatch(setCourses(coursesData?.data?.message));
+    dispatch(setHomeIntro(homeIntroData?.data?.message[0]));
+    dispatch(setHighLightedCourses(highlightedCoursesData?.data?.message));
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -68,9 +85,12 @@ const App = () => {
     } else if (isExpired) {
       removeCookie();
     }
+  }, [decodedToken, isExpired, dispatch, refreshToken, removeCookie]);
+
+  useEffect(() => {
     getAllData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [decodedToken, isExpired, dispatch, refreshToken, removeCookie]);
+  }, [lang]);
 
   return (
     <>
@@ -102,6 +122,7 @@ const App = () => {
         </Routes>
       </main>
       <Footer />
+      {loading && <Loader />}
     </>
   );
 };

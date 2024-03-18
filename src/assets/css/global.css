@@ -533,7 +533,7 @@ body main .title h3 {
 body main .section-header {
   width: 100%;
   height: 140px;
-  background: linear-gradient(0deg, rgba(129, 166, 61, 0.77), rgba(129, 166, 61, 0.875)), url("../images/trial.png");
+  background: linear-gradient(90.24deg, #69b1c0 0.21%, #31535a 55.07%);
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -599,6 +599,7 @@ body main .courses .inner_search__form input {
   font-size: 14px;
 }
 body main .custom-card {
+  direction: rtl;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1720,9 +1721,6 @@ body.en main .section_title a i {
   transform: translateY(2px) scale(-1);
   margin-left: 4px;
 }
-body.en main .swiper {
-  direction: rtl;
-}
 body.en main .course-card {
   direction: ltr !important;
 }
@@ -1740,6 +1738,12 @@ body.en main .job_details .content .about_job ul {
 body.en main .terms_section ul {
   padding-right: 0;
   padding-left: 16px;
+}
+body.en main .custom-card .content a i {
+  transform: scale(-1);
+}
+body.en main .custom-card {
+  direction: ltr !important;
 }
 body.en .accordion-button::after {
   margin-left: auto;
@@ -1842,4 +1846,21 @@ body.en .accordion-button::after {
 }
 .stars li.star {
   color: #ffd500;
+}
+
+.loader {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 999999;
+  top: 0;
+  left: 0;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader i {
+  font-size: 48px;
+  color: #81a63d;
 }/*# sourceMappingURL=global.css.map */

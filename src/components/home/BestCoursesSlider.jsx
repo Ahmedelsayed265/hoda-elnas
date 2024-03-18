@@ -1,17 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper/modules";
 import CourseCard from "../layout/CourseCard";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
 
 const BestCoursesSlider = () => {
+  const hightLightedCourses = useSelector(
+    (state) => state.highlightedCourses.courses
+  );
   return (
     <Swiper
       spaceBetween={16}
       slidesPerView={3}
       speed={1000}
       loop={true}
+      dir="rtl"
       pagination={{
         clickable: true
       }}
@@ -30,29 +35,11 @@ const BestCoursesSlider = () => {
       }}
       className="teamSwiper"
     >
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <CourseCard />
-      </SwiperSlide>
+      {hightLightedCourses?.map((course) => (
+        <SwiperSlide key={course?.id}>
+          <CourseCard course={course} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

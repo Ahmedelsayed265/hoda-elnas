@@ -8,6 +8,7 @@ import langIcon from "../../assets/images/lang.svg";
 import logo from "../../assets/images/logo.png";
 import avatar from "../../assets/images/avatar.jpg";
 import ProfileDropDown from "../ui/ProfileDropDown";
+import axios from "./../../util/axios";
 
 const Nav = () => {
   const [isProfileDropDownOpen, setIsProfileDropDownOpen] = useState(false);
@@ -37,6 +38,7 @@ const Nav = () => {
     const newLang = lang === "ar" ? "en" : "ar";
     dispatch(setLanguage(newLang));
     i18next.changeLanguage(newLang);
+    axios.defaults.headers.common["Accept-Language"] = newLang;
     document.querySelector("body").classList.toggle("en", newLang === "en");
     setIsTogglerActive(false);
   };
