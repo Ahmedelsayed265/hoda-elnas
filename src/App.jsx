@@ -44,7 +44,7 @@ const App = () => {
 
   const getAllData = async () => {
     setLoading(true);
-    const homeIntro = axios.get("/landingpages/List_app_intro/");
+    const homeIntro = axios.get("/landingpages/List_web_header/");
     const courses = axios.get("/learningcenter/list_courses/");
     const highlightedCourses = axios.get(
       "/learningcenter/list_courses/?highlight=true"

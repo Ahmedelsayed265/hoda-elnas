@@ -9,6 +9,10 @@ const HeroSection = () => {
   const [showModal, setShowModal] = React.useState(false);
   const appIntro = useSelector((state) => state.homeIntro.homeIntro);
   const { t } = useTranslation();
+  const renderHTML = (htmlContent) => {
+    return { __html: htmlContent };
+  };
+
   return (
     <>
       <section className="hero_section">
@@ -17,7 +21,10 @@ const HeroSection = () => {
             <div className="col-lg-6 col-12 p-lg-3 p-2">
               <div className="content">
                 <h1>{appIntro?.title}</h1>
-                <p>{appIntro?.description}</p>
+                <h6>{appIntro?.sub_title}</h6>
+                <div
+                  dangerouslySetInnerHTML={renderHTML(appIntro?.description)}
+                ></div>
                 <Link to="/courses" className="button-86">
                   {t("joinUs")}
                 </Link>

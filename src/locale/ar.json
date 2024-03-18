@@ -1,6 +1,6 @@
 {
     "home": "الرئيسية",
-    "courses": "الكورسات",
+    "courses": "الدروس",
     "subscriptions": "الاشتركات",
     "visuals": "المرئيات",
     "audios": "الصوتيات",
@@ -28,7 +28,11 @@
     "jobResponsibilities": "مهام الوظيفة :",
     "jobRequirements": "متطلبات الوظيفة :",
     "contactTitle": "  لدينا دعم على مدار ٢٤ ساعه لا تتردد فى التواصل والاستفسار عن اى شىء",
-    "send":"إرسال",
+    "send": "إرسال",
+    "courseGoals": "أهداف الدرس :",
+    "subscribe": "اشترك",
+    "alreadySubscribed": "هل أنت مشترك بالفعل؟ ",
+    "installment": "يقبل التقسيط",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -92,10 +96,10 @@
         "message": "رسالتك"
     },
     "homePage": {
-        "bestCourses": "افضل الكورسات",
+        "bestCourses": "افضل الدروس",
         "bestAudios": "افضل الصوتيات",
         "bestVisuals": "افضل المرئيات",
-        "allCourses": "كل الكورسات",
+        "allCourses": "كل الدروس",
         "allAudios": "كل الصوتيات",
         "allVisuals": "كل المرئيات",
         "library": "المكتبة",

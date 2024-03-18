@@ -1,6 +1,6 @@
 {
     "home": "Home",
-    "courses": "Courses",
+    "courses": "Classes",
     "subscriptions": "Subscriptions",
     "visuals": "Visuals",
     "audios": "Audios",
@@ -29,6 +29,10 @@
     "jobRequirements": "Job Requirements :",
     "contactTitle": "We have a support team of 24 hours to help you with anything you need.",
     "send": "Send",
+    "courseGoals": "Class Goals :",
+    "subscribe": "Subscribe",
+    "alreadySubscribed": "Are you already subscribed? ",
+    "installment": "Accepts installment.",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -92,10 +96,10 @@
         "message": "Your Message"
     },
     "homePage": {
-        "bestCourses": "Best Courses",
+        "bestCourses": "Best Classes",
         "bestAudios": "Best Acoustics",
         "bestVisuals": "Best Visuals",
-        "allCourses": "All Courses",
+        "allCourses": "All Classes",
         "allAudios": "All Audios",
         "allVisuals": "All Visuals",
         "library": "Library",

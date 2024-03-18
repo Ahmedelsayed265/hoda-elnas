@@ -2,8 +2,10 @@ import React from "react";
 import SectionHeader from "../components/layout/SectionHeader";
 import CourseCard from "../components/layout/CourseCard";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const Courses = () => {
+  const courses = useSelector((state) => state.courses.courses);
   const { t } = useTranslation();
   const backLinks = [
     {
@@ -24,24 +26,11 @@ const Courses = () => {
                 </form>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
-            <div className="col-lg-4 col-md-6 col-12 p-2">
-              <CourseCard />
-            </div>
+            {courses?.map((course) => (
+              <div className="col-lg-4 col-md-6 col-12 p-2">
+                <CourseCard course={course} />
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@ const FeatureAndStatistics = () => {
   useEffect(() => {
     const handleVisibility = () => {
       const top = document.querySelector(".feature_and_statistics").offsetTop;
-      if (window.scrollY >= top) {
+      if (window.scrollY >= top - 100) {
         setIsVisible(true);
       }
     };
