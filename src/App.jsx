@@ -33,6 +33,8 @@ import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
 import { setCourses } from "./redux/slices/courses";
 import { setHighLightedCourses } from "./redux/slices/highlightedCourses";
 import { setHomeIntro } from "./redux/slices/homeIntro";
+import { setStatistics } from "./redux/slices/statistics";
+import { setWhyUs } from "./redux/slices/whyUs";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -44,16 +46,36 @@ const App = () => {
 
   const getAllData = async () => {
     setLoading(true);
-    const homeIntro = axios.get("/landingpages/List_web_header/");
+    // end points
     const courses = axios.get("/learningcenter/list_courses/");
     const highlightedCourses = axios.get(
       "/learningcenter/list_courses/?highlight=true"
     );
-    const [coursesData, homeIntroData, highlightedCoursesData] =
-      await Promise.all([courses, homeIntro, highlightedCourses]);
+    const homeIntro = axios.get("/landingpages/List_web_header/");
+    const statistics = axios.get("/landingpages/List_statistics_section/");
+    const whyUs = axios.get("/landingpages/List_why_you_join_us/");
+
+    // fetch all
+    const [
+      coursesData,
+      homeIntroData,
+      highlightedCoursesData,
+      statisticsData,
+      whyUsData
+    ] = await Promise.all([
+      courses,
+      homeIntro,
+      highlightedCourses,
+      statistics,
+      whyUs
+    ]);
+
+    // dispatch
     dispatch(setCourses(coursesData?.data?.message));
     dispatch(setHomeIntro(homeIntroData?.data?.message[0]));
     dispatch(setHighLightedCourses(highlightedCoursesData?.data?.message));
+    dispatch(setStatistics(statisticsData?.data?.message));
+    dispatch(setWhyUs(whyUsData?.data?.message));
     setLoading(false);
   };
 

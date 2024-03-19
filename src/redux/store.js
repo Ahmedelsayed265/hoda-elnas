@@ -4,6 +4,8 @@ import authedUser from "./slices/authedUser";
 import courses from "./slices/courses";
 import homeIntro from "./slices/homeIntro";
 import highlightedCourses from "./slices/highlightedCourses";
+import whyUs from "./slices/whyUs";
+import statistics from "./slices/statistics";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,8 @@ export const store = configureStore({
     authedUser,
     courses,
     homeIntro,
-    highlightedCourses
+    highlightedCourses,
+    whyUs,
+    statistics
   }
 });

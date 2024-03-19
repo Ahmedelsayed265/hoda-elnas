@@ -516,10 +516,13 @@ body {
             gap: 8px;
             &::before {
               content: "";
-              width: 6px;
-              height: 6px;
+              width: 16px;
+              height: 16px;
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
               border-radius: 50%;
-              background: $secondary;
+              background-image: url('../images/starHero.svg');
             }
           }
         }
@@ -940,11 +943,6 @@ body {
     .feature_and_statistics {
       padding: 60px 0;
       .img {
-        width: min(250px, 250px);
-        height: min(250px, 250px);
-        border-radius: 50%;
-        overflow: hidden;
-        box-shadow: $mainShadow;
         img {
           width: 100%;
           height: 100%;
@@ -966,10 +964,12 @@ body {
           gap: 24px;
         }
         .feature {
+          cursor: pointer;
           padding: 16px;
           width: 100%;
           background: $white;
           box-shadow: $lightShadow;
+          transition: $transation;
           border-radius: 12px;
           p {
             font-size: 14px;
@@ -981,6 +981,13 @@ body {
             font-size: 18px;
             font-weight: 600;
             color: $main;
+          }
+          &.active {
+            background: $secondary;
+            h4,
+            p {
+              color: $white;
+            }
           }
         }
       }
