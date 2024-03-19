@@ -8,8 +8,10 @@ import { BASE_URL } from "../../constants";
 const FeatureAndStatistics = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const statistics = useSelector((state) => state.statistics.statistics);
   const whyus = useSelector((state) => state.whyUs.whyUs);
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -34,7 +36,9 @@ const FeatureAndStatistics = () => {
       setActiveFeature((prevActiveFeature) =>
         prevActiveFeature === 3 ? 0 : prevActiveFeature + 1
       );
-    }, 8000);
+      setImageLoaded(false);
+    }, 6000);
+    setIntervalId(interval);
 
     return () => clearInterval(interval);
   }, []);
@@ -47,52 +51,66 @@ const FeatureAndStatistics = () => {
     }
   };
 
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
+  const handleFeatureClick = (index) => {
+    setActiveFeature(index);
+    clearInterval(intervalId);
+    const interval = setInterval(() => {
+      setActiveFeature((prevActiveFeature) =>
+        prevActiveFeature === 3 ? 0 : prevActiveFeature + 1
+      );
+      setImageLoaded(false);
+    }, 6000);
+    setIntervalId(interval);
+  };
+
   return (
     <section className="feature_and_statistics">
       <div className="container">
         <div className="row m-0 pb-3">
           <div className="col-lg-4 col-12 p-2">
             <div className="features toTop">
-              <div
-                className={`feature ${activeFeature === 0 ? "active" : ""}`}
-                onClick={() => setActiveFeature(0)}
-              >
-                <h4>{whyus[0]?.title}</h4>
-                <p>{whyus[0]?.description}</p>
-              </div>
-              <div
-                className={`feature ${activeFeature === 1 ? "active" : ""}`}
-                onClick={() => setActiveFeature(1)}
-              >
-                <h4>{whyus[1]?.title}</h4>
-                <p>{whyus[1]?.description}</p>
-              </div>
+              {whyus.slice(0, 2).map((item, index) => (
+                <div
+                  key={index}
+                  className={`feature ${
+                    activeFeature === index ? "active" : ""
+                  }`}
+                  onClick={() => handleFeatureClick(index)}
+                >
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div className="col-lg-4 col-12 p-2 d-flex justify-content-center align-items-center">
             <div className="img">
               <img
+                style={{ opacity: imageLoaded ? 1 : 0 }}
                 src={`${BASE_URL}${whyus[activeFeature]?.image}`}
                 alt="features"
+                onLoad={handleImageLoad}
               />
             </div>
           </div>
           <div className="col-lg-4 col-12 p-2">
             <div className="features toBottom">
-              <div
-                className={`feature ${activeFeature === 2 ? "active" : ""}`}
-                onClick={() => setActiveFeature(2)}
-              >
-                <h4>{whyus[2]?.title}</h4>
-                <p>{whyus[2]?.description}</p>
-              </div>
-              <div
-                className={`feature ${activeFeature === 3 ? "active" : ""}`}
-                onClick={() => setActiveFeature(3)}
-              >
-                <h4>{whyus[3]?.title}</h4>
-                <p>{whyus[3]?.description}</p>
-              </div>
+              {whyus.slice(2, 4).map((item, index) => (
+                <div
+                  key={index + 2}
+                  className={`feature ${
+                    activeFeature === index + 2 ? "active" : ""
+                  }`}
+                  onClick={() => handleFeatureClick(index + 2)}
+                >
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
