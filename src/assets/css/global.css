@@ -976,8 +976,9 @@ body main .feature_and_statistics .features .feature {
   cursor: pointer;
   padding: 16px;
   width: 100%;
-  height: 53px;
+  height: 110px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 8px;
   overflow: hidden;
@@ -994,14 +995,18 @@ body main .feature_and_statistics .features .feature p {
   margin: 0;
 }
 body main .feature_and_statistics .features .feature h4 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
   color: #31535a;
   margin: 0;
+  transition: 0.3s ease-in-out;
 }
 body main .feature_and_statistics .features .feature.active {
   background: #81a63d;
   height: 109px;
+}
+body main .feature_and_statistics .features .feature.active h4 {
+  font-size: 18px;
 }
 body main .feature_and_statistics .features .feature.active h4,
 body main .feature_and_statistics .features .feature.active p {
