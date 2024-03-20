@@ -38,12 +38,9 @@ const TestimonialCard = ({ feedback }) => {
       </div>
       <p>{feedback?.title}</p>
       <StarsList rate={feedback?.rate} />
-      <audio
-        ref={audio}
-        src={`${BASE_URL}${feedback?.review}`}
-        className="hidden_audio"
-        onEnded={handleAudioEnd}
-      ></audio>
+      <audio ref={audio} className="hidden_audio" onEnded={handleAudioEnd}>
+        <source src={`${BASE_URL}${feedback?.review}`} type="audio/mpeg" />
+      </audio>
     </div>
   );
 };
