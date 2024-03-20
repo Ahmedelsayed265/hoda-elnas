@@ -1947,4 +1947,7 @@ body.en .accordion-button::after {
   height: 0 !important;
   opacity: 0 !important;
   visibility: hidden !important;
+  position: fixed;
+  top: -999999px;
+  left: -999999px;
 }/*# sourceMappingURL=global.css.map */
