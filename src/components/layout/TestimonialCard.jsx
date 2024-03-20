@@ -63,6 +63,7 @@ const TestimonialCard = ({ feedback }) => {
       <StarsList rate={feedback?.rate} />
       <audio
         ref={audio}
+        className="hidden_audio" 
         onEnded={handleAudioEnd}
         src={`${BASE_URL}${feedback?.review}`}
       />

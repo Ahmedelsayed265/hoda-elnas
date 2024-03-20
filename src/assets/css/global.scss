@@ -1910,5 +1910,8 @@ body {
   }
 }
 .hidden_audio {
-  display: none;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
 }
