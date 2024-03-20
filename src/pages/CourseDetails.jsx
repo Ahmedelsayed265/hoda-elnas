@@ -3,8 +3,10 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import VideoModal from "../components/ui/VideoModal";
-import SectionHeader from "../components/layout/SectionHeader";
 import { BASE_URL } from "../constants";
+import CourseFaqs from "./../components/courses/CourseFaqs";
+import WhyUs from "../components/courses/WhyUs";
+import Reviews from "../components/courses/Reviews";
 
 const CourseDetails = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -13,20 +15,8 @@ const CourseDetails = () => {
   const courses = useSelector((state) => state.courses.courses);
   const course = courses.find((c) => c.id === +id);
 
-  const backLinks = [
-    {
-      name: t("home"),
-      path: "/"
-    },
-    {
-      name: t("courses"),
-      path: "/courses"
-    }
-  ];
-
   return (
     <>
-      <SectionHeader pageName={course?.name} backLinks={backLinks} />
       <section className="course-details">
         <div className="container">
           <div className="row">
@@ -38,14 +28,16 @@ const CourseDetails = () => {
                 }}
               >
                 <span>{t("installment")}</span>
-                <div className="play-btn" onClick={() => setShowModal(true)}>
-                  <i className="fa-light fa-play"></i>{" "}
-                  <div className="waves-block">
-                    <div className="waves wave-1"></div>
-                    <div className="waves wave-2"></div>
-                    <div className="waves wave-3"></div>
+                {course?.promo && (
+                  <div className="play-btn" onClick={() => setShowModal(true)}>
+                    <i className="fa-light fa-play"></i>{" "}
+                    <div className="waves-block">
+                      <div className="waves wave-1"></div>
+                      <div className="waves wave-2"></div>
+                      <div className="waves wave-3"></div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <Link className="btn" to="/courses/1/subscripe">
                 {t("subscribe")}
@@ -70,6 +62,9 @@ const CourseDetails = () => {
           </div>
         </div>
       </section>
+      <WhyUs grantees={course?.grantees} title={course?.grantees_title} />
+      <CourseFaqs faqs={course?.FAQ} />
+      <Reviews id={course?.id} />
       <VideoModal showModal={showModal} setShowModal={setShowModal} />
     </>
   );

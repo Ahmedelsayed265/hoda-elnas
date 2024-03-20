@@ -41,6 +41,7 @@ import { setPrivacy } from "./redux/slices/privacy";
 import { setGrantees } from "./redux/slices/granteesObj";
 import { setBody, setHeader } from "./redux/slices/comparsion";
 import { setFeedBacks } from "./redux/slices/feedBacks";
+import { setTitles } from "./redux/slices/sectionsTitles";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -69,6 +70,7 @@ const App = () => {
     const feedBacks = axios.get(
       "/landingpages/List_reviews/?type=audio&status=published"
     );
+    const titles = axios.get("/landingpages/List_sections_title/");
 
     // fetch all
     const [
@@ -83,7 +85,8 @@ const App = () => {
       granteesData,
       comparsionHeaderData,
       comparsionBodyData,
-      feedBacksData
+      feedBacksData,
+      titlesData
     ] = await Promise.all([
       courses,
       homeIntro,
@@ -96,7 +99,8 @@ const App = () => {
       grantees,
       comparsionHeader,
       comparsionBody,
-      feedBacks
+      feedBacks,
+      titles
     ]);
 
     // dispatch
@@ -112,6 +116,7 @@ const App = () => {
     dispatch(setHeader(comparsionHeaderData?.data?.message[0]));
     dispatch(setBody(comparsionBodyData?.data?.message));
     dispatch(setFeedBacks(feedBacksData?.data?.message));
+    dispatch(setTitles(titlesData?.data?.message[0]));
     setLoading(false);
   };
 

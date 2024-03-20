@@ -42,32 +42,53 @@ const TestimonialCard = ({ feedback }) => {
   };
 
   return (
-    <div className="testimonial_card">
-      <div className="sound">
-        <div className="waves_img">
-          <span className="wave"></span>
-          <span
-            className="overlay"
-            style={{ width: `${overlayWidth}%` }}
-          ></span>
-        </div>
-        <div className="play_btn" onClick={togglePlay}>
-          {play ? (
-            <i className="fa-duotone fa-pause"></i>
-          ) : (
-            <i className="fa-duotone fa-play"></i>
-          )}
+    <>
+      <div className="testimonial_card">
+        {feedback?.type === "audio" && (
+          <div className="sound">
+            <div className="waves_img">
+              <span className="wave"></span>
+              <span
+                className="overlay"
+                style={{ width: `${overlayWidth}%` }}
+              ></span>
+            </div>
+            <div className="play_btn" onClick={togglePlay}>
+              {play ? (
+                <i className="fa-duotone fa-pause"></i>
+              ) : (
+                <i className="fa-duotone fa-play"></i>
+              )}
+            </div>
+          </div>
+        )}
+        {feedback?.type === "image" && (
+          <div className="img">
+            <img src={`${BASE_URL}${feedback?.review}`} alt="" />
+          </div>
+        )}
+        {feedback?.type === "text" && (
+          <div className="description">
+            <p>{`" ${feedback?.content} "`}</p>
+          </div>
+        )}
+        {feedback?.type === "video" && (
+          <div className="img">
+            <video src={`${BASE_URL}${feedback?.review}`} controls></video>
+          </div>
+        )}
+        <div className="rate">
+          <p>{feedback?.title}</p>
+          <StarsList rate={feedback?.rate} />
         </div>
       </div>
-      <p>{feedback?.title}</p>
-      <StarsList rate={feedback?.rate} />
       <audio
         ref={audio}
-        className="hidden_audio" 
+        className="hidden_audio"
         onEnded={handleAudioEnd}
         src={`${BASE_URL}${feedback?.review}`}
       />
-    </div>
+    </>
   );
 };
 

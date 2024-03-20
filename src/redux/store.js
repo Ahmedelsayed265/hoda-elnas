@@ -12,6 +12,7 @@ import privacy from "./slices/privacy";
 import grantees from "./slices/granteesObj";
 import comparsion from "./slices/comparsion";
 import feedBacks from "./slices/feedBacks";
+import sectionsTitles from "./slices/sectionsTitles";
 
 export const store = configureStore({
   reducer: {
@@ -27,6 +28,7 @@ export const store = configureStore({
     privacy,
     grantees,
     comparsion,
-    feedBacks
+    feedBacks,
+    sectionsTitles
   }
 });

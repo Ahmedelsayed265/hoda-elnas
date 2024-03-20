@@ -1,19 +1,8 @@
-import React from 'react'
-import AudioCard from '../components/layout/AudioCard'
-import SectionHeader from '../components/layout/SectionHeader'
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import AudioCard from "../components/layout/AudioCard";
 
 const Acoustics = () => {
-  const { t } = useTranslation();
-  const backLinks = [
-    {
-      name: t("home"),
-      path: "/"
-    }
-  ]
   return (
-    <>
-    <SectionHeader pageName={t("audios")} backLinks={backLinks} />
     <section className="courses">
       <div className="container">
         <div className="row">
@@ -51,8 +40,7 @@ const Acoustics = () => {
         </div>
       </div>
     </section>
-  </>
-  )
-}
+  );
+};
 
-export default Acoustics
+export default Acoustics;

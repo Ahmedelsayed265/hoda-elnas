@@ -849,7 +849,7 @@ body {
       }
     }
     .course-details {
-      padding: 40px 0;
+      padding: 40px 0 0;
       .btn {
         width: 100%;
         @include centerFlex();
@@ -910,6 +910,183 @@ body {
               color: $main;
             }
           }
+        }
+      }
+    }
+    .course_faqs {
+      padding: 40px 0;
+      background: #eeeeee;
+      .title {
+        text-align: center;
+        color: $main;
+        font-size: 32px;
+        margin-bottom: 32px;
+        position: relative;
+        &::after {
+          position: absolute;
+          content: "";
+          top: 45px;
+          width: 80px;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 2px;
+          background: $secondary;
+        }
+      }
+    }
+    .in_course_why_us {
+      padding: 0 0 40px;
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        .arrow {
+          height: 100px;
+        }
+        h3 {
+          text-align: center;
+          color: $main;
+          font-size: 32px;
+          margin-bottom: 32px;
+        }
+      }
+      .grantee_card {
+        background: $white;
+        box-shadow: rgba(189, 189, 189, 0.2) 0px 2px 8px 0px;
+        height: 100%;
+        padding: 16px;
+        border-radius: 12px;
+        @include centerFlex();
+        flex-direction: column;
+        .icon img {
+          margin-bottom: 12px;
+          height: 80px;
+        }
+        h4 {
+          font-size: 22px;
+          color: $secondary;
+        }
+        p {
+          color: $gray;
+          font-size: 14px;
+          margin: 0;
+          line-height: 24px;
+          text-align: center;
+        }
+      }
+    }
+    .course_reviews {
+      padding: 40px 0;
+      .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 32px;
+        h3 {
+          text-align: center;
+          color: $main;
+          font-size: 32px;
+          margin-bottom: 0;
+        }
+        p {
+          font-size: 14px;
+          color: $gray;
+          text-align: center;
+          margin: 0;
+        }
+      }
+      .swiper-slide {
+        height: auto;
+      }
+      .testimonial_card {
+        border: 1px solid $second10;
+        padding: 16px;
+        gap: 8px;
+        @include space-between();
+        flex-direction: column;
+        border-radius: 12px;
+        gap: 12px;
+        p {
+          margin: 0;
+          text-align: center;
+          line-height: 24px;
+        }
+        .play_btn {
+          min-width: 36px;
+          max-width: 36px;
+          height: 36px;
+          font-size: 14px;
+          cursor: pointer;
+          background: $secondary;
+          color: $white;
+          @include centerFlex();
+          border-radius: 50%;
+        }
+        .sound {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          gap: 12px;
+          width: 100%;
+          .waves_img {
+            width: 100%;
+            max-width: 100px;
+            height: 48px;
+            mask-image: url("../images/waves.svg");
+            mask-size: contain;
+            mask-position: center;
+            mask-repeat: no-repeat;
+            position: relative;
+            .wave {
+              content: "";
+              display: block;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              background-image: url("../images/waves.svg");
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+            }
+            .overlay {
+              position: absolute;
+              left: 0;
+              top: 0;
+              height: 100%;
+              z-index: 2;
+              background-color: $secondary;
+            }
+          }
+        }
+        .img {
+          width: 100%;
+          background: $lightGray;
+          @include centerFlex();
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+          video {
+            object-fit: contain;
+            max-height: 240px;
+          }
+        }
+        .description {
+          height: 100%;
+          @include centerFlex();
+          p {
+            font-size: 18px;
+            font-weight: 600;
+            font-style: italic;
+            color: $main;
+          }
+        }
+        .rate {
+          @include centerFlex();
+          flex-direction: column;
+          gap: 4px;
         }
       }
     }

@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import SectionHeader from "../components/layout/SectionHeader";
 import { useTranslation } from "react-i18next";
 import InputField from "../components/ui/form-elements/InputField";
 import TextField from "../components/ui/form-elements/TextField";
@@ -18,12 +17,6 @@ const Contact = () => {
     message: ""
   });
   const { t } = useTranslation();
-  const backLinks = [
-    {
-      name: t("home"),
-      path: "/"
-    }
-  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,79 +36,76 @@ const Contact = () => {
     }
   };
   return (
-    <>
-      <SectionHeader pageName={t("contact")} backLinks={backLinks} />
-      <section className="contact_section">
-        <div className="container">
-          <div className="row m-0 justify-content-center">
-            <div className="col-lg-10 col-12 p-2">
-              <form className="form-ui" ref={form} onSubmit={handleSubmit}>
-                <div className="form_group">
-                  <div className="form_group">
-                    <InputField
-                      label={t("auth.fullName")}
-                      placeholder={t("auth.enterYourName")}
-                      type="text"
-                      htmlFor="full_name"
-                      value={formData.full_name}
-                      formData={formData}
-                      id="full_name"
-                      setFormData={setFormData}
-                    />
-                    <InputField
-                      label={t("auth.email")}
-                      placeholder={t("auth.emailPlaceHolder")}
-                      type="email"
-                      htmlFor="email"
-                      value={formData.email}
-                      formData={formData}
-                      id="email"
-                      setFormData={setFormData}
-                    />
-                  </div>
-                </div>
+    <section className="contact_section">
+      <div className="container">
+        <div className="row m-0 justify-content-center">
+          <div className="col-lg-10 col-12 p-2">
+            <form className="form-ui" ref={form} onSubmit={handleSubmit}>
+              <div className="form_group">
                 <div className="form_group">
                   <InputField
-                    label={t("auth.phone")}
-                    placeholder="0xxxxxxxxxxxx"
+                    label={t("auth.fullName")}
+                    placeholder={t("auth.enterYourName")}
                     type="text"
-                    htmlFor="phone"
-                    value={formData.phone}
+                    htmlFor="full_name"
+                    value={formData.full_name}
                     formData={formData}
-                    id="phone"
+                    id="full_name"
                     setFormData={setFormData}
                   />
                   <InputField
-                    label={t("auth.subject")}
-                    placeholder={t("auth.enterSubject")}
-                    type="text"
-                    htmlFor="subject"
-                    value={formData.subject}
+                    label={t("auth.email")}
+                    placeholder={t("auth.emailPlaceHolder")}
+                    type="email"
+                    htmlFor="email"
+                    value={formData.email}
                     formData={formData}
-                    id="subject"
+                    id="email"
                     setFormData={setFormData}
                   />
                 </div>
-                <TextField
-                  label={t("auth.message")}
-                  placeholder={t("auth.message")}
-                  htmlFor="message"
-                  value={formData.message}
+              </div>
+              <div className="form_group">
+                <InputField
+                  label={t("auth.phone")}
+                  placeholder="0xxxxxxxxxxxx"
+                  type="text"
+                  htmlFor="phone"
+                  value={formData.phone}
                   formData={formData}
-                  id="message"
+                  id="phone"
                   setFormData={setFormData}
                 />
-                <SubmitButton
-                  name={t("send")}
-                  loading={loading}
-                  className="w-25 me-auto"
+                <InputField
+                  label={t("auth.subject")}
+                  placeholder={t("auth.enterSubject")}
+                  type="text"
+                  htmlFor="subject"
+                  value={formData.subject}
+                  formData={formData}
+                  id="subject"
+                  setFormData={setFormData}
                 />
-              </form>
-            </div>
+              </div>
+              <TextField
+                label={t("auth.message")}
+                placeholder={t("auth.message")}
+                htmlFor="message"
+                value={formData.message}
+                formData={formData}
+                id="message"
+                setFormData={setFormData}
+              />
+              <SubmitButton
+                name={t("send")}
+                loading={loading}
+                className="w-25 me-auto"
+              />
+            </form>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

@@ -118,7 +118,7 @@ const Nav = () => {
             )}
             <li>
               <button className="lang_toggler" onClick={handleLang}>
-                <span>{lang === "ar" ? "عربي" : "English"}</span>
+                <span>{lang === "ar" ? "English" : "عربي"}</span>
                 <img src={langIcon} alt="lang" />
               </button>
             </li>
