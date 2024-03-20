@@ -976,7 +976,6 @@ body main .feature_and_statistics .features .feature {
   cursor: pointer;
   padding: 16px;
   width: 100%;
-  height: 110px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -990,23 +989,17 @@ body main .feature_and_statistics .features .feature {
 body main .feature_and_statistics .features .feature p {
   font-size: 14px;
   line-height: 24px;
-  display: none;
   color: #31535a;
   margin: 0;
 }
 body main .feature_and_statistics .features .feature h4 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   color: #31535a;
   margin: 0;
-  transition: 0.3s ease-in-out;
 }
 body main .feature_and_statistics .features .feature.active {
   background: #81a63d;
-  height: 109px;
-}
-body main .feature_and_statistics .features .feature.active h4 {
-  font-size: 18px;
 }
 body main .feature_and_statistics .features .feature.active h4,
 body main .feature_and_statistics .features .feature.active p {
@@ -1068,7 +1061,7 @@ body main .feature_and_statistics .good_Experience .solutions {
   }
 }
 body main .feature_and_statistics .good_Experience .solutions .solution {
-  padding: 12px;
+  padding: 16px 12px;
   border-radius: 12px;
   width: 100%;
   display: flex;
@@ -1209,8 +1202,12 @@ body main .what_we_offer table th {
   border: 1px solid #f2f2f2;
   position: relative;
 }
-body main .what_we_offer table td i,
-body main .what_we_offer table th i {
+body main .what_we_offer table td .check,
+body main .what_we_offer table th .check {
+  color: #81a63d;
+}
+body main .what_we_offer table td .x,
+body main .what_we_offer table th .x {
   color: #f02020;
 }
 body main .what_we_offer table td.circled,
@@ -1234,9 +1231,10 @@ body main .testimonials {
   background: rgba(129, 166, 61, 0.1411764706);
 }
 body main .testimonials .testimonial_card {
+  height: 100%;
   border: 1px solid rgba(129, 166, 61, 0.1411764706);
   padding: 16px;
-  gap: 4px;
+  gap: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1245,6 +1243,8 @@ body main .testimonials .testimonial_card {
 }
 body main .testimonials .testimonial_card p {
   margin: 0;
+  text-align: center;
+  line-height: 24px;
 }
 body main .testimonials .testimonial_card .play_btn {
   min-width: 36px;
@@ -1258,9 +1258,6 @@ body main .testimonials .testimonial_card .play_btn {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-}
-body main .testimonials .testimonial_card .play_btn i {
-  transform: translateX(1px);
 }
 body main .testimonials .testimonial_card .sound {
   display: flex;
@@ -1793,6 +1790,10 @@ body.en main .custom-card .content a i {
 body.en main .custom-card {
   direction: ltr !important;
 }
+body.en main .what_we_offer table td.circled:before {
+  right: initial;
+  left: 8px;
+}
 body.en .accordion-button::after {
   margin-left: auto;
   margin-right: 0;
@@ -1911,4 +1912,8 @@ body.en .accordion-button::after {
 .loader i {
   font-size: 48px;
   color: #81a63d;
+}
+
+.hidden_audio {
+  display: none;
 }/*# sourceMappingURL=global.css.map */

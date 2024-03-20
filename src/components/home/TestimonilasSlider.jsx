@@ -4,14 +4,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import TestimonialCard from "../layout/TestimonialCard";
+import { useSelector } from "react-redux";
 
 const TestimonilasSlider = () => {
+  const feedBacks = useSelector((state) => state.feedBacks.feedBacks);
   return (
     <Swiper
       spaceBetween={16}
       slidesPerView={5}
       speed={1000}
       loop={true}
+      dir="rtl"
       pagination={{
         clickable: true
       }}
@@ -30,29 +33,11 @@ const TestimonilasSlider = () => {
       }}
       className="teamSwiper"
     >
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
-
-      <SwiperSlide>
-        <TestimonialCard />
-      </SwiperSlide>
+      {feedBacks.map((feedback) => (
+        <SwiperSlide key={feedback?.name}>
+          <TestimonialCard feedback={feedback} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 };

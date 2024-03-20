@@ -35,6 +35,12 @@ import { setHighLightedCourses } from "./redux/slices/highlightedCourses";
 import { setHomeIntro } from "./redux/slices/homeIntro";
 import { setStatistics } from "./redux/slices/statistics";
 import { setWhyUs } from "./redux/slices/whyUs";
+import { setFaqs } from "./redux/slices/faqs";
+import { setTermsConditions } from "./redux/slices/termsConditions";
+import { setPrivacy } from "./redux/slices/privacy";
+import { setGrantees } from "./redux/slices/granteesObj";
+import { setBody, setHeader } from "./redux/slices/comparsion";
+import { setFeedBacks } from "./redux/slices/feedBacks";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -54,6 +60,15 @@ const App = () => {
     const homeIntro = axios.get("/landingpages/List_web_header/");
     const statistics = axios.get("/landingpages/List_statistics_section/");
     const whyUs = axios.get("/landingpages/List_why_you_join_us/");
+    const faqs = axios.get("/landingpages/List_FAQ/");
+    const termsConditions = axios.get("/landingpages/List_TermsAndConditions/");
+    const privacyPolicy = axios.get("/landingpages/List_TermsAndConditions/");
+    const grantees = axios.get("/landingpages/List_grantees/");
+    const comparsionHeader = axios.get("/landingpages/List_comparsion_header/");
+    const comparsionBody = axios.get("/landingpages/List_comparsion_body/");
+    const feedBacks = axios.get(
+      "/landingpages/List_reviews/?type=audio&status=published"
+    );
 
     // fetch all
     const [
@@ -61,13 +76,27 @@ const App = () => {
       homeIntroData,
       highlightedCoursesData,
       statisticsData,
-      whyUsData
+      whyUsData,
+      faqsData,
+      termsConditionsData,
+      privacyPolicyData,
+      granteesData,
+      comparsionHeaderData,
+      comparsionBodyData,
+      feedBacksData
     ] = await Promise.all([
       courses,
       homeIntro,
       highlightedCourses,
       statistics,
-      whyUs
+      whyUs,
+      faqs,
+      termsConditions,
+      privacyPolicy,
+      grantees,
+      comparsionHeader,
+      comparsionBody,
+      feedBacks
     ]);
 
     // dispatch
@@ -76,6 +105,13 @@ const App = () => {
     dispatch(setHighLightedCourses(highlightedCoursesData?.data?.message));
     dispatch(setStatistics(statisticsData?.data?.message));
     dispatch(setWhyUs(whyUsData?.data?.message));
+    dispatch(setFaqs(faqsData?.data?.message));
+    dispatch(setTermsConditions(termsConditionsData?.data?.message));
+    dispatch(setPrivacy(privacyPolicyData?.data?.message));
+    dispatch(setGrantees(granteesData?.data?.message[0]));
+    dispatch(setHeader(comparsionHeaderData?.data?.message[0]));
+    dispatch(setBody(comparsionBodyData?.data?.message));
+    dispatch(setFeedBacks(feedBacksData?.data?.message));
     setLoading(false);
   };
 

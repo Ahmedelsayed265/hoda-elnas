@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import SectionHeader from "../components/layout/SectionHeader";
 import { useTranslation } from "react-i18next";
 import InputField from "../components/ui/form-elements/InputField";
 import TextField from "../components/ui/form-elements/TextField";
-import SubmitButton from './../components/ui/form-elements/SubmitButton';
+import SubmitButton from "./../components/ui/form-elements/SubmitButton";
+import axios from "./../util/axios";
+import { toast } from "react-toastify";
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const form = useRef(null);
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -20,6 +24,24 @@ const Contact = () => {
       path: "/"
     }
   ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await axios.post("/contact/", formData);
+      if (res?.status === 200 || res?.status === 201) {
+        toast.success(t("contactPage.success"));
+        form.current.reset();
+      } else {
+        toast.error(t("contactPage.error"));
+      }
+    } catch (error) {
+      toast.error(t("contactPage.error"));
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <>
       <SectionHeader pageName={t("contact")} backLinks={backLinks} />
@@ -27,7 +49,7 @@ const Contact = () => {
         <div className="container">
           <div className="row m-0 justify-content-center">
             <div className="col-lg-10 col-12 p-2">
-              <div className="form-ui">
+              <form className="form-ui" ref={form} onSubmit={handleSubmit}>
                 <div className="form_group">
                   <div className="form_group">
                     <InputField
@@ -83,8 +105,12 @@ const Contact = () => {
                   id="message"
                   setFormData={setFormData}
                 />
-                <SubmitButton name={t("send")} loading={false} className="w-25 me-auto" />
-              </div>
+                <SubmitButton
+                  name={t("send")}
+                  loading={loading}
+                  className="w-25 me-auto"
+                />
+              </form>
             </div>
           </div>
         </div>

@@ -116,5 +116,9 @@
         "aboutYou": "About You",
         "uploadYourCv": "Upload Your CV",
         "submit": "Submit"
+    },
+    "contactPage": {
+        "sucess": "Message Sent Successfully",
+        "error": "Something went wrong, please try again"
     }
 }

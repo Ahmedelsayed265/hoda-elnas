@@ -1,9 +1,25 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import logo from "../../assets/images/logo.png";
+import { useSelector } from "react-redux";
 
 const WhatWeOffer = () => {
+  const comparsionHeader = useSelector((state) => state.comparsion.header);
+  const comparsionBody = useSelector((state) => state.comparsion.body);
   const { t } = useTranslation();
+
+  const renderComparableValue = (value) => {
+    if (value === "True" || value === "False") {
+      if (value === "True") {
+        return <i className="check fa-regular fa-check"></i>;
+      } else if (value === "False") {
+        return <i className="x fa-regular fa-xmark"></i>;
+      }
+    } else {
+      return value;
+    }
+  };
+
   return (
     <section className="what_we_offer">
       <div className="container">
@@ -20,63 +36,27 @@ const WhatWeOffer = () => {
                     <th>
                       <img src={logo} alt="" />
                     </th>
-                    <th>{t("homePage.competitors")}</th>
+                    {comparsionHeader?.comparable_1 !== null && (
+                      <th>{comparsionHeader?.comparable_1}</th>
+                    )}
+                    {comparsionHeader?.comparable_2 !== null && (
+                      <th>{comparsionHeader?.comparable_2}</th>
+                    )}
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="circled">السعر</td>
-                    <td>أسعار ثابتة وواضحة</td>
-                    <td>حسب المعلم</td>
-                  </tr>
-                  <tr>
-                    <td className="circled">التزام المعلم</td>
-                    <td>مضمون</td>
-                    <td>المعلم يقدر يتركك بأي وقت</td>
-                  </tr>
-                  <tr>
-                    <td className="circled">السرعة والجودة</td>
-                    <td>خلال ١٢ ساعة نوصلك بمعلم يطابق احتياجاتك</td>
-                    <td>ربط عشوائي وفي مدة توصل للأيام</td>
-                  </tr>
-                  <tr>
-                    <td className="circled">نوع الحصص</td>
-                    <td>حضوري وأونلاين</td>
-                    <td>
-                      <i className="fa-sharp fa-solid fa-x"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="circled">جودة المعلم</td>
-                    <td>جودة عالية. ما نقبل إلّا ٨٪ من المتقدّمين</td>
-                    <td>حسب المعلم</td>
-                  </tr>
-                  <tr>
-                    <td className="circled">طريقة الدفع</td>
-                    <td>أون لاين مع إمكانية التقسيط</td>
-                    <td>
-                      <i className="fa-sharp fa-solid fa-x"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="circled">دعم العملاء</td>
-                    <td>٧ أيام في الأسبوع</td>
-                    <td>دعم بسيط قبل الدفع</td>
-                  </tr>
-                  <tr>
-                    <td className="circled">متابعة الأداء</td>
-                    <td>ملاحظات وتقييمات من المعلم بعد كل حصة</td>
-                    <td>
-                      <i className="fa-sharp fa-solid fa-x"></i>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="circled">سياسة الاسترجاع</td>
-                    <td>ضمان استرجاع الأموال</td>
-                    <td>
-                      <i className="fa-sharp fa-solid fa-x"></i>
-                    </td>
-                  </tr>
+                  {comparsionBody?.map((item) => (
+                    <tr key={item?.criteria}>
+                      <td className="circled">{item?.criteria}</td>
+                      <td>{renderComparableValue(item?.hudaelnas)}</td>
+                      {comparsionHeader?.comparable_1 !== null && (
+                        <td>{renderComparableValue(item?.comparable_1)}</td>
+                      )}
+                      {comparsionHeader?.comparable_2 !== null && (
+                        <td>{renderComparableValue(item?.comparable_2)}</td>
+                      )}
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

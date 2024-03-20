@@ -9,9 +9,10 @@ const FeatureAndStatistics = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
   const statistics = useSelector((state) => state.statistics.statistics);
   const whyus = useSelector((state) => state.whyUs.whyUs);
-  const [intervalId, setIntervalId] = useState(null);
+  const grantees = useSelector((state) => state.grantees.grantees);
 
   useEffect(() => {
     const handleVisibility = () => {
@@ -135,11 +136,11 @@ const FeatureAndStatistics = () => {
         </div>
       </div>
       <div className="row justify-content-center m-0 mt-5">
-        <div className="col-lg-8 col-12 p-2">
+        <div className="col-lg-9 col-12 p-2">
           <div className="good_Experience">
-            <h3>نضمن لك تجربة تعليمية ممتازة</h3>
+            <h3>{grantees?.title}</h3>
             <div className="notSatisfied">
-              <h5>إذا ما أعجبتك التجربة؟</h5>
+              <h5>{grantees?.sub_title}</h5>
             </div>
             <div className="solutions">
               <div className="solution">
@@ -147,8 +148,8 @@ const FeatureAndStatistics = () => {
                   <img src={icon1} alt="icon" />
                 </div>
                 <div className="text">
-                  <h6>ضمان استرداد الأموال</h6>
-                  <p>في حال عدم رضاك عن جودة خدماتنا</p>
+                  <h6>{grantees?.grantee_1}</h6>
+                  <p>{grantees?.description_1}</p>
                 </div>
               </div>
               <div className="solution">
@@ -156,8 +157,8 @@ const FeatureAndStatistics = () => {
                   <img src={icon2} alt="icon" />
                 </div>
                 <div className="text">
-                  <h6>ضمان استبدال المعلم</h6>
-                  <p>نضمن لك توفير المعلم المناسب لابنك</p>
+                  <h6>{grantees?.grantee_2}</h6>
+                  <p>{grantees?.description_2}</p>
                 </div>
               </div>
             </div>

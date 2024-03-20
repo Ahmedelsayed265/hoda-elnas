@@ -116,5 +116,9 @@
         "aboutYou": "نبذة عنك",
         "uploadYourCv": "ارفع ملف cv",
         "submit": "ارسال"
+    },
+    "contactPage": {
+        "sucess": "تم الارسال بنجاح",
+        "error": "حدث خطأ ما ، حاول مرة اخرى"
     }
 }

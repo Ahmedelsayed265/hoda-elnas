@@ -967,7 +967,6 @@ body {
           cursor: pointer;
           padding: 16px;
           width: 100%;
-          height: 110px;
           display: flex;
           justify-content: center;
           flex-direction: column;
@@ -980,23 +979,17 @@ body {
           p {
             font-size: 14px;
             line-height: 24px;
-            display: none;
             color: $main;
             margin: 0;
           }
           h4 {
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 600;
             color: $main;
             margin: 0;
-            transition: $transation;
           }
           &.active {
             background: $secondary;
-            height: 109px;
-            h4 {
-              font-size: 18px;
-            }
             h4,
             p {
               color: $white;
@@ -1050,7 +1043,7 @@ body {
             gap: 16px;
           }
           .solution {
-            padding: 12px;
+            padding: 16px 12px;
             border-radius: 12px;
             width: 100%;
             display: flex;
@@ -1192,7 +1185,10 @@ body {
           padding: 8px 16px;
           border: 1px solid $inputStroke;
           position: relative;
-          i {
+          .check {
+            color: $secondary;
+          }
+          .x {
             color: #f02020;
           }
           &.circled {
@@ -1216,23 +1212,23 @@ body {
       padding: 60px 0 30px;
       background: $second10;
       .testimonial_card {
+        height: 100%;
         border: 1px solid $second10;
         padding: 16px;
-        gap: 4px;
+        gap: 8px;
         @include centerFlex();
         flex-direction: column;
         border-radius: 12px;
         p {
           margin: 0;
+          text-align: center;
+          line-height: 24px;
         }
         .play_btn {
           min-width: 36px;
           max-width: 36px;
           height: 36px;
           font-size: 14px;
-          i {
-            transform: translateX(1px);
-          }
           cursor: pointer;
           background: $secondary;
           color: $white;
@@ -1766,6 +1762,10 @@ body {
       .custom-card {
         direction: ltr !important;
       }
+      .what_we_offer table td.circled:before {
+        right: initial;
+        left: 8px;
+      }
     }
     .accordion-button::after {
       margin-left: auto;
@@ -1883,4 +1883,7 @@ body {
     font-size: 48px;
     color: $secondary;
   }
+}
+.hidden_audio {
+  display: none;
 }

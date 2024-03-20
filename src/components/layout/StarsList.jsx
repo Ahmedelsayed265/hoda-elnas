@@ -2,7 +2,7 @@ import React from "react";
 import starFilledIcon from "../../assets/images/star-filled.svg";
 import starIcon from "../../assets/images/star.svg";
 
-const StarsList = ({ rate = 3 }) => {
+const StarsList = ({ rate = 4 }) => {
   return (
     <div className="stars">
       {Array(Math.round(rate))
