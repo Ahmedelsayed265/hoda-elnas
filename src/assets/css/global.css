@@ -1038,7 +1038,7 @@ body main .course_reviews .testimonial_card .play_btn {
 body main .course_reviews .testimonial_card .sound {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 12px;
   width: 100%;
 }
@@ -1458,7 +1458,7 @@ body main .testimonials .testimonial_card .play_btn {
 body main .testimonials .testimonial_card .sound {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 12px;
   width: 100%;
 }

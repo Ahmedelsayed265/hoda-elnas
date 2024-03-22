@@ -5,6 +5,7 @@ import ReviewsSlider from "./ReviewsSlider";
 import { useParams } from "react-router-dom";
 
 const Reviews = () => {
+  const { lang } = useSelector((state) => state.language);
   const { id } = useParams();
   const [reviews, setReviews] = React.useState([]);
   const titles = useSelector((state) => state.sectionsTitles.titles);
@@ -20,7 +21,7 @@ const Reviews = () => {
   useEffect(() => {
     getCourseReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [lang]);
   return (
     <section className="course_reviews">
       <div className="container">

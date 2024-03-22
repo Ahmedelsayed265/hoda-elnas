@@ -1025,9 +1025,7 @@ body {
           border-radius: 50%;
         }
         .sound {
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
+          @include centerFlex();
           gap: 12px;
           width: 100%;
           .waves_img {
@@ -1413,9 +1411,7 @@ body {
           border-radius: 50%;
         }
         .sound {
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
+          @include centerFlex();
           gap: 12px;
           width: 100%;
           .waves_img {
