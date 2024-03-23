@@ -935,7 +935,7 @@ body {
       }
     }
     .in_course_why_us {
-      padding: 0 0 40px;
+      padding: 40px 0;
       .title {
         display: flex;
         flex-direction: column;
@@ -1553,6 +1553,116 @@ body {
         }
       }
     }
+    .subscribe {
+      padding: 40px 0;
+      .image {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: $lightShadow;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .course_header {
+        h3 {
+          color: $secondary;
+        }
+        p {
+          color: $gray;
+          margin-bottom: 12px;
+        }
+      }
+      form {
+        label {
+          color: $main !important;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+        }
+        .time-group {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 8px;
+          .duration_check {
+            cursor: pointer;
+            @media (max-width: 576px) {
+              max-width: 100%;
+            }
+            .time {
+              min-width: 100px;
+              height: 60px;
+              @include centerFlex();
+              flex-direction: column;
+              background: $inputBG;
+              border-radius: 8px;
+              border: 1px solid $inputStroke;
+              transition: $transation;
+              span {
+                line-height: 20px;
+              }
+              @media (max-width: 576px) {
+                max-width: 100%;
+              }
+            }
+            input {
+              display: none;
+              &:checked + .time {
+                background: $secondary;
+                border-color: $secondary;
+                color: $white;
+              }
+            }
+          }
+        }
+        h6 {
+          color: $main;
+          font-size: 16px;
+          margin: 8px 0;
+          font-weight: 600;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          width: min(100%, 300px);
+          li {
+            label {
+              cursor: pointer;
+            }
+            @include space-between();
+            .check {
+              @include centerFlex();
+              gap: 8px;
+            }
+          }
+        }
+      }
+      .total {
+        width: min(100%, 300px);
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        .price {
+          @include space-between();
+          h3,
+          span {
+            color: $main;
+            font-weight: 600;
+            font-size: 20px;
+          }
+        }
+      }
+      .discount {
+        color: $secondary;
+        font-size: 16px;
+      }
+    }
   }
   footer {
     padding: 40px 8px 16px;
@@ -2090,4 +2200,31 @@ body {
   position: fixed;
   top: -999999px;
   left: -999999px;
+}
+input[type="checkbox"] {
+  width: 16px;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    content: "";
+    font-family: "FontAwesome";
+    width: 16px;
+    height: 16px;
+    border: 1px solid $gray;
+    border-radius: 4px;
+    font-size: 10px;
+    @include centerFlex();
+    color: $white;
+  }
+  &:checked::after {
+    content: "\f00c";
+    background: $secondary;
+    color: #fff;
+    border-color: $secondary;
+  }
 }

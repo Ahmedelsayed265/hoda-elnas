@@ -28,6 +28,7 @@ import Contact from "./pages/Contact";
 import JobDetails from "./pages/JobDetails";
 import ApplyForJob from "./pages/ApplyForJob";
 import Profile from "./pages/Profile";
+import Subscribe from "./components/courses/Subscribe";
 // =========== redux =========== //
 import { setLogged, setToken, setUser } from "./redux/slices/authedUser";
 import { setCourses } from "./redux/slices/courses";
@@ -164,6 +165,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
+          <Route path="/courses/:id/subscripe" element={<Subscribe />} />
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/profile" element={<Profile />} />

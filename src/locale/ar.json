@@ -33,6 +33,7 @@
     "subscribe": "اشترك",
     "alreadySubscribed": "هل أنت مشترك بالفعل؟ ",
     "installment": "يقبل التقسيط",
+    "thiCourseIncludes": "هذا الدرس يشمل :",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -120,5 +121,28 @@
     "contactPage": {
         "sucess": "تم الارسال بنجاح",
         "error": "حدث خطأ ما ، حاول مرة اخرى"
+    },
+    "courseSubscribe": {
+        "subscribed": "تم الاشتراك بنجاح",
+        "unsubscribed": "تم الغاء الاشتراك بنجاح",
+        "subscribersNumer": "عدد المشتركين",
+        "courseDuration": "عدد الايام",
+        "lessonsDuration": "مدة الدرس",
+        "minutes": "دقيقة",
+        "subscriptionsPlan": "خطة الاشتراك",
+        "monthly": "شهرى",
+        "yearly": "سنوى",
+        "quarterly": "ربع سنوى",
+        "halfYear": "نصف سنوى",
+        "additionalServices": "خدمات اضافية",
+        "certificate": "شهادة",
+        "imeddiatePayment": "دفع فوري",
+        "installment": "تقسيط",
+        "payment": "الدفع",
+        "discountCopon": "كوبون خصم",
+        "friendCopon": "كوبون مشاركة صديق",
+        "total": "الإجمالي",
+        "installmentDuration": "مدة التقسيط",
+        "subscribe": "دفع وإشتراك"
     }
 }

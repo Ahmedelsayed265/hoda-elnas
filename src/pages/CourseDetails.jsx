@@ -12,6 +12,7 @@ const CourseDetails = () => {
   const [showModal, setShowModal] = React.useState(false);
   const { t } = useTranslation();
   const { id } = useParams();
+  const logged = useSelector((state) => state.authedUser.logged);
   const courses = useSelector((state) => state.courses.courses);
   const course = courses.find((c) => c.id === +id);
 
@@ -42,10 +43,12 @@ const CourseDetails = () => {
               <Link className="btn" to="/courses/1/subscripe">
                 {t("subscribe")}
               </Link>
-              <p className="alreadySub">
-                {t("alreadySubscribed")}
-                <Link to="/login">{t("login")}</Link>
-              </p>
+              {!logged && (
+                <p className="alreadySub">
+                  {t("alreadySubscribed")}
+                  <Link to="/login">{t("login")}</Link>
+                </p>
+              )}
             </div>
             <div className="col-lg-7 col-12 p-3">
               <div className="content">

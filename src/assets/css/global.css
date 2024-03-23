@@ -938,7 +938,7 @@ body main .course_faqs .title::after {
   background: #81a63d;
 }
 body main .in_course_why_us {
-  padding: 0 0 40px;
+  padding: 40px 0;
 }
 body main .in_course_why_us .title {
   display: flex;
@@ -1602,6 +1602,125 @@ body main .terms_section ul {
 body main .terms_section ul li {
   color: #31535a;
 }
+body main .subscribe {
+  padding: 40px 0;
+}
+body main .subscribe .image {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+body main .subscribe .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .subscribe .course_header h3 {
+  color: #81a63d;
+}
+body main .subscribe .course_header p {
+  color: #777777;
+  margin-bottom: 12px;
+}
+body main .subscribe form label {
+  color: #31535a !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+body main .subscribe form .time-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body main .subscribe form .time-group .duration_check {
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  body main .subscribe form .time-group .duration_check {
+    max-width: 100%;
+  }
+}
+body main .subscribe form .time-group .duration_check .time {
+  min-width: 100px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #f8f8f8;
+  border-radius: 8px;
+  border: 1px solid #f2f2f2;
+  transition: 0.3s ease-in-out;
+}
+body main .subscribe form .time-group .duration_check .time span {
+  line-height: 20px;
+}
+@media (max-width: 576px) {
+  body main .subscribe form .time-group .duration_check .time {
+    max-width: 100%;
+  }
+}
+body main .subscribe form .time-group .duration_check input {
+  display: none;
+}
+body main .subscribe form .time-group .duration_check input:checked + .time {
+  background: #81a63d;
+  border-color: #81a63d;
+  color: #fff;
+}
+body main .subscribe form h6 {
+  color: #31535a;
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: 600;
+}
+body main .subscribe form ul {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 300px);
+}
+body main .subscribe form ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body main .subscribe form ul li label {
+  cursor: pointer;
+}
+body main .subscribe form ul li .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+body main .subscribe .total {
+  width: min(100%, 300px);
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body main .subscribe .total .price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body main .subscribe .total .price h3,
+body main .subscribe .total .price span {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 20px;
+}
+body main .subscribe .discount {
+  color: #81a63d;
+  font-size: 16px;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
@@ -2146,4 +2265,36 @@ body.en .accordion-button::after {
   position: fixed;
   top: -999999px;
   left: -999999px;
+}
+
+input[type=checkbox] {
+  width: 16px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]::after {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  content: "";
+  font-family: "FontAwesome";
+  width: 16px;
+  height: 16px;
+  border: 1px solid #777777;
+  border-radius: 4px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+input[type=checkbox]:checked::after {
+  content: "\f00c";
+  background: #81a63d;
+  color: #fff;
+  border-color: #81a63d;
 }/*# sourceMappingURL=global.css.map */

@@ -33,6 +33,7 @@
     "subscribe": "Subscribe",
     "alreadySubscribed": "Are you already subscribed? ",
     "installment": "Accepts installment.",
+    "thiCourseIncludes": "This course includes :",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -120,5 +121,27 @@
     "contactPage": {
         "sucess": "Message Sent Successfully",
         "error": "Something went wrong, please try again"
+    },
+    "courseSubscribe": {
+        "subscribersNumer": "Subscribers",
+        "courseDuration": "Days",
+        "subscribed": "Subscribed",
+        "unsubscribed": "Unsubscribed",
+        "lessonsDuration": "Lesson Duration",
+        "minutes": "Minutes",
+        "subscriptionsPlan": "Subscription Plan",
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "quarterly": "Quarter Year",
+        "halfYear": "Half Year",
+        "additionalServices": "Additional Services",
+        "certificate": "Certificate",
+        "imeddiatePayment": "Immediate Payment",
+        "installment": "Installment",
+        "payment": "Payment",
+        "discountCopon": "Discount Copon",
+        "friendCopon": "Share a friend coupon",
+        "total": "Total",
+        "installmentDuration": "Installment Duration"
     }
 }
