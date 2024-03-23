@@ -193,33 +193,35 @@ const Subscribe = () => {
                     ))}
                 </ul>
               </div>
-              <div className="input-filed">
-                <h6>{t("courseSubscribe.payment")}</h6>
-                <div className="time-group">
-                  {[
-                    t("courseSubscribe.imeddiatePayment"),
-                    t("courseSubscribe.installment")
-                  ].map((paymethd, index) => (
-                    <label
-                      htmlFor={paymethd}
-                      key={index}
-                      className="duration_check"
-                    >
-                      <input
-                        type="radio"
-                        name="paymethod"
-                        id={paymethd}
-                        value={paymethd}
-                        checked={paymethod === paymethd}
-                        onChange={(e) => setPaymethod(e.target.value)}
-                      />
-                      <div className="time">
-                        <span>{paymethd} </span>
-                      </div>
-                    </label>
-                  ))}
+              {course?.installment && (
+                <div className="input-filed">
+                  <h6>{t("courseSubscribe.payment")}</h6>
+                  <div className="time-group">
+                    {[
+                      t("courseSubscribe.imeddiatePayment"),
+                      t("courseSubscribe.installment")
+                    ].map((paymethd, index) => (
+                      <label
+                        htmlFor={paymethd}
+                        key={index}
+                        className="duration_check"
+                      >
+                        <input
+                          type="radio"
+                          name="paymethod"
+                          id={paymethd}
+                          value={paymethd}
+                          checked={paymethod === paymethd}
+                          onChange={(e) => setPaymethod(e.target.value)}
+                        />
+                        <div className="time">
+                          <span>{paymethd} </span>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
               {paymethod === t("courseSubscribe.imeddiatePayment") && (
                 <div className="total">
                   <span className="discount">خصم 50% كوبون kito</span>
@@ -233,38 +235,37 @@ const Subscribe = () => {
                 <div className="input-field">
                   <h6>{t("courseSubscribe.installmentDuration")}</h6>
                   <div className="time-group">
-                  {[
-                    t("courseSubscribe.monthly"),
-                    t("courseSubscribe.quarterly"),
-                    t("courseSubscribe.halfYear"),
-                    t("courseSubscribe.yearly")
-                  ].map((plan, index) => (
-                    <label
-                      htmlFor={plan}
-                      key={index}
-                      className="duration_check"
-                    >
-                      <input
-                        type="radio"
-                        name="plan"
-                        id={plan}
-                        value={plan}
-                        checked={formData.plan === plan}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            plan: e.target.value
-                          })
-                        }
-                      />
-                      <div className="time">
-                        <span>{plan} </span>
-                      </div>
-                    </label>
-                  ))}
+                    {[
+                      t("courseSubscribe.monthly"),
+                      t("courseSubscribe.quarterly"),
+                      t("courseSubscribe.halfYear"),
+                      t("courseSubscribe.yearly")
+                    ].map((plan, index) => (
+                      <label
+                        htmlFor={plan}
+                        key={index}
+                        className="duration_check"
+                      >
+                        <input
+                          type="radio"
+                          name="plan"
+                          id={plan}
+                          value={plan}
+                          checked={formData.plan === plan}
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              plan: e.target.value
+                            })
+                          }
+                        />
+                        <div className="time">
+                          <span>{plan} </span>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-                </div>
-                
               )}
               <button className="save w-25">
                 {t("courseSubscribe.subscribe")}

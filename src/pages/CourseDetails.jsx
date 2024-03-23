@@ -28,7 +28,7 @@ const CourseDetails = () => {
                   backgroundImage: `url(${BASE_URL}${course?.background})`
                 }}
               >
-                <span>{t("installment")}</span>
+                {course?.installment && <span>{t("installment")}</span>}
                 {course?.promo && (
                   <div className="play-btn" onClick={() => setShowModal(true)}>
                     <i className="fa-light fa-play"></i>{" "}
