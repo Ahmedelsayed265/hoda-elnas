@@ -19,8 +19,8 @@ const SubscribeForm = ({ course }) => {
     studentsNumber: 1,
     courseDuration: 1,
     validCopun: "",
-    lessonsDuration: "",
-    plan: "",
+    lessonsDuration: course?.duration[0],
+    plan: course?.types[0],
     totalPrice: 0
   });
   useEffect(() => {
@@ -231,7 +231,7 @@ const SubscribeForm = ({ course }) => {
           totalPrice={formData?.totalPrice}
         />
       )}
-      <button className="save w-50">{t("courseSubscribe.subscribe")}</button>
+      <button className="save w-25">{t("courseSubscribe.subscribe")}</button>
     </form>
   );
 };
