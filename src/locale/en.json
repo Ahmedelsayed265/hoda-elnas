@@ -124,7 +124,7 @@
     },
     "courseSubscribe": {
         "subscribersNumer": "Subscribers",
-        "courseDuration": "Days",
+        "courseDuration": "Lessons per week",
         "subscribed": "Subscribed",
         "unsubscribed": "Unsubscribed",
         "lessonsDuration": "Lesson Duration",
@@ -142,6 +142,8 @@
         "discountCopon": "Discount Copon",
         "friendCopon": "Share a friend coupon",
         "total": "Total",
-        "installmentDuration": "Installment Duration"
+        "installmentDuration": "Installment Duration",
+        "egyptianPound": "EGP",
+        "dollar": "USD"
     }
 }

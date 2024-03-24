@@ -18,7 +18,7 @@ const Courses = () => {
             </div>
           </div>
           {courses?.map((course) => (
-            <div className="col-lg-4 col-md-6 col-12 p-2">
+            <div className="col-lg-4 col-md-6 col-12 p-2" key={course.id}>
               <CourseCard course={course} />
             </div>
           ))}

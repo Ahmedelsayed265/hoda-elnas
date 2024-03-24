@@ -1683,7 +1683,7 @@ body main .subscribe form h6 {
 body main .subscribe form ul {
   display: flex;
   flex-direction: column;
-  width: min(100%, 300px);
+  width: min(100% - 24px, 400px);
 }
 body main .subscribe form ul li {
   display: flex;
@@ -1700,7 +1700,7 @@ body main .subscribe form ul li .check {
   gap: 8px;
 }
 body main .subscribe .total {
-  width: min(100%, 300px);
+  width: min(100% - 24px, 400px);
   margin-top: 12px;
   display: flex;
   flex-direction: column;

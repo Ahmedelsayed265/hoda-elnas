@@ -126,7 +126,7 @@
         "subscribed": "تم الاشتراك بنجاح",
         "unsubscribed": "تم الغاء الاشتراك بنجاح",
         "subscribersNumer": "عدد المشتركين",
-        "courseDuration": "عدد الايام",
+        "courseDuration": "عدد الحصص أسبوعياَ",
         "lessonsDuration": "مدة الدرس",
         "minutes": "دقيقة",
         "subscriptionsPlan": "خطة الاشتراك",
@@ -143,6 +143,8 @@
         "friendCopon": "كوبون مشاركة صديق",
         "total": "الإجمالي",
         "installmentDuration": "مدة التقسيط",
-        "subscribe": "دفع وإشتراك"
+        "subscribe": "دفع وإشتراك",
+        "egyptianPound": "ج.م",
+        "dollar": "UCD"
     }
 }
