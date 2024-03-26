@@ -145,6 +145,8 @@
         "installmentDuration": "مدة التقسيط",
         "subscribe": "دفع وإشتراك",
         "egyptianPound": "ج.م",
-        "dollar": "UCD"
+        "dollar": "UCD",
+        "monthlyInstallment": "القسط الشهري",
+        "haveRead": "لقد قرأت وأوافق على"
     }
 }

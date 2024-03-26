@@ -4,12 +4,15 @@ import { useTranslation } from "react-i18next";
 const AdditionalServices = ({ course, location, formData, setFormData }) => {
   const { t } = useTranslation();
 
-  const handleCheckboxChange = (e, addonValue) => {
+  const handleCheckboxChange = (e, addon) => {
     const updatedFormData = {
       ...formData,
       totalPrice: e.target.checked
-        ? formData.totalPrice + addonValue
-        : formData.totalPrice - addonValue
+        ? formData.totalPrice +
+          (location === "EG" ? addon?.fees_egp : addon?.fees_usd)
+        : formData.totalPrice -
+          (location === "EG" ? addon?.fees_egp : addon?.fees_usd),
+      addons: [...formData.addons, addon]
     };
     setFormData(updatedFormData);
   };
@@ -25,12 +28,7 @@ const AdditionalServices = ({ course, location, formData, setFormData }) => {
                 type="checkbox"
                 id={addon?.name}
                 name={addon?.name}
-                onChange={(e) =>
-                  handleCheckboxChange(
-                    e,
-                    location === "EG" ? addon?.fees_egp : addon?.fees_usd
-                  )
-                }
+                onChange={(e) => handleCheckboxChange(e, addon)}
               />
               <label htmlFor={addon?.name}>{addon?.name}</label>
             </div>

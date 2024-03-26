@@ -21,7 +21,7 @@ const CourseDetails = () => {
       <section className="course-details">
         <div className="container">
           <div className="row">
-            <div className="col-lg-5 col-12 p-3">
+            <div className="col-lg-4 col-12 p-3">
               <div
                 className="video_wrapper"
                 style={{
@@ -50,7 +50,7 @@ const CourseDetails = () => {
                 </p>
               )}
             </div>
-            <div className="col-lg-7 col-12 p-3">
+            <div className="col-lg-8 col-12 p-3">
               <div className="content">
                 <h4>{course?.name}</h4>
                 <p>{course?.description}</p>
@@ -58,6 +58,12 @@ const CourseDetails = () => {
                 <ul>
                   {course?.outcome?.split("\r\n").map((outcome, index) => (
                     <li key={index}>{outcome}</li>
+                  ))}
+                </ul>
+                <h6>{t("thiCourseIncludes")}</h6>
+                <ul className="iconCheck">
+                  {course?.benefits?.split("\r").map((benefit, index) => (
+                    <li key={index}>{benefit}</li>
                   ))}
                 </ul>
               </div>

@@ -889,9 +889,9 @@ body {
           font-weight: 600;
         }
         P {
-          font-size: 16px;
+          font-size: 14px;
           color: $gray;
-          line-height: 28px;
+          line-height: 26px;
         }
         h6 {
           font-size: 18px;
@@ -899,15 +899,28 @@ body {
           font-weight: 600;
         }
         ul {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          margin-bottom: 16px;
+          @media (max-width: 576px) {
+            grid-template-columns: repeat(1, 1fr);
+          }
           li {
             display: flex;
             align-items: flex-start;
-            gap: 8px;
+            gap: 4px;
+            font-size: 13px;
             color: $gray;
+            line-height: 24px;
             &::before {
-              content: "\f00c";
+              content: "\f648";
               font-family: "Font Awesome 6 pro";
-              color: $main;
+              color: $secondary;
+            }
+          }
+          &.iconCheck {
+            li::before {
+              content: "\f00c";
             }
           }
         }
@@ -1641,6 +1654,10 @@ body {
             }
           }
         }
+        .save {
+          margin-top: 0 !important;
+          width: min(100% - 24px, 200px);
+        }
       }
       .total {
         width: min(100% - 24px, 400px);
@@ -1657,10 +1674,24 @@ body {
             font-size: 20px;
           }
         }
+        .instalment_message {
+          color: rgb(255, 0, 0);
+          font-size: 12px;
+          font-weight: 600;
+          line-height: 24px;
+        }
       }
       .discount {
         color: $secondary;
         font-size: 16px;
+      }
+      .check-field {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        a {
+          color: $secondary;
+        }
       }
     }
   }
@@ -2227,4 +2258,8 @@ input[type="checkbox"] {
     color: #fff;
     border-color: $secondary;
   }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
 }

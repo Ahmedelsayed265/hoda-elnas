@@ -1,53 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import useUserLocation from "../../hooks/useUserLocation";
-import axios from "./../../util/axios";
-import AdditionalServices from "./AdditionalServices";
 import TotalPrice from "./TotalPrice";
+import AdditionalServices from "./AdditionalServices";
+import useUserLocation from "../../hooks/useUserLocation";
+import RadiosSelect from "./RadiosSelect";
+import InputField from "./InputField";
+import InstalmentPrice from "./InstalmentPrice";
+import { Link } from "react-router-dom";
 
-const SubscribeForm = ({ course }) => {
+const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
   const { t } = useTranslation();
   const locationData = useUserLocation();
   const location = locationData?.country;
-
-  const [pricingPlans, setPricingPlans] = useState([]);
   const [pricingPlan, setPricingPlan] = useState({});
   const [paymethod, setPaymethod] = useState(
     t("courseSubscribe.imeddiatePayment")
   );
-  const [formData, setFormData] = useState({
-    studentsNumber: 1,
-    courseDuration: 1,
-    validCopun: "",
-    lessonsDuration: course?.duration[0],
-    plan: course?.types[0],
-    totalPrice: 0
-  });
-  useEffect(() => {
-    if (course) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        plan: course?.types[0],
-        lessonsDuration: course?.duration[0]
-      }));
-    }
-  }, [course]);
-
-  // get pricing plans
-  useEffect(() => {
-    const getPricing = async () => {
-      try {
-        const response = await axios.get(
-          `/learningcenter/list_pricingplans/?course_slug=${course?.slug}`
-        );
-        setPricingPlans(response?.data?.message);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getPricing();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [course?.slug]);
 
   // find pricing plan
   useEffect(() => {
@@ -60,8 +28,27 @@ const SubscribeForm = ({ course }) => {
       );
       setPricingPlan(plan);
       location === "EG"
-        ? setFormData({ ...formData, totalPrice: plan?.price_egp })
-        : setFormData({ ...formData, totalPrice: plan?.price_usd });
+        ? setFormData({
+            ...formData,
+            price: plan?.price_egp,
+            totalPrice:
+              plan?.price_egp * formData?.studentsNumber +
+              formData?.addons?.reduce(
+                (total, addon) => total + addon?.fees_egp,
+                0
+              )
+          })
+        : setFormData({
+            ...formData,
+            price: plan?.price_usd,
+            totalPrice:
+              plan?.price_usd * formData?.studentsNumber +
+              formData?.addons?.reduce(
+                (total, addon) => total + addon?.fees_usd,
+                0
+              )
+          });
+      setPaymethod(t("courseSubscribe.imeddiatePayment"));
     };
     findPricingPlan(
       formData?.courseDuration,
@@ -76,55 +63,47 @@ const SubscribeForm = ({ course }) => {
     pricingPlans
   ]);
 
+  // handle students count change
+  const handleStudentsCountChange = (e) => {
+    const studentsNumber = e.target.value;
+    const totalPrice = studentsNumber
+      ? formData.price * +studentsNumber
+      : formData.price;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      studentsNumber,
+      totalPrice
+    }));
+  };
+
   return (
     <form className="form-ui">
-      {/* students count and lessons per week */}
       <div className="form_group">
         {/* students count */}
-        <div className="input-field">
-          <label htmlFor="studentsNumber">
-            <i className="fa-solid fa-users"></i>
-            {t("courseSubscribe.subscribersNumer")}
-          </label>
-          <input
-            type="number"
-            name="studentsNumber"
-            id="studentsNumber"
-            min="1"
-            max="100"
-            value={formData.studentsNumber}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                studentsNumber: e.target.value,
-                totalPrice: formData.totalPrice * +e.target.value
-              })
-            }
-            placeholder="00"
-          />
-        </div>
+        <InputField
+          labelPlaceholder={t("courseSubscribe.subscribersNumer")}
+          icon={<i className="fa-solid fa-users"></i>}
+          type="number"
+          placeHolder="00"
+          name="studentsCount"
+          value={formData.studentsNumber}
+          handleChange={handleStudentsCountChange}
+        />
         {/* lessons per week */}
-        <div className="input-field">
-          <label htmlFor="courseDuration">
-            <i className="fa-light fa-calendar-days"></i>
-            {t("courseSubscribe.courseDuration")}
-          </label>
-          <input
-            type="number"
-            name="courseDuration"
-            id="courseDuration"
-            min="1"
-            max="100"
-            value={formData.courseDuration}
-            onChange={(e) =>
-              setFormData({
-                ...formData,
-                courseDuration: e.target.value
-              })
-            }
-            placeholder="00"
-          />
-        </div>
+        <InputField
+          labelPlaceholder={t("courseSubscribe.courseDuration")}
+          icon={<i className="fa-light fa-calendar-days"></i>}
+          type="number"
+          name="lessonsPerWeek"
+          value={formData.courseDuration}
+          placeHolder="00"
+          handleChange={(e) =>
+            setFormData({
+              ...formData,
+              courseDuration: e.target.value
+            })
+          }
+        />
       </div>
       {/* discount */}
       <div className="form_group">
@@ -156,74 +135,52 @@ const SubscribeForm = ({ course }) => {
         </div>
       </div>
       {/* lessons duration */}
-      <div className="input-field">
-        <label htmlFor="lessonsDuration">
-          <i className="fa-light fa-clock"></i>
-          {t("courseSubscribe.lessonsDuration")}
-        </label>
-        <div className="time-group">
-          {course?.duration?.map((duration, index) => (
-            <label
-              htmlFor={duration + "min"}
-              key={index}
-              className="duration_check"
-            >
-              <input
-                type="radio"
-                name="duration"
-                id={duration + "min"}
-                value={duration}
-                checked={formData?.lessonsDuration === duration}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    lessonsDuration: e.target.value
-                  })
-                }
-              />
-              <div className="time">
-                <span>{parseFloat(duration)} </span>
-                <span>{t("courseSubscribe.minutes")}</span>
-              </div>
-            </label>
-          ))}
-        </div>
-      </div>
+      <RadiosSelect
+        labelPlaceholder={t("courseSubscribe.lessonsDuration")}
+        icon={<i className="fa-light fa-clock"></i>}
+        options={course?.duration}
+        name="lessonsDuration"
+        checked={formData?.lessonsDuration}
+        handleChange={(e) =>
+          setFormData({
+            ...formData,
+            lessonsDuration: e.target.value
+          })
+        }
+        additionalInfo={t("courseSubscribe.minutes")}
+      />
       {/* subscriptions plan */}
-      <div className="input-field">
-        <label htmlFor="lessonsDuration">
-          <i className="fa-light fa-clock"></i>
-          {t("courseSubscribe.subscriptionsPlan")}
-        </label>
-        <div className="time-group">
-          {course?.types.map((plan, index) => (
-            <label htmlFor={plan} key={index} className="duration_check">
-              <input
-                type="radio"
-                name="plan"
-                id={plan}
-                value={plan}
-                checked={formData?.plan === plan}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    plan: e.target.value
-                  })
-                }
-              />
-              <div className="time">
-                <span>{plan} </span>
-              </div>
-            </label>
-          ))}
-        </div>
-      </div>
+      <RadiosSelect
+        labelPlaceholder={t("courseSubscribe.subscriptionsPlan")}
+        icon={<i className="fa-light fa-clock"></i>}
+        options={course?.types}
+        name="plan"
+        checked={formData?.plan}
+        handleChange={(e) =>
+          setFormData({
+            ...formData,
+            plan: e.target.value
+          })
+        }
+      />
       <AdditionalServices
         course={course}
         location={location}
         formData={formData}
         setFormData={setFormData}
       />
+      {pricingPlan?.instalments && pricingPlan?.instalments?.length > 0 && (
+        <RadiosSelect
+          headLine={t("courseSubscribe.payment")}
+          options={[
+            t("courseSubscribe.imeddiatePayment"),
+            t("courseSubscribe.installment")
+          ]}
+          name="paymethod"
+          checked={paymethod}
+          handleChange={(e) => setPaymethod(e.target.value)}
+        />
+      )}
       {paymethod === t("courseSubscribe.imeddiatePayment") && (
         <TotalPrice
           validCopun={formData?.validCopun}
@@ -231,7 +188,24 @@ const SubscribeForm = ({ course }) => {
           totalPrice={formData?.totalPrice}
         />
       )}
-      <button className="save w-25">{t("courseSubscribe.subscribe")}</button>
+      {paymethod === t("courseSubscribe.installment") && (
+        <InstalmentPrice
+          instalment={pricingPlan?.instalments[0]}
+          location={location}
+          validCopun={formData?.validCopun}
+          totalPrice={formData?.totalPrice}
+        />
+      )}
+      <div className="check-field">
+        <input type="checkbox" name="agree" id="agree" />
+        <label className="continue" htmlFor="agree">
+          {t("courseSubscribe.haveRead")}{" "}
+          <Link to="/terms-conditions">{t("auth.termsAndCondition")}</Link>{" "}
+          {t("auth.and")}{" "}
+          <Link to="/privacy-policy">{t("auth.privacyPolicy")}</Link>
+        </label>
+      </div>
+      <button className="save">{t("courseSubscribe.subscribe")}</button>
     </form>
   );
 };

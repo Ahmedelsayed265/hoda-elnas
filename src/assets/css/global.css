@@ -896,25 +896,40 @@ body main .course-details .content h4 {
   font-weight: 600;
 }
 body main .course-details .content P {
-  font-size: 16px;
+  font-size: 14px;
   color: #777777;
-  line-height: 28px;
+  line-height: 26px;
 }
 body main .course-details .content h6 {
   font-size: 18px;
   color: #31535a;
   font-weight: 600;
 }
+body main .course-details .content ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 16px;
+}
+@media (max-width: 576px) {
+  body main .course-details .content ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 body main .course-details .content ul li {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 4px;
+  font-size: 13px;
   color: #777777;
+  line-height: 24px;
 }
 body main .course-details .content ul li::before {
-  content: "\f00c";
+  content: "\f648";
   font-family: "Font Awesome 6 pro";
-  color: #31535a;
+  color: #81a63d;
+}
+body main .course-details .content ul.iconCheck li::before {
+  content: "\f00c";
 }
 body main .course_faqs {
   padding: 40px 0;
@@ -1699,6 +1714,10 @@ body main .subscribe form ul li .check {
   justify-content: center;
   gap: 8px;
 }
+body main .subscribe form .save {
+  margin-top: 0 !important;
+  width: min(100% - 24px, 200px);
+}
 body main .subscribe .total {
   width: min(100% - 24px, 400px);
   margin-top: 12px;
@@ -1717,9 +1736,23 @@ body main .subscribe .total .price span {
   font-weight: 600;
   font-size: 20px;
 }
+body main .subscribe .total .instalment_message {
+  color: rgb(255, 0, 0);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+}
 body main .subscribe .discount {
   color: #81a63d;
   font-size: 16px;
+}
+body main .subscribe .check-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body main .subscribe .check-field a {
+  color: #81a63d;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -2297,4 +2330,9 @@ input[type=checkbox]:checked::after {
   background: #81a63d;
   color: #fff;
   border-color: #81a63d;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
 }/*# sourceMappingURL=global.css.map */
