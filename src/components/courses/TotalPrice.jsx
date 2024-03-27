@@ -9,7 +9,7 @@ const TotalPrice = ({ validCopun, totalPrice, location }) => {
       <div className="price">
         <h3>{t("courseSubscribe.total")}:</h3>
         <span>
-          {totalPrice}
+          {totalPrice}{" "}
           {location === "EG"
             ? t("courseSubscribe.egyptianPound")
             : t("courseSubscribe.dollar")}

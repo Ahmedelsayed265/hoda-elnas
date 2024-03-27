@@ -105,35 +105,13 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
           }
         />
       </div>
-      {/* discount */}
-      <div className="form_group">
-        {/* discount */}
-        <div className="input-field">
-          <label htmlFor="discountCopon">
-            <i className="fa-light fa-tag"></i>
-            {t("courseSubscribe.discountCopon")}
-          </label>
-          <input
-            type="text"
-            name="discountCopon"
-            id="discountCopon"
-            placeholder="Example : kid1234"
-          />
-        </div>
-        {/* friend copon */}
-        <div className="input-field">
-          <label htmlFor="friendCopon">
-            <i className="fa-light fa-tag"></i>
-            {t("courseSubscribe.friendCopon")}
-          </label>
-          <input
-            type="number"
-            name="friendCopon"
-            id="friendCopon"
-            placeholder="Example : kid1234"
-          />
-        </div>
-      </div>
+      {/* start date */}
+      <InputField
+        labelPlaceholder={t("courseSubscribe.startDate")}
+        icon={<i className="fa-light fa-calendar-days"></i>}
+        type="date"
+        name="startDate"
+      />
       {/* lessons duration */}
       <RadiosSelect
         labelPlaceholder={t("courseSubscribe.lessonsDuration")}
@@ -196,6 +174,32 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
           totalPrice={formData?.totalPrice}
         />
       )}
+      {/* discount */}
+      <div className="form_group flex-lg-row flex-column">
+        <div className="w-100 d-flex align-items-end gap-2">
+          <InputField
+            labelPlaceholder={t("courseSubscribe.discountCopon")}
+            icon={<i className="fa-light fa-tag"></i>}
+            name={"discountCopon"}
+            placeHolder={"kid1234"}
+          />
+          <button className="add-discount">
+            {t("courseSubscribe.addDiscount")}
+          </button>
+        </div>
+        <div className="w-100 d-flex align-items-end gap-2">
+          <InputField
+            labelPlaceholder={t("courseSubscribe.friendCopon")}
+            icon={<i className="fa-light fa-tag"></i>}
+            name={"discountCopon"}
+            placeHolder={"kid1234"}
+          />
+          <button className="add-discount">
+            {t("courseSubscribe.addDiscount")}
+          </button>
+        </div>
+      </div>
+      {/* agree */}
       <div className="check-field">
         <input type="checkbox" name="agree" id="agree" />
         <label className="continue" htmlFor="agree">

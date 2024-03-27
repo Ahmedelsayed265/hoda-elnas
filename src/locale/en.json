@@ -139,13 +139,15 @@
         "imeddiatePayment": "Immediate Payment",
         "installment": "Installment",
         "payment": "Payment",
-        "discountCopon": "Discount Copon",
+        "discountCopon": "Referral code",
         "friendCopon": "Share a friend coupon",
         "total": "Total",
         "installmentDuration": "Installment Duration",
         "egyptianPound": "EGP",
         "dollar": "USD",
         "monthlyInstallment": "Monthly Installment",
-        "haveRead": "I have read and agree to the"
+        "haveRead": "I have read and agree to the",
+        "addDiscount": "Apply",
+        "startDate": "Start Date"
     }
 }

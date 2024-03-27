@@ -1662,7 +1662,7 @@ body main .subscribe form .time-group .duration_check {
   }
 }
 body main .subscribe form .time-group .duration_check .time {
-  min-width: 100px;
+  min-width: 94px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -1717,6 +1717,13 @@ body main .subscribe form ul li .check {
 body main .subscribe form .save {
   margin-top: 0 !important;
   width: min(100% - 24px, 200px);
+}
+body main .subscribe form .add-discount {
+  width: min(100%, 200px);
+  height: 54px;
+  border-radius: 8px;
+  background: #81a63d;
+  color: #fff;
 }
 body main .subscribe .total {
   width: min(100% - 24px, 400px);

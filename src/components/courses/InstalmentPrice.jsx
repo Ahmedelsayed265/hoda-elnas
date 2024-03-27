@@ -9,7 +9,7 @@ const InstalmentPrice = ({ validCopun, totalPrice, location, instalment }) => {
       <div className="price">
         <h3>{t("courseSubscribe.monthlyInstallment")}:</h3>
         <span>
-          {totalPrice / instalment?.payments}
+          {totalPrice / instalment?.payments}{" "}
           {location === "EG"
             ? t("courseSubscribe.egyptianPound")
             : t("courseSubscribe.dollar")}

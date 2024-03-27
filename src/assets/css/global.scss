@@ -1608,7 +1608,7 @@ body {
               max-width: 100%;
             }
             .time {
-              min-width: 100px;
+              min-width: 94px;
               height: 60px;
               @include centerFlex();
               flex-direction: column;
@@ -1657,6 +1657,13 @@ body {
         .save {
           margin-top: 0 !important;
           width: min(100% - 24px, 200px);
+        }
+        .add-discount {
+          width: min(100%, 200px);
+          height: 54px;
+          border-radius: 8px;
+          background: $secondary;
+          color: $white;
         }
       }
       .total {

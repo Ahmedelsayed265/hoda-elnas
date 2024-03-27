@@ -147,6 +147,8 @@
         "egyptianPound": "ج.م",
         "dollar": "UCD",
         "monthlyInstallment": "القسط الشهري",
-        "haveRead": "لقد قرأت وأوافق على"
+        "haveRead": "لقد قرأت وأوافق على",
+        "addDiscount": "تفعيل",
+        "startDate": "تاريخ البدء"
     }
 }
