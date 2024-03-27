@@ -47,7 +47,7 @@ const Subscribe = () => {
   return (
     <section className="subscribe">
       <div className="container">
-        <div className="row">
+        <div className="row m-0">
           <div className="col-lg-8 col-12 p-2 order-lg-0 order-1">
             <div className="course_header">
               <h3>{course?.name}</h3>

@@ -1613,7 +1613,7 @@ body {
               @include centerFlex();
               flex-direction: column;
               background: $inputBG;
-              border-radius: 8px;
+              border-radius: 12px;
               border: 1px solid $inputStroke;
               transition: $transation;
               span {
@@ -1661,7 +1661,7 @@ body {
         .add-discount {
           width: min(100%, 200px);
           height: 54px;
-          border-radius: 8px;
+          border-radius: 12px;
           background: $secondary;
           color: $white;
         }
@@ -1696,6 +1696,9 @@ body {
         display: flex;
         align-items: center;
         gap: 8px;
+        p {
+          font-size: 14px;
+        }
         a {
           color: $secondary;
         }

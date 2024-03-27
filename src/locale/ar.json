@@ -149,6 +149,7 @@
         "monthlyInstallment": "القسط الشهري",
         "haveRead": "لقد قرأت وأوافق على",
         "addDiscount": "تفعيل",
-        "startDate": "تاريخ البدء"
+        "startDate": "تاريخ البدء",
+        "noPricingPlan": "لا يوجد خطة السعر"
     }
 }

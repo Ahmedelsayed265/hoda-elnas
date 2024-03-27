@@ -148,6 +148,7 @@
         "monthlyInstallment": "Monthly Installment",
         "haveRead": "I have read and agree to the",
         "addDiscount": "Apply",
-        "startDate": "Start Date"
+        "startDate": "Start Date",
+        "noPricingPlan": "No Pricing Plan"
     }
 }

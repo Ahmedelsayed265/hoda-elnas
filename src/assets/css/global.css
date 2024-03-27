@@ -1669,7 +1669,7 @@ body main .subscribe form .time-group .duration_check .time {
   justify-content: center;
   flex-direction: column;
   background: #f8f8f8;
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid #f2f2f2;
   transition: 0.3s ease-in-out;
 }
@@ -1721,7 +1721,7 @@ body main .subscribe form .save {
 body main .subscribe form .add-discount {
   width: min(100%, 200px);
   height: 54px;
-  border-radius: 8px;
+  border-radius: 12px;
   background: #81a63d;
   color: #fff;
 }
@@ -1757,6 +1757,9 @@ body main .subscribe .check-field {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+body main .subscribe .check-field p {
+  font-size: 14px;
 }
 body main .subscribe .check-field a {
   color: #81a63d;

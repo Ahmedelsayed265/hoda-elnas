@@ -7,6 +7,7 @@ import RadiosSelect from "./RadiosSelect";
 import InputField from "./InputField";
 import InstalmentPrice from "./InstalmentPrice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
   const { t } = useTranslation();
@@ -48,6 +49,13 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
                 0
               )
           });
+      if (plan === undefined) {
+        setFormData({
+          ...formData,
+          price: 0.0,
+          totalPrice: 0.0
+        });
+      }
       setPaymethod(t("courseSubscribe.imeddiatePayment"));
     };
     findPricingPlan(
@@ -203,10 +211,12 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
       <div className="check-field">
         <input type="checkbox" name="agree" id="agree" />
         <label className="continue" htmlFor="agree">
-          {t("courseSubscribe.haveRead")}{" "}
-          <Link to="/terms-conditions">{t("auth.termsAndCondition")}</Link>{" "}
-          {t("auth.and")}{" "}
-          <Link to="/privacy-policy">{t("auth.privacyPolicy")}</Link>
+          <p className="m-0">
+            {t("courseSubscribe.haveRead")}{" "}
+            <Link to="/terms-conditions">{t("auth.termsAndCondition")}</Link>{" "}
+            {t("auth.and")}{" "}
+            <Link to="/privacy-policy">{t("auth.privacyPolicy")}</Link>
+          </p>
         </label>
       </div>
       <button className="save">{t("courseSubscribe.subscribe")}</button>
