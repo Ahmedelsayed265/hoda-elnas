@@ -51,10 +51,6 @@ const Subscribe = () => {
       <div className="container">
         <div className="row m-0 justify-content-between">
           <div className="col-lg-7 col-12 p-2 order-lg-0 order-1">
-            <div className="course_header">
-              <h3>{course?.name}</h3>
-              <p>{course?.bio}</p>
-            </div>
             <SubscribeForm
               course={course}
               pricingPlans={pricingPlans}
@@ -69,6 +65,10 @@ const Subscribe = () => {
                 src={`${BASE_URL}${course?.background}`}
                 alt={course?.name}
               />
+            </div>
+            <div className="course_header">
+              <h3>{course?.name}</h3>
+              <p>{course?.bio}</p>
             </div>
             {benifits && <CourseBenifits benefits={benifits} />}
           </div>

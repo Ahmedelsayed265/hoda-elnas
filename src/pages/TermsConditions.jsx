@@ -11,7 +11,7 @@ const TermsConditions = () => {
   return (
     <section className="terms_section">
       <div className="container">
-        <div className="row">
+        <div className="row m-0">
           <div className="col-lg-9 col-12">
             {sortedTermsConditions.map((termsCondition) => (
               <Fragment key={termsCondition.id}>

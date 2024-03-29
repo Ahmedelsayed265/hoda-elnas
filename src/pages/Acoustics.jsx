@@ -5,7 +5,7 @@ const Acoustics = () => {
   return (
     <section className="courses">
       <div className="container">
-        <div className="row">
+        <div className="row m-0">
           <div className="col-12 p-2">
             <div className="search">
               <form action="" className="inner_search__form">

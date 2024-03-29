@@ -189,7 +189,7 @@ const SubscribeForm = ({
         />
       )}
       {/* discount */}
-      <div className="form_group flex-lg-row flex-column">
+      <div className="form_group  flex-column">
         <div className="w-100 d-flex align-items-end gap-2">
           <InputField
             labelPlaceholder={t("courseSubscribe.discountCopon")}

@@ -33,7 +33,7 @@ const InstalmentPrice = ({ validCopun, totalPrice, location, instalment }) => {
               </span>{" "}
             </div>
             <span className="instalment_message">{instalment?.name}</span>
-          </>
+          </Fragment>
         ))}
     </div>
   );

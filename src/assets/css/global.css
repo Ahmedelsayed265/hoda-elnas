@@ -1634,7 +1634,7 @@ body main .subscribe .image img {
      object-fit: cover;
 }
 body main .subscribe .benifits {
-  margin-top: 24px;
+  margin-top: 16px;
 }
 body main .subscribe .benifits h6 {
   font-size: 18px;
@@ -1656,6 +1656,9 @@ body main .subscribe .benifits ul li::before {
 }
 body main .subscribe .benifits ul.iconCheck li::before {
   content: "\f00c";
+}
+body main .subscribe .course_header {
+  margin-top: 24px;
 }
 body main .subscribe .course_header h3 {
   color: #81a63d;

@@ -13,7 +13,7 @@ const Library = () => {
         <p className="section_subtitle">
           {t("homePage.librarySectionSubtitle")}
         </p>
-        <div className="row">
+        <div className="row m-0">
           <div className="col-12 p-2">
             <div className="section_title">
               <h3>{t("homePage.bestAudios")}</h3>

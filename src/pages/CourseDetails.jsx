@@ -20,8 +20,8 @@ const CourseDetails = () => {
     <>
       <section className="course-details">
         <div className="container">
-          <div className="row">
-            <div className="col-lg-4 col-12 p-3">
+          <div className="row m-0">
+            <div className="col-lg-4 col-12 p-2">
               <div
                 className="video_wrapper"
                 style={{
@@ -50,7 +50,7 @@ const CourseDetails = () => {
                 </p>
               )}
             </div>
-            <div className="col-lg-8 col-12 p-3">
+            <div className="col-lg-8 col-12 p-2">
               <div className="content">
                 <h4>{course?.name}</h4>
                 <p>{course?.description}</p>
