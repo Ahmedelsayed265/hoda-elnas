@@ -1633,6 +1633,30 @@ body main .subscribe .image img {
   -o-object-fit: cover;
      object-fit: cover;
 }
+body main .subscribe .benifits {
+  margin-top: 24px;
+}
+body main .subscribe .benifits h6 {
+  font-size: 18px;
+  color: #31535a;
+  font-weight: 600;
+}
+body main .subscribe .benifits ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 16px;
+  color: #777777;
+  line-height: 30px;
+}
+body main .subscribe .benifits ul li::before {
+  content: "\f648";
+  font-family: "Font Awesome 6 pro";
+  color: #81a63d;
+}
+body main .subscribe .benifits ul.iconCheck li::before {
+  content: "\f00c";
+}
 body main .subscribe .course_header h3 {
   color: #81a63d;
 }
@@ -1748,6 +1772,18 @@ body main .subscribe .total .instalment_message {
   font-size: 12px;
   font-weight: 600;
   line-height: 24px;
+  margin-bottom: 8px;
+}
+body main .subscribe .total .installmentCheck {
+  align-items: center;
+}
+body main .subscribe .total .installmentCheck label {
+  cursor: pointer;
+}
+body main .subscribe .total .installmentCheck input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
 }
 body main .subscribe .discount {
   color: #81a63d;

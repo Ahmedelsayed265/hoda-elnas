@@ -146,10 +146,12 @@
         "subscribe": "دفع وإشتراك",
         "egyptianPound": "ج.م",
         "dollar": "UCD",
-        "monthlyInstallment": "القسط الشهري",
+        "monthlyInstallment": "قسط شهري",
+        "weeklyInstallment": "قسط اسبوعي",
         "haveRead": "لقد قرأت وأوافق على",
         "addDiscount": "تفعيل",
         "startDate": "تاريخ البدء",
-        "noPricingPlan": "لا يوجد خطة السعر"
+        "noPricingPlan": "لا يوجد خطة السعر",
+        "whatYouWillget": "ماذا ستحصل في هذه الخطة؟" 
     }
 }

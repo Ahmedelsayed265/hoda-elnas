@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import { BASE_URL } from "../../constants";
 import SubscribeForm from "./SubscribeForm";
 import axios from "./../../util/axios";
+import CourseBenifits from "./CourseBenifits";
 
 const Subscribe = () => {
   const { id } = useParams();
   const courses = useSelector((state) => state.courses.courses);
   const course = courses.find((c) => c.id === +id);
+  const [benifits, setBenifits] = useState("");
 
   const [formData, setFormData] = useState({
     studentsNumber: 1,
@@ -47,8 +49,8 @@ const Subscribe = () => {
   return (
     <section className="subscribe">
       <div className="container">
-        <div className="row m-0">
-          <div className="col-lg-8 col-12 p-2 order-lg-0 order-1">
+        <div className="row m-0 justify-content-between">
+          <div className="col-lg-7 col-12 p-2 order-lg-0 order-1">
             <div className="course_header">
               <h3>{course?.name}</h3>
               <p>{course?.bio}</p>
@@ -58,6 +60,7 @@ const Subscribe = () => {
               pricingPlans={pricingPlans}
               formData={formData}
               setFormData={setFormData}
+              setBenifits={setBenifits}
             />
           </div>
           <div className="col-lg-4 col-12 p-2 order-lg-1 order-0">
@@ -67,6 +70,7 @@ const Subscribe = () => {
                 alt={course?.name}
               />
             </div>
+            {benifits && <CourseBenifits benefits={benifits} />}
           </div>
         </div>
       </div>

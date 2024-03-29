@@ -1580,6 +1580,34 @@ body {
           object-fit: cover;
         }
       }
+      .benifits {
+        margin-top: 24px;
+        h6 {
+          font-size: 18px;
+          color: $main;
+          font-weight: 600;
+        }
+        ul {
+          li {
+            display: flex;
+            align-items: flex-start;
+            gap: 4px;
+            font-size: 16px;
+            color: $gray;
+            line-height: 30px;
+            &::before {
+              content: "\f648";
+              font-family: "Font Awesome 6 pro";
+              color: $secondary;
+            }
+          }
+          &.iconCheck {
+            li::before {
+              content: "\f00c";
+            }
+          }
+        }
+      }
       .course_header {
         h3 {
           color: $secondary;
@@ -1686,6 +1714,18 @@ body {
           font-size: 12px;
           font-weight: 600;
           line-height: 24px;
+          margin-bottom: 8px;
+        }
+        .installmentCheck {
+          align-items: center;
+          label {
+            cursor: pointer;
+          }
+          input {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+          }
         }
       }
       .discount {

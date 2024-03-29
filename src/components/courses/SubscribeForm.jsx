@@ -7,9 +7,14 @@ import RadiosSelect from "./RadiosSelect";
 import InputField from "./InputField";
 import InstalmentPrice from "./InstalmentPrice";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 
-const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
+const SubscribeForm = ({
+  course,
+  pricingPlans,
+  formData,
+  setFormData,
+  setBenifits
+}) => {
   const { t } = useTranslation();
   const locationData = useUserLocation();
   const location = locationData?.country;
@@ -56,6 +61,7 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
           totalPrice: 0.0
         });
       }
+      setBenifits(plan?.benefits);
       setPaymethod(t("courseSubscribe.imeddiatePayment"));
     };
     findPricingPlan(
@@ -176,7 +182,7 @@ const SubscribeForm = ({ course, pricingPlans, formData, setFormData }) => {
       )}
       {paymethod === t("courseSubscribe.installment") && (
         <InstalmentPrice
-          instalment={pricingPlan?.instalments[0]}
+          instalment={pricingPlan?.instalments}
           location={location}
           validCopun={formData?.validCopun}
           totalPrice={formData?.totalPrice}
