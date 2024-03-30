@@ -151,6 +151,7 @@
         "addDiscount": "Apply",
         "startDate": "Start Date",
         "noPricingPlan": "No Pricing Plan",
-        "whatYouWillget": "What will you get in this plan?"
+        "whatYouWillget": "What will you get in this plan?",
+        "invalidPromoCode": "Invalid promo code"
     }
 }

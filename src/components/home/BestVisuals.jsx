@@ -11,6 +11,7 @@ const BestVisuals = () => {
       spaceBetween={16}
       slidesPerView={4}
       speed={1000}
+      dir="rtl"
       loop={true}
       pagination={{
         clickable: true

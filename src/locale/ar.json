@@ -152,6 +152,7 @@
         "addDiscount": "تفعيل",
         "startDate": "تاريخ البدء",
         "noPricingPlan": "لا يوجد خطة السعر",
-        "whatYouWillget": "ماذا ستحصل في هذه الخطة؟" 
+        "whatYouWillget": "ماذا ستحصل في هذه الخطة؟" ,
+        "invalidPromoCode": "هذا الكوبون غير صحيح"
     }
 }

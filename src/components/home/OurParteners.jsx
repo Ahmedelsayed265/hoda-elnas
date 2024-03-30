@@ -23,6 +23,7 @@ const OurParteners = () => {
               spaceBetween={16}
               slidesPerView={5}
               speed={1000}
+              dir="rtl"
               loop={true}
               modules={[Autoplay]}
               autoplay={{ delay: 3000, disableOnInteraction: false }}

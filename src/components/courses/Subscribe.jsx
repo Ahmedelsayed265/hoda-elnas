@@ -56,7 +56,7 @@ const Subscribe = () => {
               pricingPlans={pricingPlans}
               formData={formData}
               setFormData={setFormData}
-              setBenifits={setBenifits}
+              setBenefits={setBenifits}
             />
           </div>
           <div className="col-lg-4 col-12 p-2 order-lg-1 order-0">

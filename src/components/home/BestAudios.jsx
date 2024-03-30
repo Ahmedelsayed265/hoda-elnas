@@ -12,6 +12,7 @@ const BestAudios = () => {
       slidesPerView={4}
       speed={1000}
       loop={true}
+      dir="rtl"
       pagination={{
         clickable: true
       }}

@@ -1721,10 +1721,13 @@ body {
           align-items: center;
           label {
             cursor: pointer;
+            h6 {
+              margin: 0;
+            }
           }
           input {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             cursor: pointer;
           }
         }
