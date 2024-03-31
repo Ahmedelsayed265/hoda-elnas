@@ -1,18 +1,29 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const AdditionalServices = ({ course, location, formData, setFormData }) => {
+const AdditionalServices = ({
+  course,
+  location,
+  formData,
+  setFormData,
+  coponData
+}) => {
   const { t } = useTranslation();
 
   const handleCheckboxChange = (e, addon) => {
+    let addonPrice = location === "EG" ? addon?.fees_egp : addon?.fees_usd;
+    let addonPriceWithCoupon = addonPrice;
+    if (coponData?.value && coponData?.discount_type === "percentage") {
+      addonPriceWithCoupon = addonPrice * ((100 - coponData?.value) / 100);
+    }
     const updatedFormData = {
       ...formData,
       totalPrice: e.target.checked
-        ? formData.totalPrice +
-          (location === "EG" ? addon?.fees_egp : addon?.fees_usd)
-        : formData.totalPrice -
-          (location === "EG" ? addon?.fees_egp : addon?.fees_usd),
-      addons: [...formData.addons, addon]
+        ? formData.totalPrice + addonPriceWithCoupon
+        : formData.totalPrice - addonPriceWithCoupon,
+      addons: e.target.checked
+        ? [...formData.addons, addon]
+        : formData.addons.filter((item) => item !== addon)
     };
     setFormData(updatedFormData);
   };

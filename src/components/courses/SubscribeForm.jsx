@@ -119,11 +119,58 @@ const SubscribeForm = ({
         service: "courses"
       });
       if (response?.status === 200 || response?.status === 201) {
-        setCoponData((prevCoponData) => ({
-          ...prevCoponData,
-          value: response?.data?.message?.value,
-          discount_type: response?.data?.message?.discount_type
-        }));
+        if (coponData?.value === "") {
+          setCoponData((prevCoponData) => ({
+            ...prevCoponData,
+            value: response?.data?.message?.value,
+            discount_type: response?.data?.message?.discount_type
+          }));
+        } else {
+          if (response?.data?.message?.value < coponData?.value) {
+            return;
+          } else {
+            setCoponData((prevCoponData) => ({
+              ...prevCoponData,
+              value: response?.data?.message?.value,
+              discount_type: response?.data?.message?.discount_type
+            }));
+          }
+        }
+        toast.success(t("courseSubscribe.promoCodeApplied"));
+      } else {
+        toast.error(t("courseSubscribe.invalidPromoCode"));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAddReferral = async (e) => {
+    e.preventDefault();
+    if (referralCode === "") return;
+    try {
+      const response = await axios.post("/members/Check_referralcode/", {
+        referralcode: referralCode
+      });
+      if (response?.status === 200 || response?.status === 201) {
+        if (coponData?.value === "") {
+          setCoponData((prevCoponData) => ({
+            ...prevCoponData,
+            value: response?.data?.message[0]?.value,
+            discount_type: response?.data?.message[0]?.type
+          }));
+        } else {
+          if (response?.data?.message[0]?.value < coponData?.value) {
+            return;
+          } else {
+            setCoponData((prevCoponData) => ({
+              ...prevCoponData,
+              value: response?.data?.message[0]?.value,
+              discount_type: response?.data?.message[0]?.type
+            }));
+          }
+        }
+        toast.success(t("courseSubscribe.promoCodeApplied"));
       } else {
         toast.error(t("courseSubscribe.invalidPromoCode"));
       }
@@ -257,7 +304,10 @@ const SubscribeForm = ({
               value={referralCode}
               handleChange={(e) => setReferralCode(e.target.value)}
             />
-            <button className="add-discount">
+            <button
+              className="add-discount"
+              onClick={(e) => handleAddReferral(e)}
+            >
               {t("courseSubscribe.addDiscount")}
             </button>
           </div>
