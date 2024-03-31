@@ -153,6 +153,12 @@
         "noPricingPlan": "No Pricing Plan",
         "whatYouWillget": "What will you get in this plan?",
         "invalidPromoCode": "Invalid promo code",
-        "promoCodeApplied": "Promo code applied successfully"
+        "promoCodeApplied": "Promo code applied successfully",
+        "paymentMethods": "Payment Methods",
+        "paymentMethodsSubTitle": "Choose the preferred payment method",
+        "completeProcess": "Complete Process",
+        "completeProcessSubTitle": "Enter your payment details and complete the process",
+        "authentication": "login verification",
+        "loginOrRegister": "Login or Register"
     }
 }

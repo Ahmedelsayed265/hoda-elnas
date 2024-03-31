@@ -152,8 +152,14 @@
         "addDiscount": "تفعيل",
         "startDate": "تاريخ البدء",
         "noPricingPlan": "لا يوجد خطة السعر",
-        "whatYouWillget": "ماذا ستحصل في هذه الخطة؟" ,
+        "whatYouWillget": "ماذا ستحصل في هذه الخطة؟",
         "invalidPromoCode": "هذا الكوبون غير صحيح",
-        "promoCodeApplied": "تم تطبيق الكوبون بنجاح"
+        "promoCodeApplied": "تم تطبيق الكوبون بنجاح",
+        "paymentMethods": "طرق الدفع",
+        "paymentMethodsSubTitle": "اختر طريقة دفع تناسبك",
+        "completeProcess": "إتمام العملية",
+        "completeProcessSubTitle": " أدخل بيانات الدفع واستكمل ",
+        "authentication": "التحقق من الدخول",
+        "loginOrRegister": "تسجيل الدخول او إنشاء حساب"
     }
 }

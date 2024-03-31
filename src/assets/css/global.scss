@@ -82,7 +82,7 @@ $lightGray: #eeeeee;
 $white: #fff;
 $inputStroke: #f2f2f2;
 $gold: #ffd500;
-$dark: #1f1f1f;
+$dark: #000000;
 $mainShadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 $lightShadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 $transation: 0.3s ease-in-out;
@@ -2316,4 +2316,70 @@ input[type="checkbox"] {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
+}
+.subcribeModal {
+  .tabs {
+    border-bottom: 1px solid $inputBG;
+  }
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    &.active {
+      .num {
+        background: $secondary;
+        color: $white;
+      }
+      .content {
+        h6 {
+          color: $secondary;
+        }
+      }
+    }
+    .num {
+      width: 42px;
+      height: 42px;
+      border-radius: 4px;
+      background: #dce9c4;
+      color: $dark;
+      transition: $transation;
+      @include centerFlex();
+      font-size: 16px;
+    }
+    .content {
+      h6 {
+        font-size: 16px;
+        color: $gray;
+        transition: $transation;
+        line-height: 24px;
+        margin: 0;
+      }
+      p {
+        font-size: 12px;
+        color: $gray;
+        line-height: 24px;
+        margin: 0;
+      }
+    }
+  }
+  .loginOrRegiester {
+    .title {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      h3 {
+        font-size: 22px;
+        color: $dark;
+        margin: 0;
+      }
+      p {
+        color: $gray;
+        span {
+          color: $secondary;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }

@@ -329,6 +329,7 @@ const SubscribeForm = ({
         </button>
       </form>
       <SubscribeModal
+        formData={formData}
         showModal={showSubscribeModal}
         setShowModal={setShowSubscribeModal}
       />
