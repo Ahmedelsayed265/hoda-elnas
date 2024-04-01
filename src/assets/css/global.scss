@@ -2318,47 +2318,47 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 .subcribeModal {
-  .tabs {
+  .wizard_tabs {
     border-bottom: 1px solid $inputBG;
-  }
-  .tab {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    &.active {
+    .wizard_tab {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      &.active {
+        .num {
+          background: $secondary;
+          color: $white;
+        }
+        .content {
+          h6 {
+            color: $secondary;
+          }
+        }
+      }
       .num {
-        background: $secondary;
-        color: $white;
+        width: 42px;
+        height: 42px;
+        border-radius: 4px;
+        background: #dce9c4;
+        color: $dark;
+        transition: $transation;
+        @include centerFlex();
+        font-size: 16px;
       }
       .content {
         h6 {
-          color: $secondary;
+          font-size: 16px;
+          color: $gray;
+          transition: $transation;
+          line-height: 24px;
+          margin: 0;
         }
-      }
-    }
-    .num {
-      width: 42px;
-      height: 42px;
-      border-radius: 4px;
-      background: #dce9c4;
-      color: $dark;
-      transition: $transation;
-      @include centerFlex();
-      font-size: 16px;
-    }
-    .content {
-      h6 {
-        font-size: 16px;
-        color: $gray;
-        transition: $transation;
-        line-height: 24px;
-        margin: 0;
-      }
-      p {
-        font-size: 12px;
-        color: $gray;
-        line-height: 24px;
-        margin: 0;
+        p {
+          font-size: 12px;
+          color: $gray;
+          line-height: 24px;
+          margin: 0;
+        }
       }
     }
   }
@@ -2381,5 +2381,43 @@ input::-webkit-inner-spin-button {
         }
       }
     }
+  }
+  .tabs {
+    width: 100%;
+    border-bottom: 2px solid $inputStroke;
+    margin-bottom: 12px;
+    button {
+      @include clearInput();
+      padding: 0 12px;
+      position: relative;
+      font-size: 16px;
+      font-weight: 500;
+      transition: $transation;
+      color: $dark;
+      @media (max-width: 576px) {
+        font-size: 14px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        width: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 2px;
+        background: $main;
+        transition: $transation;
+      }
+      &.active {
+        color: $main;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .forgot a {
+    color: $secondary;
+    line-height: 24px;
   }
 }

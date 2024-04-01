@@ -299,7 +299,7 @@ const SubscribeForm = ({
             <InputField
               labelPlaceholder={t("courseSubscribe.friendCopon")}
               icon={<i className="fa-light fa-tag"></i>}
-              name={"discountCopon"}
+              name={"friendCopon"}
               placeHolder={"kid1234"}
               value={referralCode}
               handleChange={(e) => setReferralCode(e.target.value)}

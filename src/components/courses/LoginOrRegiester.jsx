@@ -5,7 +5,7 @@ import LoginForm from "./LoginForm";
 
 const LoginOrRegister = ({ setStepName }) => {
   const { t } = useTranslation();
-  const [authType, setAuthType] = useState("register");
+  const [authType, setAuthType] = useState("login");
 
   let targetComponent;
   if (authType === "register") {

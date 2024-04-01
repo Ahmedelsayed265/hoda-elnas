@@ -29,10 +29,14 @@ const SubscribeModal = ({ showModal, setShowModal, formData }) => {
       <Modal.Body className="subcribeModal">
         {/* tabs */}
         <div className="container pb-3">
-          <div className="row m-0 justify-content-between tabs">
+          <div className="row m-0 justify-content-between wizard_tabs">
             {!logged && (
               <div className="col-lg-4 col-12 p-2">
-                <div className={`tab ${stepName === "login" ? "active" : ""}`}>
+                <div
+                  className={`wizard_tab ${
+                    stepName === "login" ? "active" : ""
+                  }`}
+                >
                   <div className="num">
                     <span>1</span>
                   </div>
@@ -45,7 +49,7 @@ const SubscribeModal = ({ showModal, setShowModal, formData }) => {
             )}
             <div className="col-lg-4 col-12 p-2">
               <div
-                className={`tab ${
+                className={`wizard_tab ${
                   stepName === "payment_method" ? "active" : ""
                 }`}
               >
@@ -60,7 +64,7 @@ const SubscribeModal = ({ showModal, setShowModal, formData }) => {
             </div>
             <div className="col-lg-4 col-12 p-2">
               <div
-                className={`tab ${
+                className={`wizard_tab ${
                   stepName === "complete_process" ? "active" : ""
                 }`}
               >
