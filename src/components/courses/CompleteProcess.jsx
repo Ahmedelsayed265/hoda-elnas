@@ -44,6 +44,7 @@ const CompleteProcess = ({ setStepName, formData, course , location }) => {
             <TotalPrice
               validCopun={formData?.validCopun}
               location={location}
+              formData={formData}
               totalPrice={formData?.totalPrice}
             />
           </div>

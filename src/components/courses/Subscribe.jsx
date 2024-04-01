@@ -19,7 +19,10 @@ const Subscribe = () => {
     totalPrice: 0.0,
     addons: [],
     plan: course?.types[0],
-    lessonsDuration: course?.duration[0]
+    lessonsDuration: course?.duration[0],
+    validCopun: false,
+    copun_name: "",
+    discont_percent: 0
   });
   useEffect(() => {
     if (course) {

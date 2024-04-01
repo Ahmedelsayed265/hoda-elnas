@@ -125,6 +125,12 @@ const SubscribeForm = ({
             value: response?.data?.message?.value,
             discount_type: response?.data?.message?.discount_type
           }));
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            validCopun: true,
+            copun_name: promoCode,
+            discont_percent: response?.data?.message?.value
+          }));
         } else {
           if (response?.data?.message?.value < coponData?.value) {
             return;
@@ -133,6 +139,12 @@ const SubscribeForm = ({
               ...prevCoponData,
               value: response?.data?.message?.value,
               discount_type: response?.data?.message?.discount_type
+            }));
+            setFormData((prevFormData) => ({
+              ...prevFormData,
+              validCopun: true,
+              copun_name: promoCode,
+              discont_percent: response?.data?.message?.value
             }));
           }
         }
@@ -159,6 +171,12 @@ const SubscribeForm = ({
             value: response?.data?.message[0]?.value,
             discount_type: response?.data?.message[0]?.type
           }));
+          setFormData((prevFormData) => ({
+            ...prevFormData,
+            validCopun: true,
+            copun_name: referralCode,
+            discont_percent: response?.data?.message[0]?.value
+          }));
         } else {
           if (response?.data?.message[0]?.value < coponData?.value) {
             return;
@@ -167,6 +185,12 @@ const SubscribeForm = ({
               ...prevCoponData,
               value: response?.data?.message[0]?.value,
               discount_type: response?.data?.message[0]?.type
+            }));
+            setFormData((prevFormData) => ({
+              ...prevFormData,
+              validCopun: true,
+              copun_name: referralCode,
+              discont_percent: response?.data?.message[0]?.value
             }));
           }
         }
@@ -276,6 +300,7 @@ const SubscribeForm = ({
           <TotalPrice
             validCopun={formData?.validCopun}
             location={location}
+            formData={formData}
             totalPrice={formData?.totalPrice}
           />
         )}

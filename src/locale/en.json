@@ -164,6 +164,8 @@
         "loginOrRegister": "Login or Register",
         "copleteTheProcess": "Complete The Process",
         "instantPayment": "Instant Payment",
-        "instantPaymentSubTitle": "Pay with your bank card or electronic wallet instantly through our electronic payment gateway without the need to wait or review."
+        "instantPaymentSubTitle": "Pay with your bank card or electronic wallet instantly through our electronic payment gateway without the need to wait or review.",
+        "discount": "Discount",
+        "copoun": "coupon"
     }
 }
