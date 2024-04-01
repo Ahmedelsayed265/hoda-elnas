@@ -7,7 +7,8 @@ const InputField = ({
   icon,
   type = "text",
   value,
-  handleChange
+  handleChange,
+  required
 }) => {
   return (
     <div className="input-field">
@@ -16,6 +17,7 @@ const InputField = ({
         {labelPlaceholder}
       </label>
       <input
+        required={required}
         type={type}
         name={name}
         id={name}

@@ -181,7 +181,7 @@ const SubscribeForm = ({
 
   return (
     <>
-      <form className="form-ui">
+      <form className="form-ui" onSubmit={handleShowModal}>
         <div className="form_group">
           {/* students count */}
           <InputField
@@ -215,6 +215,14 @@ const SubscribeForm = ({
           icon={<i className="fa-light fa-calendar-days"></i>}
           type="date"
           name="startDate"
+          required={true}
+          value={formData.startDate}
+          handleChange={(e) =>
+            setFormData({
+              ...formData,
+              startDate: e.target.value
+            })
+          }
         />
         {/* lessons duration */}
         <RadiosSelect
@@ -314,7 +322,7 @@ const SubscribeForm = ({
         </div>
         {/* agree */}
         <div className="check-field">
-          <input type="checkbox" name="agree" id="agree" />
+          <input type="checkbox" name="agree" id="agree" required />
           <label className="continue" htmlFor="agree">
             <p className="m-0">
               {t("courseSubscribe.haveRead")}{" "}
@@ -324,13 +332,15 @@ const SubscribeForm = ({
             </p>
           </label>
         </div>
-        <button className="save" onClick={handleShowModal}>
+        <button className="save" type="submit">
           {t("courseSubscribe.subscribe")}
         </button>
       </form>
       <SubscribeModal
+        location={location}
         formData={formData}
         showModal={showSubscribeModal}
+        course={course}
         setShowModal={setShowSubscribeModal}
       />
     </>

@@ -3,19 +3,47 @@ import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import LoginOrRegiester from "./LoginOrRegiester";
+import SelectPayMethod from "./SelectPayMethod";
+import CompleteProcess from "./CompleteProcess";
 
-const SubscribeModal = ({ showModal, setShowModal, formData }) => {
+const SubscribeModal = ({
+  showModal,
+  setShowModal,
+  formData,
+  course,
+  location
+}) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
+  const [method, setMethod] = useState("instant_payment");
   const logged = useSelector((state) => state.authedUser.logged);
   let targetComponent;
   useEffect(() => {
     if (!logged) {
       setStepName("login");
+    } else {
+      setStepName("payment_method");
     }
   }, [logged]);
   if (stepName === "login") {
     targetComponent = <LoginOrRegiester setStepName={setStepName} />;
+  } else if (stepName === "payment_method") {
+    targetComponent = (
+      <SelectPayMethod
+        setStepName={setStepName}
+        method={method}
+        setMethod={setMethod}
+      />
+    );
+  } else {
+    targetComponent = (
+      <CompleteProcess
+        setStepName={setStepName}
+        formData={formData}
+        location={location}
+        course={course}
+      />
+    );
   }
   return (
     <Modal

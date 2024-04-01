@@ -2488,4 +2488,124 @@ input::-webkit-inner-spin-button {
 .subcribeModal .forgot a {
   color: #81a63d;
   line-height: 24px;
+}
+.subcribeModal .pay_method {
+  width: 100%;
+}
+.subcribeModal .pay_method .content {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  background: #f8f8f8;
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #f2f2f2;
+}
+.subcribeModal .pay_method .content .icon_title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.subcribeModal .pay_method .content .icon_title img {
+  height: 32px;
+}
+.subcribeModal .pay_method .content h6 {
+  font-size: 20px;
+  color: #81a63d;
+  line-height: 24px;
+  margin: 0;
+}
+.subcribeModal .pay_method .content p {
+  font-size: 12px;
+  color: #777777;
+  line-height: 24px;
+  margin: 0;
+}
+.subcribeModal .pay_method input {
+  display: none;
+}
+.subcribeModal .pay_method input:checked + .content {
+  background: rgba(129, 166, 61, 0.1411764706);
+  border-color: #81a63d;
+}
+.subcribeModal .save_btn,
+.subcribeModal .back_btn {
+  height: 54px;
+  border-radius: 12px;
+  background: #81a63d;
+  color: #fff;
+}
+.subcribeModal .back_btn {
+  background: #dce9c4;
+  color: #81a63d;
+}
+.subcribeModal .complete_process .subscribtion_info h4 {
+  color: #000000;
+  font-size: 20px;
+  font-weight: 600;
+}
+.subcribeModal .complete_process .subscribtion_info ul li {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.subcribeModal .complete_process .subscribtion_info ul li b {
+  font-weight: 400;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #81a63d;
+}
+@media (max-width: 768px) {
+  .subcribeModal .complete_process .subscribtion_info ul li {
+    width: 100%;
+  }
+}
+.subcribeModal .complete_process .subscribtion_info .total {
+  width: 60%;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+@media screen and (max-width: 768px) {
+  .subcribeModal .complete_process .subscribtion_info .total {
+    width: 100%;
+  }
+}
+.subcribeModal .complete_process .subscribtion_info .total .price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.subcribeModal .complete_process .subscribtion_info .total .price h3,
+.subcribeModal .complete_process .subscribtion_info .total .price span {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 20px;
+}
+.subcribeModal .complete_process .subscribtion_info .total .instalment_message {
+  color: rgb(255, 0, 0);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+.subcribeModal .complete_process .subscribtion_info .total .installmentCheck {
+  align-items: center;
+}
+.subcribeModal .complete_process .subscribtion_info .total .installmentCheck label {
+  cursor: pointer;
+}
+.subcribeModal .complete_process .subscribtion_info .total .installmentCheck label h6 {
+  margin: 0;
+}
+.subcribeModal .complete_process .subscribtion_info .total .installmentCheck input {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
 }/*# sourceMappingURL=global.css.map */
