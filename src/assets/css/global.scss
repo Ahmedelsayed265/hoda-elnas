@@ -1748,6 +1748,23 @@ body {
         }
       }
     }
+    .my_courses {
+      padding: 40px 0;
+      .my_courses_title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        img {
+          height: 36px;
+        }
+        h2 {
+          color: $main;
+          font-weight: 600;
+          font-size: 22px;
+          margin: 0;
+        }
+      }
+    }
   }
   footer {
     padding: 40px 8px 16px;

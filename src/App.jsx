@@ -43,6 +43,7 @@ import { setGrantees } from "./redux/slices/granteesObj";
 import { setBody, setHeader } from "./redux/slices/comparsion";
 import { setFeedBacks } from "./redux/slices/feedBacks";
 import { setTitles } from "./redux/slices/sectionsTitles";
+import MyCourses from "./components/courses/dashboard/MyCourses";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -166,6 +167,7 @@ const App = () => {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:id" element={<CourseDetails />} />
           <Route path="/courses/:id/subscripe" element={<Subscribe />} />
+          <Route path="/my-courses" element={<MyCourses />} />
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/profile" element={<Profile />} />

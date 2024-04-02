@@ -1806,6 +1806,23 @@ body main .subscribe .check-field p {
 body main .subscribe .check-field a {
   color: #81a63d;
 }
+body main .my_courses {
+  padding: 40px 0;
+}
+body main .my_courses .my_courses_title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+body main .my_courses .my_courses_title img {
+  height: 36px;
+}
+body main .my_courses .my_courses_title h2 {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
