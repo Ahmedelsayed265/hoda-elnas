@@ -2608,4 +2608,8 @@ input::-webkit-inner-spin-button {
   width: 14px;
   height: 14px;
   cursor: pointer;
+}
+
+.complete_process_btn {
+  width: 35%;
 }/*# sourceMappingURL=global.css.map */

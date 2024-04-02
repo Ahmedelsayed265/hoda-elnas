@@ -48,13 +48,13 @@ const SubscribeForm = ({
       if (location === "EG") {
         totalPrice =
           coponData?.discount_type === "percentage"
-            ? (plan?.price_egp * formData?.studentsNumber +
+            ? (plan?.saleprice_egp * formData?.studentsNumber +
                 formData?.addons?.reduce(
                   (total, addon) => total + addon?.fees_egp,
                   0
                 )) *
               ((100 - coponData?.value) / 100)
-            : plan?.price_egp * formData?.studentsNumber +
+            : plan?.saleprice_egp * formData?.studentsNumber +
               formData?.addons?.reduce(
                 (total, addon) => total + addon?.fees_egp,
                 0
@@ -62,7 +62,7 @@ const SubscribeForm = ({
               coponData?.value;
       } else {
         totalPrice =
-          plan?.price_usd * formData?.studentsNumber +
+          plan?.slaeprice_usd * formData?.studentsNumber +
           formData?.addons?.reduce(
             (total, addon) => total + addon?.fees_usd,
             0
@@ -70,7 +70,7 @@ const SubscribeForm = ({
       }
       setFormData({
         ...formData,
-        price: location === "EG" ? plan?.price_egp : plan?.price_usd,
+        price: location === "EG" ? plan?.saleprice_egp : plan?.slaeprice_usd,
         totalPrice: totalPrice >= 0 ? totalPrice : 0.0
       });
       setBenefits(plan?.benefits);
@@ -202,6 +202,15 @@ const SubscribeForm = ({
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (pricingPlan) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        planId: pricingPlan?.id
+      }));
+    }
+  }, [pricingPlan, setFormData]);
 
   return (
     <>

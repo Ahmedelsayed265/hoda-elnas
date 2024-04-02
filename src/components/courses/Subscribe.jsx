@@ -15,6 +15,7 @@ const Subscribe = () => {
   const [formData, setFormData] = useState({
     studentsNumber: 1,
     courseDuration: 1,
+    planId: null,
     price: 0.0,
     totalPrice: 0.0,
     addons: [],

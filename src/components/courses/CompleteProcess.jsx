@@ -1,19 +1,22 @@
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import TotalPrice from "./TotalPrice";
-import { useSelector } from "react-redux";
 import axios from "./../../util/axios";
+import TotalPrice from "./TotalPrice";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import SubmitButton from "./../ui/form-elements/SubmitButton";
 
 const CompleteProcess = ({ setStepName, formData, course, location }) => {
+  const [orderId, setOrderId] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
   const lang = useSelector((state) => state.language.lang);
-  const [sessionId, setSessionId] = useState(null);
-  console.log(parseFloat(formData?.totalPrice).toFixed(2));
 
   const authorization =
     "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
-
-  // Construct payload for Gedia API request
+    
   const payload = {
     amount: formData.totalPrice,
     appearance: { styles: { hppProfile: "simple" } },
@@ -25,9 +28,9 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
     },
     language: lang,
     merchantReferenceId: "JoinCommunity",
+    metadata: { order_id: orderId },
     order: { integrationType: "HPP" },
     paymentOperation: "Pay",
-    returnUrl: "https://www.hodaelnas.com",
     paymentOptions: [
       {
         label: "Visa",
@@ -44,7 +47,6 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
     ]
   };
 
-  // Define headers for Gedia API request
   const headers = {
     accept: "application/json",
     "content-type": "application/json",
@@ -53,18 +55,33 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
 
   const handlePayProcess = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.post("/members/create_order/", {
         user_id: user?.id,
         start_date: formData?.startDate,
-        students: formData?.students,
-        amount: formData?.totalPrice,
+        students: formData?.studentsNumber,
+        currency: location === "EG" ? "EGP" : "USD",
         method: "card",
+        pricing_plan_id: formData?.planId,
+        couponcode: "",
+        referralcode: "",
+        recipt: "",
+        amount: formData?.totalPrice
       });
+      if (response?.status === 200 || response?.status === 201) {
+        setOrderId(response?.data?.id);
+        handlePayment();
+      } else {
+        toast.error("Something went wrong");
+      }
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
-
+  };
+  const handlePayment = async () => {
     try {
       const response = await fetch(
         "https://api.merchant.geidea.net/payment-intent/api/v1/direct/session",
@@ -74,39 +91,26 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
           body: JSON.stringify(payload)
         }
       );
-
       const responseData = await response.json();
       const session = responseData?.session;
-
-      setSessionId(session);
-      initiateGediaCheckout(session);
+      initiateGediaCheckout(session?.id);
     } catch (error) {
       console.error(error);
     }
   };
-
-  // Function to initiate Gedia Checkout
   const initiateGediaCheckout = (sessionId) => {
     let onSuccess = function (data) {
-      // To Do: handle payment success
-      console.log("Payment successful:", data);
+      navigate("/my-courses");
     };
-
     let onError = function (data) {
       console.error("Error occurred during payment:", data);
-      // Handle payment error
+      toast.error("Something went wrong while processing payment");
     };
-
     let onCancel = function (data) {
       console.log("Payment canceled:", data);
-      // Handle payment cancellation
     };
-
-    // Initialize Gedia Checkout
     const payment = new window.GeideaCheckout(onSuccess, onError, onCancel);
-
-    // Start payment process with session ID
-    payment.startPayment(sessionId?.id);
+    payment.startPayment(sessionId);
   };
 
   const { t } = useTranslation();
@@ -167,9 +171,12 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
             {t("back")}
           </button>
           {/* Pay button */}
-          <button className="w-25 save_btn" onClick={handlePayProcess}>
-            {t("courseSubscribe.completeProcess")}
-          </button>
+          <SubmitButton
+            name={t("courseSubscribe.completeProcess")}
+            onClick={handlePayProcess}
+            className={"save_btn complete_process_btn"}
+            loading={loading}
+          />
         </div>
       </div>
     </div>
