@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import TotalPrice from "./TotalPrice";
 import AdditionalServices from "./AdditionalServices";
@@ -6,10 +8,8 @@ import useUserLocation from "../../hooks/useUserLocation";
 import RadiosSelect from "./RadiosSelect";
 import InputField from "./InputField";
 import InstalmentPrice from "./InstalmentPrice";
-import { Link } from "react-router-dom";
 import SubscribeModal from "./SubscribeModal";
 import axios from "./../../util/axios";
-import { toast } from "react-toastify";
 
 const SubscribeForm = ({
   course,
@@ -127,6 +127,7 @@ const SubscribeForm = ({
           }));
           setFormData((prevFormData) => ({
             ...prevFormData,
+            copun_type: "promo",
             validCopun: true,
             copun_name: promoCode,
             discont_percent: response?.data?.message?.value
@@ -142,6 +143,7 @@ const SubscribeForm = ({
             }));
             setFormData((prevFormData) => ({
               ...prevFormData,
+              copun_type: "promo",
               validCopun: true,
               copun_name: promoCode,
               discont_percent: response?.data?.message?.value
@@ -173,6 +175,7 @@ const SubscribeForm = ({
           }));
           setFormData((prevFormData) => ({
             ...prevFormData,
+            copun_type: "referral",
             validCopun: true,
             copun_name: referralCode,
             discont_percent: response?.data?.message[0]?.value
@@ -188,6 +191,7 @@ const SubscribeForm = ({
             }));
             setFormData((prevFormData) => ({
               ...prevFormData,
+              copun_type: "referral",
               validCopun: true,
               copun_name: referralCode,
               discont_percent: response?.data?.message[0]?.value

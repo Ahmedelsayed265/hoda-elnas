@@ -15,7 +15,7 @@ const SubscribeModal = ({
 }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
-  const [method, setMethod] = useState("instant_payment");
+  const [method, setMethod] = useState("auto");
   const logged = useSelector((state) => state.authedUser.logged);
   let targetComponent;
   useEffect(() => {
@@ -30,6 +30,7 @@ const SubscribeModal = ({
   } else if (stepName === "payment_method") {
     targetComponent = (
       <SelectPayMethod
+        formData={formData}
         setStepName={setStepName}
         method={method}
         setMethod={setMethod}

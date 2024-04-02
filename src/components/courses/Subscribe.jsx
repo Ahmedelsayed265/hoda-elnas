@@ -7,10 +7,11 @@ import axios from "./../../util/axios";
 import CourseBenifits from "./CourseBenifits";
 
 const Subscribe = () => {
-  const { id } = useParams();
   const courses = useSelector((state) => state.courses.courses);
-  const course = courses.find((c) => c.id === +id);
+  const [pricingPlans, setPricingPlans] = useState([]);
   const [benifits, setBenifits] = useState("");
+  const { id } = useParams();
+  const course = courses.find((c) => c.id === +id);
 
   const [formData, setFormData] = useState({
     studentsNumber: 1,
@@ -22,20 +23,23 @@ const Subscribe = () => {
     plan: course?.types[0],
     lessonsDuration: course?.duration[0],
     validCopun: false,
+    copun_type: "",
     copun_name: "",
-    discont_percent: 0
+    discont_percent: 0,
+    paymentMethods: []
   });
+
   useEffect(() => {
     if (course) {
       setFormData((prevFormData) => ({
         ...prevFormData,
+        paymentMethods: course?.payment_methods,
         plan: course?.types[0],
         lessonsDuration: course?.duration[0]
       }));
     }
   }, [course]);
 
-  const [pricingPlans, setPricingPlans] = useState([]);
   useEffect(() => {
     const getPricing = async () => {
       try {
@@ -50,6 +54,7 @@ const Subscribe = () => {
     getPricing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [course?.slug]);
+
   return (
     <section className="subscribe">
       <div className="container">

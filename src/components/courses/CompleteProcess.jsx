@@ -16,7 +16,7 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
 
   const authorization =
     "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
-    
+
   const payload = {
     amount: formData.totalPrice,
     appearance: { styles: { hppProfile: "simple" } },
@@ -64,8 +64,9 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
         currency: location === "EG" ? "EGP" : "USD",
         method: "card",
         pricing_plan_id: formData?.planId,
-        couponcode: "",
-        referralcode: "",
+        couponcode: formData.copun_type === "promo" ? formData.copun_name : "",
+        referralcode:
+          formData.copun_type === "referral" ? formData.copun_name : "",
         recipt: "",
         amount: formData?.totalPrice
       });
@@ -119,46 +120,52 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
     <div className="complete_process">
       <div className="row m-0">
         {/* Subscription info */}
-        <div className="col-12 p-2">
+        <div className="col-12 p-2 d-flex gap-5 flex-lg-row flex-column">
           <div className="subscribtion_info">
-            <h4>{course?.name}</h4>
-            <ul>
-              <li>
-                <b>
-                  <i className="fa-duotone fa-users"></i>
-                  {t("courseSubscribe.subscribersNumer")}
-                </b>
-                {formData.studentsNumber}
-              </li>
-              <li>
-                <b>
-                  <i className="fa-light fa-calendar-range"></i>
-                  {t("courseSubscribe.courseDuration")}
-                </b>
-                {formData.courseDuration}
-              </li>
-              <li>
-                <b>
-                  <i className="fa-sharp fa-light fa-clock"></i>
-                  {t("courseSubscribe.lessonsDuration")}
-                </b>
-                {parseFloat(formData.lessonsDuration)}{" "}
-                {t("courseSubscribe.minutes")}
-              </li>
-              <li>
-                <b>
-                  <i className="fa-sharp fa-light fa-calendar-days"></i>
-                  {t("courseSubscribe.startDate")}
-                </b>
-                {formData.startDate}
-              </li>
-            </ul>
+            <div className="w-100">
+              <h4>{course?.name}</h4>
+              <ul className="mb-auto">
+                <li>
+                  <b>
+                    <i className="fa-duotone fa-users"></i>
+                    {t("courseSubscribe.subscribersNumer")}
+                  </b>
+                  {formData.studentsNumber}
+                </li>
+                <li>
+                  <b>
+                    <i className="fa-light fa-calendar-range"></i>
+                    {t("courseSubscribe.courseDuration")}
+                  </b>
+                  {formData.courseDuration}
+                </li>
+                <li>
+                  <b>
+                    <i className="fa-sharp fa-light fa-clock"></i>
+                    {t("courseSubscribe.lessonsDuration")}
+                  </b>
+                  {parseFloat(formData.lessonsDuration)}{" "}
+                  {t("courseSubscribe.minutes")}
+                </li>
+                <li>
+                  <b>
+                    <i className="fa-sharp fa-light fa-calendar-days"></i>
+                    {t("courseSubscribe.startDate")}
+                  </b>
+                  {formData.startDate}
+                </li>
+              </ul>
+            </div>
             <TotalPrice
               validCopun={formData?.validCopun}
               location={location}
               formData={formData}
               totalPrice={formData?.totalPrice}
             />
+          </div>
+          <div className="upload_photo">
+            <h6>{t("transferPhoto")}</h6>
+            <div className="upload_wrapper"></div>
           </div>
         </div>
         {/* Buttons */}

@@ -2491,8 +2491,10 @@ input::-webkit-inner-spin-button {
 }
 .subcribeModal .pay_method {
   width: 100%;
+  height: 146px;
 }
 .subcribeModal .pay_method .content {
+  height: 100%;
   transition: 0.3s ease-in-out;
   cursor: pointer;
   background: #f8f8f8;
@@ -2541,13 +2543,20 @@ input::-webkit-inner-spin-button {
   background: #dce9c4;
   color: #81a63d;
 }
+.subcribeModal .complete_process .subscribtion_info {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
 .subcribeModal .complete_process .subscribtion_info h4 {
   color: #000000;
   font-size: 20px;
   font-weight: 600;
 }
 .subcribeModal .complete_process .subscribtion_info ul li {
-  width: 60%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2566,7 +2575,7 @@ input::-webkit-inner-spin-button {
   }
 }
 .subcribeModal .complete_process .subscribtion_info .total {
-  width: 60%;
+  width: 100%;
   margin-top: 12px;
   display: flex;
   flex-direction: column;
@@ -2609,7 +2618,28 @@ input::-webkit-inner-spin-button {
   height: 14px;
   cursor: pointer;
 }
+.subcribeModal .complete_process .upload_photo {
+  flex: 2;
+}
+.subcribeModal .complete_process .upload_photo .upload_wrapper {
+  height: 220px;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 12px;
+}
 
 .complete_process_btn {
   width: 35%;
+}
+
+.payUserName {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.payUserName span {
+  line-height: inherit;
 }/*# sourceMappingURL=global.css.map */

@@ -2422,7 +2422,9 @@ input::-webkit-inner-spin-button {
   }
   .pay_method {
     width: 100%;
+    height: 146px;
     .content {
+      height: 100%;
       transition: $transation;
       cursor: pointer;
       background: $inputBG;
@@ -2474,6 +2476,9 @@ input::-webkit-inner-spin-button {
   }
   .complete_process {
     .subscribtion_info {
+      flex: 3;
+      @include space-between();
+      flex-direction: column;
       h4 {
         color: $dark;
         font-size: 20px;
@@ -2481,7 +2486,7 @@ input::-webkit-inner-spin-button {
       }
       ul {
         li {
-          width: 60%;
+          width: 100%;
           @include space-between();
           gap: 8px;
           b {
@@ -2497,7 +2502,7 @@ input::-webkit-inner-spin-button {
         }
       }
       .total {
-        width: 60%;
+        width: 100%;
         margin-top: 12px;
         display: flex;
         flex-direction: column;
@@ -2537,8 +2542,26 @@ input::-webkit-inner-spin-button {
         }
       }
     }
+    .upload_photo {
+      flex: 2;
+      .upload_wrapper {
+        height: 220px;
+        width: 100%;
+        background: $inputBG;
+        border-radius: 12px;
+      }
+    }
   }
 }
 .complete_process_btn {
   width: 35%;
+}
+.payUserName {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+  span {
+    line-height: inherit;
+  }
+  @include space-between();
 }
