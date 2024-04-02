@@ -43,6 +43,7 @@ const SubscribeModal = ({
         formData={formData}
         location={location}
         course={course}
+        method={method}
       />
     );
   }

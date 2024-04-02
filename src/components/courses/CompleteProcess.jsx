@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "./../../util/axios";
 import TotalPrice from "./TotalPrice";
 import { toast } from "react-toastify";
@@ -7,9 +7,16 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "./../ui/form-elements/SubmitButton";
 
-const CompleteProcess = ({ setStepName, formData, course, location }) => {
+const CompleteProcess = ({
+  setStepName,
+  formData,
+  course,
+  location,
+  method
+}) => {
   const [orderId, setOrderId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [reciept, setReciept] = useState(null);
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
   const lang = useSelector((state) => state.language.lang);
@@ -17,7 +24,7 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
   const authorization =
     "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
 
-  const payload = {
+  const [payload, setPayload] = useState({
     amount: formData.totalPrice,
     appearance: { styles: { hppProfile: "simple" } },
     callbackUrl: "https://hodaelnas.com/growth/callback/",
@@ -28,7 +35,6 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
     },
     language: lang,
     merchantReferenceId: "JoinCommunity",
-    metadata: { order_id: orderId },
     order: { integrationType: "HPP" },
     paymentOperation: "Pay",
     paymentOptions: [
@@ -45,7 +51,16 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
         paymentMethods: "meezadigital"
       }
     ]
-  };
+  });
+
+  useEffect(() => {
+    if (orderId) {
+      setPayload((prevPayload) => ({
+        ...prevPayload,
+        metadata: { order_id: orderId }
+      }));
+    }
+  }, [orderId]);
 
   const headers = {
     accept: "application/json",
@@ -67,12 +82,16 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
         couponcode: formData.copun_type === "promo" ? formData.copun_name : "",
         referralcode:
           formData.copun_type === "referral" ? formData.copun_name : "",
-        recipt: "",
+        recipt: reciept,
         amount: formData?.totalPrice
       });
       if (response?.status === 200 || response?.status === 201) {
         setOrderId(response?.data?.id);
-        handlePayment();
+        if (method === "auto") {
+          handlePayment();
+        } else {
+          toast.success(t("inreview"));
+        }
       } else {
         toast.error("Something went wrong");
       }
@@ -121,7 +140,7 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
       <div className="row m-0">
         {/* Subscription info */}
         <div className="col-12 p-2 d-flex gap-5 flex-lg-row flex-column">
-          <div className="subscribtion_info">
+          <div className={`subscribtion_info ${method === "auto" ? "active" : ""}`}>
             <div className="w-100">
               <h4>{course?.name}</h4>
               <ul className="mb-auto">
@@ -163,10 +182,35 @@ const CompleteProcess = ({ setStepName, formData, course, location }) => {
               totalPrice={formData?.totalPrice}
             />
           </div>
-          <div className="upload_photo">
-            <h6>{t("transferPhoto")}</h6>
-            <div className="upload_wrapper"></div>
-          </div>
+          {method !== "auto" && (
+            <div className="upload_photo">
+              <h6>{t("transferPhoto")}</h6>
+              <div className="upload_wrapper">
+                <input
+                  type="file"
+                  id="reciept"
+                  onChange={(e) => setReciept(e.target.files[0])}
+                />
+                {reciept ? (
+                  <div className="img">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setReciept(null);
+                      }}
+                    >
+                      <i className="fa-light fa-xmark"></i>
+                    </button>
+                    <img src={URL.createObjectURL(reciept)} alt="reciept" />
+                  </div>
+                ) : (
+                  <label htmlFor="reciept">
+                    <i className="fa-sharp fa-solid fa-rectangle-history-circle-plus"></i>
+                  </label>
+                )}
+              </div>
+            </div>
+          )}
         </div>
         {/* Buttons */}
         <div className="col-12 p-2 mt-3 d-flex justify-content-between">
