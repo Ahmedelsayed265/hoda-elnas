@@ -1802,8 +1802,10 @@ body main .subscribe .check-field {
 }
 body main .subscribe .check-field p {
   font-size: 14px;
+  line-height: 20px;
 }
 body main .subscribe .check-field a {
+  line-height: 20px;
   color: #81a63d;
 }
 body main .my_courses {
@@ -2509,6 +2511,11 @@ input::-webkit-inner-spin-button {
 .subcribeModal .pay_method {
   width: 100%;
   height: 146px;
+}
+@media screen and (max-width: 576px) {
+  .subcribeModal .pay_method {
+    height: 178px;
+  }
 }
 .subcribeModal .pay_method .content {
   height: 100%;

@@ -8,6 +8,7 @@ import CourseBenifits from "./CourseBenifits";
 
 const Subscribe = () => {
   const courses = useSelector((state) => state.courses.courses);
+  const lang = useSelector((state) => state.language.lang);
   const [pricingPlans, setPricingPlans] = useState([]);
   const [benifits, setBenifits] = useState("");
   const { id } = useParams();
@@ -53,7 +54,7 @@ const Subscribe = () => {
     };
     getPricing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [course?.slug]);
+  }, [course?.slug, lang]);
 
   return (
     <section className="subscribe">

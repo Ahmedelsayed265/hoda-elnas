@@ -38,8 +38,11 @@
     "back": "Back",
     "payone": "Pay on",
     "transferPhoto": "Upload the transfer image",
-    "inreview":"Your request has been submitted for review",
+    "inreview": "Your request has been submitted for review",
     "myCourses": "My Classes",
+    "availableCourses": "Available Classes",
+    "inReviewCourses": "In Review Classes",
+    "planNotExist": "The plan does not exist",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",

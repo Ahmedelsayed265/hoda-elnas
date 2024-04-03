@@ -5,11 +5,14 @@ const CourseBenifits = ({ benefits }) => {
   const { t } = useTranslation();
   return (
     <div className="benifits">
-      <h6>{t("courseSubscribe.whatYouWillget")}</h6>
+      <h6>
+        {benefits ? t("courseSubscribe.whatYouWillget") : t("planNotExist")}
+      </h6>
       <ul className="iconCheck">
-        {benefits && benefits?.split("\r").map((benefit, index) => (
-          <li key={index}>{benefit}</li>
-        ))}
+        {benefits &&
+          benefits
+            ?.split("\r")
+            .map((benefit, index) => <li key={index}>{benefit}</li>)}
       </ul>
     </div>
   );
