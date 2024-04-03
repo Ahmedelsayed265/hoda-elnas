@@ -27,7 +27,7 @@ const CompleteProcess = ({
   const [payload, setPayload] = useState({
     amount: formData.totalPrice,
     appearance: { styles: { hppProfile: "simple" } },
-    callbackUrl: "https://hodaelnas.com/growth/callback/",
+    callbackUrl: "https://backend.hodaelnas.com/members/geideacallback/",
     currency: "EGP",
     customer: {
       email: user.email,
