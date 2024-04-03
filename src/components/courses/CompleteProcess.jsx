@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import SubmitButton from "./../ui/form-elements/SubmitButton";
 import { BASE_URL } from "../../constants";
+import SubmitButton from "./../ui/form-elements/SubmitButton";
 
 const CompleteProcess = ({
   setStepName,
@@ -80,7 +80,7 @@ const CompleteProcess = ({
         amount: formData?.totalPrice
       };
       const headers = {
-        "Accept": "application/json",
+        Accept: "application/json",
         "content-type": "multipart/form-data"
       };
       const reqOptions = {

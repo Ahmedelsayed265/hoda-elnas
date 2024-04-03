@@ -1825,6 +1825,25 @@ body main .my_courses .my_courses_title h2 {
   font-size: 22px;
   margin: 0;
 }
+body main .my_courses .noCourses {
+  height: 400px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+body main .my_courses .noCourses h3 {
+  color: #e4e4e4;
+  font-weight: 700;
+  font-size: 60px;
+}
+body main .my_courses .noCourses a {
+  background: #81a63d;
+  color: #fff;
+  padding: 8px 24px;
+  border-radius: 100px;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
