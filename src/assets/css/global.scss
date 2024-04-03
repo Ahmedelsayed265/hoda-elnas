@@ -1686,6 +1686,10 @@ body {
         .save {
           margin-top: 0 !important;
           width: min(100% - 24px, 200px);
+          &.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+          }
         }
         .add-discount {
           width: min(100%, 200px);
@@ -2341,6 +2345,11 @@ input[type="checkbox"] {
     font-size: 10px;
     @include centerFlex();
     color: $white;
+  }
+  &.error{
+    &::after{
+      border-color: red;
+    }
   }
   &:checked::after {
     content: "\f00c";

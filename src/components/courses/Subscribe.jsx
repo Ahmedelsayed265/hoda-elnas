@@ -17,6 +17,7 @@ const Subscribe = () => {
   const [formData, setFormData] = useState({
     studentsNumber: 1,
     courseDuration: 1,
+    startDate: "",
     planId: null,
     price: 0.0,
     totalPrice: 0.0,
@@ -55,8 +56,6 @@ const Subscribe = () => {
     getPricing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [slug, lang]);
-
-  console.log(pricingPlans);
 
   return (
     <section className="subscribe">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -19,9 +19,11 @@ const SubscribeForm = ({
   setBenefits
 }) => {
   const { t } = useTranslation();
+  const agreeCheck = useRef(null);
   const locationData = useUserLocation();
   const location = locationData?.country;
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
+  const [agreeError, setAgreeError] = useState(null);
   const [coponData, setCoponData] = useState({
     value: null,
     discount_type: null
@@ -106,6 +108,13 @@ const SubscribeForm = ({
 
   const handleShowModal = (e) => {
     e.preventDefault();
+    if (formData.startDate === "") {
+      document.getElementById("startDate").focus();
+      return;
+    } else if (agreeCheck.current.checked === false) {
+      setAgreeError("error");
+      return;
+    }
     const selectedDate = new Date(formData.startDate);
     const today = new Date();
     if (selectedDate.getDate() === today.getDate() || selectedDate < today) {
@@ -224,7 +233,7 @@ const SubscribeForm = ({
 
   return (
     <>
-      <form className="form-ui" onSubmit={handleShowModal}>
+      <form className="form-ui">
         <div className="form_group">
           {/* students count */}
           <InputField
@@ -365,7 +374,14 @@ const SubscribeForm = ({
         </div>
         {/* agree */}
         <div className="check-field">
-          <input type="checkbox" name="agree" id="agree" required />
+          <input
+            type="checkbox"
+            name="agree"
+            id="agree"
+            required
+            ref={agreeCheck}
+            className={agreeError === "error" ? "error" : ""}
+          />
           <label className="continue" htmlFor="agree">
             <p className="m-0">
               {t("courseSubscribe.haveRead")}{" "}
@@ -375,7 +391,11 @@ const SubscribeForm = ({
             </p>
           </label>
         </div>
-        <button className="save" type="submit">
+        <button
+          className={`save ${pricingPlan ? "" : "disabled"}`}
+          type="submit"
+          onClick={handleShowModal}
+        >
           {t("courseSubscribe.subscribe")}
         </button>
       </form>

@@ -57,6 +57,9 @@ const MyCourses = () => {
       <div className="container">
         {myCourses?.length > 0 && orders?.length > 0 ? (
           <>
+          {
+            
+          }
             <div className="row m-0 mb-5">
               <div className="col-12 p-2 mb-2">
                 <div className="my_courses_title">

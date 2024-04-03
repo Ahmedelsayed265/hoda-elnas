@@ -1745,6 +1745,10 @@ body main .subscribe form .save {
   margin-top: 0 !important;
   width: min(100% - 24px, 200px);
 }
+body main .subscribe form .save.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
 body main .subscribe form .add-discount {
   width: min(100%, 200px);
   height: 54px;
@@ -2414,6 +2418,9 @@ input[type=checkbox]::after {
   align-items: center;
   justify-content: center;
   color: #fff;
+}
+input[type=checkbox].error::after {
+  border-color: red;
 }
 input[type=checkbox]:checked::after {
   content: "\f00c";

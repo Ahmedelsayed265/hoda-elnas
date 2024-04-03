@@ -10,7 +10,6 @@ const SelectPayMethod = ({ setStepName, setMethod, formData }) => {
       <div className="container p-0">
         <div className="row m-0">
           {formData?.paymentMethods.map((me) => {
-            console.log(me);
             return (
               <div className="col-lg-6 col-12 p-2">
                 <label htmlFor={me?.id} className="pay_method">
