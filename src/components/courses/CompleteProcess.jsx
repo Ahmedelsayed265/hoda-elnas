@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import SubmitButton from "./../ui/form-elements/SubmitButton";
+import { BASE_URL } from "../../constants";
 
 const CompleteProcess = ({
   setStepName,
@@ -16,6 +17,7 @@ const CompleteProcess = ({
 }) => {
   const [orderId, setOrderId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
@@ -36,7 +38,7 @@ const CompleteProcess = ({
     language: lang,
     merchantReferenceId: "JoinCommunity",
     order: { integrationType: "HPP" },
-    paymentOperation: "Pay",
+    paymentOperation: "Pay"
   });
 
   useEffect(() => {
@@ -58,7 +60,13 @@ const CompleteProcess = ({
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("/members/create_order/", {
+      if (method?.attribute !== "auto" && reciept === null) {
+        toast.error(t("uploadTransferPhoto"));
+        return;
+      }
+
+      // pay load
+      const dataToSend = {
         user_id: user?.id,
         start_date: formData?.startDate,
         students: formData?.studentsNumber,
@@ -70,13 +78,28 @@ const CompleteProcess = ({
           formData.copun_type === "referral" ? formData.copun_name : "",
         recipt: reciept,
         amount: formData?.totalPrice
-      });
+      };
+      const headers = {
+        "Accept": "application/json",
+        "content-type": "multipart/form-data"
+      };
+      const reqOptions = {
+        method: "POST",
+        headers: headers,
+        data: dataToSend
+      };
+
+      const response = await axios.request(
+        "/members/create_order/",
+        reqOptions
+      );
       if (response?.status === 200 || response?.status === 201) {
         setOrderId(response?.data?.id);
-        if (method === "auto") {
+        if (method?.attribute === "auto") {
           handlePayment();
         } else {
           toast.success(t("inreview"));
+          navigate("/my-courses");
         }
       } else {
         toast.error("Something went wrong");
@@ -126,7 +149,11 @@ const CompleteProcess = ({
       <div className="row m-0">
         {/* Subscription info */}
         <div className="col-12 p-2 d-flex gap-5 flex-lg-row flex-column">
-          <div className={`subscribtion_info ${method === "auto" ? "active" : ""}`}>
+          <div
+            className={`subscribtion_info ${
+              method?.attribute === "auto" ? "active" : ""
+            }`}
+          >
             <div className="w-100">
               <h4>{course?.name}</h4>
               <ul className="mb-auto">
@@ -161,6 +188,7 @@ const CompleteProcess = ({
                 </li>
               </ul>
             </div>
+            {method?.details && <p className="details">{method?.details}</p>}
             <TotalPrice
               validCopun={formData?.validCopun}
               location={location}
@@ -168,33 +196,54 @@ const CompleteProcess = ({
               totalPrice={formData?.totalPrice}
             />
           </div>
-          {method !== "auto" && (
+          {method?.attribute !== "auto" && (
             <div className="upload_photo">
-              <h6>{t("transferPhoto")}</h6>
-              <div className="upload_wrapper">
-                <input
-                  type="file"
-                  id="reciept"
-                  onChange={(e) => setReciept(e.target.files[0])}
-                />
-                {reciept ? (
-                  <div className="img">
-                    <button
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setReciept(null);
-                      }}
-                    >
-                      <i className="fa-light fa-xmark"></i>
-                    </button>
-                    <img src={URL.createObjectURL(reciept)} alt="reciept" />
-                  </div>
-                ) : (
-                  <label htmlFor="reciept">
-                    <i className="fa-sharp fa-solid fa-rectangle-history-circle-plus"></i>
-                  </label>
+              <div className="d-flex gap-3">
+                <h6
+                  className={showMethod ? "" : "active"}
+                  onClick={() => setShowMethod(false)}
+                >
+                  {t("transferPhoto")}
+                </h6>
+                {method?.image && (
+                  <h6
+                    className={showMethod ? "active" : ""}
+                    onClick={() => setShowMethod(true)}
+                  >
+                    {t("transferMethod")}
+                  </h6>
                 )}
               </div>
+              {showMethod ? (
+                <div className="img">
+                  <img src={`${BASE_URL}${method?.image}`} alt="method" />
+                </div>
+              ) : (
+                <div className="upload_wrapper">
+                  <input
+                    type="file"
+                    id="reciept"
+                    onChange={(e) => setReciept(e.target.files[0])}
+                  />
+                  {reciept ? (
+                    <div className="img">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setReciept(null);
+                        }}
+                      >
+                        <i className="fa-light fa-xmark"></i>
+                      </button>
+                      <img src={URL.createObjectURL(reciept)} alt="reciept" />
+                    </div>
+                  ) : (
+                    <label htmlFor="reciept">
+                      <i className="fa-sharp fa-solid fa-rectangle-history-circle-plus"></i>
+                    </label>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -15,7 +15,7 @@ const SubscribeModal = ({
 }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
-  const [method, setMethod] = useState("auto");
+  const [method, setMethod] = useState({});
   const logged = useSelector((state) => state.authedUser.logged);
   let targetComponent;
   useEffect(() => {

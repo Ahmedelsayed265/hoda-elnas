@@ -18,8 +18,7 @@ const SelectPayMethod = ({ setStepName, setMethod, formData }) => {
                     type="radio"
                     name="payment_method"
                     id={me?.id}
-                    
-                    onChange={() => setMethod(me?.attribute)}
+                    onChange={() => setMethod(me)}
                   />
                   <div className="content">
                     <div className="icon_title">

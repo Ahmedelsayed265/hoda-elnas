@@ -2529,6 +2529,12 @@ input::-webkit-inner-spin-button {
           }
         }
       }
+      .details {
+        margin: 10px 0;
+        color: $dark;
+        font-size: 15px;
+        font-weight: 600;
+      }
       .total {
         width: 100%;
         margin-top: 12px;
@@ -2571,9 +2577,28 @@ input::-webkit-inner-spin-button {
       }
     }
     .upload_photo {
+      h6 {
+        cursor: pointer;
+        &.active {
+          color: $secondary;
+        }
+      }
       flex: 2;
+      .img {
+        width: 100%;
+        height: 256px;
+        overflow: hidden;
+        position: relative;
+        img {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 3 / 2;
+          object-fit: contain;
+          object-position: center;
+        }
+      }
       .upload_wrapper {
-        height: 220px;
+        height: 256px;
         width: 100%;
         background: $inputBG;
         border-radius: 12px;
@@ -2620,6 +2645,9 @@ input::-webkit-inner-spin-button {
 }
 .complete_process_btn {
   width: 35%;
+  @media screen and (max-width: 576px) {
+    width: 40%;
+  }
 }
 .payUserName {
   font-size: 16px;
