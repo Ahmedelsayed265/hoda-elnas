@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -21,7 +21,6 @@ const SubscribeForm = ({
   const { t } = useTranslation();
   const locationData = useUserLocation();
   const location = locationData?.country;
-  const errorMessage = useRef(null);
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
   const [coponData, setCoponData] = useState({
     value: null,
@@ -107,7 +106,14 @@ const SubscribeForm = ({
 
   const handleShowModal = (e) => {
     e.preventDefault();
-    setShowSubscribeModal(true);
+    const selectedDate = new Date(formData.startDate);
+    const today = new Date();
+    if (selectedDate.getDate() === today.getDate() || selectedDate < today) {
+      toast.error(t("dateError"));
+      document.getElementById("startDate").focus();
+    } else {
+      setShowSubscribeModal(true);
+    }
   };
 
   const handleAddPromo = async (e) => {
@@ -336,7 +342,6 @@ const SubscribeForm = ({
               value={promoCode}
               handleChange={(e) => setPromoCode(e.target.value)}
             />
-            <span ref={errorMessage}></span>
             <button className="add-discount" onClick={(e) => handleAddPromo(e)}>
               {t("courseSubscribe.addDiscount")}
             </button>
