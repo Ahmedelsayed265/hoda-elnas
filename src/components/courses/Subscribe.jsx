@@ -11,8 +11,8 @@ const Subscribe = () => {
   const lang = useSelector((state) => state.language.lang);
   const [pricingPlans, setPricingPlans] = useState([]);
   const [benifits, setBenifits] = useState("");
-  const { id } = useParams();
-  const course = courses.find((c) => c.id === +id);
+  const { slug } = useParams();
+  const course = courses.find((c) => c.slug === slug);
 
   const [formData, setFormData] = useState({
     studentsNumber: 1,
@@ -45,7 +45,7 @@ const Subscribe = () => {
     const getPricing = async () => {
       try {
         const response = await axios.get(
-          `/learningcenter/list_pricingplans/?course_slug=${course?.slug}`
+          `/learningcenter/list_pricingplans/?course_slug=${slug}`
         );
         setPricingPlans(response?.data?.message);
       } catch (error) {
@@ -54,7 +54,9 @@ const Subscribe = () => {
     };
     getPricing();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [course?.slug, lang]);
+  }, [slug, lang]);
+
+  console.log(pricingPlans);
 
   return (
     <section className="subscribe">
@@ -80,7 +82,7 @@ const Subscribe = () => {
               <h3>{course?.name}</h3>
               <p>{course?.bio}</p>
             </div>
-            {benifits && <CourseBenifits benefits={benifits} />}
+            {<CourseBenifits benefits={benifits} />}
           </div>
         </div>
       </div>

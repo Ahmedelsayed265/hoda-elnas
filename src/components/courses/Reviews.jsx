@@ -6,12 +6,12 @@ import { useParams } from "react-router-dom";
 
 const Reviews = () => {
   const { lang } = useSelector((state) => state.language);
-  const { id } = useParams();
+  const { slug } = useParams();
   const [reviews, setReviews] = React.useState([]);
   const titles = useSelector((state) => state.sectionsTitles.titles);
   const getCourseReviews = async () => {
     const response = await axios.get(
-      `/landingpages/List_reviews/?status=published&course_id=${id}`
+      `/landingpages/List_reviews/?status=published&course_slug=${slug}`
     );
     if (response.status === 200) {
       setReviews(response?.data?.message);

@@ -11,10 +11,10 @@ import Reviews from "../components/courses/Reviews";
 const CourseDetails = () => {
   const [showModal, setShowModal] = React.useState(false);
   const { t } = useTranslation();
-  const { id } = useParams();
+  const { slug } = useParams();
   const logged = useSelector((state) => state.authedUser.logged);
   const courses = useSelector((state) => state.courses.courses);
-  const course = courses.find((c) => c.id === +id);
+  const course = courses.find((c) => c.slug === slug);
 
   return (
     <>
@@ -40,7 +40,7 @@ const CourseDetails = () => {
                   </div>
                 )}
               </div>
-              <Link className="btn" to="/courses/1/subscripe">
+              <Link className="btn" to={`/courses/${slug}/subscripe`}>
                 {t("subscribe")}
               </Link>
               {!logged && (
@@ -73,7 +73,7 @@ const CourseDetails = () => {
       </section>
       <WhyUs grantees={course?.grantees} title={course?.grantees_title} />
       <CourseFaqs faqs={course?.FAQ} />
-      <Reviews id={course?.id} />
+      <Reviews />
       <VideoModal showModal={showModal} setShowModal={setShowModal} />
     </>
   );
