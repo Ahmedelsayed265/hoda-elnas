@@ -27,7 +27,7 @@ const CompleteProcess = ({
   const [payload, setPayload] = useState({
     amount: formData.totalPrice,
     appearance: { styles: { hppProfile: "simple" } },
-    callbackUrl: "https://backend.hodaelnas.com/members/geideacallback/",
+    callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
     currency: "EGP",
     customer: {
       email: user.email,
@@ -37,20 +37,6 @@ const CompleteProcess = ({
     merchantReferenceId: "JoinCommunity",
     order: { integrationType: "HPP" },
     paymentOperation: "Pay",
-    paymentOptions: [
-      {
-        label: "Visa",
-        paymentMethods: "visa"
-      },
-      {
-        label: "Mastercard",
-        paymentMethods: "mastercard"
-      },
-      {
-        label: "Mobile Wallet",
-        paymentMethods: "meezadigital"
-      }
-    ]
   });
 
   useEffect(() => {

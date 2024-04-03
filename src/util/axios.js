@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../constants";
 
-axios.defaults.baseURL = "https://backend.hodaelnas.com";
+axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["Accept"] = "application/json";
 axios.defaults.headers.common["Accept-Language"] = "ar";
