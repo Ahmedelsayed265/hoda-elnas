@@ -77,7 +77,7 @@ const MyCourses = () => {
                   </div>
                 </div>
                 {orders?.map((order) => (
-                  <div className="col-lg-3 col-md-4 col-6 p-2" key={order?.id}>
+                  <div className="col-lg-3 col-md-4 col-12 p-2" key={order?.id}>
                     <OrderCourseCard order={order} />
                   </div>
                 ))}
