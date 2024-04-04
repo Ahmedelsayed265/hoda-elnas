@@ -631,6 +631,16 @@ body {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: $lightShadow;
+      .label {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: $secondary;
+        color: $white;
+        font-size: 14px;
+        padding: 0px 16px;
+        border-radius: 4px;
+      }
       h6 {
         font-size: 14px;
         color: $main;
@@ -721,6 +731,8 @@ body {
           display: flex;
           align-items: center;
           gap: 4px;
+          line-height: 28px;
+          font-size: 14px;
           i {
             font-size: 14px;
             color: $secondary;
@@ -729,8 +741,9 @@ body {
         span {
           background: $secondary;
           color: $white;
-          padding: 0px 12px;
-          line-height: 26px;
+          padding: 0px 10px;
+          font-size: 14px;
+          line-height: 25px;
           border-radius: 2px;
         }
       }
@@ -2249,6 +2262,10 @@ body {
       .what_we_offer table td.circled:before {
         right: initial;
         left: 8px;
+      }
+      .custom-card .label {
+        left: initial;
+        right: 8px;
       }
     }
     .accordion-button::after {

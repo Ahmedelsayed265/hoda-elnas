@@ -43,7 +43,7 @@
     "availableCourses": "الدروس المتاحة",
     "inReviewCourses": "دروس فى المراجعة",
     "planNotExist": "الخطة غير موجودة",
-    "dateError": "يمكنك البدء بحد أدنى بعد إشتراكك بيوم",
+    "dateError": "يمكنك البدء بحد ادنى غدا!.",
     "uploadTransferPhoto": "قم برفع صورة التحويل",
     "transferMethod": "طريقة التحويل",
     "nocoursesFound": "لا يوجد دروس متاحة",
@@ -166,6 +166,7 @@
         "haveRead": "لقد قرأت وأوافق على",
         "addDiscount": "تفعيل",
         "startDate": "تاريخ البدء",
+        "endDate": "تاريخ الانتهاء",
         "noPricingPlan": "لا يوجد خطة السعر",
         "whatYouWillget": "ماذا ستحصل في هذه الخطة؟",
         "invalidPromoCode": "هذا الكوبون غير صحيح",
@@ -180,6 +181,8 @@
         "instantPayment": "دفع لحظي",
         "instantPaymentSubTitle": "ادفع من خلال بطاقتك البنكية او محفظتك الإلكترونية بشكل لحظي من خلال بوابة الدفع الإلكتروني الخاصة بنا دون الحاجة إلى الانتظار أو المراجعة",
         "discount": "خصم",
-        "copoun": "كوبون"
+        "copoun": "كوبون",
+        "active": "نشط",
+        "deactive": "غير نشط"
     }
 }

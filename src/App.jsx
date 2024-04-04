@@ -44,6 +44,7 @@ import { setBody, setHeader } from "./redux/slices/comparsion";
 import { setFeedBacks } from "./redux/slices/feedBacks";
 import { setTitles } from "./redux/slices/sectionsTitles";
 import MyCourses from "./components/courses/dashboard/MyCourses";
+import CourseDashboard from "./components/courses/dashboard/CourseDashboard";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -167,6 +168,10 @@ const App = () => {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:slug" element={<CourseDetails />} />
           <Route path="/courses/:slug/subscripe" element={<Subscribe />} />
+          <Route
+            path="/dashboard/:subscriptionId"
+            element={<CourseDashboard />}
+          />
           <Route path="/my-courses" element={<MyCourses />} />
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />

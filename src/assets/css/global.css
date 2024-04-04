@@ -638,6 +638,16 @@ body main .custom-card {
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
+body main .custom-card .label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #81a63d;
+  color: #fff;
+  font-size: 14px;
+  padding: 0px 16px;
+  border-radius: 4px;
+}
 body main .custom-card h6 {
   font-size: 14px;
   color: #31535a;
@@ -732,6 +742,8 @@ body main .custom-card .sno b {
   display: flex;
   align-items: center;
   gap: 4px;
+  line-height: 28px;
+  font-size: 14px;
 }
 body main .custom-card .sno b i {
   font-size: 14px;
@@ -740,8 +752,9 @@ body main .custom-card .sno b i {
 body main .custom-card .sno span {
   background: #81a63d;
   color: #fff;
-  padding: 0px 12px;
-  line-height: 26px;
+  padding: 0px 10px;
+  font-size: 14px;
+  line-height: 25px;
   border-radius: 2px;
 }
 body main .audio-card {
@@ -2318,6 +2331,10 @@ body.en main .custom-card {
 body.en main .what_we_offer table td.circled:before {
   right: initial;
   left: 8px;
+}
+body.en main .custom-card .label {
+  left: initial;
+  right: 8px;
 }
 body.en .accordion-button::after {
   margin-left: auto;

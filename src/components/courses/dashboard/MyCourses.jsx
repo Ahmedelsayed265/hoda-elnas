@@ -6,31 +6,33 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import OrderCourseCard from "./OrderCourseCard";
+import AvailableCourse from "./AvailableCourse";
 
 const MyCourses = () => {
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.authedUser.user);
-  const [myCourses, setMyCourses] = useState([]);
+  const logged = useSelector((state) => state.authedUser.logged);
+  const [mySubscriptions, setMySubscriptions] = useState([]);
   const [orders, setOrders] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   // handle protected route
   useEffect(() => {
-    if (user?.logged === false) {
+    if (!logged) {
       navigate("/login");
     }
-  }, [navigate, user?.logged]);
+  }, [logged, navigate]);
 
   // get data
   useEffect(() => {
-    const getMyCourses = async () => {
+    const getMySubscriptions = async () => {
       try {
         const response = await axios.get(
           `/members/List_student_subs/?user_id=${user.id}`
         );
         if (response.status === 200) {
-          setMyCourses(response?.data?.message);
+          setMySubscriptions(response?.data?.message);
         }
       } catch (err) {
         console.log(err);
@@ -49,16 +51,16 @@ const MyCourses = () => {
       }
     };
 
-    getMyCourses();
+    getMySubscriptions();
     getOrders();
   }, [user?.id, lang]);
 
   return (
     <section className="my_courses">
       <div className="container">
-        {myCourses?.length > 0 && orders?.length > 0 ? (
+        {mySubscriptions?.length > 0 && orders?.length > 0 ? (
           <>
-            {myCourses?.length > 0 && (
+            {mySubscriptions?.length > 0 && (
               <div className="row m-0 mb-5">
                 <div className="col-12 p-2 mb-2">
                   <div className="my_courses_title">
@@ -66,6 +68,14 @@ const MyCourses = () => {
                     <h2>{t("availableCourses")}</h2>
                   </div>
                 </div>
+                {mySubscriptions?.map((suscription) => (
+                  <div
+                    className="col-lg-4 col-md-6 col-12 p-2"
+                    key={suscription?.id}
+                  >
+                    <AvailableCourse subscription={suscription} />
+                  </div>
+                ))}
               </div>
             )}
             {orders?.length > 0 && (

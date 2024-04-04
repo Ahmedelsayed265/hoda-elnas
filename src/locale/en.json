@@ -43,7 +43,7 @@
     "availableCourses": "Available Classes",
     "inReviewCourses": "In Review Classes",
     "planNotExist": "The plan does not exist",
-    "DateError": "You can only start from the next day of subscription date",
+    "DateError": "You can only start from tomorrow",
     "uploadTransferPhoto": "Upload the transfer image",
     "transferMethod": "Transfer Method",
     "nocoursesFound": "No classes found",
@@ -165,6 +165,7 @@
         "haveRead": "I have read and agree to the",
         "addDiscount": "Apply",
         "startDate": "Start Date",
+        "endDate": "End Date",
         "noPricingPlan": "No Pricing Plan",
         "whatYouWillget": "What will you get in this plan?",
         "invalidPromoCode": "Invalid promo code",
@@ -179,6 +180,8 @@
         "instantPayment": "Instant Payment",
         "instantPaymentSubTitle": "Pay with your bank card or electronic wallet instantly through our electronic payment gateway without the need to wait or review.",
         "discount": "Discount",
-        "copoun": "coupon"
+        "copoun": "coupon",
+        "active": "Active",
+        "deactive": "Deactive"
     }
 }
