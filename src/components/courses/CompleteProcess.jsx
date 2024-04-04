@@ -97,7 +97,7 @@ const CompleteProcess = ({
           email: user.email,
           phoneNumber: user.phone
         },
-        metadata: { custom: orderId },
+        metadata: { custom: `${orderId}` },
         language: lang,
         merchantReferenceId: "JoinCommunity",
         order: { integrationType: "HPP" },

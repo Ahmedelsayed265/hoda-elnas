@@ -5,6 +5,7 @@ import axios from "./../../../util/axios";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import OrderCourseCard from "./OrderCourseCard";
 
 const MyCourses = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -75,6 +76,11 @@ const MyCourses = () => {
                     <h2>{t("inReviewCourses")}</h2>
                   </div>
                 </div>
+                {orders?.map((order) => (
+                  <div className="col-lg-3 col-md-4 col-6 p-2" key={order?.id}>
+                    <OrderCourseCard order={order} />
+                  </div>
+                ))}
               </div>
             )}
           </>
