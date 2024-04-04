@@ -90,7 +90,7 @@ const CompleteProcess = ({
     try {
       const payLoad = {
         amount: formData.totalPrice,
-        appearance: { styles: { hppProfile: "simple" } },
+        appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
         callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
         currency: "EGP",
         customer: {
