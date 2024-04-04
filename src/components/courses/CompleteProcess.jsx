@@ -45,7 +45,7 @@ const CompleteProcess = ({
     if (orderId) {
       setPayload((prevPayload) => ({
         ...prevPayload,
-        metadata: { order_id: orderId }
+        metadata: { custom: orderId }
       }));
     }
   }, [orderId]);
