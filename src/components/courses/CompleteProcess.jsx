@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "./../../util/axios";
-import TotalPrice from "./TotalPrice";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants";
+import TotalPrice from "./TotalPrice";
 import SubmitButton from "./../ui/form-elements/SubmitButton";
 
 const CompleteProcess = ({
@@ -15,40 +15,16 @@ const CompleteProcess = ({
   location,
   method
 }) => {
-  const [orderId, setOrderId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
+  let orderId;
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
   const lang = useSelector((state) => state.language.lang);
 
   const authorization =
     "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
-
-  const [payload, setPayload] = useState({
-    amount: formData.totalPrice,
-    appearance: { styles: { hppProfile: "simple" } },
-    callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
-    currency: "EGP",
-    customer: {
-      email: user.email,
-      phoneNumber: user.phone
-    },
-    language: lang,
-    merchantReferenceId: "JoinCommunity",
-    order: { integrationType: "HPP" },
-    paymentOperation: "Pay"
-  });
-
-  useEffect(() => {
-    if (orderId) {
-      setPayload((prevPayload) => ({
-        ...prevPayload,
-        metadata: { custom: orderId }
-      }));
-    }
-  }, [orderId]);
 
   const headers = {
     accept: "application/json",
@@ -94,7 +70,7 @@ const CompleteProcess = ({
         reqOptions
       );
       if (response?.status === 200 || response?.status === 201) {
-        setOrderId(response?.data?.id);
+        orderId = response?.data?.id;
         if (method?.attribute === "auto") {
           handlePayment();
         } else {
@@ -112,12 +88,27 @@ const CompleteProcess = ({
   };
   const handlePayment = async () => {
     try {
+      const payLoad = {
+        amount: formData.totalPrice,
+        appearance: { styles: { hppProfile: "simple" } },
+        callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
+        currency: "EGP",
+        customer: {
+          email: user.email,
+          phoneNumber: user.phone
+        },
+        metadata: { order: orderId },
+        language: lang,
+        merchantReferenceId: "JoinCommunity",
+        order: { integrationType: "HPP" },
+        paymentOperation: "Pay"
+      };
       const response = await fetch(
         "https://api.merchant.geidea.net/payment-intent/api/v1/direct/session",
         {
           method: "POST",
           headers: headers,
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payLoad)
         }
       );
       const responseData = await response.json();
