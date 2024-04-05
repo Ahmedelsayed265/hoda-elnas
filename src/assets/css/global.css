@@ -2972,4 +2972,64 @@ input::-webkit-inner-spin-button {
 }
 .add-student .form-ui textarea {
   height: 110px !important;
+}
+
+.students_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.student_card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 16px;
+  border-radius: 12px;
+}
+.student_card .img_name {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.student_card .img_name .img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.student_card .img_name .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.student_card .img_name .content h6 {
+  color: #31535a;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+.student_card .img_name .content p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.student_card .img_name .content p span {
+  color: #81a63d;
+  font-weight: 600;
+}
+.student_card button {
+  width: 100%;
+  background: #31535a;
+  transition: 0.3s ease-in-out;
+  color: #fff;
+  padding: 2px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.student_card button:hover {
+  background: #81a63d;
 }/*# sourceMappingURL=global.css.map */

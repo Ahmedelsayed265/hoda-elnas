@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import AddStudentModal from "./AddStudentModal";
+import StudentCard from "./StudentCard";
 
 const CourseStudents = () => {
   const { subscriptionId } = useParams();
@@ -37,18 +38,16 @@ const CourseStudents = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`/members/list_Student/?subscription_id=${subscriptionId}`)
-      .then((response) => {
-        if (response.status === 200) {
-          setStudents(response?.data?.message);
-        }
-      });
+    axios.get(`/members/list_Student/`).then((response) => {
+      if (response.status === 200) {
+        setStudents(response?.data?.message);
+      }
+    });
   }, [subscriptionId]);
 
   return (
     <section className="course_students">
-      <div className="container">
+      <div className="container p-0">
         <div className="row m-0">
           <div className="col-12 p-2">
             <div className="header">
@@ -62,9 +61,13 @@ const CourseStudents = () => {
             </div>
           </div>
         </div>
-        <div className="col-12 p-2">
+        <div className="col-12 p-2 mt-3">
           {students?.length > 0 ? (
-            students?.map((student) => <p></p>)
+            <div className="students_grid">
+              {students.map((student) => (
+                <StudentCard key={student.id} student={student} />
+              ))}
+            </div>
           ) : (
             <div className="noStudents">
               <h5>{t("dashboard.noStudents")}</h5>

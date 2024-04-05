@@ -196,6 +196,7 @@
         "addStudent": "Add Student",
         "noStudents": "There are no students in this lesson",
         "noStudentsSubTitle": "Please add a student so you can continue with the lesson",
-        "addStudentSuccessfully": "Student Added Successfully"
+        "addStudentSuccessfully": "Student Added Successfully",
+        "addTheStudent": "Add Student"
     }
 }

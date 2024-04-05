@@ -206,6 +206,7 @@
         "notes": "ملاحظات",
         "notesPlaceHolder": "ادخل ملاحظات",
         "add": "اضافة",
-        "addStudentSuccessfully": "تم اضافة الطالب بنجاح"
+        "addStudentSuccessfully": "تم اضافة الطالب بنجاح",
+        "addTheStudent": "اضافة الطالب"
     }
 }

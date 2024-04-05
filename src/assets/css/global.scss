@@ -2868,3 +2868,61 @@ input::-webkit-inner-spin-button {
     height: 110px !important;
   }
 }
+.students_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.student_card {
+  box-shadow: $lightShadow;
+  padding: 16px;
+  border-radius: 12px;
+  .img_name {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    .img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+    .content {
+      h6 {
+        color: $main;
+        font-size: 16px;
+        margin: 0;
+        font-weight: 600;
+      }
+      p {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        span {
+          color: $secondary;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  button {
+    width: 100%;
+    background: $main;
+    transition: $transation;
+    color: $white;
+    padding: 2px;
+    font-size: 14px;
+    border-radius: 4px;
+    &:hover {
+      background: $secondary;
+    }
+  }
+}
