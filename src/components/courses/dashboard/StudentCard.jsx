@@ -17,9 +17,10 @@ const StudentCard = ({ student }) => {
           </p>
         </div>
       </div>
-      <button>
-        {t("dashboard.addTheStudent")}
-      </button>
+      <p className="contactNumber">
+        {t("dashboard.contactNumber")}: <span>{student?.contact}</span>
+      </p>
+      <button>{t("dashboard.addTheStudent")}</button>
     </div>
   );
 };

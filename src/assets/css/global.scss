@@ -2913,6 +2913,17 @@ input::-webkit-inner-spin-button {
       }
     }
   }
+  .contactNumber {
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+      font-weight: 600;
+      font-size: 14px;
+      color: $secondary;
+    }
+  }
   button {
     width: 100%;
     background: $main;

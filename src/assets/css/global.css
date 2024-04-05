@@ -3021,6 +3021,17 @@ input::-webkit-inner-spin-button {
   color: #81a63d;
   font-weight: 600;
 }
+.student_card .contactNumber {
+  margin: 0 0 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.student_card .contactNumber span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #81a63d;
+}
 .student_card button {
   width: 100%;
   background: #31535a;
