@@ -1910,6 +1910,11 @@ body main .my_courses .noCourses h3 {
   font-weight: 700;
   font-size: 60px;
 }
+@media screen and (max-width: 576px) {
+  body main .my_courses .noCourses h3 {
+    font-size: 40px;
+  }
+}
 body main .my_courses .noCourses a {
   background: #81a63d;
   color: #fff;
@@ -1978,6 +1983,58 @@ body main .course_dashboard aside ul li a img {
 }
 body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
   background: #fff;
+}
+body main .course_dashboard .course_dashboard_router {
+  padding-top: 0;
+}
+body main .course_dashboard .course_dashboard_router .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body main .course_dashboard .course_dashboard_router .header .title {
+  margin: 0;
+}
+body main .course_dashboard .course_dashboard_router .header .title h5 {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+}
+body main .course_dashboard .course_dashboard_router .header button {
+  background: #81a63d;
+  color: #fff;
+  padding: 4px 16px;
+  border-radius: 4px;
+  transition: 0.3s ease-in-out;
+}
+body main .course_dashboard .course_dashboard_router .header button i {
+  font-size: 14px;
+}
+body main .course_dashboard .course_dashboard_router .header button:hover {
+  background: #31535a;
+}
+body main .course_dashboard .course_dashboard_router .noStudents {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+body main .course_dashboard .course_dashboard_router .noStudents h5 {
+  text-align: center;
+  color: #e4e4e4;
+  font-weight: 700;
+  font-size: 40px;
+}
+@media screen and (max-width: 576px) {
+  body main .course_dashboard .course_dashboard_router .noStudents h5 {
+    font-size: 28px;
+  }
+}
+body main .course_dashboard .course_dashboard_router .noStudents p {
+  text-align: center;
+  line-height: 26px;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -2160,7 +2217,7 @@ body .form-ui .image-change-wrapper {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 16px 4px;
 }
 body .form-ui .image-change-wrapper .img-wrap {
   width: 130px;
@@ -2176,8 +2233,8 @@ body .form-ui .image-change-wrapper .img-wrap img {
   width: 100%;
   height: 100%;
   aspect-ratio: 1/1;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
   -o-object-position: center;
      object-position: center;
 }
@@ -2908,4 +2965,11 @@ input::-webkit-inner-spin-button {
 }
 .payUserName span {
   line-height: inherit;
+}
+
+.add-student .form-ui {
+  gap: 10px !important;
+}
+.add-student .form-ui textarea {
+  height: 110px !important;
 }/*# sourceMappingURL=global.css.map */

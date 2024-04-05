@@ -49,6 +49,7 @@
     "nocoursesFound": "لا يوجد دروس متاحة",
     "browseAndStartLearning": "تصفح الدروس وإبدء التعلم الأن",
     "joinRequestInReview": "طلب الانضمام في المراجعة",
+    "profilePic": "الصورةالشخصية",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -191,6 +192,19 @@
         "myGoals": "الاهداف",
         "courseStudents": "الطلاب",
         "certificates": "الشهادات",
-        "myAppointments": "المواعيد"
+        "myAppointments": "المواعيد",
+        "inCourseStudents": "طلاب الدرس",
+        "addStudent": "اضافة طالب",
+        "noStudents": "لا يوجد طلاب فى هذا الدرس",
+        "noStudentsSubTitle": "من فضلك قم بإضافة طالب حتى تسطيع المواصلة بالدرس",
+        "studentName": "اسم الطالب",
+        "studentNamePlaceHolder": "ادخل اسم الطالب",
+        "studentAge": "العمر",
+        "studentAgePlaceHolder": "ادخل العمر",
+        "studentContact": "رقم الهاتف",
+        "studentContactPlaceHolder": "ادخل رقم الهاتف",
+        "notes": "ملاحظات",
+        "notesPlaceHolder": "ادخل ملاحظات",
+        "add": "اضافة"
     }
 }

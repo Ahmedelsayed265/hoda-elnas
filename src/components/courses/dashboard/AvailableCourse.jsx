@@ -49,21 +49,21 @@ const AvailableCourse = ({ subscription }) => {
         </p>
         <p className="sno mb-1">
           <b>
-            <i class="fa-duotone fa-calendar-days"></i>
+            <i className="fa-duotone fa-calendar-days"></i>
             {t("courseSubscribe.courseDuration")}
           </b>
           <span>{subscription?.cpw}</span>
         </p>
         <p className="sno mb-1">
           <b>
-            <i class="fa-duotone fa-calendar-days"></i>
+            <i className="fa-duotone fa-calendar-days"></i>
             {t("courseSubscribe.startDate")}
           </b>
           <p>{subscription?.startdate}</p>
         </p>
         <p className="sno mb-1">
           <b>
-            <i class="fa-duotone fa-calendar-days"></i>
+            <i className="fa-duotone fa-calendar-days"></i>
             {t("courseSubscribe.endDate")}
           </b>
           <p>{subscription?.enddate}</p>

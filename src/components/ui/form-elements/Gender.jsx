@@ -1,11 +1,15 @@
 import { useTranslation } from "react-i18next";
 import female from "../../../assets/images/female.svg";
 import male from "../../../assets/images/male.svg";
-export default function Gender({ formData, setFormData }) {
+export default function Gender({ formData, setFormData, noLabel }) {
   const { t } = useTranslation();
   return (
     <div className="gender_select">
-      <label><i className="fa-regular fa-venus-mars"></i> {t("auth.gender")}</label>
+      {!noLabel && (
+        <label>
+          <i className="fa-regular fa-venus-mars"></i> {t("auth.gender")}
+        </label>
+      )}
       <div>
         <label
           htmlFor="female"

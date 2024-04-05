@@ -168,11 +168,12 @@ const App = () => {
           <Route path="/courses" element={<Courses />} />
           <Route path="/courses/:slug" element={<CourseDetails />} />
           <Route path="/courses/:slug/subscripe" element={<Subscribe />} />
+          <Route path="/my-courses" element={<MyCourses />} />
           <Route
             path="/dashboard/:subscriptionId/*"
             element={<CourseDashboard />}
           />
-          <Route path="/my-courses" element={<MyCourses />} />
+          
           <Route path="/acoustics" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/profile" element={<Profile />} />

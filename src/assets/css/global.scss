@@ -1843,6 +1843,9 @@ body {
           color: #e4e4e4;
           font-weight: 700;
           font-size: 60px;
+          @media screen and (max-width: 576px) {
+            font-size: 40px;
+          }
         }
         a {
           background: $secondary;
@@ -1909,6 +1912,52 @@ body {
                 background: $white;
               }
             }
+          }
+        }
+      }
+      .course_dashboard_router {
+        padding-top: 0;
+        .header {
+          @include space-between();
+          .title {
+            margin: 0;
+            h5 {
+              color: $main;
+              font-weight: 600;
+              font-size: 18px;
+              margin: 0;
+            }
+          }
+          button {
+            background: $secondary;
+            color: $white;
+            padding: 4px 16px;
+            border-radius: 4px;
+            i {
+              font-size: 14px;
+            }
+            transition: $transation;
+            &:hover {
+              background: $main;
+            }
+          }
+        }
+        .noStudents {
+          height: 400px;
+          @include centerFlex();
+          flex-direction: column;
+          h5 {
+            text-align: center;
+            color: #e4e4e4;
+            font-weight: 700;
+            font-size: 40px;
+            @media screen and (max-width: 576px) {
+              font-size: 28px;
+            }
+          }
+          p {
+            text-align: center;
+            line-height: 26px;
           }
         }
       }
@@ -2084,7 +2133,7 @@ body {
       border: 1px solid $inputStroke;
       @include centerFlex();
       flex-direction: column;
-      padding: 16px;
+      padding: 16px 16px 4px;
       .img-wrap {
         width: 130px;
         height: 130px;
@@ -2096,7 +2145,7 @@ body {
           width: 100%;
           height: 100%;
           aspect-ratio: 1/1;
-          object-fit: contain;
+          object-fit: cover;
           object-position: center;
         }
       }
@@ -2812,4 +2861,10 @@ input::-webkit-inner-spin-button {
     line-height: inherit;
   }
   @include space-between();
+}
+.add-student .form-ui {
+  gap: 10px !important;
+  textarea {
+    height: 110px !important;
+  }
 }
