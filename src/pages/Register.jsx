@@ -104,7 +104,11 @@ const Register = () => {
               />
             </div>
             {/* gender */}
-            <Gender setFormData={setFormData} formData={formData} />
+            <Gender
+              setFormData={setFormData}
+              formData={formData}
+              dataKey="gender"
+            />
             {/* agreement and submit */}
             <p className="continue">
               {t("auth.byContinue")}{" "}

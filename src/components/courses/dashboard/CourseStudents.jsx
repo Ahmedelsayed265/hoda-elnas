@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "./../../../util/axios";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
 import AddStudentModal from "./AddStudentModal";
 
 const CourseStudents = () => {
@@ -9,6 +10,31 @@ const CourseStudents = () => {
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    profile: "",
+    studentname: "",
+    studentage: "",
+    studentcontact: "",
+    sex: "",
+    notes: ""
+  });
+
+  const addStudent = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post("/members/add_Student/", formData);
+      if (response.status === 200 || response.status === 201) {
+        setShowModal(false);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     axios
@@ -18,7 +44,8 @@ const CourseStudents = () => {
           setStudents(response?.data?.message);
         }
       });
-  });
+  }, [subscriptionId]);
+
   return (
     <section className="course_students">
       <div className="container">
@@ -46,7 +73,14 @@ const CourseStudents = () => {
           )}
         </div>
       </div>
-      <AddStudentModal showModal={showModal} setShowModal={setShowModal} />
+      <AddStudentModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        loading={loading}
+        formData={formData}
+        handleAddStudent={addStudent}
+        setFormData={setFormData}
+      />
     </section>
   );
 };

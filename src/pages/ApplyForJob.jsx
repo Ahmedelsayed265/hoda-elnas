@@ -46,7 +46,11 @@ const ApplyForJob = () => {
                 />
               </div>
               {/* gender */}
-              <Gender setFormData={setFormData} formData={formData} />
+              <Gender
+                setFormData={setFormData}
+                formData={formData}
+                dataKey="gender"
+              />
               <div className="form_group">
                 <TextField
                   label={t("jobsPage.aboutYou")}

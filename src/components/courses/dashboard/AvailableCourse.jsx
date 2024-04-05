@@ -16,7 +16,7 @@ const AvailableCourse = ({ subscription }) => {
           setStudents(response?.data?.message);
         }
       });
-  });
+  }, [subscription?.id]);
   return (
     <Link
       to={

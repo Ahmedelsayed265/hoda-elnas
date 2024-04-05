@@ -108,7 +108,11 @@ const RegisterFrom = ({ setStepName }) => {
           />
         </div>
         {/* gender */}
-        <Gender setFormData={setFormData} formData={formData} />
+        <Gender
+          setFormData={setFormData}
+          formData={formData}
+          dataKey="gender"
+        />
         <SubmitButton name={t("register")} loading={loading} />
       </form>
     </div>

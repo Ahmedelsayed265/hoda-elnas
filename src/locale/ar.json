@@ -49,7 +49,7 @@
     "nocoursesFound": "لا يوجد دروس متاحة",
     "browseAndStartLearning": "تصفح الدروس وإبدء التعلم الأن",
     "joinRequestInReview": "طلب الانضمام في المراجعة",
-    "profilePic": "الصورةالشخصية",
+    "profilePic": "الصورة الشخصية ( اختياري )",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -205,6 +205,7 @@
         "studentContactPlaceHolder": "ادخل رقم الهاتف",
         "notes": "ملاحظات",
         "notesPlaceHolder": "ادخل ملاحظات",
-        "add": "اضافة"
+        "add": "اضافة",
+        "addStudentSuccessfully": "تم اضافة الطالب بنجاح"
     }
 }

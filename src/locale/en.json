@@ -49,7 +49,7 @@
     "nocoursesFound": "No classes found",
     "browseAndStartLearning": "Browse Lessons and start learning now",
     "joinRequestInReview": "Join Request in Review",
-    "profilePic": "Profile Picture",
+    "profilePic": "Profile Picture ( optional )",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -195,6 +195,7 @@
         "inCourseStudents": "Course Students",
         "addStudent": "Add Student",
         "noStudents": "There are no students in this lesson",
-        "noStudentsSubTitle": "Please add a student so you can continue with the lesson"
+        "noStudentsSubTitle": "Please add a student so you can continue with the lesson",
+        "addStudentSuccessfully": "Student Added Successfully"
     }
 }

@@ -1,7 +1,9 @@
+import React from "react";
 import { useTranslation } from "react-i18next";
 import female from "../../../assets/images/female.svg";
 import male from "../../../assets/images/male.svg";
-export default function Gender({ formData, setFormData, noLabel }) {
+
+export default function Gender({ formData, setFormData, noLabel, dataKey }) {
   const { t } = useTranslation();
   return (
     <div className="gender_select">
@@ -13,10 +15,10 @@ export default function Gender({ formData, setFormData, noLabel }) {
       <div>
         <label
           htmlFor="female"
-          className={`gender_card ${formData.gender === "female" && "active"}`}
+          className={`gender_card ${formData[dataKey] === "female" && "active"}`}
         >
           <input
-            onChange={(e) => setFormData({ ...formData, gender: e.target.id })}
+            onChange={(e) => setFormData({ ...formData, [dataKey]: e.target.id })}
             type="radio"
             name="gender"
             id="female"
@@ -25,10 +27,10 @@ export default function Gender({ formData, setFormData, noLabel }) {
         </label>
         <label
           htmlFor="male"
-          className={`gender_card ${formData.gender === "male" && "active"}`}
+          className={`gender_card ${formData[dataKey] === "male" && "active"}`}
         >
           <input
-            onChange={(e) => setFormData({ ...formData, gender: e.target.id })}
+            onChange={(e) => setFormData({ ...formData, [dataKey]: e.target.id })}
             type="radio"
             name="gender"
             id="male"

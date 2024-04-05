@@ -6,24 +6,26 @@ import InputField from "../../ui/form-elements/InputField";
 import Gender from "../../ui/form-elements/Gender";
 import TextField from "./../../ui/form-elements/TextField";
 import SubmitButton from "../../ui/form-elements/SubmitButton";
+import PhoneField from "./../../ui/form-elements/PhoneField";
 
-const AddStudentModal = ({ showModal, setShowModal }) => {
+const AddStudentModal = ({
+  showModal,
+  setShowModal,
+  setFormData,
+  formData,
+  handleAddStudent,
+  loading
+}) => {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    profile: avatar,
-    studentname: "",
-    studentage: "",
-    studentcontact: "",
-    sex: "",
-    notes: ""
-  });
+  const [renderedImage, setRenderedImage] = useState(avatar);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    setFormData({ ...formData, profile: file });
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData({ ...formData, profile: reader.result });
+        setRenderedImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -33,10 +35,10 @@ const AddStudentModal = ({ showModal, setShowModal }) => {
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
       <Modal.Header closeButton />
       <Modal.Body className="add-student">
-        <div className="form-ui">
+        <form className="form-ui" onSubmit={handleAddStudent}>
           <div className="input-field image-change-wrapper">
             <div className="img-wrap">
-              <img src={formData.profile} alt="avatar" />
+              <img src={renderedImage} alt="avatar" />
             </div>
             <div className="d-flex w-100 justify-content-between align-items-center">
               <label htmlFor="img">{t("profilePic")}</label>
@@ -75,16 +77,17 @@ const AddStudentModal = ({ showModal, setShowModal }) => {
               setFormData={setFormData}
             />
           </div>
-          <InputField
+          <PhoneField
             label={t("dashboard.studentContact")}
             placeholder={t("dashboard.studentContactPlaceHolder")}
             htmlFor="studentcontact"
             value={formData.studentcontact}
             formData={formData}
-            id={"studentcontact"}
+            id={"phone"}
+            type="tel"
             setFormData={setFormData}
           />
-          <Gender formData={formData} setFormData={setFormData} />
+          <Gender formData={formData} setFormData={setFormData} dataKey="sex" />
           <TextField
             label={t("dashboard.notes")}
             placeholder={t("dashboard.notesPlaceHolder")}
@@ -94,8 +97,8 @@ const AddStudentModal = ({ showModal, setShowModal }) => {
             id={"notes"}
             setFormData={setFormData}
           />
-          <SubmitButton name={t("dashboard.add")} />
-        </div>
+          <SubmitButton name={t("dashboard.add")} loading={loading} />
+        </form>
       </Modal.Body>
     </Modal>
   );
