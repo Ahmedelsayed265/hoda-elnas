@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../../constants";
 import { useTranslation } from "react-i18next";
+import axios from "./../../../util/axios";
 
 const AvailableCourse = ({ subscription }) => {
   const { t } = useTranslation();
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/members/list_Student/?subscription_id=${subscription?.id}`)
+      .then((response) => {
+        if (response.status === 200) {
+          setStudents(response?.data?.message);
+        }
+      });
+  });
   return (
-    <Link to={`/dashboard/${subscription?.id}`} className="custom-card">
+    <Link
+      to={
+        students?.length > 0
+          ? `/dashboard/${subscription?.id}`
+          : `/dashboard/${subscription?.id}/course-students`
+      }
+      className="custom-card"
+    >
       <div className="img">
-        <div className="label" style={{ background: subscription?.status_color }}>
+        <div
+          className="label"
+          style={{ background: subscription?.status_color }}
+        >
           <span>{subscription?.status}</span>
         </div>
         <img src={`${BASE_URL}${subscription?.background}`} alt="course" />

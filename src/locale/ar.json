@@ -184,5 +184,13 @@
         "copoun": "كوبون",
         "active": "نشط",
         "deactive": "غير نشط"
+    },
+    "dashboard": {
+        "tasks": "المهام",
+        "reports": "التقارير",
+        "myGoals": "الاهداف",
+        "courseStudents": "الطلاب",
+        "certificates": "الشهادات",
+        "myAppointments": "المواعيد"
     }
 }

@@ -1916,6 +1916,69 @@ body main .my_courses .noCourses a {
   padding: 8px 24px;
   border-radius: 100px;
 }
+body main .course_dashboard {
+  padding: 40px 0;
+}
+body main .course_dashboard aside {
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+body main .course_dashboard aside .user_img {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+body main .course_dashboard aside .user_img .img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f2f2f2;
+}
+body main .course_dashboard aside .user_img .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .course_dashboard aside .user_img h6 {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 18px;
+}
+body main .course_dashboard aside ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body main .course_dashboard aside ul li {
+  width: 100%;
+}
+body main .course_dashboard aside ul li a {
+  width: 100%;
+  color: #000000;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  font-size: 15px;
+  font-weight: 600;
+}
+body main .course_dashboard aside ul li a img {
+  height: 18px;
+}
+body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
+  background: #fff;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
