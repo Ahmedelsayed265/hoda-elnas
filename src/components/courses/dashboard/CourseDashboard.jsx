@@ -9,7 +9,7 @@ import goals from "../../../assets/images/goals.svg";
 import certificate from "../../../assets/images/certificate.svg";
 import calender from "../../../assets/images/calnder.svg";
 import students from "../../../assets/images/students.svg";
-import CourseStudents from "./CourseStudents";
+import CourseStudents from "./students/CourseStudents";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();

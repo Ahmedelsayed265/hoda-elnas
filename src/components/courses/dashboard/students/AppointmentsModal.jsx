@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import Availabilty from "./Availabilty";
-import Timings from "./Timings";
-import Goal from "./Goal";
-import Instructor from "./Instructor";
+import Availabilty from "../chooseAppointmentSteps/Availabilty";
+import Timings from "../chooseAppointmentSteps/Timings";
+import Goal from "../chooseAppointmentSteps/Goal";
+import Instructor from "../chooseAppointmentSteps/Instructor";
 
 const AppointmentsModal = ({ showModal, setShowModal }) => {
   const [formData, setFormData] = useState({

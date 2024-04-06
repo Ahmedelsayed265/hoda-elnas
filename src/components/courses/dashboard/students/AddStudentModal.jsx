@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import avatar from "../../../assets/images/avatar.jpg";
+import avatar from "../../../../assets/images/avatar.jpg";
 import { useTranslation } from "react-i18next";
-import InputField from "../../ui/form-elements/InputField";
-import Gender from "../../ui/form-elements/Gender";
-import TextField from "./../../ui/form-elements/TextField";
-import SubmitButton from "../../ui/form-elements/SubmitButton";
-import PhoneField from "./../../ui/form-elements/PhoneField";
+import InputField from "../../../ui/form-elements/InputField";
+import Gender from "../../../ui/form-elements/Gender";
+import TextField from "../../../ui/form-elements/TextField";
+import SubmitButton from "../../../ui/form-elements/SubmitButton";
+import PhoneField from "../../../ui/form-elements/PhoneField";
 
 const AddStudentModal = ({
   showModal,

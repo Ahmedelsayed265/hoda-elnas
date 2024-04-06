@@ -211,6 +211,9 @@
         "day": "Day",
         "from": "From",
         "to": "To",
-        "appointment": "Appointment"
+        "appointment": "Appointment",
+        "chooseGoal": "Choose Goal",
+        "choose": "Choose",
+        "chooseInstructor": "Choose Instructor"
     }
 }

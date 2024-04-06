@@ -1,5 +1,5 @@
 import React from "react";
-import studentIcon from "../../../assets/images/student.svg";
+import studentIcon from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 
 const StudentCard = ({ student }) => {

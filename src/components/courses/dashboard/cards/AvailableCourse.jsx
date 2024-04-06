@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../../constants";
+import { BASE_URL } from "../../../../constants";
 import { useTranslation } from "react-i18next";
-import axios from "./../../../util/axios";
+import axios from "../../../../util/axios";
 
 const AvailableCourse = ({ subscription }) => {
   const { t } = useTranslation();

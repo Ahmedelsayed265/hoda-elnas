@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import fixed from "../../../assets/images/fixed-timing.svg";
-import flexible from "../../../assets/images/flexible-timing.svg";
+import fixed from "../../../../assets/images/fixed-timing.svg";
+import flexible from "../../../../assets/images/flexible-timing.svg";
 
 const Availabilty = ({ formData, setFormData, setStep }) => {
   const { t } = useTranslation();

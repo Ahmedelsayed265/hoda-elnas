@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import axios from "./../../../util/axios";
+import axios from "../../../../util/axios";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import AddStudentModal from "./AddStudentModal";
-import StudentCard from "./StudentCard";
+import StudentCard from "../cards/StudentCard";
 import AppointmentsModal from "./AppointmentsModal";
 import { useSelector } from "react-redux";
-import DataLoader from "../../ui/DataLoader";
+import DataLoader from "../../../ui/DataLoader";
 
 const CourseStudents = () => {
   const userId = useSelector((state) => state?.authedUser?.user?.id);
   const { t } = useTranslation();
-  const [showAppointmentsModal, setShowAppointmentsModal] = useState(false);
+  const [showAppointmentsModal, setShowAppointmentsModal] = useState(true);
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);

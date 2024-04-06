@@ -1,7 +1,7 @@
 import React from "react";
-import { BASE_URL } from "../../../constants";
+import { BASE_URL } from "../../../../constants";
 import { useTranslation } from "react-i18next";
-import timer from "../../../assets/images/timer.svg";
+import timer from "../../../../assets/images/timer.svg";
 
 const OrderCourseCard = ({ order }) => {
   const { t } = useTranslation();

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import availableCoursesIcon from "../../../assets/images/availableCourses.svg";
-import inReview from "../../../assets/images/inReview.svg";
 import axios from "./../../../util/axios";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import OrderCourseCard from "./OrderCourseCard";
-import AvailableCourse from "./AvailableCourse";
+import OrderCourseCard from "./cards/OrderCourseCard";
+import AvailableCourse from "./cards/AvailableCourse";
 import Loader from "./../../layout/Loader";
+import inReview from "../../../assets/images/inReview.svg";
+import availableCoursesIcon from "../../../assets/images/availableCourses.svg";
 
 const MyCourses = () => {
   const lang = useSelector((state) => state.language.lang);

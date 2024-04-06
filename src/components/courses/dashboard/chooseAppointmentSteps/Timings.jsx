@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { DAYS_AR, DAYS_EN } from "../../../constants";
+import { DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -10,7 +10,6 @@ const Timings = ({ formData, setFormData, setStep }) => {
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const { t } = useTranslation();
-  console.log(subslist ,  cpw , subscriptionId);
 
   return (
     <div className="row m-0 form-ui">

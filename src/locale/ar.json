@@ -222,6 +222,8 @@
         "day": "اليوم",
         "from": "من",
         "to": "الي",
-        "appointment": "الموعد"
+        "appointment": "الموعد",
+        "chooseGoal": "اختر الهدف",
+        "choose": "اختر"
     }
 }
