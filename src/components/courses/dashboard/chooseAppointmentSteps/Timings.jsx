@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Timings = ({ formData, setFormData, setStep }) => {
   const { t } = useTranslation();
@@ -10,13 +11,6 @@ const Timings = ({ formData, setFormData, setStep }) => {
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const lang = useSelector((state) => state.language.lang);
-
-  const handleDayChange = (index, value) => {
-    const updatedAppointments = [...formData.appointments];
-    const dayName = lang === "ar" ? DAYS_AR[value] : DAYS_EN[value];
-    updatedAppointments[index].day = dayName;
-    setFormData((prev) => ({ ...prev, appointments: updatedAppointments }));
-  };
 
   const handleStartTimeChange = (index, value) => {
     const updatedAppointments = [...formData.appointments];
@@ -28,6 +22,23 @@ const Timings = ({ formData, setFormData, setStep }) => {
     const updatedAppointments = [...formData.appointments];
     updatedAppointments[index].endtime = value;
     setFormData((prev) => ({ ...prev, appointments: updatedAppointments }));
+  };
+
+  const handleContinue = () => {
+    const hasEmptyField = formData.appointments.some((appointment) => {
+      if (formData.time_option === "specific") {
+        return !appointment.day || !appointment.starttime;
+      } else {
+        return (
+          !appointment.day || !appointment.starttime || !appointment.endtime
+        );
+      }
+    });
+    if (hasEmptyField) {
+      toast.error(t("dashboard.fillTimeTabel"));
+      return;
+    }
+    setStep(3);
   };
 
   return (
@@ -45,7 +56,14 @@ const Timings = ({ formData, setFormData, setStep }) => {
                       id={`day-${index}`}
                       required
                       value={formData?.appointments[index]?.day}
-                      onChange={(e) => handleDayChange(index, e.target.value)}
+                      onChange={(e) => {
+                        const updatedAppointments = [...formData.appointments];
+                        updatedAppointments[index].day = e.target.value;
+                        setFormData((prev) => ({
+                          ...prev,
+                          appointments: updatedAppointments
+                        }));
+                      }}
                     >
                       <option value="">{t("dashboard.choose")}</option>
                       {lang === "ar"
@@ -89,7 +107,14 @@ const Timings = ({ formData, setFormData, setStep }) => {
                       id={`day-${index}`}
                       required
                       value={formData.appointments[index].day}
-                      onChange={(e) => handleDayChange(index, e.target.value)}
+                      onChange={(e) => {
+                        const updatedAppointments = [...formData.appointments];
+                        updatedAppointments[index].day = e.target.value;
+                        setFormData((prev) => ({
+                          ...prev,
+                          appointments: updatedAppointments
+                        }));
+                      }}
                     >
                       <option value="">{t("dashboard.choose")}</option>
                       {lang === "ar"
@@ -138,7 +163,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
         <button className="back" onClick={() => setStep(1)}>
           {t("dashboard.back")}
         </button>
-        <button className="continue" onClick={() => setStep(3)}>
+        <button className="continue" onClick={handleContinue}>
           {t("dashboard.next")}
         </button>
       </div>

@@ -26,8 +26,7 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   };
 
   const [enrollmentData, setEnrollmentData] = useState({
-    student_id: studentId,
-    goal_id: null,
+    goal_id: 1,
     subscription_id: +subscriptionId,
     instructor_id: null
   });
@@ -35,6 +34,7 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   useEffect(() => {
     setEnrollmentData((prev) => ({
       ...prev,
+      student_id: studentId,
       time_option: timeOptions,
       appointments:
         timeOptions === "specific"
@@ -46,7 +46,7 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
               .map(() => ({ ...initialRangeTiming }))
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timeOptions, cpw]);
+  }, [timeOptions, cpw, studentId]);
 
   const [step, setStep] = useState(1);
   const { t } = useTranslation();

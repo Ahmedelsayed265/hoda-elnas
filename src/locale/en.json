@@ -217,6 +217,7 @@
         "choose": "Choose",
         "chooseInstructor": "Choose Instructor",
         "goalLevel": " Level",
-        "chooseSurah": "Surah"
+        "chooseSurah": "Surah",
+        "fillTimeTabel": "Please Fill The Time Tabel"
     }
 }
