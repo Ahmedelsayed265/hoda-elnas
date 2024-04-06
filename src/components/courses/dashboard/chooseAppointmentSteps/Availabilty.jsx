@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import fixed from "../../../../assets/images/fixed-timing.svg";
 import flexible from "../../../../assets/images/flexible-timing.svg";
 
-const Availabilty = ({ formData, setFormData, setStep }) => {
+const Availabilty = ({ timeOptions, setTimeOptions, setStep }) => {
   const { t } = useTranslation();
   return (
     <div className="row m-0">
@@ -12,14 +12,12 @@ const Availabilty = ({ formData, setFormData, setStep }) => {
           <input
             type="radio"
             id="fixedAppointments"
-            name="appointmentsType"
-            checked={formData.appointmentsType === "fixed"}
-            onChange={() =>
-              setFormData({ ...formData, appointmentsType: "fixed" })
-            }
+            name="time_option"
+            checked={timeOptions === "specific"}
+            onChange={() => setTimeOptions("specific")}
           />
           <div className="content">
-            <img src={fixed} alt="fixed" />
+            <img src={fixed} alt="specific" />
             <h4>{t("dashboard.fixedAppointments")}</h4>
           </div>
         </label>
@@ -29,14 +27,12 @@ const Availabilty = ({ formData, setFormData, setStep }) => {
           <input
             type="radio"
             id="flexibleAppointments"
-            name="appointmentsType"
-            checked={formData.appointmentsType === "flexible"}
-            onChange={() =>
-              setFormData({ ...formData, appointmentsType: "flexible" })
-            }
+            name="time_option"
+            checked={timeOptions === "range"}
+            onChange={() => setTimeOptions("range")}
           />
           <div className="content">
-            <img src={flexible} alt="flexible" />
+            <img src={flexible} alt="range" />
             <h4>{t("dashboard.flexibleAppointments")}</h4>
           </div>
         </label>
