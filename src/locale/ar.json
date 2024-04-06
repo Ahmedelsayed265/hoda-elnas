@@ -208,6 +208,7 @@
         "add": "اضافة",
         "addStudentSuccessfully": "تم اضافة الطالب بنجاح",
         "addTheStudent": "اضافة الطالب",
+        "removeTheStudent": "إزالة الطالب",
         "contactNumber": "رقم التواصل",
         "appointmentsSet": "تعيين المواعيد",
         "availabilty": "الإتاحية",
@@ -224,6 +225,8 @@
         "to": "الي",
         "appointment": "الموعد",
         "chooseGoal": "اختر الهدف",
-        "choose": "اختر"
+        "choose": "اختر",
+        "goalLevel": "المستوى",
+        "chooseSurah": " السورة"
     }
 }

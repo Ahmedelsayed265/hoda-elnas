@@ -21,7 +21,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                 <div className="timingRow" key={index}>
                   <div className="input-field">
                     <label htmlFor="day">{t("dashboard.day")}</label>
-                    <select name="day" id="day">
+                    <select name="day" id="day" required>
                       {lang === "ar"
                         ? DAYS_AR.map((day, index) => (
                             <option value={index} key={index}>
@@ -39,7 +39,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     <label htmlFor="appointment">
                       {t("dashboard.appointment")}
                     </label>
-                    <input type="time" name="appointment" id="appointment" />
+                    <input type="time" name="appointment" id="appointment" required/>
                   </div>
                 </div>
               ))
@@ -49,7 +49,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                 <div className="timingRow" key={index}>
                   <div className="input-field">
                     <label htmlFor="day">{t("dashboard.day")}</label>
-                    <select name="day" id="day">
+                    <select name="day" id="day" required>
                       {lang === "ar"
                         ? DAYS_AR.map((day, index) => (
                             <option value={index} key={index}>
@@ -65,11 +65,11 @@ const Timings = ({ formData, setFormData, setStep }) => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.from")}</label>
-                    <input type="time" name="from_time" id="from_time" />
+                    <input type="time" name="from_time" id="from_time" required/>
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.to")}</label>
-                    <input type="time" name="to_time" id="to_time" />
+                    <input type="time" name="to_time" id="to_time" required/>
                   </div>
                 </div>
               ))}

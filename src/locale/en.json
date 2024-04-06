@@ -198,6 +198,7 @@
         "noStudentsSubTitle": "Please add a student so you can continue with the lesson",
         "addStudentSuccessfully": "Student Added Successfully",
         "addTheStudent": "Add Student",
+        "removeTheStudent": "Remove Student",
         "contactNumber": "Contact Number",
         "appointmentsSet": "Set Appointments",
         "myAppointmentsInmModal": "My Appointments",
@@ -212,8 +213,10 @@
         "from": "From",
         "to": "To",
         "appointment": "Appointment",
-        "chooseGoal": "Choose Goal",
+        "chooseGoal": "Goal",
         "choose": "Choose",
-        "chooseInstructor": "Choose Instructor"
+        "chooseInstructor": "Choose Instructor",
+        "goalLevel": " Level",
+        "chooseSurah": "Surah"
     }
 }

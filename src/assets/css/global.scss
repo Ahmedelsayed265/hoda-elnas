@@ -2937,15 +2937,11 @@ input::-webkit-inner-spin-button {
   }
   button {
     width: 100%;
-    background: $main;
     transition: $transation;
     color: $white;
     padding: 2px;
     font-size: 14px;
     border-radius: 4px;
-    &:hover {
-      background: $secondary;
-    }
   }
 }
 .tableLoader {

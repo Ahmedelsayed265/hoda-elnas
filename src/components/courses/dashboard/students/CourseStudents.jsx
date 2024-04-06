@@ -7,12 +7,15 @@ import StudentCard from "../cards/StudentCard";
 import AppointmentsModal from "./AppointmentsModal";
 import { useSelector } from "react-redux";
 import DataLoader from "../../../ui/DataLoader";
+import { useParams } from "react-router-dom";
 
 const CourseStudents = () => {
   const userId = useSelector((state) => state?.authedUser?.user?.id);
   const { t } = useTranslation();
-  const [showAppointmentsModal, setShowAppointmentsModal] = useState(true);
-  const [students, setStudents] = useState([]);
+  const { subscriptionId } = useParams();
+  const [showAppointmentsModal, setShowAppointmentsModal] = useState(false);
+  const [subscriptionStudents, setSubscriptionStudents] = useState([]);
+  const [allStudents, setAllStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,6 +26,34 @@ const CourseStudents = () => {
     sex: "",
     notes: ""
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `/members/list_Student/?parent_id=${userId}`
+        );
+        if (response.status === 200) {
+          setAllStudents(response?.data?.message);
+        }
+        const response2 = await axios.get(
+          `/members/list_Student/?subscription_id=${subscriptionId}`
+        );
+        if (response2.status === 200) {
+          setSubscriptionStudents(response2?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(t("auth.someThingWentWrong"));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userId, subscriptionId]);
 
   const addStudent = async (e) => {
     e.preventDefault();
@@ -43,26 +74,14 @@ const CourseStudents = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `/members/list_Student/?parent_id=${userId}`
-        );
-        if (response.status === 200) {
-          setStudents(response?.data?.message);
-        }
-      } catch (error) {
-        console.log(error);
-        toast.error(t("auth.someThingWentWrong"));
-      } finally {
-        setLoading(false);
-      }
-    };
+  const handleAdd = (id) => {
+    console.log("add");
+    setShowAppointmentsModal(true);
+  };
 
-    fetchData();
-  }, [userId, t]);
+  const handleRemove = (id) => {
+    console.log("remove");
+  };
 
   return (
     <section className="course_students">
@@ -83,11 +102,25 @@ const CourseStudents = () => {
         <div className="col-12 p-2 mt-3">
           {loading ? (
             <DataLoader />
-          ) : students?.length > 0 ? (
+          ) : allStudents?.length > 0 ? (
             <div className="students_grid">
-              {students.map((student) => (
-                <StudentCard key={student.id} student={student} />
-              ))}
+              {allStudents.map((student) => {
+                const isEnrolled = subscriptionStudents.some(
+                  (enrolledStudent) => enrolledStudent.id === student.id
+                );
+                return (
+                  <StudentCard
+                    key={student.id}
+                    student={student}
+                    button={isEnrolled ? "remove" : "add"}
+                    handleClick={() =>
+                      isEnrolled
+                        ? handleRemove(student.id)
+                        : handleAdd(student.id)
+                    }
+                  />
+                );
+              })}
             </div>
           ) : (
             <div className="noStudents">

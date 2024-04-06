@@ -2,8 +2,9 @@ import React from "react";
 import studentIcon from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 
-const StudentCard = ({ student }) => {
+const StudentCard = ({ student, button, handleClick }) => {
   const { t } = useTranslation();
+
   return (
     <div className="student_card">
       <div className="img_name">
@@ -20,7 +21,14 @@ const StudentCard = ({ student }) => {
       <p className="contactNumber">
         {t("dashboard.contactNumber")}: <span>{student?.contact}</span>
       </p>
-      <button>{t("dashboard.addTheStudent")}</button>
+      <button
+        style={{ background: button === "add" ? "#31535a" : "red" }}
+        onClick={handleClick}
+      >
+        {button === "add"
+          ? t("dashboard.addTheStudent")
+          : t("dashboard.removeTheStudent")}
+      </button>
     </div>
   );
 };
