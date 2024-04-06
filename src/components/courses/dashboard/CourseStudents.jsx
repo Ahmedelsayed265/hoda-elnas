@@ -11,7 +11,7 @@ import DataLoader from "../../ui/DataLoader";
 const CourseStudents = () => {
   const userId = useSelector((state) => state?.authedUser?.user?.id);
   const { t } = useTranslation();
-  const [showAppointmentsModal, setShowAppointmentsModal] = useState(true);
+  const [showAppointmentsModal, setShowAppointmentsModal] = useState(false);
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,6 +31,7 @@ const CourseStudents = () => {
       const response = await axios.post("/members/add_Student/", formData);
       if (response.status === 200 || response.status === 201) {
         setShowModal(false);
+        setShowAppointmentsModal(true);
       } else {
         toast.error(t("dashboard.thisStudentAlreadyExist"));
       }

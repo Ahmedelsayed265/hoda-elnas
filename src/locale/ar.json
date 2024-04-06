@@ -218,6 +218,10 @@
         "flexibleAppointments": "مواعيد مرنه",
         "next": "التالي",
         "back": "السابق",
-        "thisStudentAlreadyExist": "هذا الطالب موجود بالفعل"
+        "thisStudentAlreadyExist": "هذا الطالب موجود بالفعل",
+        "day": "اليوم",
+        "from": "من",
+        "to": "الي",
+        "appointment": "الموعد"
     }
 }

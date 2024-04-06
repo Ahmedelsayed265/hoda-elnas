@@ -3156,4 +3156,8 @@ input::-webkit-inner-spin-button {
 }
 .appointments-modal .back:hover {
   background: #dce9c4;
+}
+.appointments-modal .timingRow {
+  display: flex;
+  gap: 8px;
 }/*# sourceMappingURL=global.css.map */

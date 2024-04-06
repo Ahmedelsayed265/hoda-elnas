@@ -207,6 +207,10 @@
         "flexibleAppointments": "Flexible Appointments",
         "next": "Next",
         "back": "Back",
-        "thisStudentAlreadyExist": "This Student Already Exist"
+        "thisStudentAlreadyExist": "This Student Already Exist",
+        "day": "Day",
+        "from": "From",
+        "to": "To",
+        "appointment": "Appointment"
     }
 }
