@@ -208,6 +208,16 @@
         "add": "اضافة",
         "addStudentSuccessfully": "تم اضافة الطالب بنجاح",
         "addTheStudent": "اضافة الطالب",
-        "contactNumber": "رقم التواصل"
+        "contactNumber": "رقم التواصل",
+        "appointmentsSet": "تعيين المواعيد",
+        "availabilty": "الإتاحية",
+        "myAppointmentsInmModal": "مواعيدى",
+        "goal": "الهدف",
+        "instructor": "المعلم",
+        "fixedAppointments": "مواعيد ثابتة",
+        "flexibleAppointments": "مواعيد مرنه",
+        "next": "التالي",
+        "back": "السابق",
+        "thisStudentAlreadyExist": "هذا الطالب موجود بالفعل"
     }
 }

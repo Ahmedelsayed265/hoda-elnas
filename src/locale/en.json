@@ -198,6 +198,15 @@
         "noStudentsSubTitle": "Please add a student so you can continue with the lesson",
         "addStudentSuccessfully": "Student Added Successfully",
         "addTheStudent": "Add Student",
-        "contactNumber": "Contact Number"
+        "contactNumber": "Contact Number",
+        "appointmentsSet": "Set Appointments",
+        "myAppointmentsInmModal": "My Appointments",
+        "goal": "Goal",
+        "instructor": "Instructor",
+        "fixedAppointments": "Fixed Appointments",
+        "flexibleAppointments": "Flexible Appointments",
+        "next": "Next",
+        "back": "Back",
+        "thisStudentAlreadyExist": "This Student Already Exist"
     }
 }

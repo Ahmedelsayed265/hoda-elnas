@@ -83,7 +83,7 @@ const AddStudentModal = ({
             htmlFor="studentcontact"
             value={formData.studentcontact}
             formData={formData}
-            id={"phone"}
+            id={"studentcontact"}
             type="tel"
             setFormData={setFormData}
           />

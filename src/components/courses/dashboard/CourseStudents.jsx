@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "./../../../util/axios";
-import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import AddStudentModal from "./AddStudentModal";
 import StudentCard from "./StudentCard";
+import AppointmentsModal from "./AppointmentsModal";
+import { useSelector } from "react-redux";
+import DataLoader from "../../ui/DataLoader";
 
 const CourseStudents = () => {
-  const { subscriptionId } = useParams();
+  const userId = useSelector((state) => state?.authedUser?.user?.id);
+  const { t } = useTranslation();
+  const [showAppointmentsModal, setShowAppointmentsModal] = useState(true);
   const [students, setStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     profile: "",
@@ -28,6 +31,8 @@ const CourseStudents = () => {
       const response = await axios.post("/members/add_Student/", formData);
       if (response.status === 200 || response.status === 201) {
         setShowModal(false);
+      } else {
+        toast.error(t("dashboard.thisStudentAlreadyExist"));
       }
     } catch (error) {
       console.log(error);
@@ -38,12 +43,25 @@ const CourseStudents = () => {
   };
 
   useEffect(() => {
-    axios.get(`/members/list_Student/`).then((response) => {
-      if (response.status === 200) {
-        setStudents(response?.data?.message);
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `/members/list_Student/?parent_id=${userId}`
+        );
+        if (response.status === 200) {
+          setStudents(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error(t("auth.someThingWentWrong"));
+      } finally {
+        setLoading(false);
       }
-    });
-  }, [subscriptionId]);
+    };
+
+    fetchData();
+  }, [userId, t]);
 
   return (
     <section className="course_students">
@@ -62,7 +80,9 @@ const CourseStudents = () => {
           </div>
         </div>
         <div className="col-12 p-2 mt-3">
-          {students?.length > 0 ? (
+          {loading ? (
+            <DataLoader />
+          ) : students?.length > 0 ? (
             <div className="students_grid">
               {students.map((student) => (
                 <StudentCard key={student.id} student={student} />
@@ -83,6 +103,10 @@ const CourseStudents = () => {
         formData={formData}
         handleAddStudent={addStudent}
         setFormData={setFormData}
+      />
+      <AppointmentsModal
+        showModal={showAppointmentsModal}
+        setShowModal={setShowAppointmentsModal}
       />
     </section>
   );

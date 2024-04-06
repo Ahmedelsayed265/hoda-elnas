@@ -2296,6 +2296,14 @@ body .form-ui .save {
   color: #fff;
   margin-top: 12px;
 }
+body .modal-header button {
+  margin: 0 auto 0 0 !important;
+}
+body .modal-title {
+  color: #000000;
+  font-size: 16px;
+  font-weight: 600;
+}
 body .gender_select {
   display: flex;
   flex-direction: column;
@@ -2459,6 +2467,9 @@ body.en main .custom-card .label {
 body.en .accordion-button::after {
   margin-left: auto;
   margin-right: 0;
+}
+body.en .modal-header button {
+  margin: 0 0 0 auto !important;
 }
 
 .button-86 {
@@ -3043,4 +3054,106 @@ input::-webkit-inner-spin-button {
 }
 .student_card button:hover {
   background: #81a63d;
+}
+
+.tableLoader {
+  min-height: 548px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.tableLoader .loader--style8 {
+  width: 80px;
+  height: 80px;
+}
+.tableLoader svg path,
+.tableLoader svg rect {
+  fill: #81a63d;
+}
+
+.appointments-modal .tabs {
+  display: flex;
+  border-bottom: 3px solid #f8f8f8;
+}
+.appointments-modal .tabs .tab {
+  flex: 1;
+  position: relative;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.appointments-modal .tabs .tab h6 {
+  color: #000000;
+}
+.appointments-modal .tabs .tab::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  height: 3px;
+  width: 0;
+  background: #81a63d;
+  transition: 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+.appointments-modal .tabs .tab.active::after {
+  width: 100%;
+}
+.appointments-modal .tabs .tab.active h6 {
+  color: #81a63d;
+}
+.appointments-modal .appontementheck {
+  width: 100%;
+  cursor: pointer;
+}
+.appointments-modal .appontementheck .content {
+  border: 1px solid #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px 16px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  gap: 16px;
+}
+.appointments-modal .appontementheck .content img {
+  height: 48px;
+}
+.appointments-modal .appontementheck .content h4 {
+  font-size: 18px;
+  color: #000000;
+  margin: 0;
+}
+.appointments-modal .appontementheck input {
+  display: none;
+}
+.appointments-modal .appontementheck input:checked + .content {
+  border: 1px solid #81a63d;
+  background: rgba(129, 166, 61, 0.1411764706);
+}
+.appointments-modal .appontementheck input:checked + .content h4 {
+  color: #81a63d;
+}
+.appointments-modal .continue,
+.appointments-modal .back {
+  padding: 4px 24px;
+  background: #81a63d;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s ease-in-out;
+}
+.appointments-modal .continue:hover,
+.appointments-modal .back:hover {
+  background: #31535a;
+}
+.appointments-modal .back {
+  background: #dce9c4;
+  color: #81a63d;
+}
+.appointments-modal .back:hover {
+  background: #dce9c4;
 }/*# sourceMappingURL=global.css.map */

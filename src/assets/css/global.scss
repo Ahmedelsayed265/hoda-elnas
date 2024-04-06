@@ -2205,6 +2205,14 @@ body {
       margin-top: 12px;
     }
   }
+  .modal-header button {
+    margin: 0 auto 0 0 !important;
+  }
+  .modal-title {
+    color: $dark;
+    font-size: 16px;
+    font-weight: 600;
+  }
   .gender_select {
     display: flex;
     flex-direction: column;
@@ -2381,6 +2389,9 @@ body {
     .accordion-button::after {
       margin-left: auto;
       margin-right: 0;
+    }
+    .modal-header button {
+      margin: 0 0 0 auto !important;
     }
   }
 }
@@ -2934,6 +2945,103 @@ input::-webkit-inner-spin-button {
     border-radius: 4px;
     &:hover {
       background: $secondary;
+    }
+  }
+}
+.tableLoader {
+  min-height: 548px;
+  @include centerFlex();
+  flex-direction: column;
+  .loader--style8 {
+    width: 80px;
+    height: 80px;
+  }
+  svg path,
+  svg rect {
+    fill: $secondary;
+  }
+}
+.appointments-modal {
+  .tabs {
+    display: flex;
+    border-bottom: 3px solid $inputBG;
+    .tab {
+      flex: 1;
+      position: relative;
+      margin-top: 12px;
+      @include centerFlex();
+      h6 {
+        color: $dark;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 50%;
+        height: 3px;
+        width: 0;
+        background: $secondary;
+        transition: $transation;
+        transform: translateX(-50%);
+      }
+      &.active {
+        &::after {
+          width: 100%;
+        }
+        h6 {
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .appontementheck {
+    width: 100%;
+    cursor: pointer;
+    .content {
+      border: 1px solid $inputStroke;
+      @include centerFlex();
+      flex-direction: column;
+      padding: 24px 16px;
+      border-radius: 12px;
+      background: $inputBG;
+      gap: 16px;
+      img {
+        height: 48px;
+      }
+      h4 {
+        font-size: 18px;
+        color: $dark;
+        margin: 0;
+      }
+    }
+    input {
+      display: none;
+      &:checked + .content {
+        border: 1px solid $secondary;
+        background: $second10;
+        h4 {
+          color: $secondary;
+        }
+      }
+    }
+  }
+  .continue,
+  .back {
+    padding: 4px 24px;
+    background: $secondary;
+    border-radius: 4px;
+    color: $white;
+    font-size: 14px;
+    transition: $transation;
+    &:hover {
+      background: $main;
+    }
+  }
+  .back {
+    background: $second20;
+    color: $secondary;
+    &:hover {
+      background: $second20;
     }
   }
 }
