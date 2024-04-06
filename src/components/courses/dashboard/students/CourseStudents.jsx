@@ -13,6 +13,7 @@ const CourseStudents = () => {
   const userId = useSelector((state) => state?.authedUser?.user?.id);
   const { t } = useTranslation();
   const { subscriptionId } = useParams();
+  const [studentId, setStudentId] = useState(null);
   const [showAppointmentsModal, setShowAppointmentsModal] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
   const [allStudents, setAllStudents] = useState([]);
@@ -77,6 +78,7 @@ const CourseStudents = () => {
   const handleAdd = (id) => {
     console.log("add");
     setShowAppointmentsModal(true);
+    setStudentId(id);
   };
 
   const handleRemove = (id) => {
@@ -139,6 +141,7 @@ const CourseStudents = () => {
         setFormData={setFormData}
       />
       <AppointmentsModal
+        studentId={studentId}
         showModal={showAppointmentsModal}
         setShowModal={setShowAppointmentsModal}
       />

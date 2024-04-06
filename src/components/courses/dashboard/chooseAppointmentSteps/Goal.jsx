@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import axios from './../../../../util/axios';
+import axios from "./../../../../util/axios";
+import { useParams } from "react-router-dom";
 
-const Goal = ({ formData, setFormData, setStep }) => {
+const Goal = ({ formData, setFormData, setStep, studentId }) => {
   const { t } = useTranslation();
-  const [goals , setGoals] = useState([]);
+  const { subscriptionId } = useParams();
+  const [goals, setGoals] = useState([]);
+
   useEffect(() => {
-    try {
-      const reponse = axios.get("/learningcenter/List_goal/");
-      reponse.then((res) => {
-        setGoals(res.data.message);
-      });
-    } catch (error) {
-      console.log("error =>", error);
-    }
-  }, []);
+    const fetchGoals = async () => {
+      try {
+        const response = await axios.get(
+          `/members/List_student_subs/?id=${subscriptionId}`
+        );
+        if (response?.status === 200) {
+          const courseId = response?.data?.message[0]?.course_id;
+          const response2 = await axios.get(
+            `/learningcenter/List_goal/?course_id=${courseId}&student_id=${studentId}`
+          );
+          setGoals(response2.data.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchGoals();
+  }, [studentId, subscriptionId]);
+
   return (
     <div className="row m-0 form-ui">
       <div className="col-12 p-2">
@@ -25,22 +39,24 @@ const Goal = ({ formData, setFormData, setStep }) => {
               <option value="choose" disabled>
                 {t("dashboard.choose")}
               </option>
+              {/* Map through goals to render options */}
             </select>
           </div>
-          <div className="input-field">
-            <label htmlFor="goal">{t("dashboard.chooseSurah")}</label>
-            <select name="goal" id="goal">
+          {/* <div className="input-field">
+            <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
+            <select name="surah" id="surah">
               <option value="" disabled>
                 {t("dashboard.choose")}
               </option>
             </select>
-          </div>
+          </div> */}
           <div className="input-field">
-            <label htmlFor="goal">{t("dashboard.goalLevel")}</label>
-            <select name="goal" id="goal">
+            <label htmlFor="goalLevel">{t("dashboard.goalLevel")}</label>
+            <select name="goalLevel" id="goalLevel">
               <option value="" disabled>
                 {t("dashboard.choose")}
               </option>
+              {/* Map through goalLevels to render options */}
             </select>
           </div>
         </div>

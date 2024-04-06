@@ -6,14 +6,19 @@ import Timings from "../chooseAppointmentSteps/Timings";
 import Goal from "../chooseAppointmentSteps/Goal";
 import Instructor from "../chooseAppointmentSteps/Instructor";
 
-const AppointmentsModal = ({ showModal, setShowModal }) => {
+const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   const [formData, setFormData] = useState({
     appointmentsType: "fixed"
   });
   const [step, setStep] = useState(1);
   const { t } = useTranslation();
   return (
-    <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+    <Modal
+      show={showModal}
+      onHide={() => setShowModal(false)}
+      centered
+      size="lg"
+    >
       <Modal.Header closeButton>
         <Modal.Title>{t("dashboard.appointmentsSet")}</Modal.Title>
       </Modal.Header>
@@ -49,6 +54,7 @@ const AppointmentsModal = ({ showModal, setShowModal }) => {
           )}
           {step === 3 && (
             <Goal
+              studentId={studentId}
               formData={formData}
               setFormData={setFormData}
               setStep={setStep}

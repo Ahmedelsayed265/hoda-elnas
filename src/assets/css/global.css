@@ -3045,15 +3045,11 @@ input::-webkit-inner-spin-button {
 }
 .student_card button {
   width: 100%;
-  background: #31535a;
   transition: 0.3s ease-in-out;
   color: #fff;
   padding: 2px;
   font-size: 14px;
   border-radius: 4px;
-}
-.student_card button:hover {
-  background: #81a63d;
 }
 
 .tableLoader {
@@ -3160,4 +3156,70 @@ input::-webkit-inner-spin-button {
 .appointments-modal .timingRow {
   display: flex;
   gap: 8px;
+}
+
+.instructor-card {
+  min-width: 250px;
+  max-width: 250px;
+}
+.instructor-card input {
+  display: none;
+}
+.instructor-card input:checked + .content {
+  border: 1px solid #81a63d;
+}
+.instructor-card .content {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #f2f2f2;
+  padding: 16px;
+  transition: 0.3s ease-in-out;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: column;
+}
+.instructor-card .content .img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #f2f2f2;
+}
+.instructor-card .content .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.instructor-card .content h6 {
+  color: #81a63d;
+  font-size: 20px;
+}
+.instructor-card .content p {
+  font-size: 16px;
+  text-align: center;
+  line-height: 24px;
+  color: #777777;
+  margin: 0;
+}
+.instructor-card .content ul {
+  width: 100%;
+}
+.instructor-card .content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #000000;
+  font-size: 16px;
+}
+.instructor-card .content ul li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 pro";
+  font-weight: 900;
+  color: #81a63d;
 }/*# sourceMappingURL=global.css.map */
