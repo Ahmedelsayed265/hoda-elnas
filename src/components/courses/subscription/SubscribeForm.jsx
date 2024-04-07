@@ -4,12 +4,12 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import TotalPrice from "./TotalPrice";
 import AdditionalServices from "./AdditionalServices";
-import useUserLocation from "../../hooks/useUserLocation";
-import RadiosSelect from "./RadiosSelect";
-import InputField from "./InputField";
+import useUserLocation from "../../../hooks/useUserLocation";
+import RadiosSelect from "../../ui/RadiosSelect";
+import InputField from "../../ui/InputField";
 import InstalmentPrice from "./InstalmentPrice";
 import SubscribeModal from "./SubscribeModal";
-import axios from "./../../util/axios";
+import axios from "../../../util/axios";
 
 const SubscribeForm = ({
   course,

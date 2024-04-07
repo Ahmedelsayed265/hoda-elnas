@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import InputField from "../ui/form-elements/InputField";
+import InputField from "../../../ui/form-elements/InputField";
 import { useTranslation } from "react-i18next";
-import PasswordField from "../ui/form-elements/PasswordField";
+import PasswordField from "../../../ui/form-elements/PasswordField";
 import { Link } from "react-router-dom";
-import SubmitButton from "./../ui/form-elements/SubmitButton";
-import axios from "./../../util/axios";
+import SubmitButton from "../../../ui/form-elements/SubmitButton";
+import axios from "../../../../util/axios";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
-import { setLogged } from "../../redux/slices/authedUser";
+import { setLogged } from "../../../../redux/slices/authedUser";
 
 const EmailForm = ({ setStepName }) => {
   const [loading, setLoading] = useState(false);

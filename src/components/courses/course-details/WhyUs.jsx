@@ -1,6 +1,6 @@
 import React from "react";
-import arrow from "../../assets/images/arrow.svg";
-import { BASE_URL } from "../../constants";
+import arrow from "../../../assets/images/arrow.svg";
+import { BASE_URL } from "../../../constants";
 
 const WhyUs = ({ title, grantees }) => {
   return (

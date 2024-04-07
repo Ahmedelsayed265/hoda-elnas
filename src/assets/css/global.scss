@@ -3050,6 +3050,14 @@ input::-webkit-inner-spin-button {
     display: flex;
     gap: 8px;
   }
+  .slider_instructors {
+    display: flex;
+    gap: 8px;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 .instructor-card {
   min-width: 250px;
@@ -3097,7 +3105,11 @@ input::-webkit-inner-spin-button {
     }
     ul {
       width: 100%;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
       li {
+        padding: 0 4px;
         display: flex;
         align-items: flex-start;
         gap: 8px;

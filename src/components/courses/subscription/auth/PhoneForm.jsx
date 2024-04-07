@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import PasswordField from "../ui/form-elements/PasswordField";
+import PasswordField from "../../../ui/form-elements/PasswordField";
 import { useTranslation } from "react-i18next";
-import PhoneField from "../ui/form-elements/PhoneField";
+import PhoneField from "../../../ui/form-elements/PhoneField";
 import { Link } from "react-router-dom";
-import SubmitButton from "../ui/form-elements/SubmitButton";
+import SubmitButton from "../../../ui/form-elements/SubmitButton";
 
 const PhoneForm = () => {
   const [loading] = useState(false);

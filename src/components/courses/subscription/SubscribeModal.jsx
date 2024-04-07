@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import LoginOrRegiester from "./LoginOrRegiester";
-import SelectPayMethod from "./SelectPayMethod";
-import CompleteProcess from "./CompleteProcess";
+import LoginOrRegiester from "../subscription/auth/LoginOrRegiester";
+import SelectPayMethod from "../subscription/subscription-steps/SelectPayMethod";
+import CompleteProcess from "../subscription/subscription-steps/CompleteProcess";
 
 const SubscribeModal = ({
   showModal,

@@ -1,7 +1,7 @@
 import React from "react";
-import debitCard from "../../assets/images/debit_card.svg";
+import debitCard from "../../../../assets/images/debit_card.svg";
 import { useTranslation } from "react-i18next";
-import { BASE_URL } from "../../constants";
+import { BASE_URL } from "../../../../constants";
 
 const SelectPayMethod = ({ setStepName, setMethod, formData }) => {
   const { t } = useTranslation();

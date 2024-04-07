@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../constants";
+import { BASE_URL } from "../../../constants";
 import SubscribeForm from "./SubscribeForm";
-import axios from "./../../util/axios";
-import CourseBenifits from "./CourseBenifits";
+import axios from "../../../util/axios";
+import CourseBenifits from "../course-details/CourseBenifits";
 
 const Subscribe = () => {
   const courses = useSelector((state) => state.courses.courses);

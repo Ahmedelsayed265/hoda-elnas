@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import axios from "./../../util/axios";
+import axios from "../../../util/axios";
 import ReviewsSlider from "./ReviewsSlider";
 import { useParams } from "react-router-dom";
 

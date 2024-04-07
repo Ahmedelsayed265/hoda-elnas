@@ -3167,6 +3167,14 @@ input::-webkit-inner-spin-button {
   display: flex;
   gap: 8px;
 }
+.appointments-modal .slider_instructors {
+  display: flex;
+  gap: 8px;
+  overflow: scroll;
+}
+.appointments-modal .slider_instructors::-webkit-scrollbar {
+  display: none;
+}
 
 .instructor-card {
   min-width: 250px;
@@ -3220,8 +3228,12 @@ input::-webkit-inner-spin-button {
 }
 .instructor-card .content ul {
   width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .instructor-card .content ul li {
+  padding: 0 4px;
   display: flex;
   align-items: flex-start;
   gap: 8px;

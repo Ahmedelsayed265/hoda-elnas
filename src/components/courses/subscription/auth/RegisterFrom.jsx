@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import axios from "./../../util/axios";
+import axios from "../../../../util/axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
-import NameField from "../ui/form-elements/NameField";
-import InputField from "./../ui/form-elements/InputField";
-import PhoneField from "../ui/form-elements/PhoneField";
-import PasswordField from "../ui/form-elements/PasswordField";
-import Gender from "../ui/form-elements/Gender";
-import SubmitButton from "../ui/form-elements/SubmitButton";
-import { setLogged } from "../../redux/slices/authedUser";
+import NameField from "../../../ui/form-elements/NameField";
+import InputField from "../../../ui/form-elements/InputField";
+import PhoneField from "../../../ui/form-elements/PhoneField";
+import PasswordField from "../../../ui/form-elements/PasswordField";
+import Gender from "../../../ui/form-elements/Gender";
+import SubmitButton from "../../../ui/form-elements/SubmitButton";
+import { setLogged } from "../../../../redux/slices/authedUser";
 
 const RegisterFrom = ({ setStepName }) => {
   const [loading, setLoading] = useState(false);

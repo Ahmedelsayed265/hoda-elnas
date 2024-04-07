@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import VideoModal from "../components/ui/VideoModal";
 import { BASE_URL } from "../constants";
-import CourseFaqs from "./../components/courses/CourseFaqs";
-import WhyUs from "../components/courses/WhyUs";
-import Reviews from "../components/courses/Reviews";
+import CourseFaqs from "../components/courses/course-details/CourseFaqs";
+import WhyUs from "../components/courses/course-details/WhyUs";
+import Reviews from "../components/courses/course-details/Reviews";
 
 const CourseDetails = () => {
   const [showModal, setShowModal] = React.useState(false);

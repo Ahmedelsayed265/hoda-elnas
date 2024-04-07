@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "./../../util/axios";
+import axios from "../../../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants";
-import TotalPrice from "./TotalPrice";
-import SubmitButton from "./../ui/form-elements/SubmitButton";
+import { BASE_URL } from "../../../../constants";
+import TotalPrice from "../TotalPrice";
+import SubmitButton from "../../../ui/form-elements/SubmitButton";
 
 const CompleteProcess = ({
   setStepName,
