@@ -82,11 +82,15 @@ const CourseStudents = () => {
     setShowAppointmentsModal(true);
   };
 
-  const handleRemove = async (id) => {
-    const response = await axios.post(`/members/Withdrawing_Student/${id}/`);
+  const handleRemove = async (studentclassId) => {
+    const response = await axios.post(
+      `/members/Withdrawing_Student/${studentclassId}/`
+    );
     if (response.status === 200) {
       setSubscriptionStudents(
-        subscriptionStudents.filter((student) => student.student_id !== id)
+        subscriptionStudents.filter(
+          (student) => student.studentclass_id !== studentclassId
+        )
       );
       toast.success(t("dashboard.removedSuccessfully"));
     } else {
@@ -125,11 +129,19 @@ const CourseStudents = () => {
                     key={student.id}
                     student={student}
                     button={isEnrolled ? "remove" : "add"}
-                    handleClick={() =>
-                      isEnrolled
-                        ? handleRemove(student.student_id)
-                        : handleAdd(student.student_id)
-                    }
+                    handleClick={() => {
+                      if (isEnrolled) {
+                        const enrolledStudent = subscriptionStudents.find(
+                          (enrolledStudent) =>
+                            enrolledStudent.student_id === student.student_id
+                        );
+                        if (enrolledStudent) {
+                          handleRemove(enrolledStudent.studentclass_id);
+                        }
+                      } else {
+                        handleAdd(student.student_id);
+                      }
+                    }}
                   />
                 );
               })}
