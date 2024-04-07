@@ -42,7 +42,6 @@ const Instructor = ({
     };
 
     fetchInstructors();
-    console.log(instructors);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     formData.appointments,

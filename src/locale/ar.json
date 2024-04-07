@@ -231,7 +231,8 @@
         "fillTimeTabel": "من فضلك أكمل جدول المواعيد",
         "save": "حفظ",
         "enrolledSuccessfully": "تم التسجيل بنجاح",
-        "removedSuccessfully": "تم إزالة الطالب بنجاح",
-        "enrollmentFailed": "فشل التسجيل"
+        "removedSuccessfully": "تم إزالة الطالب ",
+        "enrollmentFailed": "فشل التسجيل",
+        "maxStudents": "لقد وصلت إلى الحد الأقصى من الطلاب في هذا الدرس"
     }
 }

@@ -9,10 +9,18 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "./../../../../util/axios";
 import { toast } from "react-toastify";
+import { DAYS_EN } from "../../../../constants";
 
-const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
+const AppointmentsModal = ({
+  showModal,
+  setShowModal,
+  studentId,
+  subscriptionStudents,
+  setSubscriptionStudents
+}) => {
   const { subscriptionId } = useParams();
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
+  const [maxStudents, setMaxStudents] = useState(null);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const [timeOptions, setTimeOptions] = useState("specific");
   const [enrollLoading, setEnrollLoading] = useState(false);
@@ -36,6 +44,13 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   });
 
   useEffect(() => {
+    const res = axios.get(`/members/List_student_subs/?id=${subscriptionId}`);
+    if (res.status === 200) {
+      setMaxStudents(res.data.message[0]?.student_number);
+    }
+  }, [subscriptionId]);
+
+  useEffect(() => {
     setEnrollmentData((prev) => ({
       ...prev,
       student_id: studentId,
@@ -54,11 +69,19 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
 
   const handleEnroll = async () => {
     setEnrollLoading(true);
-    console.log(enrollmentData.instructor_id);
+    if (subscriptionStudents?.length >= maxStudents) {
+      toast.error(t("dashboard.maxStudents"));
+      return;
+    }
+    const appointments = [...enrollmentData.appointments];
+    const updatedAppointments = appointments.map((appointment) => ({
+      ...appointment,
+      day: DAYS_EN[appointment.day]
+    }));
     try {
       const reponse = await axios.post("/members/enroll_Student/", {
         subscription_id: +subscriptionId,
-        appointments: enrollmentData.appointments,
+        appointments: updatedAppointments,
         student_id: studentId,
         goal_id: enrollmentData.goal_id,
         option_id: enrollmentData.option_id,
@@ -67,6 +90,10 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
       if (reponse.status === 200 && reponse.data.status === "success") {
         setShowModal(false);
         toast.success(t("dashboard.enrolledSuccessfully"));
+        setSubscriptionStudents((prev) => [
+          ...prev,
+          subscriptionStudents.push()
+        ]);
       } else {
         setShowModal(false);
         toast.error(t("dashboard.enrollmentFailed"));

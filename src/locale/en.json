@@ -222,6 +222,7 @@
         "save": "Save",
         "enrolledSuccessfully": "Enrolled Successfully",
         "removedSuccessfully": "Student Removed Successfully",
-        "enrollmentFailed": "Enrollment Failed"
+        "enrollmentFailed": "Enrollment Failed",
+        "maxStudents": "You have reached the maximum number of students in this lesson"
     }
 }
