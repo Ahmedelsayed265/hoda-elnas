@@ -86,7 +86,7 @@ const CourseStudents = () => {
     const response = await axios.post(`/members/Withdrawing_Student/${id}/`);
     if (response.status === 200) {
       setSubscriptionStudents(
-        subscriptionStudents.filter((student) => student.id !== id)
+        subscriptionStudents.filter((student) => student.student_id !== id)
       );
       toast.success(t("dashboard.removedSuccessfully"));
     } else {
@@ -127,8 +127,8 @@ const CourseStudents = () => {
                     button={isEnrolled ? "remove" : "add"}
                     handleClick={() =>
                       isEnrolled
-                        ? handleRemove(student.id)
-                        : handleAdd(student.id)
+                        ? handleRemove(student.student_id)
+                        : handleAdd(student.student_id)
                     }
                   />
                 );

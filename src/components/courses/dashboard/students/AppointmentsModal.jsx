@@ -39,6 +39,7 @@ const AppointmentsModal = ({
   const [enrollmentData, setEnrollmentData] = useState({
     goal_id: "",
     option_id: "",
+    custom_option_id: "",
     subscription_id: +subscriptionId,
     instructor_id: null
   });

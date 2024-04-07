@@ -58,10 +58,29 @@ const Goal = ({ formData, setFormData, setStep, studentId }) => {
             ?.length > 0 && (
             <div className="input-field">
               <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
-              <select name="surah" id="surah">
+              <select
+                name="surah"
+                id="surah"
+                value={formData.custom_option_id}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    custom_option_id: Number(e.target.value)
+                  })
+                }
+              >
                 <option value="" disabled>
                   {t("dashboard.choose")}
                 </option>
+                {goals
+                  .find((g) => g.id === formData.goal_id)
+                  ?.custom_options.map((option) => {
+                    return (
+                      <option key={option.id} value={option.id}>
+                        {option.option}
+                      </option>
+                    );
+                  })}
               </select>
             </div>
           )}
