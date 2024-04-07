@@ -2015,7 +2015,7 @@ body main .course_dashboard .course_dashboard_router .header button:hover {
   background: #31535a;
 }
 body main .course_dashboard .course_dashboard_router .noStudents {
-  height: 400px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -78,8 +78,13 @@ const AppointmentsModal = ({
 
   const handleEnroll = async () => {
     setEnrollLoading(true);
-    if (subscriptionStudents?.length >= maxStudents) {
+    if (
+      subscriptionStudents &&
+      maxStudents &&
+      subscriptionStudents?.length >= maxStudents
+    ) {
       toast.error(t("dashboard.maxStudents"));
+      setEnrollLoading(false);
       return;
     }
     const appointments = [...enrollmentData.appointments];

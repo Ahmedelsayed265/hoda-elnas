@@ -63,7 +63,16 @@ const MyCourses = () => {
           <Loader />
         ) : (
           <>
-            {mySubscriptions?.length > 0 && orders?.length > 0 ? (
+            {mySubscriptions?.length === 0 && orders?.length === 0 ? (
+              <div className="row m-0 justify-content-center">
+                <div className="col-lg-6 col-12 p-2">
+                  <div className="noCourses">
+                    <h3>{t("nocoursesFound")}</h3>
+                    <Link to={"/courses"}>{t("browseAndStartLearning")}</Link>
+                  </div>
+                </div>
+              </div>
+            ) : (
               <>
                 {mySubscriptions?.length > 0 && (
                   <div className="row m-0 mb-5">
@@ -105,15 +114,6 @@ const MyCourses = () => {
                   </div>
                 )}
               </>
-            ) : (
-              <div className="row m-0 justify-content-center">
-                <div className="col-lg-6 col-12 p-2">
-                  <div className="noCourses">
-                    <h3>{t("nocoursesFound")}</h3>
-                    <Link to={"/courses"}>{t("browseAndStartLearning")}</Link>
-                  </div>
-                </div>
-              </div>
             )}
           </>
         )}

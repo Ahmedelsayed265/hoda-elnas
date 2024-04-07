@@ -63,9 +63,9 @@ const CourseStudents = () => {
       const response = await axios.post("/members/add_Student/", formData);
       if (response.status === 200 || response.status === 201) {
         setShowModal(false);
-        setStudentId(response.data.message[0].id);
         setShowAppointmentsModal(true);
-        setAllStudents((prev) => [...prev, response.data.message[0]]);
+        setStudentId(response?.data?.object[0]?.id);
+        setAllStudents((prev) => [...prev, formData]);
       } else {
         toast.error(t("dashboard.thisStudentAlreadyExist"));
       }
@@ -117,7 +117,8 @@ const CourseStudents = () => {
             <div className="students_grid">
               {allStudents.map((student) => {
                 const isEnrolled = subscriptionStudents.some(
-                  (enrolledStudent) => enrolledStudent.id === student.id
+                  (enrolledStudent) =>
+                    enrolledStudent.student_id === student.student_id
                 );
                 return (
                   <StudentCard

@@ -54,7 +54,8 @@ const Goal = ({ formData, setFormData, setStep, studentId }) => {
               })}
             </select>
           </div>
-          {goals?.find((g) => g.id === formData.goal_id)?.custom_options && (
+          {goals?.find((g) => g.id === formData.goal_id)?.custom_options
+            ?.length > 0 && (
             <div className="input-field">
               <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
               <select name="surah" id="surah">
