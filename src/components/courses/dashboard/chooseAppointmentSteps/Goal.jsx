@@ -34,28 +34,58 @@ const Goal = ({ formData, setFormData, setStep, studentId }) => {
         <div className="timingRow">
           <div className="input-field">
             <label htmlFor="goal">{t("dashboard.goal")}</label>
-            <select name="goal" id="goal">
-              <option value="choose" disabled>
+            <select
+              name="goal"
+              id="goal"
+              value={formData.goal_id}
+              onChange={(e) =>
+                setFormData({ ...formData, goal_id: Number(e.target.value) })
+              }
+            >
+              <option value="" disabled>
                 {t("dashboard.choose")}
               </option>
-              {/* Map through goals to render options */}
+              {goals.map((goal) => {
+                return (
+                  <option key={goal.id} value={goal.id}>
+                    {goal.name}
+                  </option>
+                );
+              })}
             </select>
           </div>
-          {/* <div className="input-field">
-            <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
-            <select name="surah" id="surah">
-              <option value="" disabled>
-                {t("dashboard.choose")}
-              </option>
-            </select>
-          </div> */}
+          {goals?.find((g) => g.id === formData.goal_id)?.custom_options && (
+            <div className="input-field">
+              <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
+              <select name="surah" id="surah">
+                <option value="" disabled>
+                  {t("dashboard.choose")}
+                </option>
+              </select>
+            </div>
+          )}
           <div className="input-field">
             <label htmlFor="goalLevel">{t("dashboard.goalLevel")}</label>
-            <select name="goalLevel" id="goalLevel">
+            <select
+              name="goalLevel"
+              id="goalLevel"
+              value={formData.option_id}
+              onChange={(e) =>
+                setFormData({ ...formData, option_id: Number(e.target.value) })
+              }
+            >
               <option value="" disabled>
                 {t("dashboard.choose")}
               </option>
-              {/* Map through goalLevels to render options */}
+              {goals
+                .find((g) => g.id === formData.goal_id)
+                ?.options.map((option) => {
+                  return (
+                    <option key={option.id} value={option.id}>
+                      {option.option}
+                    </option>
+                  );
+                })}
             </select>
           </div>
         </div>

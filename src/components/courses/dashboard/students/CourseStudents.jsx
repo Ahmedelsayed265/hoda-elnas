@@ -78,9 +78,8 @@ const CourseStudents = () => {
   };
 
   const handleAdd = (id) => {
-    console.log("add");
-    setShowAppointmentsModal(true);
     setStudentId(id);
+    setShowAppointmentsModal(true);
   };
 
   const handleRemove = async (id) => {

@@ -37,17 +37,26 @@ const AppointmentsModal = ({
   };
 
   const [enrollmentData, setEnrollmentData] = useState({
-    goal_id: 2,
-    option_id: 1,
+    goal_id: "",
+    option_id: "",
     subscription_id: +subscriptionId,
     instructor_id: null
   });
 
   useEffect(() => {
-    const res = axios.get(`/members/List_student_subs/?id=${subscriptionId}`);
-    if (res.status === 200) {
-      setMaxStudents(res.data.message[0]?.student_number);
-    }
+    const fetchSubscription = async () => {
+      try {
+        const response = await axios.get(
+          `/members/List_student_subs/?id=${subscriptionId}`
+        );
+        if (response?.status === 200) {
+          setMaxStudents(response?.data?.message[0]?.student_number);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSubscription();
   }, [subscriptionId]);
 
   useEffect(() => {
@@ -111,7 +120,10 @@ const AppointmentsModal = ({
   return (
     <Modal
       show={showModal}
-      onHide={() => setShowModal(false)}
+      onHide={() => {
+        setShowModal(false);
+        setStep(1);
+      }}
       centered
       size="lg"
     >
