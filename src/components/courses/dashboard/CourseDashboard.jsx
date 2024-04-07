@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { NavLink, useParams, Routes, Route } from "react-router-dom";
-import avatar from "../../../assets/images/avatar.jpg";
+// import avatar from "../../../assets/images/avatar.jpg";
 import tasks from "../../../assets/images/deliverables.svg";
 import reports from "../../../assets/images/reports.svg";
 import goals from "../../../assets/images/goals.svg";
@@ -13,20 +13,20 @@ import CourseStudents from "./students/CourseStudents";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
-  const user = useSelector((state) => state.authedUser.user);
+  // const user = useSelector((state) => state.authedUser.user);
   const { subscriptionId } = useParams();
   return (
     <section className="course_dashboard">
       <div className="container">
         <div className="row m-0">
-          <div className="col-lg-3 col-md-3 col-12 p-2">
+          <div className="col-lg-3 col-md-3 col-12 p-2 mt-3">
             <aside>
-              <div className="user_img">
+              {/* <div className="user_img">
                 <div className="img">
                   <img src={user?.img || avatar} alt="avatar" />
                 </div>
                 <h6>{user?.name}</h6>
-              </div>
+              </div> */}
               <ul>
                 <li>
                   <NavLink end to={`/dashboard/${subscriptionId}`}>

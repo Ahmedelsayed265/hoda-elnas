@@ -7,12 +7,15 @@ import Goal from "../chooseAppointmentSteps/Goal";
 import Instructor from "../chooseAppointmentSteps/Instructor";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "./../../../../util/axios";
+import { toast } from "react-toastify";
 
 const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   const { subscriptionId } = useParams();
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const [timeOptions, setTimeOptions] = useState("specific");
+  const [enrollLoading, setEnrollLoading] = useState(false);
 
   const initialSpesificTiming = {
     day: "",
@@ -26,7 +29,8 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
   };
 
   const [enrollmentData, setEnrollmentData] = useState({
-    goal_id: 1,
+    goal_id: 2,
+    option_id: 1,
     subscription_id: +subscriptionId,
     instructor_id: null
   });
@@ -47,6 +51,32 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeOptions, cpw, studentId]);
+
+  const handleEnroll = async () => {
+    setEnrollLoading(true);
+    console.log(enrollmentData.instructor_id);
+    try {
+      const reponse = await axios.post("/members/enroll_Student/", {
+        subscription_id: +subscriptionId,
+        appointments: enrollmentData.appointments,
+        student_id: studentId,
+        goal_id: enrollmentData.goal_id,
+        option_id: enrollmentData.option_id,
+        instructor_id: enrollmentData.instructor_id
+      });
+      if (reponse.status === 200 && reponse.data.status === "success") {
+        setShowModal(false);
+        toast.success(t("dashboard.enrolledSuccessfully"));
+      } else {
+        setShowModal(false);
+        toast.error(t("dashboard.enrollmentFailed"));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setEnrollLoading(false);
+    }
+  };
 
   const [step, setStep] = useState(1);
   const { t } = useTranslation();
@@ -103,9 +133,11 @@ const AppointmentsModal = ({ showModal, setShowModal, studentId }) => {
           )}
           {step === 4 && (
             <Instructor
+              enrollLoading={enrollLoading}
               formData={enrollmentData}
               setFormData={setEnrollmentData}
               setStep={setStep}
+              handleEnroll={handleEnroll}
             />
           )}
         </div>

@@ -228,6 +228,10 @@
         "choose": "اختر",
         "goalLevel": "المستوى",
         "chooseSurah": " السورة",
-        "fillTimeTabel": "من فضلك أكمل جدول المواعيد"
+        "fillTimeTabel": "من فضلك أكمل جدول المواعيد",
+        "save": "حفظ",
+        "enrolledSuccessfully": "تم التسجيل بنجاح",
+        "removedSuccessfully": "تم إزالة الطالب بنجاح",
+        "enrollmentFailed": "فشل التسجيل"
     }
 }

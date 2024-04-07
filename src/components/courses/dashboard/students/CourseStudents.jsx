@@ -63,6 +63,7 @@ const CourseStudents = () => {
       const response = await axios.post("/members/add_Student/", formData);
       if (response.status === 200 || response.status === 201) {
         setShowModal(false);
+        setStudentId(response.data.message.id);
         setShowAppointmentsModal(true);
       } else {
         toast.error(t("dashboard.thisStudentAlreadyExist"));
@@ -81,8 +82,14 @@ const CourseStudents = () => {
     setStudentId(id);
   };
 
-  const handleRemove = (id) => {
-    console.log("remove");
+  const handleRemove = async (id) => {
+    const response = await axios.post(`/members/Withdrawing_Student/${id}/`);
+    if (response.status === 200) {
+      setSubscriptionStudents(subscriptionStudents.filter((student) => student.id !== id));
+      toast.success(t("dashboard.removedSuccessfully"));
+    } else {
+      toast.error(t("auth.someThingWentWrong"));
+    }
   };
 
   return (

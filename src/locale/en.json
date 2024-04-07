@@ -218,6 +218,10 @@
         "chooseInstructor": "Choose Instructor",
         "goalLevel": " Level",
         "chooseSurah": "Surah",
-        "fillTimeTabel": "Please Fill The Time Tabel"
+        "fillTimeTabel": "Please Fill The Time Tabel",
+        "save": "Save",
+        "enrolledSuccessfully": "Enrolled Successfully",
+        "removedSuccessfully": "Student Removed Successfully",
+        "enrollmentFailed": "Enrollment Failed"
     }
 }

@@ -25,7 +25,6 @@ const Goal = ({ formData, setFormData, setStep, studentId }) => {
         console.log(error);
       }
     };
-
     fetchGoals();
   }, [studentId, subscriptionId]);
 

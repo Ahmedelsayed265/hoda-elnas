@@ -2,21 +2,30 @@ import React from "react";
 import man from "../../../../assets/images/man.svg";
 import woman from "../../../../assets/images/woman.svg";
 
-const InstructorCard = ({ id }) => {
+const InstructorCard = ({ instructor, formData, setFormData }) => {
   return (
-    <label htmlFor={id} className="instructor-card">
-      <input type="radio" name="instructor" id={id} />
+    <label htmlFor={instructor?.instructor_id} className="instructor-card">
+      <input
+        type="radio"
+        name="instructor"
+        id={instructor?.instructor_id}
+        onChange={() =>
+          setFormData({ ...formData, instructor_id: instructor?.instructor_id })
+        }
+      />
       <div className="content">
         <div className="img">
-          <img src={man} alt="" />
+          <img
+            src={instructor?.gender === "male" ? man : woman || man}
+            alt=""
+          />
         </div>
-        <h6>الشيخ سعد</h6>
-        <p>هوجزءًا هوجزءًا لتعليمك القرآن مهمتنا هوجزءًا من يومك.</p>
+        <h6>{instructor?.name}</h6>
+        <p>{instructor?.bio}</p>
         <ul>
-          <li>مهارات متكاملة</li>
-          <li>مهارات متكاملة</li>
-          <li>مهارات متكاملة</li>
-          <li>مهارات متكاملة</li>
+          {instructor?.subjects?.map((subject) => (
+            <li key={subject}>{subject.name}</li>
+          ))}
         </ul>
       </div>
     </label>
