@@ -223,6 +223,7 @@
         "enrolledSuccessfully": "Enrolled Successfully",
         "removedSuccessfully": "Student Removed Successfully",
         "enrollmentFailed": "Enrollment Failed",
-        "maxStudents": "You have reached the maximum number of students in this lesson"
+        "maxStudents": "You have reached the maximum number of students in this lesson",
+        "selectInstructorAvailablity": "Select An Instructor Availability Time"
     }
 }

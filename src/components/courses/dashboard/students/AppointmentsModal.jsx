@@ -15,6 +15,7 @@ const AppointmentsModal = ({
   showModal,
   setShowModal,
   studentId,
+  allStudents,
   subscriptionStudents,
   setSubscriptionStudents
 }) => {
@@ -93,10 +94,14 @@ const AppointmentsModal = ({
       ...appointment,
       day: DAYS_EN[appointment.day]
     }));
+    const updatedAppointmentsFinal = updatedAppointments.map((appointment) => {
+      const { endtime, ...rest } = appointment;
+      return rest;
+    });
     try {
       const reponse = await axios.post("/members/enroll_Student/", {
         subscription_id: +subscriptionId,
-        appointments: updatedAppointments,
+        appointments: updatedAppointmentsFinal,
         student_id: studentId,
         goal_id: enrollmentData.goal_id,
         option_id: enrollmentData.option_id,
@@ -107,7 +112,7 @@ const AppointmentsModal = ({
         toast.success(t("dashboard.enrolledSuccessfully"));
         setSubscriptionStudents((prev) => [
           ...prev,
-          subscriptionStudents.push()
+          allStudents.find((s) => s.id === studentId)
         ]);
       } else {
         setShowModal(false);

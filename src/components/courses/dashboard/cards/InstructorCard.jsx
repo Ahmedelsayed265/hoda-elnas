@@ -24,7 +24,7 @@ const InstructorCard = ({ instructor, formData, setFormData }) => {
         <p>{instructor?.bio}</p>
         <ul>
           {instructor?.subjects?.map((subject) => (
-            <li key={subject}>{subject.name}</li>
+            <li key={subject.name}>{subject.name}</li>
           ))}
         </ul>
       </div>

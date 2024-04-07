@@ -233,6 +233,7 @@
         "enrolledSuccessfully": "تم التسجيل بنجاح",
         "removedSuccessfully": "تم إزالة الطالب ",
         "enrollmentFailed": "فشل التسجيل",
-        "maxStudents": "لقد وصلت إلى الحد الأقصى من الطلاب في هذا الدرس"
+        "maxStudents": "لقد وصلت إلى الحد الأقصى من الطلاب في هذا الدرس",
+        "selectInstructorAvailablity": "اختر موعد مناسب من مواعيد المعلم"
     }
 }
