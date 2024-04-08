@@ -65,7 +65,7 @@ const CourseStudents = () => {
         setShowModal(false);
         setShowAppointmentsModal(true);
         setStudentId(response?.data?.object[0]?.id);
-        setAllStudents((prev) => [...prev, formData]);
+        setAllStudents((prev) => [...prev, response?.data?.object[0]]);
       } else {
         toast.error(t("dashboard.thisStudentAlreadyExist"));
       }

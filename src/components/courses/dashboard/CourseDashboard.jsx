@@ -8,10 +8,12 @@ import certificate from "../../../assets/images/certificate.svg";
 import calender from "../../../assets/images/calnder.svg";
 import students from "../../../assets/images/students.svg";
 import CourseStudents from "./students/CourseStudents";
+import Appointments from "./appointments/Appointments";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
   const { subscriptionId } = useParams();
+
   return (
     <section className="course_dashboard">
       <div className="container">
@@ -65,6 +67,7 @@ const CourseDashboard = () => {
             <main className="course_dashboard_router">
               <Routes>
                 <Route path="/course-students" element={<CourseStudents />} />
+                <Route path="/appointments" element={<Appointments />} />
               </Routes>
             </main>
           </div>

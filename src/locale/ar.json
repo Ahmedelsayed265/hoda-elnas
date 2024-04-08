@@ -196,7 +196,7 @@
         "inCourseStudents": "طلاب الدرس",
         "addStudent": "اضافة طالب",
         "noStudents": "لا يوجد طلاب فى هذا الدرس",
-        "noStudentsSubTitle": "من فضلك قم بإضافة طالب حتى تسطيع المواصلة بالدرس",
+        "noStudentsSubTitle": "من فضلك قم بإضافة طالب حتى تسطيع المواصلة ",
         "studentName": "اسم الطالب",
         "studentNamePlaceHolder": "ادخل اسم الطالب",
         "studentAge": "العمر",
@@ -234,6 +234,16 @@
         "removedSuccessfully": "تم إزالة الطالب ",
         "enrollmentFailed": "فشل التسجيل",
         "maxStudents": "لقد وصلت إلى الحد الأقصى من الطلاب في هذا الدرس",
-        "selectInstructorAvailablity": "اختر موعد مناسب من مواعيد المعلم"
+        "selectInstructorAvailablity": "اختر موعد مناسب من مواعيد المعلم",
+        "appointments": "المواعيد",
+        "noAppointments": "لا يوجد مواعيد قم باضافه موعد الان",
+        "addAppointment": "أضف موعد ",
+        "allStudents": "كل الطلاب",
+        "allStudentsAppointments": " مواعيد كل الطلاب",
+        "studentAppointment": "مواعيد الطالب",
+        "fromHour": "من الساعة",
+        "toHour": "الي الساعة",
+        "editAppointment": "تعديل الموعد",
+        "appointmentEdit": "تعديل موعد"
     }
 }

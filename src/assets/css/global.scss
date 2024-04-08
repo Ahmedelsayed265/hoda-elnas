@@ -1929,10 +1929,14 @@ body {
             }
           }
           button {
+            display: flex;
+            align-items: center;
+            gap: 4px;
             background: $secondary;
             color: $white;
-            padding: 4px 16px;
+            padding: 6px 16px;
             border-radius: 4px;
+            border: 0;
             i {
               font-size: 14px;
             }
@@ -1958,6 +1962,58 @@ body {
           p {
             text-align: center;
             line-height: 26px;
+          }
+        }
+        .noAppointments {
+          height: 320px;
+          @include centerFlex();
+          flex-direction: column;
+          img {
+            height: 250px;
+          }
+          p {
+            font-size: 20px;
+            color: $main;
+          }
+          button {
+            background: $secondary;
+            color: $white;
+            padding: 4px 32px;
+            border-radius: 100px;
+          }
+        }
+        .forWhom {
+          color: $main;
+          font-size: 18px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 600;
+          img {
+            height: 20px;
+          }
+        }
+        .time_table {
+          margin-top: 20px;
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid $inputStroke;
+          }
+          th {
+            background: $inputBG;
+            color: $main;
+          }
+          th,
+          td {
+            padding: 8px;
+            border: 1px solid $inputStroke;
+            button {
+              padding: 0 12px;
+              img {
+                height: 22px;
+              }
+            }
           }
         }
       }

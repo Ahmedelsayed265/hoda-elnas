@@ -17,6 +17,7 @@ const AvailableCourse = ({ subscription }) => {
         }
       });
   }, [subscription?.id]);
+
   return (
     <Link
       to={

@@ -224,6 +224,15 @@
         "removedSuccessfully": "Student Removed Successfully",
         "enrollmentFailed": "Enrollment Failed",
         "maxStudents": "You have reached the maximum number of students in this lesson",
-        "selectInstructorAvailablity": "Select An Instructor Availability Time"
+        "selectInstructorAvailablity": "Select An Instructor Availability Time",
+        "appointments": "Appointments",
+        "noAppointments": "There are no appointments, add an appointment now",
+        "addAppointment": "Add Appointnet",
+        "allStudents": "All Students",
+        "allStudentsAppointments": "All Students Appointments",
+        "studentAppointment": "Student Appointments",
+        "fromHour": "From Hour",
+        "toHour": "To Hour",
+        "editAppointment": "Edit Appointment"
     }
 }
