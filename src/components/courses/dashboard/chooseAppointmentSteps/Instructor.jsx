@@ -2,19 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import InstructorCard from "./../cards/InstructorCard";
 import axios from "./../../../../util/axios";
-import { toast } from "react-toastify";
 import { DAYS_EN } from "../../../../constants";
 import SubmitButton from "./../../../ui/form-elements/SubmitButton";
+import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
+import { useSelector } from "react-redux";
 
 const Instructor = ({
   formData,
   setFormData,
   setStep,
   handleEnroll,
-  enrollLoading
+  enrollLoading,
+  setEnrollmentData
 }) => {
   const { t } = useTranslation();
   const [instructors, setInstructors] = useState([]);
+  const { lang } = useSelector((state) => state.language);
+  const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
+
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
@@ -34,17 +39,22 @@ const Instructor = ({
         );
         if (response.status === 200) {
           setInstructors(response.data.message);
+          setEnrollmentData((prev) => ({
+            ...prev,
+            appointments: formData.appointments.map((appointment) => ({
+              ...appointment,
+              starttime: ""
+            }))
+          }));
         }
       } catch (error) {
         console.log(error);
-        toast.error(t("auth.someThingWentWrong"));
       }
     };
 
     fetchInstructors();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    formData.appointments,
     formData.goal_id,
     formData.student_id,
     formData.subscription_id,
@@ -91,10 +101,19 @@ const Instructor = ({
                         }));
                       }}
                     >
+                      <option value={""} disabled>
+                        {t("dashboard.choose")}
+                      </option>
                       {day.avaliabletime.map((time, index) => (
                         <option key={index} value={time[0]}>
-                          {t("dashboard.from")} {time[0]} {t("dashboard.to")}
-                          {time[1]}
+                          {t("dashboard.from")}{" "}
+                          {lang === "ar"
+                            ? translateToArabic(convertTo12HourFormat(time[0]))
+                            : convertTo12HourFormat(time[0])}{" "}
+                          {t("dashboard.to")}{" "}
+                          {lang === "ar"
+                            ? translateToArabic(convertTo12HourFormat(time[1]))
+                            : convertTo12HourFormat(time[1])}
                         </option>
                       ))}
                     </select>

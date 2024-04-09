@@ -10,18 +10,20 @@ import edit from "../../../../assets/images/edit.svg";
 import noAppointments from "../../../../assets/images/noAppointments.png";
 import DataLoader from "../../../ui/DataLoader";
 import EditAppointmentModal from "./EditAppointmentModal";
+import { useTimeFormatting } from "./../../../../hooks/useTimeFormatting";
 
 const Appointments = () => {
   const { t } = useTranslation();
   const { subscriptionId } = useParams();
   const navigate = useNavigate();
   const lang = useSelector((state) => state?.language?.lang);
-  const [subscriptionStudents, setSubscriptionStudents] = useState([]);
-  const [appointments, setAppointments] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const [forWhom, setForWhom] = useState("");
-  const [showEditModal, setShowEditModal] = useState(false);
   const [rowData, setRowData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [appointments, setAppointments] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [subscriptionStudents, setSubscriptionStudents] = useState([]);
 
   useEffect(() => {
     setForWhom(t("dashboard.allStudents"));
@@ -77,33 +79,6 @@ const Appointments = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscriptionId]);
 
-  function convertTo12HourFormat(time24) {
-    const [hours, minutes] = time24.split(":");
-    const hoursInt = parseInt(hours, 10);
-    const suffix = hoursInt >= 12 ? "PM" : "AM";
-    const hours12 = ((hoursInt + 11) % 12) + 1;
-    const formattedHours = hours12.toString().padStart(2, "0");
-    return `${formattedHours}:${minutes} ${suffix}`;
-  }
-
-  function translateToArabic(timeString) {
-    const arabicNumbers = ["٠", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
-    const amPmTranslation = {
-      AM: "ص",
-      PM: "م"
-    };
-    const [time, period] = timeString.split(" ");
-    const [hours, minutes] = time.split(":");
-    const translateDigits = (digits) =>
-      digits
-        .split("")
-        .map((digit) => arabicNumbers[parseInt(digit)])
-        .join("");
-    const translatedHours = translateDigits(hours);
-    const translatedMinutes = translateDigits(minutes);
-    const translatedSuffix = amPmTranslation[period];
-    return `${translatedHours}:${translatedMinutes} ${translatedSuffix}`;
-  }
   const handleEdit = (id) => {
     setShowEditModal(true);
     setRowData(appointments.find((a) => a.id === id));

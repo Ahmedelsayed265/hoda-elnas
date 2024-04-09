@@ -98,6 +98,11 @@ const AppointmentsModal = ({
       const { endtime, ...rest } = appointment;
       return rest;
     });
+    if (updatedAppointmentsFinal.some((a) => a.starttime === "")) {
+      toast.error(t("dashboard.missingAppointmentTime"));
+      setEnrollLoading(false);
+      return;
+    }
     try {
       const response = await axios.post("/members/enroll_Student/", {
         subscription_id: +subscriptionId,
@@ -110,10 +115,7 @@ const AppointmentsModal = ({
       if (response.status === 200 && response.data.status === "success") {
         setShowModal(false);
         toast.success(t("dashboard.enrolledSuccessfully"));
-        setSubscriptionStudents((prev) => [
-          ...prev,
-          response?.data?.object[0]
-        ]);
+        setSubscriptionStudents((prev) => [...prev, response?.data?.object[0]]);
         setStep(1);
         setEnrollmentData({
           goal_id: "",
@@ -202,6 +204,7 @@ const AppointmentsModal = ({
           {step === 4 && (
             <Instructor
               enrollLoading={enrollLoading}
+              setEnrollmentData={setEnrollmentData}
               formData={enrollmentData}
               setFormData={setEnrollmentData}
               setStep={setStep}
