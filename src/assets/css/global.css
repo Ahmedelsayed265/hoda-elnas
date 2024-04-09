@@ -3328,4 +3328,8 @@ input::-webkit-inner-spin-button {
   font-family: "Font Awesome 6 pro";
   font-weight: 900;
   color: #81a63d;
+}
+
+.editAppointmentModal .editappointment span {
+  color: #81a63d;
 }/*# sourceMappingURL=global.css.map */

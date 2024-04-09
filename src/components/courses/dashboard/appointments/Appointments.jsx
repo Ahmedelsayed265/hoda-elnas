@@ -62,7 +62,7 @@ const Appointments = () => {
         );
         if (response.status === 200) {
           setSubscriptionStudents(response?.data?.message);
-          if (response?.data?.message === 0) {
+          if (response?.data?.message?.length === 0) {
             toast.error(t("dashboard.noStudentsSubTitle"));
             navigate(`/dashboard/${subscriptionId}/course-students`);
           }

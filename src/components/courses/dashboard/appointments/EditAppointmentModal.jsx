@@ -9,11 +9,12 @@ const EditAppointmentModal = ({ showModal, setShowModal, rowData }) => {
       <Modal.Header closeButton>
         <Modal.Title>{t("dashboard.editAppointment")}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <p>
-          {t("dashboard.editAppointment")} {t("dashboard.day")} {rowData?.day}{" "}
-          {t("dashboard.from")} {rowData?.starttime} {t("dashboard.to")}{" "}
-          {rowData?.endtime}
+      <Modal.Body className="editAppointmentModal">
+        <p className="editappointment">
+          {t("dashboard.appointmentEdit")} {t("dashboard.day")}{" "}
+          <span>{rowData?.day}</span> {t("dashboard.from")}{" "}
+          <span>{rowData?.starttime}</span> {t("dashboard.to")}{" "}
+          <span>{rowData?.endtime}</span>
         </p>
       </Modal.Body>
     </Modal>

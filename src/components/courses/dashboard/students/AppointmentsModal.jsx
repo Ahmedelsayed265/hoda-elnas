@@ -99,7 +99,7 @@ const AppointmentsModal = ({
       return rest;
     });
     try {
-      const reponse = await axios.post("/members/enroll_Student/", {
+      const response = await axios.post("/members/enroll_Student/", {
         subscription_id: +subscriptionId,
         appointments: updatedAppointmentsFinal,
         student_id: studentId,
@@ -107,13 +107,31 @@ const AppointmentsModal = ({
         option_id: enrollmentData.option_id,
         instructor_id: enrollmentData.instructor_id
       });
-      if (reponse.status === 200 && reponse.data.status === "success") {
+      if (response.status === 200 && response.data.status === "success") {
         setShowModal(false);
         toast.success(t("dashboard.enrolledSuccessfully"));
         setSubscriptionStudents((prev) => [
           ...prev,
-          allStudents.find((s) => s.id === studentId)
+          response?.data?.object[0]
         ]);
+        setStep(1);
+        setEnrollmentData({
+          goal_id: "",
+          option_id: "",
+          custom_option_id: "",
+          subscription_id: +subscriptionId,
+          instructor_id: null,
+          student_id: studentId,
+          time_option: timeOptions,
+          appointments:
+            timeOptions === "specific"
+              ? Array(cpw)
+                  .fill()
+                  .map(() => ({ ...initialSpesificTiming }))
+              : Array(cpw)
+                  .fill()
+                  .map(() => ({ ...initialRangeTiming }))
+        });
       } else {
         setShowModal(false);
         toast.error(t("dashboard.enrollmentFailed"));
