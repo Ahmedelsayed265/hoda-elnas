@@ -3,6 +3,7 @@ import axios from "../util/axios";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 import InputField from "../components/ui/form-elements/InputField";
 import SubmitButton from "../components/ui/form-elements/SubmitButton";
 import PhoneField from "../components/ui/form-elements/PhoneField";
@@ -12,6 +13,7 @@ import Gender from "../components/ui/form-elements/Gender";
 
 const Register = () => {
   const [loading, setLoading] = useState(false);
+  const [, setCookie] = useCookies(["token"]);
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -27,10 +29,27 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    if (formData.password !== formData.confirm_password) {
+      toast.error(t("auth.passwordNotMatch"));
+      setLoading(false);
+      return;
+    }
     try {
-      await axios.post("/accounts/register/", formData);
-      toast.success(t("auth.accountCreatedSuccessfully"));
-      navigate("/login");
+      const res = await axios.post("/accounts/register/", formData);
+      if (res.status === 201 || res.status === 200) {
+        const loginRes = await axios.post("/accounts/login/", {
+          email: formData.email,
+          password: formData.password
+        });
+        if (loginRes.status === 200 || loginRes.status === 201) {
+          setCookie("refreshToken", loginRes.data.refresh_token, {
+            path: "/",
+            secure: true
+          });
+          navigate("/");
+          toast.success(t("auth.accountCreatedSuccessfully"));
+        }
+      }
     } catch (error) {
       toast.error(t("auth.someThingWentWrong"));
     } finally {

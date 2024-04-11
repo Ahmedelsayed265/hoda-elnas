@@ -43,8 +43,8 @@ const RegisterFrom = ({ setStepName }) => {
           path: "/",
           secure: true
         });
-        setStepName("payment_method");
         dispatch(setLogged(true));
+        setStepName("payment_method");
       }
     } catch (error) {
       toast.error(t("auth.someThingWentWrong"));

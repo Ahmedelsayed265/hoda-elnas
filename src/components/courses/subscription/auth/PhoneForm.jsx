@@ -1,19 +1,51 @@
 import React, { useState } from "react";
-import PasswordField from "../../../ui/form-elements/PasswordField";
+import axios from "./../../../../util/axios";
 import { useTranslation } from "react-i18next";
-import PhoneField from "../../../ui/form-elements/PhoneField";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { setLogged } from "../../../../redux/slices/authedUser";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import PhoneField from "../../../ui/form-elements/PhoneField";
 import SubmitButton from "../../../ui/form-elements/SubmitButton";
+import PasswordField from "../../../ui/form-elements/PasswordField";
 
-const PhoneForm = () => {
-  const [loading] = useState(false);
+const PhoneForm = ({ setStepName }) => {
+  const { t } = useTranslation();
+  const [, setCookie] = useCookies(["token"]);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    login_type: "phone",
     phone: "",
     password: ""
   });
-  const { t } = useTranslation();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await axios.post("/accounts/login/", formData);
+      if (res.status === 200) {
+        toast.success(t("auth.loginSuccessfully"));
+        setCookie("refreshToken", res.data.refresh_token, {
+          path: "/",
+          secure: true
+        });
+        dispatch(setLogged(true));
+        setStepName("payment_method");
+      } else {
+        toast.error(t("auth.phoneOrPasswordIsWrong"));
+      }
+    } catch (error) {
+      toast.error(t("auth.phoneOrPasswordIsWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <form className="form-ui">
+    <form className="form-ui" onSubmit={handleSubmit}>
       <PhoneField
         label={t("auth.phone")}
         icon={<i className="fa-sharp fa-light fa-phone"></i>}

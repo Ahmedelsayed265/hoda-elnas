@@ -102,6 +102,7 @@
         "loginByPhone": "Login with Phone",
         "loginSuccessfully": "Login Successfully",
         "emailOrPasswordIsWrong": "Email or Password is wrong",
+        "phoneOrPasswordIsWrong": "Phone or Password is wrong",
         "sendByEmail": "Send by Email",
         "sendByPhone": "Send by Phone",
         "emailNotExist": "Email does not exist",
@@ -110,7 +111,8 @@
         "passwordChangedSuccessfully": "Password Changed Successfully",
         "subject": "Subject",
         "enterSubject": "Enter Subject",
-        "message": "Your Message"
+        "message": "Your Message",
+        "passwordNotMatch": "Passwords do not match"
     },
     "homePage": {
         "bestCourses": "Best Classes",

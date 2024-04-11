@@ -102,6 +102,7 @@
         "loginByPhone": "تسجيل الدخول بالهاتف",
         "loginSuccessfully": "تم تسجيل الدخول بنجاح",
         "emailOrPasswordIsWrong": "البريد الالكتروني او كلمة المرور غير صحيحة",
+        "phoneOrPasswordIsWrong": "رقم الهاتف او كلمة المرور غير صحيحة",
         "sendByEmail": "ارسال بالبريد",
         "sendByPhone": "ارسال بالهاتف",
         "emailNotExist": "البريد الالكتروني غير موجود",
@@ -110,7 +111,8 @@
         "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
         "subject": "الموضوع",
         "enterSubject": "ادخل الموضوع",
-        "message": "رسالتك"
+        "message": "رسالتك",
+        "passwordNotMatch": "كلمات المرور غير متطابقة"
     },
     "homePage": {
         "bestCourses": "افضل الدروس",

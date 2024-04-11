@@ -13,8 +13,9 @@ import { setLogged } from "../../redux/slices/authedUser";
 const EmailForm = () => {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
+    login_type: "email",
     email: "",
-    password: "",
+    password: ""
   });
 
   const [, setCookie] = useCookies(["token"]);
@@ -32,7 +33,7 @@ const EmailForm = () => {
         navigate("/");
         setCookie("refreshToken", res.data.refresh_token, {
           path: "/",
-          secure: true,
+          secure: true
         });
         dispatch(setLogged(true));
       } else {
@@ -44,6 +45,7 @@ const EmailForm = () => {
       setLoading(false);
     }
   };
+
   return (
     <form className="form-ui" onSubmit={handleSubmit}>
       <InputField
