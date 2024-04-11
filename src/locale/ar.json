@@ -246,7 +246,7 @@
         "fromHour": "من الساعة",
         "toHour": "الي الساعة",
         "editAppointment": "تعديل الموعد",
-        "appointmentEdit": "تعديل موعد",
+        "appointmentEdit": "تعديل موعد يوم",
         "missingAppointmentTime": "من فضلك إختر الموعد المناسب لك أولاً"
     }
 }

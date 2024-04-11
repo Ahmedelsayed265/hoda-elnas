@@ -266,6 +266,7 @@ const SubscribeForm = ({
           labelPlaceholder={t("courseSubscribe.startDate")}
           icon={<i className="fa-light fa-calendar-days"></i>}
           type="date"
+          placeholder="Select a date"
           name="startDate"
           required={true}
           value={formData.startDate}

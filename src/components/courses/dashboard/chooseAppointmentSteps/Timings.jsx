@@ -85,6 +85,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     </label>
                     <input
                       type="time"
+                      placeholder="Select a time"
                       name="appointment"
                       id={`appointment-${index}`}
                       required
@@ -134,6 +135,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     <label htmlFor="time">{t("dashboard.from")}</label>
                     <input
                       type="time"
+                      placeholder="Select a time"
                       name="from_time"
                       id={`from_time-${index}`}
                       required
@@ -147,6 +149,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     <label htmlFor="time">{t("dashboard.to")}</label>
                     <input
                       type="time"
+                      placeholder="Select a time"
                       name="to_time"
                       id={`to_time-${index}`}
                       required

@@ -32,6 +32,29 @@ const Appointments = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const response = await axios.get(
+          `/members/list_Student/?subscription_id=${subscriptionId}`
+        );
+        if (response.status === 200) {
+          setSubscriptionStudents(response?.data?.message);
+          if (response?.data?.message?.length === 0) {
+            toast.error(t("dashboard.noStudentsSubTitle"));
+            navigate(`/dashboard/${subscriptionId}/course-students`);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+      }
+    };
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subscriptionId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
         setLoading(true);
         let url;
         if (forWhom === t("dashboard.allStudents")) {
@@ -53,31 +76,9 @@ const Appointments = () => {
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subscriptionId, forWhom, lang]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `/members/list_Student/?subscription_id=${subscriptionId}`
-        );
-        if (response.status === 200) {
-          setSubscriptionStudents(response?.data?.message);
-          if (response?.data?.message?.length === 0) {
-            toast.error(t("dashboard.noStudentsSubTitle"));
-            navigate(`/dashboard/${subscriptionId}/course-students`);
-          }
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-      }
-    };
-
-    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subscriptionId]);
+  }, [subscriptionId, forWhom, lang, subscriptionStudents]);
 
   const handleEdit = (id) => {
     setShowEditModal(true);

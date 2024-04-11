@@ -236,6 +236,7 @@
         "fromHour": "From Hour",
         "toHour": "To Hour",
         "editAppointment": "Edit Appointment",
-        "missingAppointmentTime": "Please select a suitable appointment time first"
+        "appointmentEdit": "Edit appointment day",
+        "missingAppointmentTime": "Please select an appointment time for this student"
     }
 }

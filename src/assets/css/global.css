@@ -2349,7 +2349,7 @@ body .form-ui .otp-container .otp-input::-webkit-inner-spin-button {
 }
 body .form-ui .save {
   width: 100%;
-  height: 54px;
+  height: 48px;
   border-radius: 12px;
   background: #81a63d;
   color: #fff;
