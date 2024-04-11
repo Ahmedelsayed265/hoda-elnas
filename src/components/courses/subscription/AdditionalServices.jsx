@@ -37,6 +37,7 @@ const AdditionalServices = ({
             <div className="check">
               <input
                 type="checkbox"
+                className="checkbox"
                 id={addon?.name}
                 name={addon?.name}
                 onChange={(e) => handleCheckboxChange(e, addon)}

@@ -237,6 +237,9 @@
         "toHour": "To Hour",
         "editAppointment": "Edit Appointment",
         "appointmentEdit": "Edit appointment day",
-        "missingAppointmentTime": "Please select an appointment time for this student"
+        "missingAppointmentTime": "Please select an appointment time for this student",
+        "editAppointmentSuccess": "Appointment Edited Successfully",
+        "editAppointmentFailed": "You cannot change the date, there is not much time left until the class time",
+        "exceptionalAppointment": "Exceptional Appointment"
     }
 }

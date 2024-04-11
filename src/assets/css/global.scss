@@ -2570,7 +2570,7 @@ body {
   top: -999999px;
   left: -999999px;
 }
-input[type="checkbox"] {
+.checkbox {
   width: 16px;
   appearance: none;
   position: relative;
@@ -2600,6 +2600,15 @@ input[type="checkbox"] {
     background: $secondary;
     color: #fff;
     border-color: $secondary;
+  }
+}
+.form-switch {
+  input {
+    box-shadow: none !important;
+    &:checked {
+      background-color: $secondary !important;
+      border-color: $secondary;
+    }
   }
 }
 input::-webkit-outer-spin-button,

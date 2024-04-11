@@ -188,6 +188,7 @@ const Appointments = () => {
         rowData={rowData}
         showModal={showEditModal}
         setShowModal={setShowEditModal}
+        setAppointments={setAppointments}
       />
     </section>
   );

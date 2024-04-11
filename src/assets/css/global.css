@@ -2656,7 +2656,7 @@ body.en .modal-header button {
   left: -999999px;
 }
 
-input[type=checkbox] {
+.checkbox {
   width: 16px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2664,7 +2664,7 @@ input[type=checkbox] {
   position: relative;
   cursor: pointer;
 }
-input[type=checkbox]::after {
+.checkbox::after {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -2681,13 +2681,21 @@ input[type=checkbox]::after {
   justify-content: center;
   color: #fff;
 }
-input[type=checkbox].error::after {
+.checkbox.error::after {
   border-color: red;
 }
-input[type=checkbox]:checked::after {
+.checkbox:checked::after {
   content: "\f00c";
   background: #81a63d;
   color: #fff;
+  border-color: #81a63d;
+}
+
+.form-switch input {
+  box-shadow: none !important;
+}
+.form-switch input:checked {
+  background-color: #81a63d !important;
   border-color: #81a63d;
 }
 

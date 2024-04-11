@@ -381,7 +381,7 @@ const SubscribeForm = ({
             id="agree"
             required
             ref={agreeCheck}
-            className={agreeError === "error" ? "error" : ""}
+            className={`checkbox ${agreeError === "error" ? "error" : ""}`}
           />
           <label className="continue" htmlFor="agree">
             <p className="m-0">

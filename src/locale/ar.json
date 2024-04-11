@@ -247,6 +247,9 @@
         "toHour": "الي الساعة",
         "editAppointment": "تعديل الموعد",
         "appointmentEdit": "تعديل موعد يوم",
-        "missingAppointmentTime": "من فضلك إختر الموعد المناسب لك أولاً"
+        "missingAppointmentTime": "من فضلك إختر الموعد المناسب لك أولاً",
+        "editAppointmentSuccess": "تم تعديل الموعد بنجاح",
+        "editAppointmentFailed": "لا يمكنك تغيير الموعد، لم يتبقى الكثير على موعد الحصة",
+        "exceptionalAppointment": "موعد إستثنائي"
     }
 }

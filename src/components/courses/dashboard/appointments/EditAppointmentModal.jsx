@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
+import axios from "./../../../../util/axios";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { useSelector } from "react-redux";
 import { DAYS_AR, DAYS_EN } from "../../../../constants";
+import { toast } from "react-toastify";
+import { Form } from "react-bootstrap";
 import SubmitButton from "../../../ui/form-elements/SubmitButton";
 
-const EditAppointmentModal = ({ showModal, setShowModal, rowData }) => {
+const EditAppointmentModal = ({
+  showModal,
+  setShowModal,
+  rowData,
+  setAppointments
+}) => {
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
   const { t } = useTranslation();
+  const [availableTimes, setAvailableTimes] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     day: "",
-    time: ""
+    time: "",
+    temp: false
   });
 
   useEffect(() => {
@@ -25,6 +36,42 @@ const EditAppointmentModal = ({ showModal, setShowModal, rowData }) => {
       time: rowData?.starttime
     }));
   }, [lang, rowData?.day, rowData?.starttime]);
+
+  useEffect(() => {
+    const fetchAvailableTimes = async () => {
+      const day = DAYS_EN[formData.day];
+      if (day && rowData?.id) {
+        const res = await axios.get(
+          `/instructor/Available_time_enrolled_student/?dayid=${rowData.id}&new_day=${day}`
+        );
+        setAvailableTimes(res?.data?.message);
+      }
+    };
+    fetchAvailableTimes();
+  }, [formData.day, rowData.id]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const day = DAYS_EN[formData.day];
+      const res = await axios.put(`/instructor/Change_Time/${rowData?.id}/`, {
+        ...formData,
+        day: day
+      });
+      if (res.status === 200) {
+        toast.success(t("dashboard.editAppointmentSuccess"));
+        setShowModal(false);
+        setShowModal(false);
+      } else {
+        toast.error(t("dashboard.editAppointmentFailed"));
+      }
+    } catch (error) {
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
@@ -47,8 +94,8 @@ const EditAppointmentModal = ({ showModal, setShowModal, rowData }) => {
               : convertTo12HourFormat(rowData?.endtime)}
           </span>
         </p>
-        <from className="form-ui">
-          <div className="timingRow d-flex gap-2">
+        <form onSubmit={handleSubmit} className="form-ui">
+          <div className="timingRow d-flex align-items-end gap-2">
             <div className="input-field">
               <label htmlFor="day">{t("dashboard.day")}</label>
               <select
@@ -75,24 +122,51 @@ const EditAppointmentModal = ({ showModal, setShowModal, rowData }) => {
               </select>
             </div>
             <div className="input-field">
-              <label htmlFor="appointment">{t("dashboard.appointment")}</label>
-              <input
-                type="time"
-                placeholder="Select a time"
+              <select
                 name="appointment"
-                id="appointment"
-                required
+                id="saturdayAppointment"
                 value={formData.time}
                 onChange={(e) =>
                   setFormData((prev) => ({ ...prev, time: e.target.value }))
                 }
-              />
+              >
+                <option value={""} disabled>
+                  {t("dashboard.choose")}
+                </option>
+                {availableTimes.map((time, index) => (
+                  <option key={index} value={time.start_time}>
+                    {t("dashboard.from")}{" "}
+                    {lang === "ar"
+                      ? translateToArabic(
+                          convertTo12HourFormat(time.start_time)
+                        )
+                      : convertTo12HourFormat(time[0])}{" "}
+                    {t("dashboard.to")}{" "}
+                    {lang === "ar"
+                      ? translateToArabic(convertTo12HourFormat(time.end_time))
+                      : convertTo12HourFormat(time.end_time)}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
+          <Form.Check
+            checked={formData.temp}
+            label={t("dashboard.exceptionalAppointment")}
+            type="switch"
+            id="temp"
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, temp: e.target.checked }))
+            }
+          />
           <div className="d-flex justify-content-end">
-            <SubmitButton name={t("dashboard.save")} className={"continue"} />
+            <SubmitButton
+              name={t("dashboard.save")}
+              className={"continue"}
+              loading={loading}
+            />
           </div>
-        </from>
+        </form>
       </Modal.Body>
     </Modal>
   );
