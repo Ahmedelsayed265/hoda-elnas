@@ -250,6 +250,7 @@
         "missingAppointmentTime": "من فضلك إختر الموعد المناسب لك أولاً",
         "editAppointmentSuccess": "تم تعديل الموعد بنجاح",
         "editAppointmentFailed": "لا يمكنك تغيير الموعد، لم يتبقى الكثير على موعد الحصة",
-        "exceptionalAppointment": "موعد إستثنائي"
+        "exceptionalAppointment": "موعد إستثنائي",
+        "availableReports": "التقارير المتاحه"
     }
 }

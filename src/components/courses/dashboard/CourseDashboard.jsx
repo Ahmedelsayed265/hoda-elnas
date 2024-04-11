@@ -9,6 +9,7 @@ import calender from "../../../assets/images/calnder.svg";
 import students from "../../../assets/images/students.svg";
 import CourseStudents from "./students/CourseStudents";
 import Appointments from "./appointments/Appointments";
+import Reports from "./reports/Reports";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -66,8 +67,9 @@ const CourseDashboard = () => {
           <div className="col-lg-9 col-md-9 col-12 p-2">
             <main className="course_dashboard_router">
               <Routes>
-                <Route path="/course-students" element={<CourseStudents />} />
+                <Route path="/reports" element={<Reports />} />
                 <Route path="/appointments" element={<Appointments />} />
+                <Route path="/course-students" element={<CourseStudents />} />
               </Routes>
             </main>
           </div>
