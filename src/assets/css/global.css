@@ -2079,6 +2079,7 @@ body main .course_dashboard .course_dashboard_router .time_table table {
   border: 1px solid #f2f2f2;
 }
 body main .course_dashboard .course_dashboard_router .time_table th {
+  font-size: 14px;
   background: #f8f8f8;
   color: #31535a;
 }
