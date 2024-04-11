@@ -11,6 +11,7 @@ const Instructor = ({
   formData,
   setFormData,
   setStep,
+  timeOptions,
   handleEnroll,
   enrollLoading,
   setEnrollmentData
@@ -39,13 +40,15 @@ const Instructor = ({
         );
         if (response.status === 200) {
           setInstructors(response.data.message);
-          setEnrollmentData((prev) => ({
-            ...prev,
-            appointments: formData.appointments.map((appointment) => ({
-              ...appointment,
-              starttime: ""
-            }))
-          }));
+          if (timeOptions === "range") {
+            setEnrollmentData((prev) => ({
+              ...prev,
+              appointments: formData.appointments.map((appointment) => ({
+                ...appointment,
+                starttime: ""
+              }))
+            }));
+          }
         }
       } catch (error) {
         console.log(error);

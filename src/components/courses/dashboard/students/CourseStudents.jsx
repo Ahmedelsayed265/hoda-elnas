@@ -163,7 +163,6 @@ const CourseStudents = () => {
         setFormData={setFormData}
       />
       <AppointmentsModal
-        allStudents={allStudents}
         setSubscriptionStudents={setSubscriptionStudents}
         subscriptionStudents={subscriptionStudents}
         studentId={studentId}

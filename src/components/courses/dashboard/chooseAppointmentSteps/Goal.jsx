@@ -1,32 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import axios from "./../../../../util/axios";
-import { useParams } from "react-router-dom";
 
-const Goal = ({ formData, setFormData, setStep, studentId }) => {
+const Goal = ({ formData, setFormData, setStep, goals }) => {
   const { t } = useTranslation();
-  const { subscriptionId } = useParams();
-  const [goals, setGoals] = useState([]);
-
-  useEffect(() => {
-    const fetchGoals = async () => {
-      try {
-        const response = await axios.get(
-          `/members/List_student_subs/?id=${subscriptionId}`
-        );
-        if (response?.status === 200) {
-          const courseId = response?.data?.message[0]?.course_id;
-          const response2 = await axios.get(
-            `/learningcenter/List_goal/?course_id=${courseId}&student_id=${studentId}`
-          );
-          setGoals(response2.data.message);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchGoals();
-  }, [studentId, subscriptionId]);
 
   return (
     <div className="row m-0 form-ui">

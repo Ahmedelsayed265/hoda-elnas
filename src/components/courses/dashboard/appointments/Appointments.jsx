@@ -35,12 +35,12 @@ const Appointments = () => {
         setLoading(true);
         let url;
         if (forWhom === t("dashboard.allStudents")) {
-          url = `/members/List_appoinments/?sub_id=${subscriptionId}`;
+          url = `/members/List_appointments/?sub_id=${subscriptionId}`;
         } else {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
           ).studentclass_id;
-          url = `/members/List_appoinments/?student_id=${studentId}`;
+          url = `/members/List_appointments/?student_id=${studentId}`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
