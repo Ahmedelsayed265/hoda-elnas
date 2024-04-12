@@ -251,6 +251,8 @@
         "editAppointmentSuccess": "تم تعديل الموعد بنجاح",
         "editAppointmentFailed": "لا يمكنك تغيير الموعد، لم يتبقى الكثير على موعد الحصة",
         "exceptionalAppointment": "موعد إستثنائي",
-        "availableReports": "التقارير المتاحه"
+        "availableReports": "التقارير المتاحه",
+        "noReports": "لا يوجد لديك تقارير حالياَ",
+        "openPDF": "فتح PDF"
     }
 }

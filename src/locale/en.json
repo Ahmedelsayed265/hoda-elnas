@@ -241,6 +241,8 @@
         "editAppointmentSuccess": "Appointment Edited Successfully",
         "editAppointmentFailed": "You cannot change the date, there is not much time left until the class time",
         "exceptionalAppointment": "Exceptional Appointment",
-        "availableReports": "Available Reports"
+        "availableReports": "Available Reports",
+        "noReports": "You don't have any reports at the moment",
+        "openPDF": "Open PDF"
     }
 }
