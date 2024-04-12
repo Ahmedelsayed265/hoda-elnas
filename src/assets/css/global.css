@@ -2098,6 +2098,10 @@ body main .course_dashboard .course_dashboard_router .time_table th button img,
 body main .course_dashboard .course_dashboard_router .time_table td button img {
   height: 22px;
 }
+body main .course_dashboard .course_dashboard_router .course_reports iframe {
+  height: 600px;
+  width: 100%;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
