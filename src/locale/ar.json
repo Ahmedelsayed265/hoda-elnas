@@ -253,6 +253,7 @@
         "exceptionalAppointment": "موعد إستثنائي",
         "availableReports": "التقارير المتاحه",
         "noReports": "لا يوجد لديك تقارير حالياَ",
+        "noCertificates": "لا يوجد لديك شهادات حالياَ",
         "openPDF": "فتح PDF"
     }
 }

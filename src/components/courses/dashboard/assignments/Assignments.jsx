@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import axios from "./../../../../util/axios";
-import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
-import DataLoader from "../../../ui/DataLoader";
-import ReportCard from "../cards/ReportCard";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "./../../../../util/axios";
+import { toast } from "react-toastify";
 
-const Certificates = () => {
+const Assignments = () => {
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
@@ -17,7 +15,6 @@ const Certificates = () => {
   const [forWhom, setForWhom] = useState("");
   const { subscriptionId } = useParams();
   const navigate = useNavigate();
-
   useEffect(() => {
     setForWhom(t("dashboard.allStudents"));
   }, [lang, t]);
@@ -74,13 +71,13 @@ const Certificates = () => {
   }, [subscriptionId, forWhom, lang, subscriptionStudents]);
 
   return (
-    <section className="course_reports">
+    <section className="assignments">
       <div className="container p-0">
         <div className="row m-0">
           <div className="col-12 p-2">
             <div className="header">
               <div className="title">
-                <h5>{t("dashboard.certificates")}</h5>
+                <h5>{t("dashboard.tasks")}</h5>
               </div>
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -105,31 +102,9 @@ const Certificates = () => {
             </div>
           </div>
         </div>
-        {loading ? (
-          <DataLoader />
-        ) : (
-          <>
-            {reports?.length === 0 ? (
-              <div className="noStudents">
-                <h5>{t("dashboard.noCertificates")}</h5>
-              </div>
-            ) : (
-              <div className="row m-0 mt-2">
-                {reports?.map((report) => (
-                  <div
-                    className="col-lg-6 col-md-6 col-12 p-2"
-                    key={report?.id}
-                  >
-                    <ReportCard report={report} />
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
       </div>
     </section>
   );
 };
 
-export default Certificates;
+export default Assignments;

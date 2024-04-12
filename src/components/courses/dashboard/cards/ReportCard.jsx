@@ -1,23 +1,30 @@
 import React from "react";
 import studentAvatar from "../../../../assets/images/student.svg";
 import man from "../../../../assets/images/man.svg";
-import woman from "../../../../assets/images/woman.svg";
 import pdf from "../../../../assets/images/pdf.svg";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
+import { BASE_URL } from "../../../../constants";
 
 const ReportCard = ({ report }) => {
   const { t } = useTranslation();
   const { subscriptionId } = useParams();
   return (
     <Link
-      to={`/dashboard/${subscriptionId}/reports/${report?.id}`}
+      to={`/dashboard/${subscriptionId}/reports/${report?.report_id}`}
       className="report_card"
     >
       <div className="content">
         <div className="name_img">
           <div className="img">
-            <img src={report?.student_img || studentAvatar} alt="student" />
+            <img
+              src={
+                report.Student_img
+                  ? `${BASE_URL}${report.Student_img}`
+                  : studentAvatar
+              }
+              alt="student"
+            />
           </div>
           <h6>{report?.name}</h6>
         </div>
@@ -25,9 +32,9 @@ const ReportCard = ({ report }) => {
           <div className="img">
             <img
               src={
-                report?.instructor_gender === "male"
-                  ? man
-                  : woman || report.instructor_img || man
+                report.Instructor_img
+                  ? `${BASE_URL}${report?.Instructor_img}`
+                  : man
               }
               alt="instructor"
             />

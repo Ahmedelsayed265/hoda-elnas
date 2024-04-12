@@ -243,6 +243,7 @@
         "exceptionalAppointment": "Exceptional Appointment",
         "availableReports": "Available Reports",
         "noReports": "You don't have any reports at the moment",
+        "noCertificates": "You don't have any certificates at the moment",
         "openPDF": "Open PDF"
     }
 }
