@@ -253,7 +253,10 @@
         "exceptionalAppointment": "موعد إستثنائي",
         "availableReports": "التقارير المتاحه",
         "noReports": "لا يوجد لديك تقارير حالياَ",
+        "noTasks": "لا يوجد لديك مهام حالياَ",
         "noCertificates": "لا يوجد لديك شهادات حالياَ",
-        "openPDF": "فتح PDF"
+        "openPDF": "فتح PDF",
+        "student": "الطالب",
+        "inReviewTasks": "مهام فى المراجعة"
     }
 }

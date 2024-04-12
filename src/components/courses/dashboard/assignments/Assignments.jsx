@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "./../../../../util/axios";
 import { toast } from "react-toastify";
+import AssignmentCard from "../cards/AssignmentCard";
+import DataLoader from "./../../../ui/DataLoader";
 
 const Assignments = () => {
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
-  const [reports, setReports] = useState([]);
+  const [assignments, setAssignments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [forWhom, setForWhom] = useState("");
   const { subscriptionId } = useParams();
@@ -48,16 +50,16 @@ const Assignments = () => {
         setLoading(true);
         let url;
         if (forWhom === t("dashboard.allStudents")) {
-          url = `/members/List_reports/?sub_id=${subscriptionId}`;
+          url = `/instructor/list_assignment/?sub_id=${subscriptionId}`;
         } else {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
           ).studentclass_id;
-          url = `/members/List_reports/?student_id=${studentId}`;
+          url = `/instructor/list_assignment/?student_instructor=${studentId}`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
-          setReports(response?.data?.message);
+          setAssignments(response?.data?.message);
         }
       } catch (error) {
         console.log(error);
@@ -102,6 +104,49 @@ const Assignments = () => {
             </div>
           </div>
         </div>
+        {loading ? (
+          <DataLoader />
+        ) : (
+          <>
+            {assignments?.length === 0 ? (
+              <div className="noStudents">
+                <h5>{t("dashboard.noTasks")}</h5>
+              </div>
+            ) : (
+              <>
+                <div className="row m-0 mt-0">
+                  {assignments
+                    .filter((a) => a?.status === "pending")
+                    ?.map((assignment) => (
+                      <div className="col-lg-6 col-md-6 col-12 p-2">
+                        <AssignmentCard
+                          key={assignment?.id}
+                          assignment={assignment}
+                        />
+                      </div>
+                    ))}
+                </div>
+                <div className="row m-0 mt-3">
+                  <div className="col-12 p-2">
+                    <div className="row_header">
+                      <h6>{t("dashboard.inReviewTasks")}</h6>
+                    </div>
+                  </div>
+                  {assignments
+                    .filter((a) => a?.status === "submited")
+                    ?.map((assignment) => (
+                      <div className="col-lg-6 col-md-6 col-12 p-2">
+                        <AssignmentCard
+                          key={assignment?.id}
+                          assignment={assignment}
+                        />
+                      </div>
+                    ))}
+                </div>
+              </>
+            )}
+          </>
+        )}
       </div>
     </section>
   );
