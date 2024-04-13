@@ -16,6 +16,7 @@ import Assignments from "./assignments/Assignments";
 import AssignmentDetails from "./assignments/AssignmentDetails";
 import HomePage from "./home/HomePage";
 import CertificatesPage from "./certificates/CertificatesPage";
+import GoogleMeetingView from "./metting-views/GoogleMeetingView";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -29,7 +30,7 @@ const CourseDashboard = () => {
             <aside>
               <ul>
                 <li>
-                  <NavLink end to={`/dashboard/${subscriptionId}/`}>
+                  <NavLink end to={`/dashboard/${subscriptionId}`}>
                     <img src={home} alt="home" />
                     {t("dashboard.home")}
                   </NavLink>
@@ -79,17 +80,18 @@ const CourseDashboard = () => {
           <div className="col-lg-9 col-md-9 col-12 p-2">
             <main className="course_dashboard_router">
               <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/assignments" element={<Assignments />} />
                 <Route
                   path="/assignments/:assignmentId"
                   element={<AssignmentDetails />}
                 />
-                <Route path="/" element={<HomePage />} />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
                 <Route path="/appointments" element={<Appointments />} />
+                <Route path="/meeting-room" element={<GoogleMeetingView />} />
               </Routes>
             </main>
           </div>

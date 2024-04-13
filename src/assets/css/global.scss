@@ -3542,8 +3542,9 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   h5 {
     margin: 4px 0;
-    color: $secondary;
-    font-size: 18px;
+    color: $dark;
+    font-size: 14px;
+    font-weight: 600;
     text-align: center;
   }
   .countDownTimer {
@@ -3571,7 +3572,8 @@ input::-webkit-inner-spin-button {
       }
     }
   }
-  button {
+  a {
+    @include centerFlex();
     width: 100%;
     height: 48px;
     background: $main;

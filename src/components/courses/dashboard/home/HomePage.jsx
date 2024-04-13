@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import courseImg from "../../../../assets/images/c1.jpeg";
 import AppointmentCard from "../cards/AppointmentCard";
 
 const HomePage = () => {
@@ -19,6 +18,16 @@ const HomePage = () => {
   useEffect(() => {
     setForWhom(t("dashboard.allStudents"));
   }, [lang, t]);
+
+  const handleJoinSession = async (id) => {
+    const res = await axios.post(
+      `instructor/Student_join_session/?day_id=${id}`
+    );
+    if (res?.status === 200 || res?.status === 201) {
+      console.log(res?.data?.message?.meeting_link);
+      sessionStorage.setItem("meeting_link", res?.data?.message?.meeting_link);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,8 +107,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="row m-0 mt-3">
-          <div className="col-lg-12 col-12 p-2">
+        <div className="row m-0">
+          {/* <div className="col-lg-12 col-12 p-2">
             <div className="dashboard_course_card">
               <div className="img">
                 <img src={courseImg} alt="" />
@@ -114,14 +123,15 @@ const HomePage = () => {
                 </ul>
               </div>
             </div>
-          </div>
-          <div className="col-lg-12 col-12 p-2 mt-3 mb-2">
+          </div> */}
+          <div className="col-lg-12 col-12 p-2 mb-2">
             <h5 className="dashboard_heading">
               {t("dashboard.nextAppointments")}
             </h5>
             <div className="appointment_grid">
               {appointments?.map((appointment) => (
                 <AppointmentCard
+                  handleJoinSession={handleJoinSession}
                   key={appointment?.id}
                   appointment={appointment}
                 />

@@ -4,10 +4,14 @@ import student from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { DAYS_AR, DAYS_EN } from "../../../../constants";
+import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
+import { Link, useParams } from "react-router-dom";
 
-const AppointmentCard = ({ appointment }) => {
+const AppointmentCard = ({ appointment, handleJoinSession }) => {
   const { t } = useTranslation();
+  const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
+  const { subscriptionId } = useParams();
 
   const [remainingTime, setRemainingTime] = useState({
     days: "00",
@@ -82,7 +86,13 @@ const AppointmentCard = ({ appointment }) => {
           <h6>{t("dashboard.instructor")}: محمد علي</h6>
         </div>
       </div>
-      <h5>{t("dashboard.commingAppointment")}</h5>
+      <h5>
+        {t("dashboard.commingAppointment")} {t("day")}: {appointment?.day},{" "}
+        {t("hour")}:{" "}
+        {lang === "ar"
+          ? translateToArabic(convertTo12HourFormat(appointment?.starttime))
+          : convertTo12HourFormat(appointment?.starttime)}
+      </h5>
       <div className="countDownTimer">
         <div className="block">
           <span className="count">{remainingTime.days}</span>
@@ -101,7 +111,12 @@ const AppointmentCard = ({ appointment }) => {
           <span>{t("dashboard.seconds")}</span>
         </div>
       </div>
-      <button className="disabled">{t("dashboard.joinNow")}</button>
+      <Link
+        to={`/dashboard/${subscriptionId}/meeting-room`}
+        onClick={() => handleJoinSession(appointment?.id)}
+      >
+        {t("dashboard.joinNow")}
+      </Link>
     </div>
   );
 };

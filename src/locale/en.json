@@ -267,5 +267,7 @@
         "seconds": "Seconds",
         "nextAppointments": "Next Appointments",
         "joinNow": "Join Now"
-    }
+    },
+    "day": "Day",
+    "hour": "Hour"
 }
