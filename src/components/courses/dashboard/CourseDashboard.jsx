@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useParams, Routes, Route } from "react-router-dom";
 import tasks from "../../../assets/images/deliverables.svg";
+import home from "../../../assets/images/home.svg";
 import reports from "../../../assets/images/reports.svg";
 import goals from "../../../assets/images/goals.svg";
 import certificate from "../../../assets/images/certificate.svg";
@@ -14,6 +15,7 @@ import Certificates from "./certificates/Certificates";
 import ReportViewer from "./reports/ReportViewer";
 import Assignments from "./assignments/Assignments";
 import AssignmentDetails from "./assignments/AssignmentDetails";
+import HomePage from "./home/HomePage";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -26,6 +28,12 @@ const CourseDashboard = () => {
           <div className="col-lg-3 col-md-3 col-12 p-2 mt-3">
             <aside>
               <ul>
+                <li>
+                  <NavLink end to={`/dashboard/${subscriptionId}/`}>
+                    <img src={home} alt="home" />
+                    {t("dashboard.home")}
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink end to={`/dashboard/${subscriptionId}/assignments`}>
                     <img src={tasks} alt="deliverables" />
@@ -76,6 +84,7 @@ const CourseDashboard = () => {
                   path="/assignments/:assignmentId"
                   element={<AssignmentDetails />}
                 />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
                 <Route path="/course-students" element={<CourseStudents />} />

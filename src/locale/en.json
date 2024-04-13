@@ -254,6 +254,16 @@
         "addVoice": "Add Voice",
         "sendHomeWork": "Send Home Work",
         "answerSentSuccessfully": "Answer Sent Successfully",
-        "pleaseEnterAnswer": "Please Enter Answer"
+        "pleaseEnterAnswer": "Please Enter Answer",
+        "completedTasks": "Completed Tasks",
+        "home": "Home",
+        "points": "Points",
+        "totalLectures": "Total Lectures",
+        "renewalDate": "Renewal Date",
+        "commingAppointment": "Next lesson time",
+        "days": "Days",
+        "hours": "Hours",
+        "minutes": "Minutes",
+        "nextAppointments": "Next Appointments"
     }
 }

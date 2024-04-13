@@ -2190,6 +2190,42 @@ body main .course_dashboard .course_dashboard_router .submit_btn {
   width: -moz-fit-content;
   width: fit-content;
 }
+body main .course_dashboard .course_dashboard_router .dashboard_course_card {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 12px;
+  overflow: hidden;
+  gap: 16px;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_course_card .img {
+  flex: 1;
+  width: 100%;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_course_card .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_course_card .content {
+  padding: 16px 0;
+  flex: 1;
+  width: 100%;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_course_card .content h6 {
+  color: #81a63d;
+  font-size: 18px;
+}
+body main .course_dashboard .course_dashboard_router .appointment_grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (max-width: 576px) {
+  body main .course_dashboard .course_dashboard_router .appointment_grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
@@ -3626,6 +3662,9 @@ input::-webkit-inner-spin-button {
   align-items: center;
   gap: 8px;
 }
+.voice_field .uploaded_voice audio {
+  width: 85%;
+}
 .voice_field .uploaded_voice button {
   background: red;
   color: #fff;
@@ -3639,4 +3678,46 @@ input::-webkit-inner-spin-button {
 }
 .voice_field .uploaded_voice button i {
   font-size: 12px;
+}
+
+.appointment_card {
+  background: #f8f8f8;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+}
+.appointment_card h5 {
+  margin: 4px 0;
+  color: #81a63d;
+  font-size: 18px;
+  text-align: center;
+}
+.appointment_card .countDownTimer {
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.appointment_card .countDownTimer .block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+.appointment_card .countDownTimer .block span {
+  font-size: 12px;
+  color: #000000;
+  font-weight: 600;
+}
+.appointment_card .countDownTimer .block .count {
+  background: #81a63d;
+  color: #fff;
+  padding: 4px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 4px;
 }/*# sourceMappingURL=global.css.map */
