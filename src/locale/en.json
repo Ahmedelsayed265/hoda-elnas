@@ -264,6 +264,8 @@
         "days": "Days",
         "hours": "Hours",
         "minutes": "Minutes",
-        "nextAppointments": "Next Appointments"
+        "seconds": "Seconds",
+        "nextAppointments": "Next Appointments",
+        "joinNow": "Join Now"
     }
 }

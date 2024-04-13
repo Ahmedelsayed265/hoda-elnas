@@ -3535,7 +3535,7 @@ input::-webkit-inner-spin-button {
 }
 .appointment_card {
   background: $inputBG;
-  padding: 16px 24px;
+  padding: 16px;
   border-radius: 12px;
   display: flex;
   gap: 12px;
@@ -3560,13 +3560,25 @@ input::-webkit-inner-spin-button {
         font-weight: 600;
       }
       .count {
+        width: 54px;
+        @include centerFlex();
         background: $secondary;
         color: $white;
-        padding: 4px 16px;
+        padding: 4px 0;
         font-weight: 400;
         font-size: 16px;
         border-radius: 4px;
       }
+    }
+  }
+  button {
+    width: 100%;
+    height: 48px;
+    background: $main;
+    color: $white;
+    border-radius: 4px;
+    &.disabled {
+      cursor: not-allowed;
     }
   }
 }

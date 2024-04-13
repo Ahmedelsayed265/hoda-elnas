@@ -274,6 +274,8 @@
         "days": "ايام",
         "hours": "ساعات",
         "minutes": "دقائق",
-        "nextAppointments": "مواعيد الدروس القادمة"
+        "seconds": "ثواني",
+        "nextAppointments": "مواعيد الدروس القادمة",
+        "joinNow": "انضم الآن"
     }
 }

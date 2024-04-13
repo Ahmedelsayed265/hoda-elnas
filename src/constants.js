@@ -1,19 +1,19 @@
 export const BASE_URL = "https://backend.hodaelnas.online/";
 export const DAYS_AR = [
-  "السبت",
   "الأحد",
-  "الإثنين",
+  "الاثنين",
   "الثلاثاء",
   "الأربعاء",
   "الخميس",
-  "الجمعة"
+  "الجمعة",
+  "السبت"
 ];
 export const DAYS_EN = [
-  "Saturday",
   "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
-  "Friday"
+  "Friday",
+  "Saturday"
 ];

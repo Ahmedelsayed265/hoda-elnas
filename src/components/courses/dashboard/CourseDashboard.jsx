@@ -11,11 +11,11 @@ import students from "../../../assets/images/students.svg";
 import CourseStudents from "./students/CourseStudents";
 import Appointments from "./appointments/Appointments";
 import Reports from "./reports/Reports";
-import Certificates from "./certificates/Certificates";
 import ReportViewer from "./reports/ReportViewer";
 import Assignments from "./assignments/Assignments";
 import AssignmentDetails from "./assignments/AssignmentDetails";
 import HomePage from "./home/HomePage";
+import CertificatesPage from "./certificates/CertificatesPage";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -88,7 +88,7 @@ const CourseDashboard = () => {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
                 <Route path="/course-students" element={<CourseStudents />} />
-                <Route path="/certificates" element={<Certificates />} />
+                <Route path="/certificates" element={<CertificatesPage />} />
                 <Route path="/appointments" element={<Appointments />} />
               </Routes>
             </main>

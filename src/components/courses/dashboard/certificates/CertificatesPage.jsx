@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import axios from "./../../../../util/axios";
+import axios from "../../../../util/axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -8,15 +8,15 @@ import { Dropdown } from "react-bootstrap";
 import DataLoader from "../../../ui/DataLoader";
 import ReportCard from "../cards/ReportCard";
 
-const Certificates = () => {
+const CertificatesPage = () => {
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
+  const { subscriptionId } = useParams();
+  const navigate = useNavigate();
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
   const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(false);
   const [forWhom, setForWhom] = useState("");
-  const { subscriptionId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     setForWhom(t("dashboard.allStudents"));
@@ -132,4 +132,4 @@ const Certificates = () => {
   );
 };
 
-export default Certificates;
+export default CertificatesPage;
