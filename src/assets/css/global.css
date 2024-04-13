@@ -2126,7 +2126,7 @@ body main .course_dashboard .course_dashboard_router .images_grid {
 body main .course_dashboard .course_dashboard_router .images_grid .file_upload {
   border: 1px dashed #81a63d;
   border-radius: 12px;
-  width: 180px;
+  width: 170px;
   height: 150px;
 }
 body main .course_dashboard .course_dashboard_router .images_grid .file_upload label {
@@ -2144,7 +2144,7 @@ body main .course_dashboard .course_dashboard_router .images_grid .file_upload l
 body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file {
   border: 1px solid #f2f2f2;
   border-radius: 12px;
-  width: 180px;
+  width: 170px;
   position: relative;
   height: 150px;
   overflow: hidden;
@@ -3612,7 +3612,7 @@ input::-webkit-inner-spin-button {
   gap: 16px;
 }
 .voice_field .mic_btn {
-  width: 48px;
+  min-width: 48px;
   height: 48px;
   background: #f8f8f8;
   border-radius: 4px;
@@ -3622,6 +3622,7 @@ input::-webkit-inner-spin-button {
 }
 .voice_field .uploaded_voice {
   display: flex;
+  width: 100%;
   align-items: center;
   gap: 8px;
 }
@@ -3629,7 +3630,7 @@ input::-webkit-inner-spin-button {
   background: red;
   color: #fff;
   border-radius: 50%;
-  width: 36px;
+  min-width: 36px;
   height: 36px;
   display: flex;
   align-items: center;

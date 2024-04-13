@@ -2047,7 +2047,7 @@ body {
           .file_upload {
             border: 1px dashed $secondary;
             border-radius: 12px;
-            width: 180px;
+            width: 170px;
             height: 150px;
             label {
               height: 100%;
@@ -2063,7 +2063,7 @@ body {
           .uploaded_file {
             border: 1px solid $inputStroke;
             border-radius: 12px;
-            width: 180px;
+            width: 170px;
             position: relative;
             height: 150px;
             overflow: hidden;
@@ -3468,7 +3468,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   gap: 16px;
   .mic_btn {
-    width: 48px;
+    min-width: 48px;
     height: 48px;
     background: $inputBG;
     border-radius: 4px;
@@ -3478,13 +3478,14 @@ input::-webkit-inner-spin-button {
   }
   .uploaded_voice {
     display: flex;
+    width: 100%;
     align-items: center;
     gap: 8px;
     button {
       background: red;
       color: $white;
       border-radius: 50%;
-      width: 36px;
+      min-width: 36px;
       height: 36px;
       display: flex;
       align-items: center;

@@ -140,6 +140,7 @@ const Assignments = () => {
                     ?.map((assignment) => (
                       <div className="col-lg-6 col-md-6 col-12 p-2">
                         <AssignmentCard
+                          path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
                           key={assignment?.id}
                           assignment={assignment}
                         />
