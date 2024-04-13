@@ -1921,11 +1921,17 @@ body {
           .title {
             height: 40px;
             margin: 0;
+            flex-direction: row;
+            gap: 24px;
             h5 {
               color: $main;
               font-weight: 600;
               font-size: 18px;
               margin: 0;
+            }
+            .date {
+              font-size: 14px;
+              color: $secondary;
             }
           }
           button {
@@ -2023,6 +2029,80 @@ body {
             height: 600px;
             width: 100%;
           }
+        }
+        .dashboard_heading {
+          color: $main;
+          font-size: 18px;
+          font-weight: 600;
+        }
+        .dashboard_sub_heading {
+          font-size: 16px;
+          margin: 8px 0 0;
+          color: $secondary;
+        }
+        .images_grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          .file_upload {
+            border: 1px dashed $secondary;
+            border-radius: 12px;
+            width: 180px;
+            height: 150px;
+            label {
+              height: 100%;
+              input {
+                display: none;
+              }
+              @include centerFlex();
+              img {
+                height: 60px;
+              }
+            }
+          }
+          .uploaded_file {
+            border: 1px solid $inputStroke;
+            border-radius: 12px;
+            width: 180px;
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+            @include centerFlex();
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+            button {
+              position: absolute;
+              top: 8px;
+              left: 8px;
+              width: 26px;
+              font-size: 16px;
+              height: 26px;
+              border-radius: 50%;
+              background: $secondary;
+              color: $white;
+            }
+            .doc_icon {
+              @include centerFlex();
+              flex-direction: column;
+              gap: 4px;
+              span {
+                font-size: 10px;
+                line-height: normal;
+                color: $secondary;
+              }
+              img {
+                width: auto;
+                height: 50px;
+              }
+            }
+          }
+        }
+        .submit_btn {
+          padding: 0 32px;
+          width: fit-content;
         }
       }
     }
@@ -3253,24 +3333,6 @@ input::-webkit-inner-spin-button {
       color: $secondary;
     }
   }
-  .name_img {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    .img {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      border: 1px solid $inputStroke;
-      overflow: hidden;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-      }
-    }
-  }
   .pdf {
     width: 80px;
     @include centerFlex();
@@ -3290,9 +3352,6 @@ input::-webkit-inner-spin-button {
       line-height: 12px;
     }
   }
-}
-#toolbar {
-  display: none !important;
 }
 .row_header h6 {
   color: $main;
@@ -3378,6 +3437,62 @@ input::-webkit-inner-spin-button {
       align-items: center;
       display: flex;
       flex-direction: column;
+    }
+  }
+}
+.name_img {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid $inputStroke;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  h6 {
+    color: $dark;
+    margin: 0;
+    font-size: 14px;
+  }
+}
+.voice_field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  .mic_btn {
+    width: 48px;
+    height: 48px;
+    background: $inputBG;
+    border-radius: 4px;
+    img {
+      height: 20px;
+    }
+  }
+  .uploaded_voice {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    button {
+      background: red;
+      color: $white;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      i {
+        font-size: 12px;
+      }
     }
   }
 }

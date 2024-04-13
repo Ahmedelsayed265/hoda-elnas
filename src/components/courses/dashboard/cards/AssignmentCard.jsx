@@ -6,13 +6,13 @@ import { useTranslation } from "react-i18next";
 import useTruncateString from "../../../../hooks/useTruncateString";
 import { BASE_URL } from "../../../../constants";
 
-const AssignmentCard = ({ assignment }) => {
+const AssignmentCard = ({ assignment, path }) => {
   const { t } = useTranslation();
   const truncatedString = useTruncateString(assignment?.description);
   return (
-    <Link to="" className="assignment_card">
+    <Link to={path} className="assignment_card">
       <div className="content">
-        <h6>امتحان اوصول دين</h6>
+        <h6>{assignment?.title}</h6>
         <p>{truncatedString}</p>
         <div className="img_name">
           <div className="img">

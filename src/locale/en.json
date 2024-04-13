@@ -247,6 +247,13 @@
         "noCertificates": "You don't have any certificates at the moment",
         "openPDF": "Open PDF",
         "student": "Student",
-        "inReviewTasks": "In Review Tasks"
+        "inReviewTasks": "In Review Tasks",
+        "taskAnswer": "Task Answer",
+        "writeHere": "Write Here...",
+        "attachImages": "Attach Images",
+        "addVoice": "Add Voice",
+        "sendHomeWork": "Send Home Work",
+        "answerSentSuccessfully": "Answer Sent Successfully",
+        "pleaseEnterAnswer": "Please Enter Answer"
     }
 }

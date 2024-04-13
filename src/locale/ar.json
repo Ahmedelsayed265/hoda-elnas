@@ -257,6 +257,13 @@
         "noCertificates": "لا يوجد لديك شهادات حالياَ",
         "openPDF": "فتح PDF",
         "student": "الطالب",
-        "inReviewTasks": "مهام فى المراجعة"
+        "inReviewTasks": "مهام فى المراجعة",
+        "taskAnswer": "الإجابة على السؤال",
+        "writeHere": "اكتب هنا...",
+        "attachImages": "اضافة صور",
+        "addVoice": "اضافة صوت",
+        "sendHomeWork": "ارسال الواجبات",
+        "answerSentSuccessfully": "تم ارسال الإجابة بنجاح",
+        "pleaseEnterAnswer": "من فضلك أدخل الإجابة"
     }
 }

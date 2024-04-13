@@ -55,7 +55,7 @@ const Assignments = () => {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
           ).studentclass_id;
-          url = `/instructor/list_assignment/?student_instructor=${studentId}`;
+          url = `/instructor/list_assignment/?student_id=${studentId}`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
@@ -118,10 +118,13 @@ const Assignments = () => {
                   {assignments
                     .filter((a) => a?.status === "pending")
                     ?.map((assignment) => (
-                      <div className="col-lg-6 col-md-6 col-12 p-2">
+                      <div
+                        className="col-lg-6 col-md-6 col-12 p-2"
+                        key={assignment?.id}
+                      >
                         <AssignmentCard
-                          key={assignment?.id}
                           assignment={assignment}
+                          path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
                         />
                       </div>
                     ))}
@@ -133,7 +136,7 @@ const Assignments = () => {
                     </div>
                   </div>
                   {assignments
-                    .filter((a) => a?.status === "submited")
+                    .filter((a) => a?.status === "submitted")
                     ?.map((assignment) => (
                       <div className="col-lg-6 col-md-6 col-12 p-2">
                         <AssignmentCard

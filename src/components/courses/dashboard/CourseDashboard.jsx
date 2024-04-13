@@ -13,6 +13,7 @@ import Reports from "./reports/Reports";
 import Certificates from "./certificates/Certificates";
 import ReportViewer from "./reports/ReportViewer";
 import Assignments from "./assignments/Assignments";
+import AssignmentDetails from "./assignments/AssignmentDetails";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ const CourseDashboard = () => {
             <aside>
               <ul>
                 <li>
-                  <NavLink end to={`/dashboard/${subscriptionId}`}>
+                  <NavLink end to={`/dashboard/${subscriptionId}/assignments`}>
                     <img src={tasks} alt="deliverables" />
                     {t("dashboard.tasks")}
                   </NavLink>
@@ -70,11 +71,15 @@ const CourseDashboard = () => {
           <div className="col-lg-9 col-md-9 col-12 p-2">
             <main className="course_dashboard_router">
               <Routes>
-                <Route path="/" element={<Assignments />} />
-                <Route path="/reports/*" element={<Reports />} />
+                <Route path="/assignments" element={<Assignments />} />
+                <Route
+                  path="/assignments/:assignmentId"
+                  element={<AssignmentDetails />}
+                />
+                <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
                 <Route path="/course-students" element={<CourseStudents />} />
-                <Route path="/certificates/*" element={<Certificates />} />
+                <Route path="/certificates" element={<Certificates />} />
                 <Route path="/appointments" element={<Appointments />} />
               </Routes>
             </main>

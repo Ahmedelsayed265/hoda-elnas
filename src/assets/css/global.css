@@ -1994,12 +1994,18 @@ body main .course_dashboard .course_dashboard_router .header {
 body main .course_dashboard .course_dashboard_router .header .title {
   height: 40px;
   margin: 0;
+  flex-direction: row;
+  gap: 24px;
 }
 body main .course_dashboard .course_dashboard_router .header .title h5 {
   color: #31535a;
   font-weight: 600;
   font-size: 18px;
   margin: 0;
+}
+body main .course_dashboard .course_dashboard_router .header .title .date {
+  font-size: 14px;
+  color: #81a63d;
 }
 body main .course_dashboard .course_dashboard_router .header button {
   display: flex;
@@ -2101,6 +2107,88 @@ body main .course_dashboard .course_dashboard_router .time_table td button img {
 body main .course_dashboard .course_dashboard_router .course_reports iframe {
   height: 600px;
   width: 100%;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_heading {
+  color: #31535a;
+  font-size: 18px;
+  font-weight: 600;
+}
+body main .course_dashboard .course_dashboard_router .dashboard_sub_heading {
+  font-size: 16px;
+  margin: 8px 0 0;
+  color: #81a63d;
+}
+body main .course_dashboard .course_dashboard_router .images_grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .file_upload {
+  border: 1px dashed #81a63d;
+  border-radius: 12px;
+  width: 180px;
+  height: 150px;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .file_upload label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .file_upload label input {
+  display: none;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .file_upload label img {
+  height: 60px;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file {
+  border: 1px solid #f2f2f2;
+  border-radius: 12px;
+  width: 180px;
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file button {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 26px;
+  font-size: 16px;
+  height: 26px;
+  border-radius: 50%;
+  background: #81a63d;
+  color: #fff;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file .doc_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file .doc_icon span {
+  font-size: 10px;
+  line-height: normal;
+  color: #81a63d;
+}
+body main .course_dashboard .course_dashboard_router .images_grid .uploaded_file .doc_icon img {
+  width: auto;
+  height: 50px;
+}
+body main .course_dashboard .course_dashboard_router .submit_btn {
+  padding: 0 32px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -3377,26 +3465,6 @@ input::-webkit-inner-spin-button {
   font-size: 14px;
   color: #81a63d;
 }
-.report_card .name_img {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.report_card .name_img .img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #f2f2f2;
-  overflow: hidden;
-}
-.report_card .name_img .img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-}
 .report_card .pdf {
   width: 80px;
   display: flex;
@@ -3417,10 +3485,6 @@ input::-webkit-inner-spin-button {
   color: #81a63d;
   font-size: 14px;
   line-height: 12px;
-}
-
-#toolbar {
-  display: none !important;
 }
 
 .row_header h6 {
@@ -3514,4 +3578,64 @@ input::-webkit-inner-spin-button {
   align-items: center;
   display: flex;
   flex-direction: column;
+}
+
+.name_img {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.name_img .img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #f2f2f2;
+  overflow: hidden;
+}
+.name_img .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.name_img h6 {
+  color: #000000;
+  margin: 0;
+  font-size: 14px;
+}
+
+.voice_field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.voice_field .mic_btn {
+  width: 48px;
+  height: 48px;
+  background: #f8f8f8;
+  border-radius: 4px;
+}
+.voice_field .mic_btn img {
+  height: 20px;
+}
+.voice_field .uploaded_voice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.voice_field .uploaded_voice button {
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.voice_field .uploaded_voice button i {
+  font-size: 12px;
 }/*# sourceMappingURL=global.css.map */
