@@ -266,7 +266,8 @@
         "minutes": "Minutes",
         "seconds": "Seconds",
         "nextAppointments": "Next Appointments",
-        "joinNow": "Join Now"
+        "joinNow": "Join Now",
+        "noAvailableLessons": "You don't have any classes to join right now"
     },
     "day": "Day",
     "hour": "Hour"

@@ -16,7 +16,6 @@ import Assignments from "./assignments/Assignments";
 import AssignmentDetails from "./assignments/AssignmentDetails";
 import HomePage from "./home/HomePage";
 import CertificatesPage from "./certificates/CertificatesPage";
-import GoogleMeetingView from "./metting-views/GoogleMeetingView";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -91,7 +90,6 @@ const CourseDashboard = () => {
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
                 <Route path="/appointments" element={<Appointments />} />
-                <Route path="/meeting-room" element={<GoogleMeetingView />} />
               </Routes>
             </main>
           </div>

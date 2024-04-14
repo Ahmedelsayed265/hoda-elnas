@@ -19,16 +19,6 @@ const HomePage = () => {
     setForWhom(t("dashboard.allStudents"));
   }, [lang, t]);
 
-  const handleJoinSession = async (id) => {
-    const res = await axios.post(
-      `instructor/Student_join_session/?day_id=${id}`
-    );
-    if (res?.status === 200 || res?.status === 201) {
-      console.log(res?.data?.message?.meeting_link);
-      sessionStorage.setItem("meeting_link", res?.data?.message?.meeting_link);
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -131,7 +121,6 @@ const HomePage = () => {
             <div className="appointment_grid">
               {appointments?.map((appointment) => (
                 <AppointmentCard
-                  handleJoinSession={handleJoinSession}
                   key={appointment?.id}
                   appointment={appointment}
                 />

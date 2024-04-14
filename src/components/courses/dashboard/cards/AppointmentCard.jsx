@@ -5,13 +5,29 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from "./../../../../util/axios";
+import { toast } from 'react-toastify';
 
-const AppointmentCard = ({ appointment, handleJoinSession }) => {
+const AppointmentCard = ({ appointment }) => {
   const { t } = useTranslation();
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
-  const { subscriptionId } = useParams();
+
+  const handleJoinSession = async (id) => {
+    const res = await axios.post(
+      `instructor/Student_join_session/?day_id=${id}`
+    );
+    if (res?.status === 200 || res?.status === 201) {
+      const meetingLink = res?.data?.message?.meeting_link;
+      if (meetingLink) {
+        window.open(meetingLink, "_blank");
+      }
+    }
+    else{
+      toast.error(t("dashboard.noAvailableLessons"))
+    }
+  };
 
   const [remainingTime, setRemainingTime] = useState({
     days: "00",
@@ -111,10 +127,7 @@ const AppointmentCard = ({ appointment, handleJoinSession }) => {
           <span>{t("dashboard.seconds")}</span>
         </div>
       </div>
-      <Link
-        to={`/dashboard/${subscriptionId}/meeting-room`}
-        onClick={() => handleJoinSession(appointment?.id)}
-      >
+      <Link onClick={() => handleJoinSession(appointment?.id)}>
         {t("dashboard.joinNow")}
       </Link>
     </div>

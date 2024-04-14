@@ -276,7 +276,8 @@
         "minutes": "دقائق",
         "seconds": "ثواني",
         "nextAppointments": "مواعيد الدروس القادمة",
-        "joinNow": "انضم الآن"
+        "joinNow": "انضم الآن",
+        "noAvailableLessons": "ليس لديك أي حصص الآن للانضمام لها"
     },
     "day": "يوم",
     "hour": "الساعة"
