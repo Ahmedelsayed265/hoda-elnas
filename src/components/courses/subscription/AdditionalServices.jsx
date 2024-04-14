@@ -6,15 +6,21 @@ const AdditionalServices = ({
   location,
   formData,
   setFormData,
+  pricingPlan,
   coponData
 }) => {
   const { t } = useTranslation();
 
   const handleCheckboxChange = (e, addon) => {
     let addonPrice = location === "EG" ? addon?.fees_egp : addon?.fees_usd;
-    let addonPriceWithCoupon = addonPrice;
+    let addonPriceWithCoupon =
+      addonPrice * formData.studentsNumber * pricingPlan?.interval;
     if (coponData?.value && coponData?.discount_type === "percentage") {
-      addonPriceWithCoupon = addonPrice * ((100 - coponData?.value) / 100);
+      addonPriceWithCoupon =
+        addonPrice *
+        ((100 - coponData?.value) / 100) *
+        formData.studentsNumber *
+        pricingPlan?.interval;
     }
     const updatedFormData = {
       ...formData,
@@ -49,7 +55,8 @@ const AdditionalServices = ({
                 {location === "EG" ? addon?.fees_egp : addon?.fees_usd}{" "}
                 {location === "EG"
                   ? t("courseSubscribe.egyptianPound")
-                  : t("courseSubscribe.dollar")}
+                  : t("courseSubscribe.dollar")}{" "}
+                / {t("courseSubscribe.perMonth")}
               </span>
             </div>
           </li>

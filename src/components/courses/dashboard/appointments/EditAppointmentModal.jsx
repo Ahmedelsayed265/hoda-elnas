@@ -63,7 +63,9 @@ const EditAppointmentModal = ({
         toast.success(t("dashboard.editAppointmentSuccess"));
         setShowModal(false);
         setAppointments((prev) =>
-          prev.map((item) => (item.id === rowData.id ? res?.data?.id : item))
+          prev.map((item) =>
+            item.id === rowData.id ? res?.data?.object : item
+          )
         );
       } else {
         toast.error(t("dashboard.editAppointmentFailed"));

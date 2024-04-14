@@ -1711,6 +1711,7 @@ body main .subscribe .benifits h6 {
 body main .subscribe .benifits ul li {
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
   gap: 4px;
   font-size: 16px;
   color: #777777;
@@ -3738,4 +3739,19 @@ input::-webkit-inner-spin-button {
 }
 .appointment_card a.disabled {
   cursor: not-allowed;
+}
+
+@media screen and (max-width: 992px) {
+  .hide_sm {
+    display: none;
+  }
+}
+
+.hide_lg {
+  display: none;
+}
+@media screen and (max-width: 992px) {
+  .hide_lg {
+    display: block;
+  }
 }/*# sourceMappingURL=global.css.map */

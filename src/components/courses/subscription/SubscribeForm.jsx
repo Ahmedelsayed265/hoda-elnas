@@ -10,12 +10,14 @@ import InputField from "../../ui/InputField";
 import InstalmentPrice from "./InstalmentPrice";
 import SubscribeModal from "./SubscribeModal";
 import axios from "../../../util/axios";
+import CourseBenifits from "../course-details/CourseBenifits";
 
 const SubscribeForm = ({
   course,
   pricingPlans,
   formData,
   setFormData,
+  benefits,
   setBenefits
 }) => {
   const { t } = useTranslation();
@@ -37,6 +39,27 @@ const SubscribeForm = ({
 
   // find pricing plan
   useEffect(() => {
+    const calculateTotalPrice = (studentsNumber, addons, planInterval) => {
+      let totalAddonPrice = addons.reduce((total, addon) => {
+        const addonPrice =
+          location === "EG" ? addon?.fees_egp : addon?.fees_usd;
+        return total + addonPrice * planInterval;
+      }, 0);
+      let basePrice =
+        location === "EG"
+          ? pricingPlan?.saleprice_egp
+          : pricingPlan?.saleprice_usd;
+      let totalPrice = studentsNumber * (basePrice + totalAddonPrice);
+      if (coponData?.value && coponData?.discount_type === "percentage") {
+        totalPrice *= (100 - coponData?.value) / 100;
+      } else {
+        if (coponData?.value && totalPrice > coponData.value) {
+          totalPrice -= coponData.value;
+        }
+      }
+      return totalPrice >= 0 ? totalPrice : 0.0;
+    };
+
     const findPricingPlan = (cpw, type, duration) => {
       const plan = pricingPlans?.find(
         (plan) =>
@@ -82,12 +105,24 @@ const SubscribeForm = ({
       formData?.plan,
       formData?.lessonsDuration
     );
+
+    if (formData?.addons?.length > 0) {
+      setFormData({
+        ...formData,
+        totalPrice: calculateTotalPrice(
+          formData?.studentsNumber,
+          formData?.addons,
+          pricingPlan?.interval
+        )
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     formData?.courseDuration,
     formData?.studentsNumber,
     formData?.lessonsDuration,
     formData?.plan,
+    pricingPlan?.interval,
     pricingPlans,
     coponData,
     location
@@ -292,6 +327,9 @@ const SubscribeForm = ({
           }
           additionalInfo={t("courseSubscribe.minutes")}
         />
+        <div className="hide_lg">
+          <CourseBenifits benefits={benefits} />
+        </div>
         {/* subscriptions plan */}
         <RadiosSelect
           labelPlaceholder={t("courseSubscribe.subscriptionsPlan")}
@@ -310,6 +348,7 @@ const SubscribeForm = ({
           course={course}
           location={location}
           coponData={coponData}
+          pricingPlan={pricingPlan}
           formData={formData}
           setFormData={setFormData}
         />

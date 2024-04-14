@@ -1654,6 +1654,7 @@ body {
           li {
             display: flex;
             align-items: flex-start;
+            justify-content: flex-start;
             gap: 4px;
             font-size: 16px;
             color: $gray;
@@ -3582,5 +3583,16 @@ input::-webkit-inner-spin-button {
     &.disabled {
       cursor: not-allowed;
     }
+  }
+}
+.hide_sm {
+  @media screen and (max-width: 992px) {
+    display: none;
+  }
+}
+.hide_lg {
+  display: none;
+  @media screen and (max-width: 992px) {
+    display: block;
   }
 }

@@ -40,7 +40,7 @@ const CompleteProcess = ({
         toast.error(t("uploadTransferPhoto"));
         return;
       }
-
+      console.log(formData?.addons?.map((item) => item?.id));
       // pay load
       const dataToSend = {
         user_id: user?.id,
@@ -53,7 +53,8 @@ const CompleteProcess = ({
         referralcode:
           formData.copun_type === "referral" ? formData.copun_name : "",
         recipt: reciept,
-        amount: formData?.totalPrice
+        amount: formData?.totalPrice,
+        addons: formData?.addons?.map((item) => item?.id)
       };
       const headers = {
         Accept: "application/json",

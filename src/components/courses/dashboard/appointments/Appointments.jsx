@@ -92,7 +92,12 @@ const Appointments = () => {
           <div className="col-12 p-2">
             <div className="header">
               <div className="title">
-                <h5>{t("dashboard.appointments")}</h5>
+                <h5 className="forWhom">
+                  <img src={timer} alt="timer" />
+                  {forWhom === t("dashboard.allStudents")
+                    ? t("dashboard.allStudentsAppointments")
+                    : t("dashboard.studentAppointment") + " " + forWhom}
+                </h5>
               </div>
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -129,13 +134,7 @@ const Appointments = () => {
                   </div>
                 </div>
               ) : (
-                <div className="col-12 p-2 pt-4">
-                  <h5 className="forWhom">
-                    <img src={timer} alt="timer" />
-                    {forWhom === t("dashboard.allStudents")
-                      ? t("dashboard.allStudentsAppointments")
-                      : t("dashboard.studentAppointment") + " " + forWhom}
-                  </h5>
+                <div className="col-12 p-2">
                   <div className="time_table">
                     <table>
                       <thead>

@@ -170,7 +170,7 @@
         "startDate": "Start Date",
         "endDate": "End Date",
         "noPricingPlan": "No Pricing Plan",
-        "whatYouWillget": "What will you get in this plan?",
+        "whatYouWillget": "What will you get in this duration?",
         "invalidPromoCode": "Invalid promo code",
         "promoCodeApplied": "Promo code applied successfully",
         "paymentMethods": "Payment Methods",
@@ -185,7 +185,8 @@
         "discount": "Discount",
         "copoun": "coupon",
         "active": "Active",
-        "deactive": "Deactive"
+        "deactive": "Deactive",
+        "perMonth": "Per Month"
     },
     "dashboard": {
         "tasks": "Tasks",

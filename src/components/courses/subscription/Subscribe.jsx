@@ -67,6 +67,7 @@ const Subscribe = () => {
               pricingPlans={pricingPlans}
               formData={formData}
               setFormData={setFormData}
+              benefits={benifits}
               setBenefits={setBenifits}
             />
           </div>
@@ -81,7 +82,9 @@ const Subscribe = () => {
               <h3>{course?.name}</h3>
               <p>{course?.bio}</p>
             </div>
-            {<CourseBenifits benefits={benifits} />}
+            <div className="hide_sm">
+              {<CourseBenifits benefits={benifits} />}
+            </div>
           </div>
         </div>
       </div>
