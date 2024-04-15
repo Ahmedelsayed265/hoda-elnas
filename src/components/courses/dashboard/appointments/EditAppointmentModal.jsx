@@ -33,9 +33,9 @@ const EditAppointmentModal = ({
         lang === "ar"
           ? DAYS_AR.indexOf(rowData?.day)
           : DAYS_EN.indexOf(rowData?.day),
-      time: rowData?.starttime
+      temp: rowData?.temp
     }));
-  }, [lang, rowData?.day, rowData?.starttime]);
+  }, [lang, rowData?.day, rowData?.temp]);
 
   useEffect(() => {
     const fetchAvailableTimes = async () => {

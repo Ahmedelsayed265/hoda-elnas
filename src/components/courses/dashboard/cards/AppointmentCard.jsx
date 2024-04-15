@@ -3,14 +3,15 @@ import man from "../../../../assets/images/man.svg";
 import student from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { DAYS_AR, DAYS_EN } from "../../../../constants";
+import { BASE_URL, DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { Link } from "react-router-dom";
 import axios from "./../../../../util/axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const AppointmentCard = ({ appointment }) => {
   const { t } = useTranslation();
+  const [enable, setEnable] = useState(false);
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
 
@@ -23,9 +24,8 @@ const AppointmentCard = ({ appointment }) => {
       if (meetingLink) {
         window.open(meetingLink, "_blank");
       }
-    }
-    else{
-      toast.error(t("dashboard.noAvailableLessons"))
+    } else {
+      toast.error(t("dashboard.noAvailableLessons"));
     }
   };
 
@@ -83,6 +83,13 @@ const AppointmentCard = ({ appointment }) => {
         minutes: countDown.minutes,
         seconds: countDown.seconds
       });
+      if (
+        countDown.days === 0 &&
+        countDown.hours === 0 &&
+        countDown.minutes === 5
+      ) {
+        setEnable(true);
+      }
     }, 1000);
   }, [nextoccurence]);
 
@@ -91,15 +98,33 @@ const AppointmentCard = ({ appointment }) => {
       <div className="d-flex justify-content-between">
         <div className="name_img">
           <div className="img">
-            <img src={student} alt="instructor" />
+            <img
+              src={
+                appointment?.student_details?.student_img
+                  ? `${BASE_URL}${appointment?.student_details?.student_img}`
+                  : student
+              }
+              alt="instructor"
+            />
           </div>
-          <h6>{t("dashboard.student")}: محمد علي</h6>
+          <h6>
+            {t("dashboard.student")}: {appointment?.student_details?.name}
+          </h6>
         </div>
         <div className="name_img">
           <div className="img">
-            <img src={man} alt="instructor" />
+            <img
+              src={
+                appointment?.instructor_details?.instructor_img
+                  ? `${BASE_URL}${appointment?.instructor_details?.instructor_img}`
+                  : man
+              }
+              alt="instructor"
+            />
           </div>
-          <h6>{t("dashboard.instructor")}: محمد علي</h6>
+          <h6>
+            {t("dashboard.instructor")}: {appointment?.instructor_details?.name}
+          </h6>
         </div>
       </div>
       <h5>
@@ -127,7 +152,10 @@ const AppointmentCard = ({ appointment }) => {
           <span>{t("dashboard.seconds")}</span>
         </div>
       </div>
-      <Link onClick={() => handleJoinSession(appointment?.id)}>
+      <Link
+        className={enable ? "" : "disabled"}
+        onClick={() => handleJoinSession(appointment?.id)}
+      >
         {t("dashboard.joinNow")}
       </Link>
     </div>

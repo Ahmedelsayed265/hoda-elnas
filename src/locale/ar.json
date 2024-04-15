@@ -278,7 +278,10 @@
         "seconds": "ثواني",
         "nextAppointments": "مواعيد الدروس القادمة",
         "joinNow": "انضم الآن",
-        "noAvailableLessons": "ليس لديك أي حصص الآن للانضمام لها"
+        "noAvailableLessons": "ليس لديك أي حصص الآن للانضمام لها",
+        "exptionalDay": "موعد استثنائي بدلا من يوم",
+        "cancelAppointment": "الغاء الموعد",
+        "cancelAppointmentSuccess": "تم الغاء الموعد الإستثنائي بنجاح"
     },
     "day": "يوم",
     "hour": "الساعة"

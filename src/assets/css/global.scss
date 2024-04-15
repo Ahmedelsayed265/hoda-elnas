@@ -3582,6 +3582,8 @@ input::-webkit-inner-spin-button {
     border-radius: 4px;
     &.disabled {
       cursor: not-allowed;
+      pointer-events: none;
+      opacity: .7;
     }
   }
 }
@@ -3595,4 +3597,21 @@ input::-webkit-inner-spin-button {
   @media screen and (max-width: 992px) {
     display: block;
   }
+}
+.exeptional {
+  background: $second10;
+  position: relative;
+}
+.exeptional_text {
+  background: $second10;
+  td {
+    text-align: center;
+  }
+}
+.exiptionalCancel {
+  background: $main;
+  color: $white;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 12px;
 }

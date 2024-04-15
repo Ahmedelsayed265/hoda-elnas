@@ -6,11 +6,13 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AppointmentCard from "../cards/AppointmentCard";
+import DataLoader from "./../../../ui/DataLoader";
 
 const HomePage = () => {
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
   const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
   const [forWhom, setForWhom] = useState("");
   const { subscriptionId } = useParams();
@@ -21,6 +23,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await axios.get(
           `/members/list_Student/?subscription_id=${subscriptionId}`
@@ -35,6 +38,7 @@ const HomePage = () => {
       } catch (error) {
         console.log(error);
       } finally {
+        setLoading(false);
       }
     };
 
@@ -47,12 +51,12 @@ const HomePage = () => {
       try {
         let url;
         if (forWhom === t("dashboard.allStudents")) {
-          url = `/members/List_appointments/?sub_id=${subscriptionId}`;
+          url = `/members/List_appointments/?sub_id=${subscriptionId}&nearest=true`;
         } else {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
           ).studentclass_id;
-          url = `/members/List_appointments/?student_id=${studentId}`;
+          url = `/members/List_appointments/?student_id=${studentId}&nearest=true`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
@@ -73,7 +77,10 @@ const HomePage = () => {
       <div className="container p-0">
         <div className="row m-0">
           <div className="col-12 p-2">
-            <div className="header justify-content-end">
+            <div className="header">
+              <div className="title">
+                <h5>{t("dashboard.nextAppointments")}</h5>
+              </div>
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                   {forWhom}
@@ -97,37 +104,22 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="row m-0">
-          {/* <div className="col-lg-12 col-12 p-2">
-            <div className="dashboard_course_card">
-              <div className="img">
-                <img src={courseImg} alt="" />
+        {loading ? (
+          <DataLoader />
+        ) : (
+          <div className="row m-0 mt-3">
+            <div className="col-lg-12 col-12 p-2 mb-2">
+              <div className="appointment_grid">
+                {appointments?.map((appointment) => (
+                  <AppointmentCard
+                    key={appointment?.id}
+                    appointment={appointment}
+                  />
+                ))}
               </div>
-              <div className="content">
-                <h6>كورس صفات المؤمن </h6>
-                <ul>
-                  <li>{t("dashboard.points")} : 600</li>
-                  <li>{t("dashboard.tasks")} : 24 / 43</li>
-                  <li>{t("dashboard.totalLectures")} : 600</li>
-                  <li>{t("dashboard.renewalDate")} : 2022-01-01</li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
-          <div className="col-lg-12 col-12 p-2 mb-2">
-            <h5 className="dashboard_heading">
-              {t("dashboard.nextAppointments")}
-            </h5>
-            <div className="appointment_grid">
-              {appointments?.map((appointment) => (
-                <AppointmentCard
-                  key={appointment?.id}
-                  appointment={appointment}
-                />
-              ))}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

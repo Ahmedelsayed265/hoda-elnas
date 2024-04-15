@@ -268,7 +268,10 @@
         "seconds": "Seconds",
         "nextAppointments": "Next Appointments",
         "joinNow": "Join Now",
-        "noAvailableLessons": "You don't have any classes to join right now"
+        "noAvailableLessons": "You don't have any classes to join right now",
+        "exptionalDay": "exceptional appointment instead of",
+        "cancelAppointment": "Cancel Appointment",
+        "cancelAppointmentSuccess": "Exceptional Appointment Canceled Successfully"
     },
     "day": "Day",
     "hour": "Hour"

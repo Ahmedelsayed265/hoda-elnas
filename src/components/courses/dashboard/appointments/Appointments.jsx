@@ -20,7 +20,7 @@ const Appointments = () => {
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const [forWhom, setForWhom] = useState("");
   const [rowData, setRowData] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [appointments, setAppointments] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
@@ -54,8 +54,8 @@ const Appointments = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
-        setLoading(true);
         let url;
         if (forWhom === t("dashboard.allStudents")) {
           url = `/members/List_appointments/?sub_id=${subscriptionId}`;
@@ -83,6 +83,22 @@ const Appointments = () => {
   const handleEdit = (id) => {
     setShowEditModal(true);
     setRowData(appointments.find((a) => a.id === id));
+  };
+
+  const handleCancelSession = async (id) => {
+    const res = await axios.post(`/instructor/Cancel_session/${id}/`, {
+      temp: false,
+      day: rowData?.day,
+      time: rowData?.starttime
+    });
+    if (res.status === 200) {
+      toast.success(t("dashboard.cancelAppointmentSuccess"));
+      setAppointments(
+        appointments.map((a) => (a.id === id ? res?.data?.object : a))
+      );
+    } else {
+      toast.error(t("auth.someThingWentWrong"));
+    }
   };
 
   return (
@@ -142,37 +158,112 @@ const Appointments = () => {
                           <th>{t("dashboard.day")}</th>
                           <th>{t("dashboard.fromHour")}</th>
                           <th>{t("dashboard.toHour")}</th>
+                          <th>{t("dashboard.student")}</th>
+                          <th>{t("dashboard.instructor")}</th>
                           <th>{t("dashboard.editAppointment")}</th>
                         </tr>
                       </thead>
                       <tbody>
                         {appointments?.map((appointment) => (
-                          <tr key={appointment?.id}>
-                            <td>{appointment?.day}</td>
-                            <td>
-                              {lang === "ar"
-                                ? translateToArabic(
-                                    convertTo12HourFormat(
-                                      appointment?.starttime
-                                    )
-                                  )
-                                : convertTo12HourFormat(appointment?.starttime)}
-                            </td>
-                            <td>
-                              {lang === "ar"
-                                ? translateToArabic(
-                                    convertTo12HourFormat(appointment?.endtime)
-                                  )
-                                : convertTo12HourFormat(appointment?.endtime)}
-                            </td>
-                            <td>
-                              <button
-                                onClick={() => handleEdit(appointment?.id)}
-                              >
-                                <img src={edit} alt="" />
-                              </button>
-                            </td>
-                          </tr>
+                          <>
+                            {appointment?.temp === true ? (
+                              <>
+                                <tr
+                                  key={appointment?.id}
+                                  className="exeptional"
+                                >
+                                  <td>{appointment?.temp_day}</td>
+                                  <td>
+                                    {lang === "ar" &&
+                                    appointment?.temp_start_time
+                                      ? translateToArabic(
+                                          convertTo12HourFormat(
+                                            appointment?.temp_start_time
+                                          )
+                                        )
+                                      : convertTo12HourFormat(
+                                          appointment?.temp_start_time
+                                        )}
+                                  </td>
+                                  <td>
+                                    {lang === "ar" && appointment?.temp_end_time
+                                      ? translateToArabic(
+                                          convertTo12HourFormat(
+                                            appointment?.temp_end_time
+                                          )
+                                        )
+                                      : convertTo12HourFormat(
+                                          appointment?.temp_end_time
+                                        )}
+                                  </td>
+                                  <td>{appointment?.student_details?.name}</td>
+                                  <td>
+                                    {appointment?.instructor_details?.name}
+                                  </td>
+                                  <td>
+                                    <button
+                                      className="exiptionalCancel"
+                                      onClick={() =>
+                                        handleCancelSession(appointment?.id)
+                                      }
+                                    >
+                                      {t("dashboard.cancelAppointment")}
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr className="exeptional_text">
+                                  <td colSpan={6}>
+                                    {t("dashboard.exptionalDay")}{" "}
+                                    {appointment?.day} , {t("hour")}{" "}
+                                    {lang === "ar" && appointment?.starttime
+                                      ? translateToArabic(
+                                          convertTo12HourFormat(
+                                            appointment?.starttime
+                                          )
+                                        )
+                                      : convertTo12HourFormat(
+                                          appointment?.starttime
+                                        )}
+                                  </td>
+                                </tr>
+                              </>
+                            ) : (
+                              <tr key={appointment?.id}>
+                                <td>{appointment?.day}</td>
+                                <td>
+                                  {lang === "ar"
+                                    ? translateToArabic(
+                                        convertTo12HourFormat(
+                                          appointment?.starttime
+                                        )
+                                      )
+                                    : convertTo12HourFormat(
+                                        appointment?.starttime
+                                      )}
+                                </td>
+                                <td>
+                                  {lang === "ar"
+                                    ? translateToArabic(
+                                        convertTo12HourFormat(
+                                          appointment?.endtime
+                                        )
+                                      )
+                                    : convertTo12HourFormat(
+                                        appointment?.endtime
+                                      )}
+                                </td>
+                                <td>{appointment?.student_details?.name}</td>
+                                <td>{appointment?.instructor_details?.name}</td>
+                                <td>
+                                  <button
+                                    onClick={() => handleEdit(appointment?.id)}
+                                  >
+                                    <img src={edit} alt="" />
+                                  </button>
+                                </td>
+                              </tr>
+                            )}
+                          </>
                         ))}
                       </tbody>
                     </table>

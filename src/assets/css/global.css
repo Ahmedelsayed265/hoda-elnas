@@ -3739,6 +3739,8 @@ input::-webkit-inner-spin-button {
 }
 .appointment_card a.disabled {
   cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 992px) {
@@ -3754,4 +3756,24 @@ input::-webkit-inner-spin-button {
   .hide_lg {
     display: block;
   }
+}
+
+.exeptional {
+  background: rgba(129, 166, 61, 0.1411764706);
+  position: relative;
+}
+
+.exeptional_text {
+  background: rgba(129, 166, 61, 0.1411764706);
+}
+.exeptional_text td {
+  text-align: center;
+}
+
+.exiptionalCancel {
+  background: #31535a;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 12px;
 }/*# sourceMappingURL=global.css.map */
