@@ -3776,4 +3776,34 @@ input::-webkit-inner-spin-button {
   border-radius: 4px;
   padding: 0 8px;
   font-size: 12px;
+}
+
+.goal_card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff;
+  gap: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.goal_card h6 {
+  color: #81a63d;
+  font-size: 20px;
+}
+.goal_card p {
+  margin: 0;
+  font-size: 14px;
+  color: #31535a;
+  line-height: 24px;
+}
+.goal_card .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+.goal_card .icon i {
+  color: #81a63d;
 }/*# sourceMappingURL=global.css.map */

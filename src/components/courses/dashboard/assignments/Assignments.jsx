@@ -129,24 +129,69 @@ const Assignments = () => {
                       </div>
                     ))}
                 </div>
-                <div className="row m-0 mt-3">
-                  <div className="col-12 p-2">
-                    <div className="row_header">
-                      <h6>{t("dashboard.inReviewTasks")}</h6>
-                    </div>
-                  </div>
-                  {assignments
-                    .filter((a) => a?.status === "submitted")
-                    ?.map((assignment) => (
-                      <div className="col-lg-6 col-md-6 col-12 p-2">
-                        <AssignmentCard
-                          path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
-                          key={assignment?.id}
-                          assignment={assignment}
-                        />
+                {assignments.filter((a) => a?.status === "submitted")?.length >
+                  0 && (
+                  <div className="row m-0 mt-3">
+                    <div className="col-12 p-2">
+                      <div className="row_header">
+                        <h6>{t("dashboard.inReviewTasks")}</h6>
                       </div>
-                    ))}
-                </div>
+                    </div>
+                    {assignments
+                      .filter((a) => a?.status === "submitted")
+                      ?.map((assignment) => (
+                        <div className="col-lg-6 col-md-6 col-12 p-2">
+                          <AssignmentCard
+                            path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
+                            key={assignment?.id}
+                            assignment={assignment}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                )}
+                {assignments.filter((a) => a?.status === "reviewed")?.length >
+                  0 && (
+                  <div className="row m-0 mt-3">
+                    <div className="col-12 p-2">
+                      <div className="row_header">
+                        <h6>{t("dashboard.reviewedTasks")}</h6>
+                      </div>
+                    </div>
+                    {assignments
+                      .filter((a) => a?.status === "reviewed")
+                      ?.map((assignment) => (
+                        <div className="col-lg-6 col-md-6 col-12 p-2">
+                          <AssignmentCard
+                            path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
+                            key={assignment?.id}
+                            assignment={assignment}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                )}
+                {assignments.filter((a) => a?.status === "expired")?.length >
+                  0 && (
+                  <div className="row m-0 mt-3">
+                    <div className="col-12 p-2">
+                      <div className="row_header">
+                        <h6>{t("dashboard.expiredTasks")}</h6>
+                      </div>
+                    </div>
+                    {assignments
+                      .filter((a) => a?.status === "expired")
+                      ?.map((assignment) => (
+                        <div className="col-lg-6 col-md-6 col-12 p-2">
+                          <AssignmentCard
+                            path={`/dashboard/${subscriptionId}/assignments/${assignment?.assignment_id}`}
+                            key={assignment?.id}
+                            assignment={assignment}
+                          />
+                        </div>
+                      ))}
+                  </div>
+                )}
               </>
             )}
           </>

@@ -16,6 +16,7 @@ import Assignments from "./assignments/Assignments";
 import AssignmentDetails from "./assignments/AssignmentDetails";
 import HomePage from "./home/HomePage";
 import CertificatesPage from "./certificates/CertificatesPage";
+import StudentsGoals from "./goals/StudentsGoals";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
@@ -87,6 +88,7 @@ const CourseDashboard = () => {
                 />
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
+                <Route path="/goals" element={<StudentsGoals />} />
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
                 <Route path="/appointments" element={<Appointments />} />

@@ -1,0 +1,21 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const GoalCard = ({ goal }) => {
+  return (
+    <Link className="goal_card">
+      <div className="content">
+        <h6>{goal?.goal_detail?.name}</h6>
+        <p>
+          اجعل القرءان صاحبًا لك. معلمين مؤهّلين لتعليمك القرآن وحب القرآن
+          والتعلق بالقرآن، مهمتنا هو أن نجعل القرآن جزءًا من يومك.
+        </p>
+      </div>
+      <div className="icon">
+        <i className="fa-regular fa-arrow-left-long"></i>
+      </div>
+    </Link>
+  );
+};
+
+export default GoalCard;
