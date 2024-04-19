@@ -2153,11 +2153,12 @@ body main .course_dashboard .course_dashboard_router .forWhom img {
   height: 20px;
 }
 body main .course_dashboard .course_dashboard_router .time_table {
+  padding-bottom: 4px;
   margin-top: 10px;
   overflow-x: scroll;
 }
 body main .course_dashboard .course_dashboard_router .time_table::-webkit-scrollbar {
-  display: none;
+  height: 2px;
 }
 body main .course_dashboard .course_dashboard_router .time_table table {
   white-space: nowrap;

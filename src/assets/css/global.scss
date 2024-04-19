@@ -2064,10 +2064,11 @@ body {
           }
         }
         .time_table {
+          padding-bottom: 4px;
           margin-top: 10px;
           overflow-x: scroll;
           &::-webkit-scrollbar {
-            display: none;
+            height: 2px;
           }
           table {
             white-space: nowrap;
