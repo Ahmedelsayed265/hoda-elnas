@@ -87,7 +87,7 @@ const StudentsGoals = () => {
                     : t("dashboard.studentAppointment") + " " + forWhom}
                 </h5>
               </div>
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-2 buttons">
                 <button onClick={() => setShowAddModal(true)}>
                   {t("dashboard.addGoal")}
                 </button>
@@ -130,10 +130,7 @@ const StudentsGoals = () => {
           </div>
         )}
       </div>
-      <AddGoalModal
-        showModal={showAddModal}
-        setShowModal={setShowAddModal}
-      />
+      <AddGoalModal showModal={showAddModal} setShowModal={setShowAddModal} />
     </section>
   );
 };

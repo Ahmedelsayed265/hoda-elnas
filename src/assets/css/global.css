@@ -67,12 +67,14 @@ body header {
   left: 0;
   z-index: 999;
   position: absolute;
+  border-bottom: 1px solid #f2f2f2;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   transition: position 0.3s ease-in-out;
 }
 body header.sticky {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   position: fixed;
+  border-color: transparent;
   animation: fadeInDown 0.5s ease-in-out forwards;
 }
 body header nav {
@@ -1922,7 +1924,7 @@ body main .my_courses .noCourses a {
   border-radius: 100px;
 }
 body main .course_dashboard {
-  padding: 40px 0;
+  padding: 16px 0;
 }
 body main .course_dashboard aside {
   padding: 16px;
@@ -1984,6 +1986,49 @@ body main .course_dashboard aside ul li a img {
 body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
   background: #fff;
 }
+@media screen and (max-width: 768px) {
+  body main .course_dashboard aside {
+    top: 100px;
+    position: fixed;
+    right: -50%;
+    height: 100%;
+    width: 50%;
+    border-radius: 0;
+    z-index: 999;
+    padding: 16px 8px;
+    background: #fff;
+    transition: 0.3s ease-in-out;
+    border-left: 1px solid #f2f2f2;
+  }
+  body main .course_dashboard aside.open {
+    right: 0;
+  }
+  body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
+    background: #f8f8f8;
+  }
+}
+body main .course_dashboard .open_menu {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background: #81a63d;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  body main .course_dashboard .open_menu {
+    display: flex;
+  }
+}
 body main .course_dashboard .course_dashboard_router {
   padding-top: 0;
 }
@@ -1991,6 +2036,12 @@ body main .course_dashboard .course_dashboard_router .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media screen and (max-width: 576px) {
+  body main .course_dashboard .course_dashboard_router .header {
+    gap: 8px;
+    flex-direction: column-reverse;
+  }
 }
 body main .course_dashboard .course_dashboard_router .header .title {
   height: 40px;
@@ -2008,17 +2059,38 @@ body main .course_dashboard .course_dashboard_router .header .title .date {
   font-size: 14px;
   color: #81a63d;
 }
+@media screen and (max-width: 576px) {
+  body main .course_dashboard .course_dashboard_router .header .title {
+    align-self: flex-start;
+  }
+}
+@media screen and (max-width: 768px) {
+  body main .course_dashboard .course_dashboard_router .header .buttons {
+    width: 100%;
+  }
+  body main .course_dashboard .course_dashboard_router .header .buttons .dropdown {
+    width: 100%;
+  }
+}
 body main .course_dashboard .course_dashboard_router .header button {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
   background: #81a63d;
   color: #fff;
+  white-space: nowrap;
   height: 40px;
   padding: 0 16px;
   border-radius: 4px;
   border: 0;
   transition: 0.3s ease-in-out;
+}
+@media screen and (max-width: 576px) {
+  body main .course_dashboard .course_dashboard_router .header button {
+    padding: 0 8px;
+    width: 100%;
+  }
 }
 body main .course_dashboard .course_dashboard_router .header button i {
   font-size: 14px;
@@ -2080,9 +2152,14 @@ body main .course_dashboard .course_dashboard_router .forWhom img {
   height: 20px;
 }
 body main .course_dashboard .course_dashboard_router .time_table {
-  margin-top: 20px;
+  margin-top: 10px;
+  overflow-x: scroll;
+}
+body main .course_dashboard .course_dashboard_router .time_table::-webkit-scrollbar {
+  display: none;
 }
 body main .course_dashboard .course_dashboard_router .time_table table {
+  white-space: nowrap;
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #f2f2f2;

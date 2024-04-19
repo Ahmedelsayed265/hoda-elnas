@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useParams, Routes, Route } from "react-router-dom";
 import tasks from "../../../assets/images/deliverables.svg";
@@ -20,40 +20,65 @@ import StudentsGoals from "./goals/StudentsGoals";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const { subscriptionId } = useParams();
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const isOpenMenuBtn = event.target.closest(".open_menu");
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        !isOpenMenuBtn
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
     <section className="course_dashboard">
       <div className="container">
         <div className="row m-0">
-          <div className="col-lg-3 col-md-3 col-12 p-2 mt-3">
-            <aside>
+          <div className="col-lg-3 col-md-3 col-12 p-lg-2 mt-lg-3">
+            <aside className={menuOpen ? "open" : ""} ref={menuRef}>
               <ul>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}`}>
                     <img src={home} alt="home" />
                     {t("dashboard.home")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}/assignments`}>
                     <img src={tasks} alt="deliverables" />
                     {t("dashboard.tasks")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}/reports`}>
                     <img src={reports} alt="deliverables" />
                     {t("dashboard.reports")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}/goals`}>
                     <img src={goals} alt="deliverables" />
                     {t("dashboard.myGoals")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink
                     end
                     to={`/dashboard/${subscriptionId}/course-students`}
@@ -62,13 +87,13 @@ const CourseDashboard = () => {
                     {t("dashboard.courseStudents")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}/certificates`}>
                     <img src={certificate} alt="deliverables" />
                     {t("dashboard.certificates")}
                   </NavLink>
                 </li>
-                <li>
+                <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}/appointments`}>
                     <img src={calender} alt="deliverables" />
                     {t("dashboard.myAppointments")}
@@ -77,7 +102,7 @@ const CourseDashboard = () => {
               </ul>
             </aside>
           </div>
-          <div className="col-lg-9 col-md-9 col-12 p-2">
+          <div className="col-lg-9 col-12 p-2">
             <main className="course_dashboard_router">
               <Routes>
                 <Route path="/" element={<HomePage />} />
@@ -95,6 +120,9 @@ const CourseDashboard = () => {
               </Routes>
             </main>
           </div>
+          <button className="open_menu" onClick={toggleMenu}>
+            <i className="fa-light fa-bars"></i>
+          </button>
         </div>
       </div>
     </section>

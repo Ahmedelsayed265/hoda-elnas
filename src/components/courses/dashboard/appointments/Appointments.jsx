@@ -118,7 +118,7 @@ const Appointments = () => {
                     : t("dashboard.studentAppointment") + " " + forWhom}
                 </h5>
               </div>
-              <div className="d-flex gap-2">
+              <div className="d-flex gap-2 buttons">
                 <button onClick={() => setShowChangeInstructorModal(true)}>
                   {t("dashboard.changeInstructor")}
                 </button>

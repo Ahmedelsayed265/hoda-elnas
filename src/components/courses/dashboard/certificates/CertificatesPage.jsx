@@ -78,7 +78,7 @@ const CertificatesPage = () => {
       <div className="container p-0">
         <div className="row m-0">
           <div className="col-12 p-2">
-            <div className="header">
+            <div className="header flex-row">
               <div className="title">
                 <h5>{t("dashboard.certificates")}</h5>
               </div>

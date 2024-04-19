@@ -103,11 +103,14 @@ const CourseStudents = () => {
       <div className="container p-0">
         <div className="row m-0">
           <div className="col-12 p-2">
-            <div className="header">
+            <div className="header flex-row">
               <div className="title">
                 <h5>{t("dashboard.inCourseStudents")}</h5>
               </div>
-              <button onClick={() => setShowModal(true)}>
+              <button
+                onClick={() => setShowModal(true)}
+                style={{ width: "auto" }}
+              >
                 <i className="fa-solid fa-user-plus"></i>{" "}
                 {t("dashboard.addStudent")}
               </button>

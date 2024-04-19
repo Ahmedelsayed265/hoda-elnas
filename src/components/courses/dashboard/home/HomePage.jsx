@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AppointmentCard from "../cards/AppointmentCard";
 import DataLoader from "./../../../ui/DataLoader";
+import ChangeInstructorModal from "../appointments/ChangeInstructorModal";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -14,6 +15,8 @@ const HomePage = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
+  const [showChangeInstructorModal, setShowChangeInstructorModal] =
+    useState(false);
   const [forWhom, setForWhom] = useState("");
   const { subscriptionId } = useParams();
   const navigate = useNavigate();
@@ -81,26 +84,31 @@ const HomePage = () => {
               <div className="title">
                 <h5>{t("dashboard.nextAppointments")}</h5>
               </div>
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  {forWhom}
-                </Dropdown.Toggle>
-                <Dropdown.Menu dir={lang === "ar" ? "rtl" : "ltr"}>
-                  <Dropdown.Item
-                    onClick={() => setForWhom(t("dashboard.allStudents"))}
-                  >
-                    {t("dashboard.allStudents")}
-                  </Dropdown.Item>
-                  {subscriptionStudents?.map((student) => (
+              <div className="d-flex gap-2 buttons">
+                <button onClick={() => setShowChangeInstructorModal(true)}>
+                  {t("dashboard.changeInstructor")}
+                </button>
+                <Dropdown>
+                  <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    {forWhom}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu dir={lang === "ar" ? "rtl" : "ltr"}>
                     <Dropdown.Item
-                      key={student?.id}
-                      onClick={() => setForWhom(student?.name)}
+                      onClick={() => setForWhom(t("dashboard.allStudents"))}
                     >
-                      {student?.name}
+                      {t("dashboard.allStudents")}
                     </Dropdown.Item>
-                  ))}
-                </Dropdown.Menu>
-              </Dropdown>
+                    {subscriptionStudents?.map((student) => (
+                      <Dropdown.Item
+                        key={student?.id}
+                        onClick={() => setForWhom(student?.name)}
+                      >
+                        {student?.name}
+                      </Dropdown.Item>
+                    ))}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
             </div>
           </div>
         </div>
@@ -121,6 +129,11 @@ const HomePage = () => {
           </div>
         )}
       </div>
+      <ChangeInstructorModal
+        subscriptionStudents={subscriptionStudents}
+        showModal={showChangeInstructorModal}
+        setShowModal={setShowChangeInstructorModal}
+      />
     </section>
   );
 };

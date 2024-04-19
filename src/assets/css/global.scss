@@ -98,11 +98,13 @@ body {
     left: 0;
     z-index: 999;
     position: absolute;
+    border-bottom: 1px solid $inputStroke;
     background: $white;
-    box-shadow: $mainShadow;
     transition: position 0.3s ease-in-out;
     &.sticky {
+      box-shadow: $lightShadow;
       position: fixed;
+      border-color: transparent;
       animation: fadeInDown 0.5s ease-in-out forwards;
     }
     nav {
@@ -1856,7 +1858,7 @@ body {
       }
     }
     .course_dashboard {
-      padding: 40px 0;
+      padding: 16px 0;
       aside {
         padding: 16px;
         background: $white;
@@ -1914,11 +1916,53 @@ body {
             }
           }
         }
+        @media screen and (max-width: 768px) {
+          top: 100px;
+          position: fixed;
+          right: -50%;
+          height: 100%;
+          width: 50%;
+          border-radius: 0;
+          z-index: 999;
+          padding: 16px 8px;
+          background: $white;
+          transition: $transation;
+          border-left: 1px solid $inputStroke;
+          &.open {
+            right: 0;
+          }
+          ul li a {
+            &:hover,
+            &.active {
+              background: $inputBG;
+            }
+          }
+        }
+      }
+      .open_menu {
+        position: fixed;
+        bottom: 24px;
+        left: 24px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        @include clearInput();
+        @include centerFlex();
+        display: none;
+        background: $secondary;
+        color: $white;
+        @media screen and (max-width: 768px) {
+          display: flex;
+        }
       }
       .course_dashboard_router {
         padding-top: 0;
         .header {
           @include space-between();
+          @media screen and (max-width: 576px) {
+            gap: 8px;
+            flex-direction: column-reverse;
+          }
           .title {
             height: 40px;
             margin: 0;
@@ -1934,17 +1978,34 @@ body {
               font-size: 14px;
               color: $secondary;
             }
+            @media screen and (max-width: 576px) {
+              align-self: flex-start;
+            }
+          }
+          .buttons {
+            @media screen and (max-width: 768px) {
+              width: 100%;
+              .dropdown {
+                width: 100%;
+              }
+            }
           }
           button {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 4px;
             background: $secondary;
             color: $white;
+            white-space: nowrap;
             height: 40px;
             padding: 0 16px;
             border-radius: 4px;
             border: 0;
+            @media screen and (max-width: 576px) {
+              padding: 0 8px;
+              width: 100%;
+            }
             i {
               font-size: 14px;
             }
@@ -2002,8 +2063,13 @@ body {
           }
         }
         .time_table {
-          margin-top: 20px;
+          margin-top: 10px;
+          overflow-x: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
           table {
+            white-space: nowrap;
             width: 100%;
             border-collapse: collapse;
             border: 1px solid $inputStroke;
