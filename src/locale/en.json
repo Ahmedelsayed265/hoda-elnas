@@ -289,5 +289,11 @@
         "instructorRate": "Instructor Rate"
     },
     "day": "Day",
-    "hour": "Hour"
+    "hour": "Hour",
+    "mySubscriptions": "My Subscriptions",
+    "coursesSubs": "Courses Subscriptions",
+    "renewSub": "Renew Subscription",
+    "cancelSub": "Cancel Subscription",
+    "upgradeSub": "Upgrade Subscription",
+    "renewDate": "Renew Date"
 }

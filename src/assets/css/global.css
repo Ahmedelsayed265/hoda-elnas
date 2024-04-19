@@ -263,13 +263,13 @@ body header nav .utils ul li .menu-btn .menu-bar.active::after {
 }
 body header .drop_menu {
   position: absolute;
-  top: 85%;
+  top: 90%;
   left: 50%;
   transform: translateX(-50%);
   background: #fff;
   padding: 12px 24px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 body header .drop_menu ul {
   flex-direction: column;
@@ -3959,4 +3959,41 @@ input::-webkit-inner-spin-button {
 }
 .voice_answer audio {
   width: 100%;
+}
+
+.my-subscriptions {
+  padding: 40px 0;
+}
+.my-subscriptions .section_title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+}
+.my-subscriptions .section_title .img img {
+  height: 36px;
+}
+.my-subscriptions .section_title h2 {
+  color: #31535a;
+  font-size: 18px;
+  margin: 0;
+}
+.my-subscriptions .buttons {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.my-subscriptions .buttons button {
+  padding: 0 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  background: #81a63d;
+  color: #fff;
+}
+.my-subscriptions .buttons button:nth-child(2) {
+  background: red;
+}
+.my-subscriptions .buttons button:nth-child(3) {
+  background: #31535a;
 }/*# sourceMappingURL=global.css.map */

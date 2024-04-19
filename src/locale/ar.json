@@ -298,5 +298,11 @@
         "instructorRate": "تقييم المعلم"
     },
     "day": "يوم",
-    "hour": "الساعة"
+    "hour": "الساعة",
+    "mySubscriptions": "الاشتراكات",
+    "coursesSubs": "اشتركات الكورسات",
+    "renewSub": "تجديد الاشتراك",
+    "cancelSub": "الغاء الاشتراك",
+    "upgradeSub": "ترقية الاشتراك",
+    "renewDate": "تاريخ التجديد"
 }

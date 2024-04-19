@@ -51,6 +51,11 @@ const ProfileDropDown = ({ isOpen, setIsOpen }) => {
           </NavLink>
         </li>
         <li className="nav_link">
+          <NavLink to="/my-subscriptions">
+          <i class="fa-sharp fa-light fa-folder-open"></i> {t("mySubscriptions")}
+          </NavLink>
+        </li>
+        <li className="nav_link">
           <NavLink to="/logout">
             <i className="fa-regular fa-arrow-right-from-bracket"></i>{" "}
             {t("logout")}
