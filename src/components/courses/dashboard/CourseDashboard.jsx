@@ -17,14 +17,19 @@ import AssignmentDetails from "./assignments/AssignmentDetails";
 import HomePage from "./home/HomePage";
 import CertificatesPage from "./certificates/CertificatesPage";
 import StudentsGoals from "./goals/StudentsGoals";
+import axios from "./../../../util/axios";
+import CertificateViewer from "./certificates/CertificateViewer";
+// import { BASE_URL } from "../../../constants";
 
 const CourseDashboard = () => {
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [course, setCourse] = useState({});
   const { subscriptionId } = useParams();
   const menuRef = useRef(null);
 
   useEffect(() => {
+    let body = document.querySelector("body");
     const handleOutsideClick = (event) => {
       const isOpenMenuBtn = event.target.closest(".open_menu");
       if (
@@ -35,13 +40,28 @@ const CourseDashboard = () => {
         setMenuOpen(false);
       }
     };
-
     document.addEventListener("click", handleOutsideClick);
-
+    body.style.overflow = menuOpen ? "hidden" : "visible";
     return () => {
       document.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const fetchGoals = async () => {
+      try {
+        const response = await axios.get(
+          `/members/List_student_subs/?id=${subscriptionId}`
+        );
+        if (response?.status === 200) {
+          setCourse(response?.data?.message[0]);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchGoals();
+  }, [subscriptionId]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -53,6 +73,12 @@ const CourseDashboard = () => {
         <div className="row m-0">
           <div className="col-lg-3 col-md-3 col-12 p-lg-2 mt-lg-3">
             <aside className={menuOpen ? "open" : ""} ref={menuRef}>
+              <div className="user_img">
+                {/* <div className="img">
+                  <img src={`${BASE_URL}${course?.background}`} alt="user" />
+                </div> */}
+                {course?.course_name && <h6>{course?.course_name}</h6>}
+              </div>
               <ul>
                 <li onClick={toggleMenu}>
                   <NavLink end to={`/dashboard/${subscriptionId}`}>
@@ -116,6 +142,10 @@ const CourseDashboard = () => {
                 <Route path="/goals" element={<StudentsGoals />} />
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
+                <Route
+                  path="/certificates/:certificateId"
+                  element={<CertificateViewer />}
+                />
                 <Route path="/appointments" element={<Appointments />} />
               </Routes>
             </main>

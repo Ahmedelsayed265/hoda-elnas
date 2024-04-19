@@ -1866,14 +1866,16 @@ body {
         background: $inputBG;
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        gap: 0;
+        overflow-y: scroll;
         .user_img {
           flex-direction: column;
-          @include centerFlex();
+          display: flex;
+          padding: 12px 8px;
           gap: 12px;
           .img {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             overflow: hidden;
             border: 2px solid $inputStroke;
@@ -1886,7 +1888,7 @@ body {
           h6 {
             color: $main;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 14px;
           }
         }
         ul {
@@ -3755,8 +3757,9 @@ input::-webkit-inner-spin-button {
   }
 }
 .studnet_answer {
-  color: $dark;
-  font-size: 18px;
+  color: $secondary;
+  font-size: 22px;
+  margin-bottom: 12px;
 }
 .answer_field {
   width: 100%;
@@ -3770,4 +3773,12 @@ input::-webkit-inner-spin-button {
   p {
     margin: 0;
   }
+}
+.voice_answer {
+  width: 100%;
+  padding: 8px 0;
+  audio {
+    width: 100%;
+  }
+  margin-bottom: 30px;
 }

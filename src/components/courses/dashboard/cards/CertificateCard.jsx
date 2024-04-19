@@ -11,7 +11,7 @@ const CertificateCard = ({ certificate }) => {
   const { subscriptionId } = useParams();
   return (
     <Link
-      to={`/dashboard/${subscriptionId}/certificates/${certificate?.id}`}
+      to={`/dashboard/${subscriptionId}/certificates/${certificate?.certificate_id}`}
       className="report_card"
     >
       <div className="content">

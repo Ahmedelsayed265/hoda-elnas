@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
 import DataLoader from "../../../ui/DataLoader";
-import ReportCard from "../cards/ReportCard";
+import CertificateCard from "../cards/CertificateCard";
 
 const CertificatesPage = () => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const CertificatesPage = () => {
   const { subscriptionId } = useParams();
   const navigate = useNavigate();
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
-  const [reports, setReports] = useState([]);
+  const [certificates, setCertificates] = useState([]);
   const [loading, setLoading] = useState(false);
   const [forWhom, setForWhom] = useState("");
 
@@ -51,16 +51,16 @@ const CertificatesPage = () => {
         setLoading(true);
         let url;
         if (forWhom === t("dashboard.allStudents")) {
-          url = `/members/List_reports/?sub_id=${subscriptionId}`;
+          url = `/members/List_certificates/?sub_id=${subscriptionId}`;
         } else {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
           ).studentclass_id;
-          url = `/members/List_reports/?student_id=${studentId}`;
+          url = `/members/List_certificates/?student_id=${studentId}`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
-          setReports(response?.data?.message);
+          setCertificates(response?.data?.message);
         }
       } catch (error) {
         console.log(error);
@@ -109,18 +109,18 @@ const CertificatesPage = () => {
           <DataLoader />
         ) : (
           <>
-            {reports?.length === 0 ? (
+            {certificates?.length === 0 ? (
               <div className="noStudents">
                 <h5>{t("dashboard.noCertificates")}</h5>
               </div>
             ) : (
               <div className="row m-0 mt-2">
-                {reports?.map((report) => (
+                {certificates?.map((certificate) => (
                   <div
                     className="col-lg-6 col-md-6 col-12 p-2"
-                    key={report?.id}
+                    key={certificate?.certificate_id}
                   >
-                    <ReportCard report={report} />
+                    <CertificateCard certificate={certificate} />
                   </div>
                 ))}
               </div>

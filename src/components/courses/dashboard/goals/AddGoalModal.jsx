@@ -62,16 +62,21 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const filteredFormData = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value !== "")
+    );
     try {
       const response = await axios.post(
-        `/members/Create_student_goal/`,
-        formData
+        `/members/Create_student_goal/${
+          subscriptionStudents.find((s) => s.student_id === +studentId)
+            ?.studentclass_id
+        }/`,
+        filteredFormData
       );
       if (response?.status === 200) {
         toast.success(t("dashboard.goalAdded"));
         setShowModal(false);
-      }
-      else{
+      } else {
         toast.error(t("auth.someThingWentWrong"));
       }
     } catch (error) {

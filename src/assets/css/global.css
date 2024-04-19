@@ -1933,18 +1933,18 @@ body main .course_dashboard aside {
   background: #f8f8f8;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 0;
+  overflow-y: scroll;
 }
 body main .course_dashboard aside .user_img {
   flex-direction: column;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 12px 8px;
   gap: 12px;
 }
 body main .course_dashboard aside .user_img .img {
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #f2f2f2;
@@ -1958,7 +1958,7 @@ body main .course_dashboard aside .user_img .img img {
 body main .course_dashboard aside .user_img h6 {
   color: #31535a;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
 }
 body main .course_dashboard aside ul {
   display: flex;
@@ -3933,8 +3933,9 @@ input::-webkit-inner-spin-button {
 }
 
 .studnet_answer {
-  color: #000000;
-  font-size: 18px;
+  color: #81a63d;
+  font-size: 22px;
+  margin-bottom: 12px;
 }
 
 .answer_field {
@@ -3949,4 +3950,13 @@ input::-webkit-inner-spin-button {
 }
 .answer_field p {
   margin: 0;
+}
+
+.voice_answer {
+  width: 100%;
+  padding: 8px 0;
+  margin-bottom: 30px;
+}
+.voice_answer audio {
+  width: 100%;
 }/*# sourceMappingURL=global.css.map */

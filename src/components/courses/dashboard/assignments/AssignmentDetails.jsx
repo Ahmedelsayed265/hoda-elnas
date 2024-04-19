@@ -318,10 +318,29 @@ const AssignmentDetails = () => {
                     </div>
                   )}
                   {assignment?.st_voice && (
-                    <div className="uploaded_voice">
+                    <div className="voice_answer">
                       <audio controls>
                         <source
                           src={`${BASE_URL}${assignment?.st_voice}`}
+                          type="audio/mp3"
+                        />
+                      </audio>
+                    </div>
+                  )}
+                  <h5 className="studnet_answer">
+                    {t("dashboard.instructorRate")}:{" "}
+                    <span>{assignment?.grade}</span>
+                  </h5>
+                  {assignment?.notes && (
+                    <div className="answer_field">
+                      <p>{assignment?.notes}</p>
+                    </div>
+                  )}
+                  {assignment?.inst_voice && (
+                    <div className="voice_answer">
+                      <audio controls>
+                        <source
+                          src={`${BASE_URL}${assignment?.inst_voice}`}
                           type="audio/mp3"
                         />
                       </audio>

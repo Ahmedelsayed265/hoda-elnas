@@ -285,7 +285,8 @@
         "sameAppointments": "Same Appointments",
         "newAppointments": "New Appointments",
         "studentAnswer": "Student Answer",
-        "instructorChanged": "Instructor Changed Successfully"
+        "instructorChanged": "Instructor Changed Successfully",
+        "instructorRate": "Instructor Rate"
     },
     "day": "Day",
     "hour": "Hour"
