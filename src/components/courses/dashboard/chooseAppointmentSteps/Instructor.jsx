@@ -6,6 +6,7 @@ import { DAYS_EN } from "../../../../constants";
 import SubmitButton from "./../../../ui/form-elements/SubmitButton";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { useSelector } from "react-redux";
+import DataLoader from "../../../ui/DataLoader";
 
 const Instructor = ({
   formData,
@@ -18,12 +19,14 @@ const Instructor = ({
 }) => {
   const { t } = useTranslation();
   const [instructors, setInstructors] = useState([]);
+  const [fetchLoading, setFetchLoading] = useState(false);
   const { lang } = useSelector((state) => state.language);
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
 
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
+        setFetchLoading(true);
         const appointments = [...formData.appointments];
         const updatedAppointments = appointments.map((appointment) => ({
           ...appointment,
@@ -52,6 +55,8 @@ const Instructor = ({
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setFetchLoading(false);
       }
     };
 
@@ -67,16 +72,20 @@ const Instructor = ({
   return (
     <div className="row m-0">
       <div className="col-12 p-2">
-        <div className="slider_instructors">
-          {instructors?.map((instructor) => (
-            <InstructorCard
-              key={instructor.instructor_id}
-              instructor={instructor}
-              formData={formData}
-              setFormData={setFormData}
-            />
-          ))}
-        </div>
+        {fetchLoading ? (
+          <DataLoader minHeight={"236px"} />
+        ) : (
+          <div className="slider_instructors">
+            {instructors?.map((instructor) => (
+              <InstructorCard
+                key={instructor.instructor_id}
+                instructor={instructor}
+                formData={formData}
+                setFormData={setFormData}
+              />
+            ))}
+          </div>
+        )}
       </div>
       {formData.time_option === "range" && formData.instructor_id && (
         <div className="col-12 p-2 pt-4">

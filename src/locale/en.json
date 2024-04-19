@@ -283,7 +283,9 @@
         "cancelAppointmentSuccess": "Exceptional Appointment Canceled Successfully",
         "changeReason": "Change Instructor Reason",
         "sameAppointments": "Same Appointments",
-        "newAppointments": "New Appointments"
+        "newAppointments": "New Appointments",
+        "studentAnswer": "Student Answer",
+        "instructorChanged": "Instructor Changed Successfully"
     },
     "day": "Day",
     "hour": "Hour"

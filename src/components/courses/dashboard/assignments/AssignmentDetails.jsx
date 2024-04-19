@@ -11,6 +11,7 @@ import pause from "../../../../assets/images/pause.svg";
 import doc from "../../../../assets/images/doc.svg";
 import TextField from "../../../ui/form-elements/TextField";
 import SubmitButton from "./../../../ui/form-elements/SubmitButton";
+import DataLoader from "./../../../ui/DataLoader";
 
 const AssignmentDetails = () => {
   const { subscriptionId } = useParams();
@@ -19,6 +20,7 @@ const AssignmentDetails = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [assignment, setAssignment] = useState({});
+  const [assignmentLoading, setAssignmentLoading] = useState(false);
   const [formData, setFormData] = useState({
     student_answer: "",
     st_file: "",
@@ -31,6 +33,7 @@ const AssignmentDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setAssignmentLoading(true);
         const response = await axios.get(
           `/instructor/list_assignment/?assignment_id=${assignmentId}`
         );
@@ -39,6 +42,8 @@ const AssignmentDetails = () => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setAssignmentLoading(false);
       }
     };
     fetchData();
@@ -170,136 +175,155 @@ const AssignmentDetails = () => {
   };
 
   return (
-    <section className="assignments">
-      <div className="container p-0">
-        <div className="row m-0">
-          <div className="col-12 p-2">
-            <div className="header">
-              <div className="title">
-                <h5>{assignment?.title}</h5>
-                <div className="name_img">
-                  <div className="img">
-                    <img
-                      src={
-                        assignment?.instructor?.instructor_img
-                          ? `${BASE_URL}${assignment?.instructor?.instructor_img}`
-                          : man
-                      }
-                      alt="instructor"
-                    />
+    <>
+      {assignmentLoading ? (
+        <DataLoader />
+      ) : (
+        <section className="assignments">
+          <div className="container p-0">
+            <div className="row m-0">
+              <div className="col-12 p-2">
+                <div className="header">
+                  <div className="title">
+                    <h5>{assignment?.title}</h5>
+                    <div className="name_img">
+                      <div className="img">
+                        <img
+                          src={
+                            assignment?.instructor?.instructor_img
+                              ? `${BASE_URL}${assignment?.instructor?.instructor_img}`
+                              : man
+                          }
+                          alt="instructor"
+                        />
+                      </div>
+                      <h6>{assignment?.instructor?.name}</h6>
+                    </div>
+                    <div className="date">
+                      <i className="fa-duotone fa-calendar-days"></i>{" "}
+                      {assignment?.created_date}
+                    </div>
                   </div>
-                  <h6>{assignment?.instructor?.name}</h6>
-                </div>
-                <div className="date">
-                  <i className="fa-duotone fa-calendar-days"></i>{" "}
-                  {assignment?.created_date}
                 </div>
               </div>
+              <div className="col-12 p-2">
+                <p className="description">{assignment?.description}</p>
+              </div>
+              {assignment?.status !== "expired" &&
+                assignment?.status !== "reviewed" && (
+                  <>
+                    <div className="col-12 p-2">
+                      <h5 className="dashboard_heading">
+                        {t("dashboard.taskAnswer")}
+                      </h5>
+                    </div>
+                    <div className="col-12 p-2">
+                      <form className="form-ui" onSubmit={handleSubmit}>
+                        <TextField
+                          placeholder={t("dashboard.writeHere")}
+                          id={"answer"}
+                          value={formData.student_answer}
+                          htmlFor={"student_answer"}
+                          formData={formData}
+                          setFormData={setFormData}
+                        />
+                        <h5 className="dashboard_sub_heading">
+                          {t("dashboard.attachImages")}
+                        </h5>
+                        <div className="images_grid">
+                          <div className="file_upload">
+                            <label htmlFor="file_upload">
+                              <input
+                                type="file"
+                                id="file_upload"
+                                onChange={handleFileChange}
+                                accept="image/*, .pdf, .doc, .docx"
+                              />
+                              <img src={imagePlus} alt="upload" />
+                            </label>
+                          </div>
+                          {formData.st_file && (
+                            <div className="uploaded_file">
+                              {formData?.st_file.type?.startsWith("image/") ? (
+                                <img
+                                  src={URL.createObjectURL(formData.st_file)}
+                                  alt="file"
+                                />
+                              ) : (
+                                <div className="doc_icon">
+                                  <img src={doc} alt="file" />
+                                  <span>{formData.st_file.name}</span>
+                                </div>
+                              )}
+                              <button onClick={(e) => handleDeleteFile(e)}>
+                                <i className="fa-light fa-xmark"></i>
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                        <h5 className="dashboard_sub_heading">
+                          {t("dashboard.addVoice")}
+                        </h5>
+                        <div className="voice_field">
+                          {formData.recording ? (
+                            <button
+                              onClick={(e) => stopRecording(e)}
+                              className="mic_btn"
+                            >
+                              <img src={pause} alt="pause" />
+                            </button>
+                          ) : (
+                            <button
+                              onClick={(e) => startRecording(e)}
+                              className="mic_btn"
+                            >
+                              <img src={mic} alt="mic" />
+                            </button>
+                          )}
+                          {formData.st_voice && (
+                            <div className="uploaded_voice">
+                              <audio controls>
+                                <source
+                                  src={
+                                    typeof formData?.st_voice === "string"
+                                      ? `${BASE_URL}${formData?.st_voice}`
+                                      : URL.createObjectURL(formData?.st_voice)
+                                  }
+                                  type="audio/mp3"
+                                />
+                              </audio>
+                              <button onClick={(e) => handleDeleteVoice(e)}>
+                                <i className="fa-regular fa-trash"></i>
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                        <SubmitButton
+                          loading={loading}
+                          name={t("dashboard.sendHomeWork")}
+                          className={"submit_btn"}
+                        />
+                      </form>
+                    </div>
+                  </>
+                )}
+              {assignment?.status === "reviewed" && (
+                <div className="col-12 p-2">
+                  <h5 className="studnet_answer">
+                    {t("dashboard.studentAnswer")}
+                  </h5>
+                  {formData?.student_answer && (
+                    <div className="answer_field">
+                      <p>{formData?.student_answer}</p>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
-          <div className="col-12 p-2">
-            <p className="description">{assignment?.description}</p>
-          </div>
-          {assignment?.status !== "expired" && (
-            <>
-              <div className="col-12 p-2">
-                <h5 className="dashboard_heading">
-                  {t("dashboard.taskAnswer")}
-                </h5>
-              </div>
-              <div className="col-12 p-2">
-                <form className="form-ui" onSubmit={handleSubmit}>
-                  <TextField
-                    placeholder={t("dashboard.writeHere")}
-                    id={"answer"}
-                    value={formData.student_answer}
-                    htmlFor={"student_answer"}
-                    formData={formData}
-                    setFormData={setFormData}
-                  />
-                  <h5 className="dashboard_sub_heading">
-                    {t("dashboard.attachImages")}
-                  </h5>
-                  <div className="images_grid">
-                    <div className="file_upload">
-                      <label htmlFor="file_upload">
-                        <input
-                          type="file"
-                          id="file_upload"
-                          onChange={handleFileChange}
-                          accept="image/*, .pdf, .doc, .docx"
-                        />
-                        <img src={imagePlus} alt="upload" />
-                      </label>
-                    </div>
-                    {formData.st_file && (
-                      <div className="uploaded_file">
-                        {formData?.st_file.type?.startsWith("image/") ? (
-                          <img
-                            src={URL.createObjectURL(formData.st_file)}
-                            alt="file"
-                          />
-                        ) : (
-                          <div className="doc_icon">
-                            <img src={doc} alt="file" />
-                            <span>{formData.st_file.name}</span>
-                          </div>
-                        )}
-                        <button onClick={(e) => handleDeleteFile(e)}>
-                          <i className="fa-light fa-xmark"></i>
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                  <h5 className="dashboard_sub_heading">
-                    {t("dashboard.addVoice")}
-                  </h5>
-                  <div className="voice_field">
-                    {formData.recording ? (
-                      <button
-                        onClick={(e) => stopRecording(e)}
-                        className="mic_btn"
-                      >
-                        <img src={pause} alt="pause" />
-                      </button>
-                    ) : (
-                      <button
-                        onClick={(e) => startRecording(e)}
-                        className="mic_btn"
-                      >
-                        <img src={mic} alt="mic" />
-                      </button>
-                    )}
-                    {formData.st_voice && (
-                      <div className="uploaded_voice">
-                        <audio controls>
-                          <source
-                            src={
-                              typeof formData?.st_voice === "string"
-                                ? `${BASE_URL}${formData?.st_voice}`
-                                : URL.createObjectURL(formData?.st_voice)
-                            }
-                            type="audio/mp3"
-                          />
-                        </audio>
-                        <button onClick={(e) => handleDeleteVoice(e)}>
-                          <i className="fa-regular fa-trash"></i>
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                  <SubmitButton
-                    loading={loading}
-                    name={t("dashboard.sendHomeWork")}
-                    className={"submit_btn"}
-                  />
-                </form>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </>
   );
 };
 

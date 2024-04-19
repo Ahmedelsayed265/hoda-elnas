@@ -3204,7 +3204,6 @@ input::-webkit-inner-spin-button {
   }
 }
 .tableLoader {
-  min-height: 548px;
   @include centerFlex();
   flex-direction: column;
   .loader--style8 {
@@ -3752,4 +3751,17 @@ input::-webkit-inner-spin-button {
       }
     }
   }
+}
+.studnet_answer {
+  color: $dark;
+  font-size: 18px;
+}
+.student_answer {
+  width: 100%;
+  padding: 12px;
+  background: $inputBG;
+  color: $dark;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 24px;
 }

@@ -7,6 +7,8 @@ import Timings from "./Timings";
 import Instructor from "./Instructor";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "./../../../../util/axios";
+import { toast } from "react-toastify";
 
 const ChangeInstructorModal = ({
   showModal,
@@ -17,6 +19,7 @@ const ChangeInstructorModal = ({
   const { subscriptionId } = useParams();
   const [timeOptions, setTimeOptions] = useState("specific");
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const initialSpesificTiming = {
@@ -50,6 +53,27 @@ const ChangeInstructorModal = ({
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeOptions, cpw]);
+
+  const handleChangeInstructor = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post(`/instructor/Change_instructor/`, {
+        student_id: formData.student_id,
+        instructor_id: formData.instructor_id,
+        changing_reason_id: formData.changing_reason_id
+      });
+      if (response.status === 200) {
+        toast.success(t("dashboard.instructorChanged"));
+        setShowModal(false);
+        setStep(1);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Modal
@@ -110,8 +134,8 @@ const ChangeInstructorModal = ({
           )}
           {step === 4 && (
             <Instructor
-              //   enrollLoading={enrollLoading}
-              //   handleEnroll={handleEnroll}
+              handleChangeInstructor={handleChangeInstructor}
+              loading={loading}
               subscriptionStudents={subscriptionStudents}
               formData={formData}
               setFormData={setFormData}

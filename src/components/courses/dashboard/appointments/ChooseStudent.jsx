@@ -23,6 +23,7 @@ const ChooseStudent = ({
                       name="student"
                       value={student.studentclass_id}
                       required
+                      checked={+formData.student_id === student.studentclass_id}
                       onChange={(e) => {
                         setFormData((prev) => ({
                           ...prev,

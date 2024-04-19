@@ -292,7 +292,9 @@
         "cancelAppointmentSuccess": "تم الغاء الموعد الإستثنائي بنجاح",
         "changeReason": "سبب تغيير المعلم",
         "sameAppointments": "المواعيد الحالية",
-        "newAppointments": "مواعيد جديدة"
+        "newAppointments": "مواعيد جديدة",
+        "studentAnswer": "إجابة الطالب",
+        "instructorChanged": "تم تغيير المعلم بنجاح"
     },
     "day": "يوم",
     "hour": "الساعة"

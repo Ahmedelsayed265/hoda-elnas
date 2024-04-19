@@ -16,6 +16,7 @@ const CourseStudents = () => {
   const [studentId, setStudentId] = useState(null);
   const [showAppointmentsModal, setShowAppointmentsModal] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
+  const [maxStudents, setMaxStudents] = useState(null);
   const [allStudents, setAllStudents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,22 @@ const CourseStudents = () => {
     sex: "",
     notes: ""
   });
+
+  useEffect(() => {
+    const fetchSubscription = async () => {
+      try {
+        const response = await axios.get(
+          `/members/List_student_subs/?id=${subscriptionId}`
+        );
+        if (response?.status === 200) {
+          setMaxStudents(response?.data?.message[0]?.student_number);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSubscription();
+  }, [subscriptionId]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,6 +95,10 @@ const CourseStudents = () => {
   };
 
   const handleAdd = (id) => {
+    if (subscriptionStudents?.length === maxStudents) {
+      toast.error(t("dashboard.maxStudents"));
+      return;
+    }
     setStudentId(id);
     setShowAppointmentsModal(true);
   };

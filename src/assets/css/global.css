@@ -3339,7 +3339,6 @@ input::-webkit-inner-spin-button {
 }
 
 .tableLoader {
-  min-height: 548px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3929,4 +3928,19 @@ input::-webkit-inner-spin-button {
 .choose_student .student_check .content p {
   margin: 0;
   color: #31535a;
+}
+
+.studnet_answer {
+  color: #000000;
+  font-size: 18px;
+}
+
+.student_answer {
+  width: 100%;
+  padding: 12px;
+  background: #f8f8f8;
+  color: #000000;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 24px;
 }/*# sourceMappingURL=global.css.map */

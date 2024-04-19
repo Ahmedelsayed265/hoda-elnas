@@ -6,19 +6,21 @@ import { DAYS_EN } from "../../../../constants";
 import SubmitButton from "./../../../ui/form-elements/SubmitButton";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { useSelector } from "react-redux";
+import DataLoader from "../../../ui/DataLoader";
 
 const Instructor = ({
   formData,
   setFormData,
   setStep,
   timeOptions,
-  handleEnroll,
-  enrollLoading,
+  handleChangeInstructor,
+  loading,
   setEnrollmentData,
   subscriptionStudents
 }) => {
   const { t } = useTranslation();
   const [instructors, setInstructors] = useState([]);
+  const [fetchLoading, setFetchLoading] = useState(false);
   const { lang } = useSelector((state) => state.language);
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const student = subscriptionStudents?.find(
@@ -30,6 +32,7 @@ const Instructor = ({
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
+        setFetchLoading(true);
         const appointments = [...formData.appointments];
         const updatedAppointments = appointments.map((appointment) => ({
           ...appointment,
@@ -58,6 +61,8 @@ const Instructor = ({
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setFetchLoading(false);
       }
     };
 
@@ -73,16 +78,20 @@ const Instructor = ({
   return (
     <div className="row m-0">
       <div className="col-12 p-2">
-        <div className="slider_instructors">
-          {instructors?.map((instructor) => (
-            <InstructorCard
-              key={instructor.instructor_id}
-              instructor={instructor}
-              formData={formData}
-              setFormData={setFormData}
-            />
-          ))}
-        </div>
+        {fetchLoading ? (
+          <DataLoader minHeight={"236px"} />
+        ) : (
+          <div className="slider_instructors">
+            {instructors?.map((instructor) => (
+              <InstructorCard
+                key={instructor.instructor_id}
+                instructor={instructor}
+                formData={formData}
+                setFormData={setFormData}
+              />
+            ))}
+          </div>
+        )}
       </div>
       {formData.time_option === "range" && formData.instructor_id && (
         <div className="col-12 p-2 pt-4">
@@ -140,10 +149,10 @@ const Instructor = ({
           {t("dashboard.back")}
         </button>
         <SubmitButton
-          loading={enrollLoading}
+          loading={loading}
           className={"continue"}
           name={t("dashboard.save")}
-          onClick={handleEnroll}
+          onClick={(e) => handleChangeInstructor(e)}
         />
       </div>
     </div>

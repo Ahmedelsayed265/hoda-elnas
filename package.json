@@ -5,6 +5,7 @@
   "dependencies": {
     "@fancyapps/ui": "^5.0.33",
     "@reduxjs/toolkit": "^2.2.1",
+    "aos": "^2.3.4",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "framer-motion": "^11.0.8",

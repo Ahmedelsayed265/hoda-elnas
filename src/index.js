@@ -18,6 +18,8 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import "../node_modules/react-toastify/dist/ReactToastify.css";
 /*---------- app style global -----*/
 import "./assets/css/global.css";
+/*---------- aos css --------------*/
+import "aos/dist/aos.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
