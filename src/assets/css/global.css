@@ -2014,6 +2014,7 @@ body main .course_dashboard .open_menu {
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border: none;
   background: none;
   outline: none;
@@ -3935,12 +3936,16 @@ input::-webkit-inner-spin-button {
   font-size: 18px;
 }
 
-.student_answer {
+.answer_field {
   width: 100%;
   padding: 12px;
   background: #f8f8f8;
   color: #000000;
   border-radius: 8px;
+  margin-bottom: 8px;
   font-size: 14px;
   line-height: 24px;
+}
+.answer_field p {
+  margin: 0;
 }/*# sourceMappingURL=global.css.map */

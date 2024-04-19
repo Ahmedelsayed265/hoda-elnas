@@ -1946,6 +1946,7 @@ body {
         width: 42px;
         height: 42px;
         border-radius: 50%;
+        box-shadow: $lightShadow;
         @include clearInput();
         @include centerFlex();
         display: none;
@@ -3756,12 +3757,16 @@ input::-webkit-inner-spin-button {
   color: $dark;
   font-size: 18px;
 }
-.student_answer {
+.answer_field {
   width: 100%;
   padding: 12px;
   background: $inputBG;
   color: $dark;
   border-radius: 8px;
+  margin-bottom: 8px;
   font-size: 14px;
   line-height: 24px;
+  p {
+    margin: 0;
+  }
 }

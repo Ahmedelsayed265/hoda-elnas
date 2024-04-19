@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "./../../../../util/axios";
 import { toast } from "react-toastify";
+import { DAYS_EN } from "../../../../constants";
 
 const ChangeInstructorModal = ({
   showModal,
@@ -58,11 +59,38 @@ const ChangeInstructorModal = ({
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`/instructor/Change_instructor/`, {
+      const appointments = [...formData.appointments];
+      const updatedAppointments = appointments.map((appointment) => ({
+        ...appointment,
+        day: DAYS_EN[appointment.day]
+      }));
+      const updatedAppointmentsFinal = updatedAppointments.map(
+        (appointment) => {
+          const { endtime, ...rest } = appointment;
+          return rest;
+        }
+      );
+      if (
+        !formData.oldAppointments &&
+        updatedAppointmentsFinal.some((a) => a.starttime === "")
+      ) {
+        toast.error(t("dashboard.missingAppointmentTime"));
+        setLoading(false);
+        return;
+      }
+      const payLoad = {
         student_id: formData.student_id,
         instructor_id: formData.instructor_id,
-        changing_reason_id: formData.changing_reason_id
-      });
+        changing_reason_id: formData.changing_reason_id,
+        same_time: formData.oldAppointments
+      };
+      if (!formData.oldAppointments) {
+        payLoad.appointments = updatedAppointmentsFinal;
+      }
+      const response = await axios.post(
+        `/instructor/Change_instructor/`,
+        payLoad
+      );
       if (response.status === 200) {
         toast.success(t("dashboard.instructorChanged"));
         setShowModal(false);
