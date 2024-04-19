@@ -19,6 +19,7 @@ import CertificatesPage from "./certificates/CertificatesPage";
 import StudentsGoals from "./goals/StudentsGoals";
 import axios from "./../../../util/axios";
 import CertificateViewer from "./certificates/CertificateViewer";
+import GoalDetails from "./goals/GoalDetails";
 // import { BASE_URL } from "../../../constants";
 
 const CourseDashboard = () => {
@@ -80,31 +81,31 @@ const CourseDashboard = () => {
                 {course?.course_name && <h6>{course?.course_name}</h6>}
               </div>
               <ul>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}`}>
                     <img src={home} alt="home" />
                     {t("dashboard.home")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}/assignments`}>
                     <img src={tasks} alt="deliverables" />
                     {t("dashboard.tasks")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}/reports`}>
                     <img src={reports} alt="deliverables" />
                     {t("dashboard.reports")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}/goals`}>
                     <img src={goals} alt="deliverables" />
                     {t("dashboard.myGoals")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink
                     end
                     to={`/dashboard/${subscriptionId}/course-students`}
@@ -113,13 +114,13 @@ const CourseDashboard = () => {
                     {t("dashboard.courseStudents")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}/certificates`}>
                     <img src={certificate} alt="deliverables" />
                     {t("dashboard.certificates")}
                   </NavLink>
                 </li>
-                <li onClick={toggleMenu}>
+                <li onClick={() => setMenuOpen(false)}>
                   <NavLink end to={`/dashboard/${subscriptionId}/appointments`}>
                     <img src={calender} alt="deliverables" />
                     {t("dashboard.myAppointments")}
@@ -140,6 +141,7 @@ const CourseDashboard = () => {
                 <Route path="/reports" element={<Reports />} />
                 <Route path="/reports/:reportId" element={<ReportViewer />} />
                 <Route path="/goals" element={<StudentsGoals />} />
+                <Route path="/goals/:goalId" element={<GoalDetails />} />
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
                 <Route
