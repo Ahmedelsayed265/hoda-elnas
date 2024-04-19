@@ -264,11 +264,14 @@
         "inReviewTasks": "مهام فى المراجعة",
         "reviewedTasks": "المهام التي تمت مراجعتها",
         "expiredTasks": "المهام الفائتة",
+        "goalAdded": "تمت الإضافة بنجاح",
         "taskAnswer": "الإجابة على السؤال",
         "writeHere": "اكتب هنا...",
         "attachImages": "اضافة صور",
         "addVoice": "اضافة صوت",
         "sendHomeWork": "ارسال الواجبات",
+        "changeInstructor": "تغيير المعلم",
+        "chooseStudnet": "اختر الطالب",
         "answerSentSuccessfully": "تم ارسال الإجابة بنجاح",
         "pleaseEnterAnswer": "من فضلك أدخل الإجابة",
         "completedTasks": "المهام المنجزة",
@@ -286,7 +289,10 @@
         "noAvailableLessons": "ليس لديك أي حصص الآن للانضمام لها",
         "exptionalDay": "موعد استثنائي بدلا من يوم",
         "cancelAppointment": "الغاء الموعد",
-        "cancelAppointmentSuccess": "تم الغاء الموعد الإستثنائي بنجاح"
+        "cancelAppointmentSuccess": "تم الغاء الموعد الإستثنائي بنجاح",
+        "changeReason": "سبب تغيير المعلم",
+        "sameAppointments": "المواعيد الحالية",
+        "newAppointments": "مواعيد جديدة"
     },
     "day": "يوم",
     "hour": "الساعة"

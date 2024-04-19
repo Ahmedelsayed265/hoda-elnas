@@ -254,11 +254,15 @@
         "inReviewTasks": "In Review Tasks",
         "reviewedTasks": "Reviewed Tasks",
         "expiredTasks": "Expired Tasks",
+        "goalAdded": "Goal Added Successfully",
         "taskAnswer": "Task Answer",
         "writeHere": "Write Here...",
         "attachImages": "Attach Images",
+        "availabilty": "Availabilty",
         "addVoice": "Add Voice",
         "sendHomeWork": "Send Home Work",
+        "chooseStudnet": "Choose Student",
+        "changeInstructor": "Change Instructor",
         "answerSentSuccessfully": "Answer Sent Successfully",
         "pleaseEnterAnswer": "Please Enter Answer",
         "completedTasks": "Completed Tasks",
@@ -276,7 +280,10 @@
         "noAvailableLessons": "You don't have any classes to join right now",
         "exptionalDay": "exceptional appointment instead of",
         "cancelAppointment": "Cancel Appointment",
-        "cancelAppointmentSuccess": "Exceptional Appointment Canceled Successfully"
+        "cancelAppointmentSuccess": "Exceptional Appointment Canceled Successfully",
+        "changeReason": "Change Instructor Reason",
+        "sameAppointments": "Same Appointments",
+        "newAppointments": "New Appointments"
     },
     "day": "Day",
     "hour": "Hour"

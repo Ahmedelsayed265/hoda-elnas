@@ -3740,7 +3740,6 @@ input::-webkit-inner-spin-button {
 .appointment_card a.disabled {
   cursor: not-allowed;
   pointer-events: none;
-  opacity: 0.7;
 }
 
 @media screen and (max-width: 992px) {
@@ -3759,12 +3758,12 @@ input::-webkit-inner-spin-button {
 }
 
 .exeptional {
-  background: rgba(129, 166, 61, 0.1411764706);
+  background: #f8f8f8;
   position: relative;
 }
 
 .exeptional_text {
-  background: rgba(129, 166, 61, 0.1411764706);
+  background: #f8f8f8;
 }
 .exeptional_text td {
   text-align: center;
@@ -3806,4 +3805,51 @@ input::-webkit-inner-spin-button {
 }
 .goal_card .icon i {
   color: #81a63d;
+}
+
+.choose_student {
+  padding-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.choose_student .student_check {
+  cursor: pointer;
+}
+.choose_student .student_check input {
+  display: none;
+}
+.choose_student .student_check input:checked + .content .img {
+  border-color: #81a63d;
+}
+.choose_student .student_check input:checked + .content p {
+  color: #81a63d;
+}
+.choose_student .student_check .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+}
+.choose_student .student_check .content .img {
+  padding: 2px;
+  width: 64px;
+  height: 64px;
+  transition: 0.3s ease-in-out;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f2f2f2;
+}
+.choose_student .student_check .content .img img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.choose_student .student_check .content p {
+  margin: 0;
+  color: #31535a;
 }/*# sourceMappingURL=global.css.map */

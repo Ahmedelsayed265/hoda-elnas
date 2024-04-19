@@ -130,7 +130,10 @@ const StudentsGoals = () => {
           </div>
         )}
       </div>
-      <AddGoalModal showModal={showAddModal} setShowModal={setShowAddModal} />
+      <AddGoalModal
+        showModal={showAddModal}
+        setShowModal={setShowAddModal}
+      />
     </section>
   );
 };
