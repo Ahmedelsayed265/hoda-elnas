@@ -114,10 +114,10 @@ const MyStudents = () => {
     setLoading(true);
     try {
       const payLoad = {
-        name: formData?.studentname,
-        age: formData?.studentage,
-        contact: formData?.studentcontact,
-        gender: formData?.sex,
+        studentname: formData?.studentname,
+        studentage: formData?.studentage,
+        studentcontact: formData?.studentcontact,
+        sex: formData?.sex,
         notes: formData?.notes
       };
       if (typeof formData?.profile === "object") {
