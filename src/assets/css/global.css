@@ -2306,6 +2306,46 @@ body main .course_dashboard .course_dashboard_router .appointment_grid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+body main .my-students {
+  padding: 40px 0;
+}
+body main .my-students .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body main .my-students .header .title {
+  height: 40px;
+  margin: 0;
+  flex-direction: row;
+  gap: 24px;
+}
+body main .my-students .header .title h5 {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}
+body main .my-students .header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #81a63d;
+  color: #fff;
+  white-space: nowrap;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 0;
+  transition: 0.3s ease-in-out;
+}
+body main .my-students .header button i {
+  font-size: 14px;
+}
+body main .my-students .header button:hover {
+  background: #31535a;
+}
 body footer {
   padding: 40px 8px 16px;
   border-top: 1px solid #f2f2f2;
@@ -2740,6 +2780,22 @@ body.en .accordion-button::after {
 }
 body.en .modal-header button {
   margin: 0 0 0 auto !important;
+}
+@media screen and (max-width: 768px) {
+  body.en .course_dashboard aside {
+    right: initial;
+    left: -50%;
+    border-right: 1px solid #f2f2f2;
+    border-left: 0;
+  }
+  body.en .course_dashboard aside.open {
+    left: 0;
+    right: initial;
+  }
+}
+body.en .course_dashboard .open_menu {
+  right: 24px;
+  left: initial;
 }
 
 .button-86 {
@@ -3996,4 +4052,43 @@ input::-webkit-inner-spin-button {
 }
 .my-subscriptions .buttons button:nth-child(3) {
   background: #31535a;
+}
+
+.card_btns {
+  display: flex;
+  gap: 8px;
+}
+.card_btns button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #f8f8f8;
+  border-radius: 50%;
+}
+.card_btns button i {
+  color: #81a63d;
+}
+.card_btns button:nth-child(2) i {
+  color: red;
+}
+
+.confirm-delete p {
+  color: #31535a;
+  font-size: 16px;
+}
+.confirm-delete .cancel-btn {
+  border: 1px solid #000000;
+  color: #000000;
+  width: 100%;
+  padding: 4px;
+  border-radius: 8px;
+}
+.confirm-delete .delete-btn {
+  width: 100%;
+  padding: 4px;
+  background: red;
+  color: #fff;
+  border-radius: 8px;
 }/*# sourceMappingURL=global.css.map */

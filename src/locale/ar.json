@@ -304,5 +304,10 @@
     "renewSub": "تجديد الاشتراك",
     "cancelSub": "الغاء الاشتراك",
     "upgradeSub": "ترقية الاشتراك",
-    "renewDate": "تاريخ التجديد"
+    "renewDate": "تاريخ التجديد",
+    "myStudnets": "طلابي",
+    "areYouSureYouWantDleteStudent": "هل أنت متأكد أنك تريد حذف الطالب ",
+    "studentDeleted": "تم حذف الطالب بنجاح",
+    "cancel": "الغاء",
+    "delete": "حذف"
 }

@@ -5,6 +5,7 @@ import axios from "./../../util/axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CourseSubCard from "./CourseSubCard";
+import DataLoader from "../ui/DataLoader";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
@@ -56,14 +57,20 @@ const MySubscriptions = () => {
               <h2>{t("coursesSubs")}</h2>
             </div>
           </div>
-          {mySubscriptions?.map((subscription) => (
-            <div
-              className="col-lg-4 col-md-6 col-12 p-2"
-              key={subscription?.id}
-            >
-              <CourseSubCard subscription={subscription} />
-            </div>
-          ))}
+          {loading ? (
+            <DataLoader />
+          ) : (
+            <>
+              {mySubscriptions?.map((subscription) => (
+                <div
+                  className="col-lg-4 col-md-6 col-12 p-2"
+                  key={subscription?.id}
+                >
+                  <CourseSubCard subscription={subscription} />
+                </div>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </section>

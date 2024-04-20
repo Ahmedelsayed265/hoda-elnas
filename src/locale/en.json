@@ -295,5 +295,10 @@
     "renewSub": "Renew Subscription",
     "cancelSub": "Cancel Subscription",
     "upgradeSub": "Upgrade Subscription",
-    "renewDate": "Renew Date"
+    "renewDate": "Renew Date",
+    "myStudnets": "My Students",
+    "areYouSureYouWantDleteStudent": "Are you sure you want to delete student ",
+    "studentDeleted": "Student Deleted Successfully",
+    "cancel": "Cancel",
+    "delete": "Delete"
 }

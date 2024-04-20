@@ -20,9 +20,11 @@ import StudentsGoals from "./goals/StudentsGoals";
 import axios from "./../../../util/axios";
 import CertificateViewer from "./certificates/CertificateViewer";
 import GoalDetails from "./goals/GoalDetails";
+import { useSelector } from "react-redux";
 // import { BASE_URL } from "../../../constants";
 
 const CourseDashboard = () => {
+  const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [course, setCourse] = useState({});
@@ -62,7 +64,7 @@ const CourseDashboard = () => {
       }
     };
     fetchGoals();
-  }, [subscriptionId]);
+  }, [subscriptionId, lang]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

@@ -46,6 +46,7 @@ import { setTitles } from "./redux/slices/sectionsTitles";
 import MyCourses from "./components/courses/dashboard/MyCourses";
 import CourseDashboard from "./components/courses/dashboard/CourseDashboard";
 import MySubscriptions from "./components/subscriptions/MySubscriptions";
+import MyStudents from "./components/my-students/MyStudents";
 
 const App = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -187,6 +188,7 @@ const App = () => {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/my-subscriptions" element={<MySubscriptions />} />
+          <Route path="/my-students" element={<MyStudents />} />
 
           {/* auth pages */}
           <Route path="/login" element={<Login />} />

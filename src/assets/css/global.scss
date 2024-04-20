@@ -2210,6 +2210,42 @@ body {
         }
       }
     }
+    .my-students {
+      padding: 40px 0;
+      .header {
+        @include space-between();
+        .title {
+          height: 40px;
+          margin: 0;
+          flex-direction: row;
+          gap: 24px;
+          h5 {
+            color: $main;
+            font-weight: 600;
+            font-size: 22px;
+            margin: 0;
+          }
+        }
+        button {
+          @include centerFlex();
+          gap: 4px;
+          background: $secondary;
+          color: $white;
+          white-space: nowrap;
+          height: 40px;
+          padding: 0 16px;
+          border-radius: 4px;
+          border: 0;
+          i {
+            font-size: 14px;
+          }
+          transition: $transation;
+          &:hover {
+            background: $main;
+          }
+        }
+      }
+    }
   }
   footer {
     padding: 40px 8px 16px;
@@ -2640,6 +2676,24 @@ body {
     }
     .modal-header button {
       margin: 0 0 0 auto !important;
+    }
+    .course_dashboard {
+      aside {
+        @media screen and (max-width: 768px) {
+          right: initial;
+          left: -50%;
+          border-right: 1px solid $inputStroke;
+          border-left: 0;
+          &.open {
+            left: 0;
+            right: initial;
+          }
+        }
+      }
+      .open_menu {
+        right: 24px;
+        left: initial;
+      }
     }
   }
 }
@@ -3814,5 +3868,44 @@ input::-webkit-inner-spin-button {
         background: $main;
       }
     }
+  }
+}
+.card_btns {
+  display: flex;
+  gap: 8px;
+  button {
+    @include centerFlex();
+    width: 36px;
+    height: 36px;
+    background: $inputBG;
+    border-radius: 50%;
+    i {
+      color: $secondary;
+    }
+    &:nth-child(2) {
+      i {
+        color: red;
+      }
+    }
+  }
+}
+.confirm-delete {
+  p {
+    color: $main;
+    font-size: 16px;
+  }
+  .cancel-btn {
+    border: 1px solid $dark;
+    color: $dark;
+    width: 100%;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  .delete-btn {
+    width: 100%;
+    padding: 4px;
+    background: red;
+    color: $white;
+    border-radius: 8px;
   }
 }
