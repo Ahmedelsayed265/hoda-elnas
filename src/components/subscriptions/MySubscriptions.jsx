@@ -23,6 +23,7 @@ const MySubscriptions = () => {
   const [mySubscriptions, setMySubscriptions] = useState([]);
   const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [courseLoading, setCourseLoading] = useState(false);
 
   const [orderData, setOrderData] = useState({
     subscription_id: null,
@@ -31,6 +32,7 @@ const MySubscriptions = () => {
     paymentMethods: []
   });
 
+  // check if user is logged
   useEffect(() => {
     if (!user) {
       return;
@@ -40,10 +42,14 @@ const MySubscriptions = () => {
     }
   }, [logged, navigate, user]);
 
+  // fetch course
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`/learningcenter/list_courses/?id=${courseId}`);
+        setCourseLoading(true);
+        const res = await axios.get(
+          `/learningcenter/list_courses/?id=${courseId}`
+        );
         if (res.status === 200) {
           setOrderData((prev) => ({
             ...prev,
@@ -52,6 +58,8 @@ const MySubscriptions = () => {
         }
       } catch (error) {
         console.log(error);
+      } finally {
+        setCourseLoading(false);
       }
     };
     if (courseId) {
@@ -59,6 +67,7 @@ const MySubscriptions = () => {
     }
   }, [courseId]);
 
+  // fetch subscriptions
   useEffect(() => {
     const fetchSupscriptions = async () => {
       try {
@@ -79,6 +88,7 @@ const MySubscriptions = () => {
     fetchSupscriptions();
   }, [user?.id, lang]);
 
+  // cancel subscription
   const handleCancelSubscription = (subscriptionId) => {
     setSubscriptionId(subscriptionId);
     setShowModal(true);
@@ -107,6 +117,7 @@ const MySubscriptions = () => {
     }
   };
 
+  // renew subscription
   const renewOrder = (subscriptionId) => {
     const subscriptionToRenew = mySubscriptions.find(
       (s) => s.id === subscriptionId
@@ -117,7 +128,10 @@ const MySubscriptions = () => {
       setCourseId(subscriptionToRenew?.course_id);
       setOrderData({
         subscription_id: subscriptionId,
-        amount: subscriptionToRenew?.amount
+        totalPrice: subscriptionToRenew?.amount,
+        startDate: subscriptionToRenew?.startdate,
+        studentsNumber: subscriptionToRenew?.student_number,
+        courseDuration: subscriptionToRenew?.cpw
       });
     } else {
       console.log("Subscription not found.");
@@ -165,6 +179,7 @@ const MySubscriptions = () => {
       />
       <RenewSubscriptionModal
         formData={orderData}
+        courseLoading={courseLoading}
         setFormData={setOrderData}
         showModal={showRenewModal}
         setShowModal={setShowRenewModal}

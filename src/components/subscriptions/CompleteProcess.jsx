@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import axios from "../../../../util/axios";
+import axios from "../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../../../constants";
-import TotalPrice from "../TotalPrice";
-import SubmitButton from "../../../ui/form-elements/SubmitButton";
+import { BASE_URL } from "../../constants";
+import TotalPrice from "../courses/subscription/TotalPrice";
+import SubmitButton from "../ui/form-elements/SubmitButton";
 
 const CompleteProcess = ({
   setStepName,
@@ -40,21 +40,11 @@ const CompleteProcess = ({
         toast.error(t("uploadTransferPhoto"));
         return;
       }
-
       // pay load
       const dataToSend = {
-        user_id: user?.id,
-        start_date: formData?.startDate,
-        students: formData?.studentsNumber,
-        currency: location === "EG" ? "EGP" : "USD",
-        method: "card",
-        pricing_plan_id: formData?.planId,
-        couponcode: formData.copun_type === "promo" ? formData.copun_name : "",
-        referralcode:
-          formData.copun_type === "referral" ? formData.copun_name : "",
+        subscription_id: formData?.subscription_id,
         recipt: reciept,
-        amount: formData?.totalPrice,
-        addons: formData?.addons?.map((item) => item?.id)
+        amount: formData?.totalPrice
       };
       const headers = {
         Accept: "application/json",
@@ -65,9 +55,8 @@ const CompleteProcess = ({
         headers: headers,
         data: dataToSend
       };
-
       const response = await axios.request(
-        "/members/create_order/",
+        "/members/create_renew_order/renew/",
         reqOptions
       );
       if (response?.status === 200 || response?.status === 201) {
@@ -75,7 +64,7 @@ const CompleteProcess = ({
         if (method?.attribute === "auto") {
           handlePayment();
         } else {
-          toast.success(t("inreview"));
+          toast.success(t("renewApplicationInReview"));
           navigate("/my-courses");
         }
       } else {
@@ -100,7 +89,7 @@ const CompleteProcess = ({
         },
         metadata: { custom: `${orderId}` },
         language: lang,
-        merchantReferenceId: "JoinCommunity",
+        merchantReferenceId: "RenewClass",
         order: { integrationType: "HPP" },
         paymentOperation: "Pay"
       };

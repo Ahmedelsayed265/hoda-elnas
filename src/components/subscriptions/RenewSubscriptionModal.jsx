@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPayMethod";
-import CompleteProcess from "../courses/subscription/subscription-steps/CompleteProcess";
 import useUserLocation from "../../hooks/useUserLocation";
+import CompleteProcess from "./CompleteProcess";
 
-const RenewSubscriptionModal = ({ showModal, setShowModal, formData }) => {
+const RenewSubscriptionModal = ({
+  showModal,
+  setShowModal,
+  formData,
+  courseLoading
+}) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
   const [method, setMethod] = useState({});
@@ -19,6 +24,7 @@ const RenewSubscriptionModal = ({ showModal, setShowModal, formData }) => {
       <SelectPayMethod
         formData={formData}
         setStepName={setStepName}
+        courseLoading={courseLoading}
         method={method}
         setMethod={setMethod}
       />
