@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import AddStudentModal from "../courses/dashboard/students/AddStudentModal";
 import MyStudentCard from "./MyStudentCard";
 import DataLoader from "../ui/DataLoader";
-import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
+// import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 
 const MyStudents = () => {
   const { t } = useTranslation();
@@ -14,9 +14,10 @@ const MyStudents = () => {
   const [showModal, setShowModal] = useState(false);
   const [allStudents, setAllStudents] = useState([]);
   const [dataLoading, setDataLoading] = useState(false);
+  const [mode, setMode] = useState("add");
   const [loading, setLoading] = useState(false);
   const [studentId, setStudentId] = useState(null);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [formData, setFormData] = useState({
     profile: "",
     studentname: "",
@@ -26,32 +27,18 @@ const MyStudents = () => {
     notes: ""
   });
 
-  const addStudent = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const response = await axios.post("/members/add_Student/", formData);
-      if (response.status === 200 || response.status === 201) {
-        setShowModal(false);
-        setFormData({
-          profile: "",
-          studentname: "",
-          studentage: "",
-          studentcontact: "",
-          sex: "",
-          notes: ""
-        });
-        setAllStudents((prev) => [...prev, response?.data?.object[0]]);
-      } else {
-        toast.error(t("dashboard.thisStudentAlreadyExist"));
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(t("auth.someThingWentWrong"));
-    } finally {
-      setLoading(false);
+  useEffect(() => {
+    if (mode === "add") {
+      setFormData({
+        profile: "",
+        studentname: "",
+        studentage: "",
+        studentcontact: "",
+        sex: "",
+        notes: ""
+      });
     }
-  };
+  }, [mode]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,30 +61,93 @@ const MyStudents = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  const handleDeleteStudent = (id) => {
-    setStudentId(id);
-    setShowDeleteModal(true);
+  const addStudent = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await axios.post("/members/add_Student/", formData);
+      if (response.status === 200 || response.status === 201) {
+        setShowModal(false);
+        setFormData({
+          profile: "",
+          studentname: "",
+          studentage: "",
+          studentcontact: "",
+          sex: "",
+          notes: ""
+        });
+      } else {
+        toast.error(t("dashboard.thisStudentAlreadyExist"));
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleEditStudent = (id) => {
-    const targetStudent = allStudents?.find((student) => student?.id === +id);
-    console.log(targetStudent);
-    if (targetStudent) {
-      setFormData((prev) => ({
-        ...prev,
-        profile: targetStudent?.profile,
-        studentname: targetStudent?.studentname,
-        studentage: targetStudent?.studentage,
-        studentcontact: targetStudent?.studentcontact,
-        sex: targetStudent?.sex,
-        notes: targetStudent?.notes
-      }));
-    }
+    const targetStudent = allStudents.find((student) => student.id === +id);
+    setMode("edit");
+    setFormData({
+      profile: targetStudent?.profile,
+      studentname: targetStudent?.name,
+      studentage: targetStudent?.age,
+      studentcontact: targetStudent?.contact,
+      sex: targetStudent?.gender,
+      notes: targetStudent?.notes
+    });
     setStudentId(id);
     setShowModal(true);
   };
 
-  const deleteHandler = async () => {};
+  // const deleteHandler = async () => {};
+
+  // const handleDeleteStudent = (id) => {
+  //   setStudentId(id);
+  //   setShowDeleteModal(true);
+  // };
+
+  const editStudentHandler = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const payLoad = {
+        name: formData?.studentname,
+        age: formData?.studentage,
+        contact: formData?.studentcontact,
+        gender: formData?.sex,
+        notes: formData?.notes
+      };
+      if (typeof formData?.profile === "object") {
+        payLoad.profile = formData?.profile;
+      }
+      const response = await axios.put(
+        `/members/edit_Student/${studentId}/`,
+        payLoad
+      );
+      if (response.status === 200) {
+        setShowModal(false);
+        setMode("add");
+        setAllStudents((prev) =>
+          prev.map((student) => {
+            if (student.id === +studentId) {
+              return response?.data?.object[0];
+            }
+            return student;
+          })
+        );
+      } else {
+        toast.error(t("auth.someThingWentWrong"));
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <section className="my-students">
@@ -124,7 +174,7 @@ const MyStudents = () => {
               <div className="col-lg-3 col-md-4 col-12 p-2" key={student?.id}>
                 <MyStudentCard
                   student={student}
-                  onDeleteStudent={() => handleDeleteStudent(student?.id)}
+                  // onDeleteStudent={() => handleDeleteStudent(student?.id)}
                   onEditStudent={() => handleEditStudent(student?.id)}
                 />
               </div>
@@ -137,18 +187,21 @@ const MyStudents = () => {
         setShowModal={setShowModal}
         loading={loading}
         formData={formData}
-        handleAddStudent={addStudent}
+        handleAddStudent={mode === "add" ? addStudent : editStudentHandler}
         setFormData={setFormData}
+        setMode={setMode}
+        mode={mode}
       />
-      <ConfirmDeleteModal
+      {/* <ConfirmDeleteModal
         setShowModal={setShowDeleteModal}
         showModal={showDeleteModal}
         target={
           allStudents?.find((student) => student?.id === +studentId)?.name
         }
         onDelete={deleteHandler}
+        buttonText={t("delete")}
         text={t("areYouSureYouWantDleteStudent")}
-      />
+      /> */}
     </section>
   );
 };

@@ -6,12 +6,16 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CourseSubCard from "./CourseSubCard";
 import DataLoader from "../ui/DataLoader";
+import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
+import { toast } from "react-toastify";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.authedUser.user);
   const logged = useSelector((state) => state.authedUser.logged);
+  const [showModal, setShowModal] = useState(false);
+  const [subscriptionId, setSubscriptionId] = useState(null);
   const [mySubscriptions, setMySubscriptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -45,6 +49,27 @@ const MySubscriptions = () => {
     fetchSupscriptions();
   }, [user?.id, lang]);
 
+  const handleCancelSubscription = (subscriptionId) => {
+    setSubscriptionId(subscriptionId);
+    setShowModal(true);
+  };
+
+  const deleteHandler = async () => {
+    try {
+      const response = await axios.put(
+        `/members/Cancel_Memebrship/${subscriptionId}/`
+      );
+      if (response.status === 200) {
+        setShowModal(false);
+        toast.success(t("cancelSubSuccess"));
+      } else {
+        toast.error(t("auth.someThingWentWrong"));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="my-subscriptions">
       <div className="container">
@@ -66,13 +91,23 @@ const MySubscriptions = () => {
                   className="col-lg-4 col-md-6 col-12 p-2"
                   key={subscription?.id}
                 >
-                  <CourseSubCard subscription={subscription} />
+                  <CourseSubCard
+                    subscription={subscription}
+                    onCancel={() => handleCancelSubscription(subscription?.id)}
+                  />
                 </div>
               ))}
             </>
           )}
         </div>
       </div>
+      <ConfirmDeleteModal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        onDelete={deleteHandler}
+        buttonText={t("cancelSub")}
+        text={t("areYouSureYouWantCancelSub")}
+      />
     </section>
   );
 };

@@ -21,7 +21,10 @@ const AvailableCourse = ({ subscription }) => {
   return (
     <Link
       to={
-        students?.length > 0
+        subscription?.status_check === "cancelled" ||
+        subscription?.status_check === "expired"
+          ? "/my-subscriptions"
+          : students?.length > 0
           ? `/dashboard/${subscription?.id}`
           : `/dashboard/${subscription?.id}/course-students`
       }

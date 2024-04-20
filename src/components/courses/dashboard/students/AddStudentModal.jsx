@@ -14,7 +14,9 @@ const AddStudentModal = ({
   setFormData,
   formData,
   handleAddStudent,
-  loading
+  loading,
+  mode,
+  setMode
 }) => {
   const { t } = useTranslation();
   const [renderedImage, setRenderedImage] = useState(avatar);
@@ -31,8 +33,15 @@ const AddStudentModal = ({
     }
   };
 
+  const handleModalHide = () => {
+    setShowModal(false);
+    if (typeof setMode === "function") {
+      setMode("add");
+    }
+  };
+
   return (
-    <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+    <Modal show={showModal} onHide={handleModalHide} centered>
       <Modal.Header closeButton />
       <Modal.Body className="add-student">
         <form className="form-ui" onSubmit={handleAddStudent}>
@@ -97,7 +106,12 @@ const AddStudentModal = ({
             id={"notes"}
             setFormData={setFormData}
           />
-          <SubmitButton name={t("dashboard.add")} loading={loading} />
+          <SubmitButton
+            name={
+              mode && mode === "edit" ? t("dashboard.edit") : t("dashboard.add")
+            }
+            loading={loading}
+          />
         </form>
       </Modal.Body>
     </Modal>

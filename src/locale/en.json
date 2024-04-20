@@ -286,7 +286,8 @@
         "newAppointments": "New Appointments",
         "studentAnswer": "Student Answer",
         "instructorChanged": "Instructor Changed Successfully",
-        "instructorRate": "Instructor Rate"
+        "instructorRate": "Instructor Rate",
+        "edit": "Edit"
     },
     "day": "Day",
     "hour": "Hour",
@@ -297,7 +298,9 @@
     "upgradeSub": "Upgrade Subscription",
     "renewDate": "Renew Date",
     "myStudnets": "My Students",
+    "cancelSubSuccess": "Subscription Canceled Successfully",
     "areYouSureYouWantDleteStudent": "Are you sure you want to delete student ",
+    "areYouSureYouWantCancelSub": "Are you sure you want to cancel subscription ",
     "studentDeleted": "Student Deleted Successfully",
     "cancel": "Cancel",
     "delete": "Delete"

@@ -295,7 +295,8 @@
         "newAppointments": "مواعيد جديدة",
         "studentAnswer": "إجابة الطالب",
         "instructorChanged": "تم تغيير المعلم بنجاح",
-        "instructorRate": "تقييم المعلم"
+        "instructorRate": "تقييم المعلم",
+        "edit": "تعديل"
     },
     "day": "يوم",
     "hour": "الساعة",
@@ -306,7 +307,9 @@
     "upgradeSub": "ترقية الاشتراك",
     "renewDate": "تاريخ التجديد",
     "myStudnets": "طلابي",
-    "areYouSureYouWantDleteStudent": "هل أنت متأكد أنك تريد حذف الطالب ",
+    "cancelSubSuccess": "تم الغاء الاشتراك بنجاح",
+    "areYouSureYouWantDleteStudent": "هل أنت متأكد أنك تريد حذف الطالب:",
+    "areYouSureYouWantCancelSub": "هل أنت متأكد أنك تريد الغاء الاشتراك ",
     "studentDeleted": "تم حذف الطالب بنجاح",
     "cancel": "الغاء",
     "delete": "حذف"

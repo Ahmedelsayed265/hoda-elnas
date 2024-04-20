@@ -25,9 +25,9 @@ const MyStudentCard = ({ student, onDeleteStudent, onEditStudent }) => {
         <button onClick={onEditStudent}>
           <i className="fa-light fa-user-pen"></i>
         </button>
-        <button onClick={onDeleteStudent}>
+        {/* <button onClick={onDeleteStudent}>
           <i className="fa-light fa-trash-can"></i>
-        </button>
+        </button> */}
       </div>
     </div>
   );

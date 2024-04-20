@@ -2861,6 +2861,7 @@ body.en .course_dashboard .open_menu {
 
 .modal-header {
   border-bottom: 0;
+  padding: 8px;
 }
 .modal-header .btn-close {
   box-shadow: none !important;
@@ -3339,6 +3340,7 @@ input::-webkit-inner-spin-button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 16px;
   border-radius: 12px;
+  position: relative;
 }
 .student_card .img_name {
   display: flex;
@@ -3377,7 +3379,7 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
 }
 .student_card .contactNumber {
-  margin: 0 0 8px;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -4056,6 +4058,9 @@ input::-webkit-inner-spin-button {
 
 .card_btns {
   display: flex;
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
   gap: 8px;
 }
 .card_btns button {

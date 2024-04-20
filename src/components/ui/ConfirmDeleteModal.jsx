@@ -7,7 +7,8 @@ const ConfirmDeleteModal = ({
   setShowModal,
   text,
   target,
-  onDelete
+  onDelete,
+  buttonText
 }) => {
   const { t } = useTranslation();
   return (
@@ -15,14 +16,14 @@ const ConfirmDeleteModal = ({
       <Modal.Header closeButton />
       <Modal.Body className="confirm-delete">
         <p>
-          {text}: {target}
+          {text} {target}
         </p>
         <div className="d-flex justify-content-end gap-3">
           <button onClick={() => setShowModal(false)} className="cancel-btn">
             {t("cancel")}
           </button>
           <button className="delete-btn" onClick={onDelete}>
-            {t("delete")}
+            {buttonText}
           </button>
         </div>
       </Modal.Body>

@@ -2761,6 +2761,7 @@ body {
 }
 .modal-header {
   border-bottom: 0;
+  padding: 8px;
   .btn-close {
     box-shadow: none !important;
     background-image: url("../images/close.svg");
@@ -3205,6 +3206,7 @@ input::-webkit-inner-spin-button {
   box-shadow: $lightShadow;
   padding: 16px;
   border-radius: 12px;
+  position: relative;
   .img_name {
     display: flex;
     align-items: center;
@@ -3242,7 +3244,7 @@ input::-webkit-inner-spin-button {
     }
   }
   .contactNumber {
-    margin: 0 0 8px;
+    margin: 0;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -3872,6 +3874,9 @@ input::-webkit-inner-spin-button {
 }
 .card_btns {
   display: flex;
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
   gap: 8px;
   button {
     @include centerFlex();
