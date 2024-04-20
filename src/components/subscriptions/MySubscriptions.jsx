@@ -8,18 +8,29 @@ import CourseSubCard from "./CourseSubCard";
 import DataLoader from "../ui/DataLoader";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 import { toast } from "react-toastify";
+import RenewSubscriptionModal from "./RenewSubscriptionModal";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.authedUser.user);
   const logged = useSelector((state) => state.authedUser.logged);
+
   const [showModal, setShowModal] = useState(false);
+  const [showRenewModal, setShowRenewModal] = useState(false);
   const [subscriptionId, setSubscriptionId] = useState(null);
   const [mySubscriptions, setMySubscriptions] = useState([]);
+  const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  // handle protected route
+
+  const [orderData, setOrderData] = useState({
+    subscription_id: null,
+    recipt: null,
+    amount: null,
+    paymentMethods: []
+  });
+
   useEffect(() => {
     if (!user) {
       return;
@@ -28,7 +39,26 @@ const MySubscriptions = () => {
       navigate("/login");
     }
   }, [logged, navigate, user]);
-  // get data
+
+  useEffect(() => {
+    const fetchCourse = async () => {
+      try {
+        const res = await axios.get(`/learningcenter/list_courses/?id=${courseId}`);
+        if (res.status === 200) {
+          setOrderData((prev) => ({
+            ...prev,
+            paymentMethods: res?.data?.message[0]?.payment_methods
+          }));
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    if (courseId) {
+      fetchCourse();
+    }
+  }, [courseId]);
+
   useEffect(() => {
     const fetchSupscriptions = async () => {
       try {
@@ -53,7 +83,6 @@ const MySubscriptions = () => {
     setSubscriptionId(subscriptionId);
     setShowModal(true);
   };
-
   const deleteHandler = async () => {
     try {
       const response = await axios.put(
@@ -62,11 +91,36 @@ const MySubscriptions = () => {
       if (response.status === 200) {
         setShowModal(false);
         toast.success(t("cancelSubSuccess"));
+        setMySubscriptions(
+          mySubscriptions.map((subscription) => {
+            if (subscription.id === subscriptionId) {
+              return { ...subscription, status: response.data.object.status };
+            }
+            return subscription;
+          })
+        );
       } else {
         toast.error(t("auth.someThingWentWrong"));
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const renewOrder = (subscriptionId) => {
+    const subscriptionToRenew = mySubscriptions.find(
+      (s) => s.id === subscriptionId
+    );
+    if (subscriptionToRenew) {
+      setSubscriptionId(subscriptionId);
+      setShowRenewModal(true);
+      setCourseId(subscriptionToRenew?.course_id);
+      setOrderData({
+        subscription_id: subscriptionId,
+        amount: subscriptionToRenew?.amount
+      });
+    } else {
+      console.log("Subscription not found.");
     }
   };
 
@@ -93,6 +147,7 @@ const MySubscriptions = () => {
                 >
                   <CourseSubCard
                     subscription={subscription}
+                    onRenewOrder={() => renewOrder(subscription?.id)}
                     onCancel={() => handleCancelSubscription(subscription?.id)}
                   />
                 </div>
@@ -107,6 +162,12 @@ const MySubscriptions = () => {
         onDelete={deleteHandler}
         buttonText={t("cancelSub")}
         text={t("areYouSureYouWantCancelSub")}
+      />
+      <RenewSubscriptionModal
+        formData={orderData}
+        setFormData={setOrderData}
+        showModal={showRenewModal}
+        setShowModal={setShowRenewModal}
       />
     </section>
   );

@@ -2861,7 +2861,6 @@ body.en .course_dashboard .open_menu {
 
 .modal-header {
   border-bottom: 0;
-  padding: 8px;
 }
 .modal-header .btn-close {
   box-shadow: none !important;
@@ -4038,21 +4037,22 @@ input::-webkit-inner-spin-button {
 }
 .my-subscriptions .buttons {
   margin-top: 6px;
+  gap: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .my-subscriptions .buttons button {
-  padding: 0 12px;
+  width: 100%;
   font-size: 14px;
   border-radius: 4px;
   background: #81a63d;
   color: #fff;
 }
-.my-subscriptions .buttons button:nth-child(2) {
+.my-subscriptions .buttons button.cancel {
   background: red;
 }
-.my-subscriptions .buttons button:nth-child(3) {
+.my-subscriptions .buttons button.upgrade {
   background: #31535a;
 }
 

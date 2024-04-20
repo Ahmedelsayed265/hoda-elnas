@@ -2761,7 +2761,6 @@ body {
 }
 .modal-header {
   border-bottom: 0;
-  padding: 8px;
   .btn-close {
     box-shadow: none !important;
     background-image: url("../images/close.svg");
@@ -3856,17 +3855,18 @@ input::-webkit-inner-spin-button {
   }
   .buttons {
     margin-top: 6px;
+    gap: 8px;
     @include space-between();
     button {
-      padding: 0 12px;
+      width: 100%;
       font-size: 14px;
       border-radius: 4px;
       background: $secondary;
       color: $white;
-      &:nth-child(2) {
+      &.cancel {
         background: red;
       }
-      &:nth-child(3) {
+      &.upgrade {
         background: $main;
       }
     }
