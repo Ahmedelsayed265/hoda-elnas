@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import subsIcon from "../../assets/images/subs.svg";
-import { useTranslation } from "react-i18next";
 import axios from "./../../util/axios";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import CourseSubCard from "./CourseSubCard";
-import DataLoader from "../ui/DataLoader";
-import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 import { toast } from "react-toastify";
-import RenewSubscriptionModal from "./RenewSubscriptionModal";
+import { useTranslation } from "react-i18next";
+import RenewModal from "./RenewModal";
+import DataLoader from "../ui/DataLoader";
+import { useSelector } from "react-redux";
+import CourseSubCard from "./CourseSubCard";
+import { useNavigate } from "react-router-dom";
+import subsIcon from "../../assets/images/subs.svg";
+import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
@@ -65,7 +65,7 @@ const MySubscriptions = () => {
     if (courseId) {
       fetchCourse();
     }
-  }, [courseId]);
+  }, [courseId, showRenewModal]);
 
   // fetch subscriptions
   useEffect(() => {
@@ -131,7 +131,8 @@ const MySubscriptions = () => {
         totalPrice: subscriptionToRenew?.amount,
         startDate: subscriptionToRenew?.startdate,
         studentsNumber: subscriptionToRenew?.student_number,
-        courseDuration: subscriptionToRenew?.cpw
+        courseDuration: subscriptionToRenew?.cpw,
+        lessonsDuration: subscriptionToRenew?.duration
       });
     } else {
       console.log("Subscription not found.");
@@ -177,7 +178,7 @@ const MySubscriptions = () => {
         buttonText={t("cancelSub")}
         text={t("areYouSureYouWantCancelSub")}
       />
-      <RenewSubscriptionModal
+      <RenewModal
         formData={orderData}
         courseLoading={courseLoading}
         setFormData={setOrderData}

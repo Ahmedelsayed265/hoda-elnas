@@ -2,7 +2,12 @@ import React from 'react'
 
 const GoalDetails = () => {
   return (
-    <div>GoalDetails</div>
+    <div className="goal_details">
+      
+      <div className="goal_end">
+
+      </div>
+    </div>
   )
 }
 

@@ -5,10 +5,11 @@ import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPa
 import useUserLocation from "../../hooks/useUserLocation";
 import CompleteProcess from "./CompleteProcess";
 
-const RenewSubscriptionModal = ({
+const RenewModal = ({
   showModal,
   setShowModal,
   formData,
+  setFormData,
   courseLoading
 }) => {
   const { t } = useTranslation();
@@ -35,6 +36,7 @@ const RenewSubscriptionModal = ({
         setStepName={setStepName}
         formData={formData}
         location={location}
+        setFormData={setFormData}
         course={course}
         method={method}
       />
@@ -92,4 +94,4 @@ const RenewSubscriptionModal = ({
   );
 };
 
-export default RenewSubscriptionModal;
+export default RenewModal;

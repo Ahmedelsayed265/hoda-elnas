@@ -305,5 +305,6 @@
     "areYouSureYouWantCancelSub": "Are you sure you want to cancel subscription ",
     "studentDeleted": "Student Deleted Successfully",
     "cancel": "Cancel",
-    "delete": "Delete"
+    "delete": "Delete",
+    "selectPayMethod": "Select Payment Method"
 }

@@ -3,14 +3,23 @@ import debitCard from "../../../../assets/images/debit_card.svg";
 import { useTranslation } from "react-i18next";
 import { BASE_URL } from "../../../../constants";
 import DataLoader from "../../../ui/DataLoader";
+import { toast } from "react-toastify";
 
 const SelectPayMethod = ({
   setStepName,
   setMethod,
+  method,
   formData,
   courseLoading
 }) => {
   const { t } = useTranslation();
+  const handleNext = () => {
+    if (!method?.id) {
+      toast.error(t("selectPayMethod"));
+    } else {
+      setStepName("complete_process");
+    }
+  };
   return (
     <div className="select_pay_method">
       <div className="container p-0">
@@ -53,7 +62,8 @@ const SelectPayMethod = ({
           <div className="col-12 p-2 d-flex justify-content-end">
             <button
               className="w-25 save_btn"
-              onClick={() => setStepName("complete_process")}
+              onClick={handleNext}
+              disabled={!method?.id}
             >
               {t("next")}
             </button>

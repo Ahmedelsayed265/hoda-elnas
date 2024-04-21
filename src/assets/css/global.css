@@ -1819,13 +1819,6 @@ body main .subscribe form .save.disabled {
   pointer-events: none;
   opacity: 0.5;
 }
-body main .subscribe form .add-discount {
-  width: min(100%, 200px);
-  height: 54px;
-  border-radius: 12px;
-  background: #81a63d;
-  color: #fff;
-}
 body main .subscribe .total {
   width: min(100% - 24px, 400px);
   margin-top: 12px;
@@ -2345,6 +2338,10 @@ body main .my-students .header button i {
 }
 body main .my-students .header button:hover {
   background: #31535a;
+}
+body main .goal_details {
+  width: 100%;
+  padding: 20px 0;
 }
 body footer {
   padding: 40px 8px 16px;
@@ -4096,4 +4093,12 @@ input::-webkit-inner-spin-button {
   background: red;
   color: #fff;
   border-radius: 8px;
+}
+
+.add-discount {
+  width: min(100%, 200px);
+  height: 54px;
+  border-radius: 12px;
+  background: #81a63d;
+  color: #fff;
 }/*# sourceMappingURL=global.css.map */

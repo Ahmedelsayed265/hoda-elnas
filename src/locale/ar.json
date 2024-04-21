@@ -314,5 +314,6 @@
     "areYouSureYouWantCancelSub": "هل أنت متأكد أنك تريد الغاء الاشتراك ",
     "studentDeleted": "تم حذف الطالب بنجاح",
     "cancel": "الغاء",
-    "delete": "حذف"
+    "delete": "حذف",
+    "selectPayMethod": "اختر طريقة الدفع"
 }

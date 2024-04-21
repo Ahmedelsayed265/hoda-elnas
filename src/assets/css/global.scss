@@ -1757,13 +1757,6 @@ body {
             opacity: 0.5;
           }
         }
-        .add-discount {
-          width: min(100%, 200px);
-          height: 54px;
-          border-radius: 12px;
-          background: $secondary;
-          color: $white;
-        }
       }
       .total {
         width: min(100% - 24px, 400px);
@@ -2245,6 +2238,10 @@ body {
           }
         }
       }
+    }
+    .goal_details {
+      width: 100%;
+      padding: 20px 0;
     }
   }
   footer {
@@ -3913,4 +3910,11 @@ input::-webkit-inner-spin-button {
     color: $white;
     border-radius: 8px;
   }
+}
+.add-discount {
+  width: min(100%, 200px);
+  height: 54px;
+  border-radius: 12px;
+  background: $secondary;
+  color: $white;
 }

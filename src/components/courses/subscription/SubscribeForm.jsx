@@ -45,11 +45,14 @@ const SubscribeForm = ({
           location === "EG" ? addon?.fees_egp : addon?.fees_usd;
         return total + addonPrice * planInterval;
       }, 0);
+
       let basePrice =
         location === "EG"
           ? pricingPlan?.saleprice_egp
           : pricingPlan?.saleprice_usd;
+
       let totalPrice = studentsNumber * (basePrice + totalAddonPrice);
+
       if (coponData?.value && coponData?.discount_type === "percentage") {
         totalPrice *= (100 - coponData?.value) / 100;
       } else {
@@ -57,9 +60,9 @@ const SubscribeForm = ({
           totalPrice -= coponData.value;
         }
       }
+
       return totalPrice >= 0 ? totalPrice : 0.0;
     };
-
     const findPricingPlan = (cpw, type, duration) => {
       const plan = pricingPlans?.find(
         (plan) =>
@@ -69,6 +72,7 @@ const SubscribeForm = ({
       );
       setPricingPlan(plan);
       let totalPrice;
+
       if (location === "EG") {
         totalPrice =
           coponData?.discount_type === "percentage"
@@ -105,7 +109,6 @@ const SubscribeForm = ({
       formData?.plan,
       formData?.lessonsDuration
     );
-
     if (formData?.addons?.length > 0) {
       setFormData({
         ...formData,

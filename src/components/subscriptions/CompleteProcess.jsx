@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -7,17 +7,27 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constants";
 import TotalPrice from "../courses/subscription/TotalPrice";
 import SubmitButton from "../ui/form-elements/SubmitButton";
+import InputField from "../ui/InputField";
 
 const CompleteProcess = ({
   setStepName,
   formData,
   course,
   location,
-  method
+  method,
+  setFormData
 }) => {
   const [loading, setLoading] = useState(false);
   const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
+  const { t } = useTranslation();
+
+  const [promoCode, setPromoCode] = useState("");
+  const [coponData, setCoponData] = useState({
+    value: null,
+    discount_type: null
+  });
+
   let orderId;
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
@@ -108,6 +118,7 @@ const CompleteProcess = ({
       console.error(error);
     }
   };
+
   const initiateGediaCheckout = (sessionId) => {
     let onSuccess = function (data) {
       navigate("/my-courses");
@@ -123,11 +134,78 @@ const CompleteProcess = ({
     payment.startPayment(sessionId);
   };
 
-  const { t } = useTranslation();
+  const handleAddPromo = async (e) => {
+    e.preventDefault();
+    if (promoCode === "") return;
+    try {
+      const response = await axios.post("/members/Check_coupon/", {
+        couponcode: promoCode,
+        service: "courses"
+      });
+      if (response?.status === 200 || response?.status === 201) {
+        setCoponData((prevCoponData) => ({
+          ...prevCoponData,
+          value: response?.data?.message?.value,
+          discount_type: response?.data?.message?.discount_type
+        }));
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          copun_type: "promo",
+          validCopun: true,
+          copun_name: promoCode,
+          discont_percent: response?.data?.message?.value
+        }));
+        toast.success(t("courseSubscribe.promoCodeApplied"));
+      } else {
+        toast.error(t("courseSubscribe.invalidPromoCode"));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateTotalPrice = () => {
+    let totalPriceUpdated = 0;
+    if (coponData.value && coponData.discount_type === "percentage") {
+      totalPriceUpdated = (formData.totalPrice * (100 - coponData.value)) / 100;
+    } else {
+      totalPriceUpdated = formData.totalPrice - coponData.value;
+    }
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      totalPrice:
+        totalPriceUpdated > 0 ? totalPriceUpdated : formData?.totalPrice
+    }));
+  };
+
+  useEffect(() => {
+    updateTotalPrice();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coponData]);
 
   return (
     <div className="complete_process">
       <div className="row m-0">
+        <div className="col-12 p-2">
+          <div className="form-ui">
+            <div className=" w-100 d-flex align-items-end gap-2">
+              <InputField
+                labelPlaceholder={t("courseSubscribe.discountCopon")}
+                icon={<i className="fa-light fa-tag"></i>}
+                name={"discountCopon"}
+                placeHolder={"kid1234"}
+                value={promoCode}
+                handleChange={(e) => setPromoCode(e.target.value)}
+              />
+              <button
+                className="add-discount"
+                onClick={(e) => handleAddPromo(e)}
+              >
+                {t("courseSubscribe.addDiscount")}
+              </button>
+            </div>
+          </div>
+        </div>
         {/* Subscription info */}
         <div className="col-12 p-2 d-flex gap-5 flex-lg-row flex-column">
           <div
