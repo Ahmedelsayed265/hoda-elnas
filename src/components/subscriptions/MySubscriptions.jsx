@@ -26,6 +26,7 @@ const MySubscriptions = () => {
   const [courseId, setCourseId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [courseLoading, setCourseLoading] = useState(false);
+  const [course, setCourse] = useState(null);
 
   const [orderData, setOrderData] = useState({
     subscription_id: null,
@@ -72,6 +73,7 @@ const MySubscriptions = () => {
             ...prev,
             paymentMethods: res?.data?.message[0]?.payment_methods
           }));
+          setCourse(res?.data?.message[0]);
         }
       } catch (error) {
         console.log(error);
@@ -230,6 +232,7 @@ const MySubscriptions = () => {
         formData={upgradeOrderData}
         courseLoading={courseLoading}
         setFormData={setUpgradeOrderData}
+        courseObj={course}
         showModal={showUpgradeModal}
         setShowModal={setShowUpgradeModal}
       />

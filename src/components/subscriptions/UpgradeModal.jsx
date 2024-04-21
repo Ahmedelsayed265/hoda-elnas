@@ -4,13 +4,14 @@ import { useTranslation } from "react-i18next";
 import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPayMethod";
 import useUserLocation from "../../hooks/useUserLocation";
 import CompleteProcess from "./CompleteProcess";
-import ChoosePricingPlans from "./ChoosePricingPlans";
+import ChoosePricingPlans from "./upgrade/ChoosePricingPlans";
 
 const UpgradeModal = ({
   showModal,
   setShowModal,
   formData,
   setFormData,
+  courseObj,
   courseLoading
 }) => {
   const { t } = useTranslation();
@@ -24,6 +25,7 @@ const UpgradeModal = ({
     targetComponent = (
       <ChoosePricingPlans
         formData={formData}
+        courseObj={courseObj}
         setStepName={setStepName}
         setFormData={setFormData}
       />

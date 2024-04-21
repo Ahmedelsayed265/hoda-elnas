@@ -1686,195 +1686,6 @@ body main .terms_section ul {
 body main .terms_section ul li {
   color: #31535a;
 }
-body main .subscribe {
-  padding: 40px 0;
-}
-body main .subscribe .image {
-  width: 100%;
-  aspect-ratio: 3/2;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-body main .subscribe .image img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-body main .subscribe .benifits {
-  margin-top: 16px;
-}
-body main .subscribe .benifits h6 {
-  font-size: 18px;
-  color: #31535a;
-  font-weight: 600;
-}
-body main .subscribe .benifits ul li {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 4px;
-  font-size: 16px;
-  color: #777777;
-  line-height: 30px;
-}
-body main .subscribe .benifits ul li::before {
-  content: "\f648";
-  font-family: "Font Awesome 6 pro";
-  color: #81a63d;
-}
-body main .subscribe .benifits ul.iconCheck li::before {
-  content: "\f00c";
-}
-body main .subscribe .course_header {
-  margin-top: 24px;
-}
-body main .subscribe .course_header h3 {
-  color: #81a63d;
-}
-body main .subscribe .course_header p {
-  color: #777777;
-  margin-bottom: 12px;
-}
-body main .subscribe form label {
-  color: #31535a !important;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-body main .subscribe form .time-group {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-body main .subscribe form .time-group .duration_check {
-  cursor: pointer;
-}
-@media (max-width: 576px) {
-  body main .subscribe form .time-group .duration_check {
-    max-width: 100%;
-  }
-}
-body main .subscribe form .time-group .duration_check .time {
-  min-width: 94px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #f8f8f8;
-  border-radius: 12px;
-  border: 1px solid #f2f2f2;
-  transition: 0.3s ease-in-out;
-}
-body main .subscribe form .time-group .duration_check .time span {
-  line-height: 20px;
-}
-@media (max-width: 576px) {
-  body main .subscribe form .time-group .duration_check .time {
-    max-width: 100%;
-  }
-}
-body main .subscribe form .time-group .duration_check input {
-  display: none;
-}
-body main .subscribe form .time-group .duration_check input:checked + .time {
-  background: #81a63d;
-  border-color: #81a63d;
-  color: #fff;
-}
-body main .subscribe form h6 {
-  color: #31535a;
-  font-size: 16px;
-  margin: 8px 0;
-  font-weight: 600;
-}
-body main .subscribe form ul {
-  display: flex;
-  flex-direction: column;
-  width: min(100% - 24px, 400px);
-}
-body main .subscribe form ul li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-body main .subscribe form ul li label {
-  cursor: pointer;
-}
-body main .subscribe form ul li .check {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-body main .subscribe form .save {
-  margin-top: 0 !important;
-  width: min(100% - 24px, 200px);
-}
-body main .subscribe form .save.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-body main .subscribe .total {
-  width: min(100% - 24px, 400px);
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-body main .subscribe .total .price {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-body main .subscribe .total .price h3,
-body main .subscribe .total .price span {
-  color: #31535a;
-  font-weight: 600;
-  font-size: 20px;
-}
-body main .subscribe .total .instalment_message {
-  color: rgb(255, 0, 0);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 24px;
-  margin-bottom: 8px;
-}
-body main .subscribe .total .installmentCheck {
-  align-items: center;
-}
-body main .subscribe .total .installmentCheck label {
-  cursor: pointer;
-}
-body main .subscribe .total .installmentCheck label h6 {
-  margin: 0;
-}
-body main .subscribe .total .installmentCheck input {
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
-}
-body main .subscribe .discount {
-  color: #81a63d;
-  font-size: 16px;
-}
-body main .subscribe .check-field {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-body main .subscribe .check-field p {
-  font-size: 14px;
-  line-height: 20px;
-}
-body main .subscribe .check-field a {
-  line-height: 20px;
-  color: #81a63d;
-}
 body main .my_courses {
   padding: 40px 0;
 }
@@ -2342,6 +2153,195 @@ body main .my-students .header button:hover {
 body main .goal_details {
   width: 100%;
   padding: 20px 0;
+}
+body .subscribe {
+  padding: 40px 0;
+}
+body .subscribe .image {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+body .subscribe .image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body .subscribe .benifits {
+  margin-top: 16px;
+}
+body .subscribe .benifits h6 {
+  font-size: 18px;
+  color: #31535a;
+  font-weight: 600;
+}
+body .subscribe .benifits ul li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  font-size: 16px;
+  color: #777777;
+  line-height: 30px;
+}
+body .subscribe .benifits ul li::before {
+  content: "\f648";
+  font-family: "Font Awesome 6 pro";
+  color: #81a63d;
+}
+body .subscribe .benifits ul.iconCheck li::before {
+  content: "\f00c";
+}
+body .subscribe .course_header {
+  margin-top: 24px;
+}
+body .subscribe .course_header h3 {
+  color: #81a63d;
+}
+body .subscribe .course_header p {
+  color: #777777;
+  margin-bottom: 12px;
+}
+body .subscribe form label {
+  color: #31535a !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+body .subscribe form .time-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+body .subscribe form .time-group .duration_check {
+  cursor: pointer;
+}
+@media (max-width: 576px) {
+  body .subscribe form .time-group .duration_check {
+    max-width: 100%;
+  }
+}
+body .subscribe form .time-group .duration_check .time {
+  min-width: 94px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #f8f8f8;
+  border-radius: 12px;
+  border: 1px solid #f2f2f2;
+  transition: 0.3s ease-in-out;
+}
+body .subscribe form .time-group .duration_check .time span {
+  line-height: 20px;
+}
+@media (max-width: 576px) {
+  body .subscribe form .time-group .duration_check .time {
+    max-width: 100%;
+  }
+}
+body .subscribe form .time-group .duration_check input {
+  display: none;
+}
+body .subscribe form .time-group .duration_check input:checked + .time {
+  background: #81a63d;
+  border-color: #81a63d;
+  color: #fff;
+}
+body .subscribe form h6 {
+  color: #31535a;
+  font-size: 16px;
+  margin: 8px 0;
+  font-weight: 600;
+}
+body .subscribe form ul {
+  display: flex;
+  flex-direction: column;
+  width: min(100% - 24px, 400px);
+}
+body .subscribe form ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .subscribe form ul li label {
+  cursor: pointer;
+}
+body .subscribe form ul li .check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+body .subscribe form .save {
+  margin-top: 0 !important;
+  width: min(100% - 24px, 200px);
+}
+body .subscribe form .save.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+body .subscribe .total {
+  width: min(100% - 24px, 400px);
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body .subscribe .total .price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body .subscribe .total .price h3,
+body .subscribe .total .price span {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 20px;
+}
+body .subscribe .total .instalment_message {
+  color: rgb(255, 0, 0);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 8px;
+}
+body .subscribe .total .installmentCheck {
+  align-items: center;
+}
+body .subscribe .total .installmentCheck label {
+  cursor: pointer;
+}
+body .subscribe .total .installmentCheck label h6 {
+  margin: 0;
+}
+body .subscribe .total .installmentCheck input {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+body .subscribe .discount {
+  color: #81a63d;
+  font-size: 16px;
+}
+body .subscribe .check-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body .subscribe .check-field p {
+  font-size: 14px;
+  line-height: 20px;
+}
+body .subscribe .check-field a {
+  line-height: 20px;
+  color: #81a63d;
 }
 body footer {
   padding: 40px 8px 16px;

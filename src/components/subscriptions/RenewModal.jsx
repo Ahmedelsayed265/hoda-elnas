@@ -20,6 +20,7 @@ const RenewModal = ({
 
   const course = null;
   let targetComponent;
+
   if (stepName === "payment_method") {
     targetComponent = (
       <SelectPayMethod
