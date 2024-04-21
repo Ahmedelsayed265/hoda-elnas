@@ -297,7 +297,8 @@
         "studentAnswer": "إجابة الطالب",
         "instructorChanged": "تم تغيير المعلم بنجاح",
         "instructorRate": "تقييم المعلم",
-        "edit": "تعديل"
+        "edit": "تعديل",
+        "studentUpdatedSuccessfully": "تم تحديث الطالب بنجاح"
     },
     "day": "يوم",
     "hour": "الساعة",

@@ -130,10 +130,18 @@ const MyStudents = () => {
       if (response.status === 200) {
         setShowModal(false);
         setMode("add");
+        toast.success(t("dashboard.studentUpdatedSuccessfully"));
         setAllStudents((prev) =>
           prev.map((student) => {
             if (student.id === +studentId) {
-              return response?.data?.object[0];
+              return {
+                ...student,
+                name: formData.studentname,
+                age: formData.studentage,
+                contact: formData.studentcontact,
+                gender: formData.sex,
+                notes: formData.notes
+              };
             }
             return student;
           })

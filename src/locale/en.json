@@ -288,7 +288,8 @@
         "studentAnswer": "Student Answer",
         "instructorChanged": "Instructor Changed Successfully",
         "instructorRate": "Instructor Rate",
-        "edit": "Edit"
+        "edit": "Edit",
+        "studentUpdatedSuccessfully": "Student Updated Successfully"
     },
     "day": "Day",
     "hour": "Hour",
