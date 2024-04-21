@@ -9,6 +9,7 @@ import CourseSubCard from "./CourseSubCard";
 import { useNavigate } from "react-router-dom";
 import subsIcon from "../../assets/images/subs.svg";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
+import UpgradeModal from "./UpgradeModal";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
@@ -17,6 +18,7 @@ const MySubscriptions = () => {
   const user = useSelector((state) => state.authedUser.user);
   const logged = useSelector((state) => state.authedUser.logged);
 
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showRenewModal, setShowRenewModal] = useState(false);
   const [subscriptionId, setSubscriptionId] = useState(null);
@@ -27,6 +29,16 @@ const MySubscriptions = () => {
 
   const [orderData, setOrderData] = useState({
     subscription_id: null,
+    recipt: null,
+    amount: null,
+    paymentMethods: []
+  });
+
+  const [upgradeOrderData, setUpgradeOrderData] = useState({
+    subscription_id: null,
+    plan_id: null,
+    student_number: null,
+    inactive_student_id: [],
     recipt: null,
     amount: null,
     paymentMethods: []
@@ -43,6 +55,7 @@ const MySubscriptions = () => {
   }, [logged, navigate, user]);
 
   // fetch course
+  // fetch course
   useEffect(() => {
     const fetchCourse = async () => {
       try {
@@ -55,6 +68,10 @@ const MySubscriptions = () => {
             ...prev,
             paymentMethods: res?.data?.message[0]?.payment_methods
           }));
+          setUpgradeOrderData((prev) => ({
+            ...prev,
+            paymentMethods: res?.data?.message[0]?.payment_methods
+          }));
         }
       } catch (error) {
         console.log(error);
@@ -62,10 +79,10 @@ const MySubscriptions = () => {
         setCourseLoading(false);
       }
     };
-    if (courseId) {
+    if (courseId && (showRenewModal || showUpgradeModal)) {
       fetchCourse();
     }
-  }, [courseId, showRenewModal]);
+  }, [courseId, showRenewModal, showUpgradeModal]);
 
   // fetch subscriptions
   useEffect(() => {
@@ -139,6 +156,29 @@ const MySubscriptions = () => {
     }
   };
 
+  // upgrade subscription
+  const upgradeOrder = (subscriptionId) => {
+    const subscriptionToUpgrade = mySubscriptions.find(
+      (s) => s.id === subscriptionId
+    );
+    if (!subscriptionToUpgrade) {
+      console.log("Subscription not found.");
+      return;
+    } else {
+      setShowUpgradeModal(true);
+      setSubscriptionId(subscriptionId);
+      setCourseId(subscriptionToUpgrade?.course_id);
+      setOrderData({
+        subscription_id: subscriptionId,
+        totalPrice: subscriptionToUpgrade?.amount,
+        startDate: subscriptionToUpgrade?.startdate,
+        studentsNumber: subscriptionToUpgrade?.student_number,
+        courseDuration: subscriptionToUpgrade?.cpw,
+        lessonsDuration: subscriptionToUpgrade?.duration
+      });
+    }
+  };
+
   return (
     <section className="my-subscriptions">
       <div className="container">
@@ -163,6 +203,7 @@ const MySubscriptions = () => {
                   <CourseSubCard
                     subscription={subscription}
                     onRenewOrder={() => renewOrder(subscription?.id)}
+                    onUpgradeOrder={() => upgradeOrder(subscription?.id)}
                     onCancel={() => handleCancelSubscription(subscription?.id)}
                   />
                 </div>
@@ -184,6 +225,13 @@ const MySubscriptions = () => {
         setFormData={setOrderData}
         showModal={showRenewModal}
         setShowModal={setShowRenewModal}
+      />
+      <UpgradeModal
+        formData={upgradeOrderData}
+        courseLoading={courseLoading}
+        setFormData={setUpgradeOrderData}
+        showModal={showUpgradeModal}
+        setShowModal={setShowUpgradeModal}
       />
     </section>
   );

@@ -2,7 +2,12 @@ import React from "react";
 import { BASE_URL } from "../../constants";
 import { useTranslation } from "react-i18next";
 
-const CourseSubCard = ({ subscription, onCancel, onRenewOrder }) => {
+const CourseSubCard = ({
+  subscription,
+  onCancel,
+  onRenewOrder,
+  onUpgradeOrder
+}) => {
   const { t } = useTranslation();
   return (
     <div className="custom-card">
@@ -42,7 +47,9 @@ const CourseSubCard = ({ subscription, onCancel, onRenewOrder }) => {
                 {t("cancelSub")}
               </button>
             )}
-          <button className="upgrade">{t("upgradeSub")}</button>
+          <button onClick={onUpgradeOrder} className="upgrade">
+            {t("upgradeSub")}
+          </button>
         </div>
       </div>
     </div>

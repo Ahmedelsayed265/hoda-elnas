@@ -315,5 +315,7 @@
     "studentDeleted": "تم حذف الطالب بنجاح",
     "cancel": "الغاء",
     "delete": "حذف",
-    "selectPayMethod": "اختر طريقة الدفع"
+    "selectPayMethod": "اختر طريقة الدفع",
+    "pricingPlan": "خطة الاشتراك",
+    "choosePricing": "اختر خطة إشتراك جديدة"
 }

@@ -306,5 +306,7 @@
     "studentDeleted": "Student Deleted Successfully",
     "cancel": "Cancel",
     "delete": "Delete",
-    "selectPayMethod": "Select Payment Method"
+    "selectPayMethod": "Select Payment Method",
+    "pricingPlan": "Pricing Plan",
+    "choosePricing": "Choose New Pricing Plan"
 }

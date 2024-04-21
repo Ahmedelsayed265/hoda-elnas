@@ -54,7 +54,8 @@ const CompleteProcess = ({
       const dataToSend = {
         subscription_id: formData?.subscription_id,
         recipt: reciept,
-        amount: formData?.totalPrice
+        amount: formData?.totalPrice,
+        coupon: formData?.copun_name
       };
       const headers = {
         Accept: "application/json",
