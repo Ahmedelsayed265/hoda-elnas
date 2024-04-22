@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../util/axios";
+import axios from "../../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants";
-import TotalPrice from "../courses/subscription/TotalPrice";
-import SubmitButton from "../ui/form-elements/SubmitButton";
-import InputField from "../ui/InputField";
+import { BASE_URL } from "../../../constants";
+import TotalPrice from "../../courses/subscription/TotalPrice";
+import SubmitButton from "../../ui/form-elements/SubmitButton";
+import InputField from "../../ui/InputField";
 
 const CompleteProcess = ({
   setStepName,
@@ -52,8 +52,12 @@ const CompleteProcess = ({
       }
       // pay load
       const dataToSend = {
-        subscription_id: formData?.subscription_id,
         recipt: reciept,
+        plan_id: formData?.plan_id,
+        subscription_id: formData?.subscription_id,
+        student_number: formData?.studentsNumber,
+        inactive_student_id: [],
+        addons: formData?.addons,
         amount: formData?.totalPrice,
         coupon: formData?.copun_name
       };
@@ -67,7 +71,7 @@ const CompleteProcess = ({
         data: dataToSend
       };
       const response = await axios.request(
-        "/members/create_renew_order/renew/",
+        "/members/create_renew_order/upgrade/",
         reqOptions
       );
       if (response?.status === 200 || response?.status === 201) {
@@ -238,13 +242,6 @@ const CompleteProcess = ({
                   </b>
                   {parseFloat(formData.lessonsDuration)}{" "}
                   {t("courseSubscribe.minutes")}
-                </li>
-                <li>
-                  <b>
-                    <i className="fa-sharp fa-light fa-calendar-days"></i>
-                    {t("courseSubscribe.startDate")}
-                  </b>
-                  {formData.startDate}
                 </li>
               </ul>
             </div>

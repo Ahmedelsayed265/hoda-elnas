@@ -7,6 +7,7 @@ import useUserLocation from "../../../hooks/useUserLocation";
 import { useSelector } from "react-redux";
 import axios from "./../../../util/axios";
 import TotalPrice from "../../courses/subscription/TotalPrice";
+import studentImage from "../../../assets/images/student.svg";
 import DataLoader from "../../ui/DataLoader";
 
 const ChoosePricingPlans = ({
@@ -14,6 +15,7 @@ const ChoosePricingPlans = ({
   formData,
   setFormData,
   setStepName,
+  subStudents,
   courseLoading
 }) => {
   const { t } = useTranslation();
@@ -22,7 +24,6 @@ const ChoosePricingPlans = ({
   const location = locationData?.country;
   const [pricingPlan, setPricingPlan] = useState({});
   const [pricingPlans, setPricingPlans] = useState([]);
-  const [benefits, setBenefits] = useState([]);
 
   useEffect(() => {
     const getPricing = async () => {
@@ -75,7 +76,7 @@ const ChoosePricingPlans = ({
           );
       } else {
         totalPrice =
-          plan?.slaeprice_usd * formData?.studentsNumber +
+          plan?.saleprice_usd * formData?.studentsNumber +
           formData?.addons?.reduce(
             (total, addon) => total + addon?.fees_usd,
             0
@@ -83,10 +84,9 @@ const ChoosePricingPlans = ({
       }
       setFormData({
         ...formData,
-        price: location === "EG" ? plan?.saleprice_egp : plan?.slaeprice_usd,
+        price: location === "EG" ? plan?.saleprice_egp : plan?.saleprice_usd,
         totalPrice: totalPrice >= 0 ? totalPrice : 0.0
       });
-      setBenefits(plan?.benefits);
     };
     findPricingPlan(
       formData?.courseDuration,
@@ -94,14 +94,14 @@ const ChoosePricingPlans = ({
       formData?.lessonsDuration
     );
     if (formData?.addons?.length > 0) {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         totalPrice: calculateTotalPrice(
           formData?.studentsNumber,
           formData?.addons,
           pricingPlan?.interval
         )
-      });
+      }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -124,6 +124,23 @@ const ChoosePricingPlans = ({
       studentsNumber,
       totalPrice
     }));
+  };
+
+  const handleStudentsCheck = (e, student) => {
+    const studentId = student.studentclass_id;
+    const isChecked = e.target.checked;
+    const selectedStudents = formData.active_student_id;
+    if (isChecked && selectedStudents.length < formData.studentsNumber) {
+      setFormData((prev) => ({
+        ...prev,
+        active_student_id: [...prev.active_student_id, studentId]
+      }));
+    } else if (!isChecked) {
+      setFormData((prev) => ({
+        ...prev,
+        active_student_id: selectedStudents.filter((id) => id !== studentId)
+      }));
+    }
   };
 
   return (
@@ -159,6 +176,37 @@ const ChoosePricingPlans = ({
               }
             />
           </div>
+          {formData?.studentsNumber < subStudents?.length && (
+            <div className="choose_student">
+              {subStudents.map((student) => (
+                <div className="choose_student" key={student.studentclass_id}>
+                  <label className="student_check">
+                    <input
+                      type="checkbox"
+                      name="student"
+                      value={student.studentclass_id}
+                      required
+                      checked={formData?.active_student_id?.includes(
+                        student.studentclass_id
+                      )}
+                      onChange={(e) => handleStudentsCheck(e, student)}
+                    />
+                    <div className="content">
+                      <div className="img">
+                        <img
+                          src={
+                            student?.profile ? student?.profile : studentImage
+                          }
+                          alt="student"
+                        />
+                      </div>
+                      <p>{student.name}</p>
+                    </div>
+                  </label>
+                </div>
+              ))}
+            </div>
+          )}
           {/* lessons duration */}
           <RadiosSelect
             labelPlaceholder={t("courseSubscribe.lessonsDuration")}
@@ -174,9 +222,6 @@ const ChoosePricingPlans = ({
             }
             additionalInfo={t("courseSubscribe.minutes")}
           />
-          {/* <div className="hide_lg">
-          <CourseBenifits benefits={benefits} />
-        </div> */}
           {/* subscriptions plan */}
           <RadiosSelect
             labelPlaceholder={t("courseSubscribe.subscriptionsPlan")}

@@ -27,6 +27,7 @@ const MySubscriptions = () => {
   const [loading, setLoading] = useState(false);
   const [courseLoading, setCourseLoading] = useState(false);
   const [course, setCourse] = useState(null);
+  const [subStudents, setSubStudents] = useState([]);
 
   const [orderData, setOrderData] = useState({
     subscription_id: null,
@@ -39,27 +40,37 @@ const MySubscriptions = () => {
     subscription_id: null,
     plan_id: null,
     student_number: null,
-    inactive_student_id: [],
+    active_student_id: [],
     recipt: null,
     amount: null,
     paymentMethods: [],
     addons: [],
-    courseDuration: 1,
-    studentsNumber: 1,
+    courseDuration: "",
+    studentsNumber: "",
     plan: course?.types[0],
     lessonsDuration: course?.duration[0]
   });
 
   useEffect(() => {
+    if (subscriptionId) {
+      let sub = mySubscriptions.find((sub) => sub.id === +subscriptionId);
+      setUpgradeOrderData((prev) => ({
+        ...prev,
+        studentsNumber: sub?.student_number,
+        plan: sub?.plan_type,
+        courseDuration: sub?.cpw,
+        addons: sub?.addons,
+        lessonsDuration: parseFloat(sub?.duration).toFixed(1)
+      }));
+      setSubStudents(sub?.enrolled_students);
+    }
     if (course) {
       setUpgradeOrderData((prevFormData) => ({
         ...prevFormData,
-        paymentMethods: course?.payment_methods,
-        plan: course?.types[0],
-        lessonsDuration: course?.duration[0]
+        paymentMethods: course?.payment_methods
       }));
     }
-  }, [course]);
+  }, [course, mySubscriptions, subscriptionId]);
 
   // check if user is logged
   useEffect(() => {
@@ -71,7 +82,6 @@ const MySubscriptions = () => {
     }
   }, [logged, navigate, user]);
 
-  // fetch course
   // fetch course
   useEffect(() => {
     const fetchCourse = async () => {
@@ -101,7 +111,6 @@ const MySubscriptions = () => {
       fetchCourse();
     }
   }, [courseId, showRenewModal, showUpgradeModal]);
-
   // fetch subscriptions
   useEffect(() => {
     const fetchSupscriptions = async () => {
@@ -151,7 +160,6 @@ const MySubscriptions = () => {
       console.log(error);
     }
   };
-
   // renew subscription
   const renewOrder = (subscriptionId) => {
     const subscriptionToRenew = mySubscriptions.find(
@@ -173,7 +181,6 @@ const MySubscriptions = () => {
       console.log("Subscription not found.");
     }
   };
-
   // upgrade subscription
   const upgradeOrder = (subscriptionId) => {
     const subscriptionToUpgrade = mySubscriptions.find(
@@ -245,6 +252,7 @@ const MySubscriptions = () => {
         setShowModal={setShowRenewModal}
       />
       <UpgradeModal
+        subStudents={subStudents}
         formData={upgradeOrderData}
         courseLoading={courseLoading}
         setFormData={setUpgradeOrderData}

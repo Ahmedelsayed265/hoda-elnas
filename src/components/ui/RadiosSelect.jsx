@@ -20,7 +20,6 @@ const RadiosSelect = ({
           {labelPlaceholder}
         </label>
       )}
-
       <div className="time-group">
         {options?.map((option, index) => (
           <label htmlFor={option} key={index} className="duration_check">

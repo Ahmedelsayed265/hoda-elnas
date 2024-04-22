@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import SelectPayMethod from "./upgrade/SelectPayMethod";
 import useUserLocation from "../../hooks/useUserLocation";
 import ChoosePricingPlans from "./upgrade/ChoosePricingPlans";
-import CompleteProcess from "./CompleteProcess";
+import CompleteProcess from "./upgrade/CompleteProcess";
 
 const UpgradeModal = ({
   showModal,
@@ -12,6 +12,7 @@ const UpgradeModal = ({
   formData,
   setFormData,
   courseObj,
+  subStudents,
   courseLoading
 }) => {
   const { t } = useTranslation();
@@ -25,10 +26,11 @@ const UpgradeModal = ({
     targetComponent = (
       <ChoosePricingPlans
         formData={formData}
+        setFormData={setFormData}
         courseObj={courseObj}
         courseLoading={courseLoading}
+        subStudents={subStudents}
         setStepName={setStepName}
-        setFormData={setFormData}
       />
     );
   } else if (stepName === "payment_method") {

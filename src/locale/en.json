@@ -308,5 +308,6 @@
     "delete": "Delete",
     "selectPayMethod": "Select Payment Method",
     "pricingPlan": "Pricing Plan",
-    "choosePricing": "Choose New Pricing Plan"
+    "choosePricing": "Choose New Pricing Plan",
+    "onplan":"You are currently using this pricing plan."
 }

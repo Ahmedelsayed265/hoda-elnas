@@ -164,7 +164,7 @@
         "installmentDuration": "مدة التقسيط",
         "subscribe": "دفع وإشتراك",
         "egyptianPound": "ج.م",
-        "dollar": "UCD",
+        "dollar": "USD",
         "monthlyInstallment": "قسط شهري",
         "weeklyInstallment": "قسط اسبوعي",
         "haveRead": "لقد قرأت وأوافق على",
@@ -317,5 +317,6 @@
     "delete": "حذف",
     "selectPayMethod": "اختر طريقة الدفع",
     "pricingPlan": "خطة الاشتراك",
-    "choosePricing": "اختر خطة إشتراك جديدة"
+    "choosePricing": "اختر خطة إشتراك جديدة",
+    "onplan": "أنت تستخدم حاليًا خطة الاشتراك هذه."
 }
