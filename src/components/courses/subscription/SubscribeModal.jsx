@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import LoginOrRegiester from "../subscription/auth/LoginOrRegiester";
-import SelectPayMethod from "../subscription/subscription-steps/SelectPayMethod";
+import SelectPayMethod from "../../subscriptions/upgrade/SelectPayMethod";
 import CompleteProcess from "../subscription/subscription-steps/CompleteProcess";
 
 const SubscribeModal = ({

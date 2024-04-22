@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPayMethod";
+import SelectPayMethod from "./upgrade/SelectPayMethod";
 import useUserLocation from "../../hooks/useUserLocation";
-import CompleteProcess from "./CompleteProcess";
 import ChoosePricingPlans from "./upgrade/ChoosePricingPlans";
+import CompleteProcess from "./CompleteProcess";
 
 const UpgradeModal = ({
   showModal,
@@ -26,6 +26,7 @@ const UpgradeModal = ({
       <ChoosePricingPlans
         formData={formData}
         courseObj={courseObj}
+        courseLoading={courseLoading}
         setStepName={setStepName}
         setFormData={setFormData}
       />

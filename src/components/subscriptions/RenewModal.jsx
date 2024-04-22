@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPayMethod";
+import SelectPayMethod from "./upgrade/SelectPayMethod";
 import useUserLocation from "../../hooks/useUserLocation";
 import CompleteProcess from "./CompleteProcess";
 

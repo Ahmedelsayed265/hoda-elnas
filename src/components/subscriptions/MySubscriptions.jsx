@@ -42,8 +42,24 @@ const MySubscriptions = () => {
     inactive_student_id: [],
     recipt: null,
     amount: null,
-    paymentMethods: []
+    paymentMethods: [],
+    addons: [],
+    courseDuration: 1,
+    studentsNumber: 1,
+    plan: course?.types[0],
+    lessonsDuration: course?.duration[0]
   });
+
+  useEffect(() => {
+    if (course) {
+      setUpgradeOrderData((prevFormData) => ({
+        ...prevFormData,
+        paymentMethods: course?.payment_methods,
+        plan: course?.types[0],
+        lessonsDuration: course?.duration[0]
+      }));
+    }
+  }, [course]);
 
   // check if user is logged
   useEffect(() => {
