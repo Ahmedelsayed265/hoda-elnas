@@ -27,7 +27,7 @@ const CourseDashboard = () => {
   const lang = useSelector((state) => state.language.lang);
   const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [course, setCourse] = useState({});
+  const [sub, setSub] = useState();
   const { subscriptionId } = useParams();
   const menuRef = useRef(null);
 
@@ -49,21 +49,17 @@ const CourseDashboard = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [menuOpen]);
-
+  
   useEffect(() => {
-    const fetchGoals = async () => {
-      try {
-        const response = await axios.get(
-          `/members/List_student_subs/?id=${subscriptionId}`
-        );
-        if (response?.status === 200) {
-          setCourse(response?.data?.message[0]);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchGoals();
+    axios
+      .get(`/members/List_student_subs/?id=${subscriptionId}`)
+      .then((res) => {
+        console.log("Response:", res.data);
+        setSub(res?.data?.message[0]);
+      })
+      .catch((error) => {
+        console.error("Error fetching subscription data:", error);
+      });
   }, [subscriptionId, lang]);
 
   const toggleMenu = () => {
@@ -80,7 +76,7 @@ const CourseDashboard = () => {
                 {/* <div className="img">
                   <img src={`${BASE_URL}${course?.background}`} alt="user" />
                 </div> */}
-                {course?.course_name && <h6>{course?.course_name}</h6>}
+                <h6>{sub?.course_name}</h6>
               </div>
               <ul>
                 <li onClick={() => setMenuOpen(false)}>

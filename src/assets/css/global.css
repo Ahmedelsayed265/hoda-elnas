@@ -4101,4 +4101,12 @@ input::-webkit-inner-spin-button {
   border-radius: 12px;
   background: #81a63d;
   color: #fff;
+}
+
+.save_bttn {
+  width: 100%;
+  padding: 4px;
+  background: #31535a;
+  color: #fff;
+  border-radius: 8px;
 }/*# sourceMappingURL=global.css.map */

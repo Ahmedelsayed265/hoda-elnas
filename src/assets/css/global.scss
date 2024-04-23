@@ -3918,3 +3918,10 @@ input::-webkit-inner-spin-button {
   background: $secondary;
   color: $white;
 }
+.save_bttn{
+  width: 100%;
+  padding: 4px;
+  background: $main;
+  color: $white;
+  border-radius: 8px;
+}

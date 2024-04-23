@@ -309,5 +309,7 @@
     "selectPayMethod": "Select Payment Method",
     "pricingPlan": "Pricing Plan",
     "choosePricing": "Choose New Pricing Plan",
-    "onplan":"You are currently using this pricing plan."
+    "onplan": "You are currently using this pricing plan.",
+    "sendRequestToFindInstructor": "Send a request for us to provide you with a teacher at this time.",
+    "noInstructorFound": "No instructor found"
 }
