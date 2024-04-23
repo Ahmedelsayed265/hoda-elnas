@@ -9,9 +9,11 @@ import axios from "./../../../util/axios";
 import TotalPrice from "../../courses/subscription/TotalPrice";
 import studentImage from "../../../assets/images/student.svg";
 import DataLoader from "../../ui/DataLoader";
+import { toast } from "react-toastify";
 
 const ChoosePricingPlans = ({
   courseObj,
+  dataForCompare,
   formData,
   setFormData,
   setStepName,
@@ -65,8 +67,8 @@ const ChoosePricingPlans = ({
           plan?.duration === duration
       );
       setPricingPlan(plan);
-      let totalPrice;
 
+      let totalPrice;
       if (location === "EG") {
         totalPrice =
           plan?.saleprice_egp * formData?.studentsNumber +
@@ -84,6 +86,7 @@ const ChoosePricingPlans = ({
       }
       setFormData({
         ...formData,
+        plan_id: plan?.id,
         price: location === "EG" ? plan?.saleprice_egp : plan?.saleprice_usd,
         totalPrice: totalPrice >= 0 ? totalPrice : 0.0
       });
@@ -140,6 +143,20 @@ const ChoosePricingPlans = ({
         ...prev,
         active_student_id: selectedStudents.filter((id) => id !== studentId)
       }));
+    }
+  };
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (
+      dataForCompare?.addonLength === formData?.addons?.length &&
+      dataForCompare?.student_number === formData?.studentsNumber && // F line
+      dataForCompare?.plan_id === formData?.plan_id
+    ) {
+      toast.error(t("onplan"));
+      return;
+    } else {
+      setStepName("payment_method");
     }
   };
 
@@ -250,10 +267,7 @@ const ChoosePricingPlans = ({
             totalPrice={formData?.totalPrice}
           />
           <div className="col-12 p-2 d-flex justify-content-end">
-            <button
-              className="w-25 save_btn"
-              onClick={() => setStepName("payment_method")}
-            >
+            <button className="w-25 save_btn" onClick={handleNext}>
               {t("next")}
             </button>
           </div>

@@ -10,6 +10,7 @@ const UpgradeModal = ({
   showModal,
   setShowModal,
   formData,
+  dataForCompare,
   setFormData,
   courseObj,
   subStudents,
@@ -27,6 +28,7 @@ const UpgradeModal = ({
       <ChoosePricingPlans
         formData={formData}
         setFormData={setFormData}
+        dataForCompare={dataForCompare}
         courseObj={courseObj}
         courseLoading={courseLoading}
         subStudents={subStudents}

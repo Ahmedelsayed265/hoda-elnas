@@ -50,14 +50,15 @@ const CompleteProcess = ({
         toast.error(t("uploadTransferPhoto"));
         return;
       }
+      const addonIds = formData?.addons.map((addon) => addon.id);
       // pay load
       const dataToSend = {
         recipt: reciept,
         plan_id: formData?.plan_id,
         subscription_id: formData?.subscription_id,
         student_number: formData?.studentsNumber,
-        inactive_student_id: [],
-        addons: formData?.addons,
+        inactive_student_id: formData?.active_student_id,
+        addons: addonIds,
         amount: formData?.totalPrice,
         coupon: formData?.copun_name
       };
@@ -70,6 +71,7 @@ const CompleteProcess = ({
         headers: headers,
         data: dataToSend
       };
+      console.log(dataToSend);
       const response = await axios.request(
         "/members/create_renew_order/upgrade/",
         reqOptions

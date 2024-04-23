@@ -29,6 +29,12 @@ const MySubscriptions = () => {
   const [course, setCourse] = useState(null);
   const [subStudents, setSubStudents] = useState([]);
 
+  const [dataForCompare, setDataForCompare] = useState({
+    plan_id: null,
+    student_number: null,
+    addonLength: null
+  });
+
   const [orderData, setOrderData] = useState({
     subscription_id: null,
     recipt: null,
@@ -56,11 +62,18 @@ const MySubscriptions = () => {
       let sub = mySubscriptions.find((sub) => sub.id === +subscriptionId);
       setUpgradeOrderData((prev) => ({
         ...prev,
+        subscription_id: sub?.id,
         studentsNumber: sub?.student_number,
         plan: sub?.plan_type,
         courseDuration: sub?.cpw,
         addons: sub?.addons,
         lessonsDuration: parseFloat(sub?.duration).toFixed(1)
+      }));
+      setDataForCompare((prev) => ({
+        ...prev,
+        plan_id: sub?.plan_id,
+        student_number: sub?.student_number,
+        addonLength: sub?.addons.length
       }));
       setSubStudents(sub?.enrolled_students);
     }
@@ -252,6 +265,7 @@ const MySubscriptions = () => {
         setShowModal={setShowRenewModal}
       />
       <UpgradeModal
+        dataForCompare={dataForCompare}
         subStudents={subStudents}
         formData={upgradeOrderData}
         courseLoading={courseLoading}
