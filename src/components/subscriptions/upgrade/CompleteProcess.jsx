@@ -106,7 +106,7 @@ const CompleteProcess = ({
         },
         metadata: { custom: `${orderId}` },
         language: lang,
-        merchantReferenceId: "RenewClass",
+        merchantReferenceId: "UpgradeClass",
         order: { integrationType: "HPP" },
         paymentOperation: "Pay"
       };
