@@ -1762,7 +1762,7 @@ body main .course_dashboard aside .user_img .img img {
 body main .course_dashboard aside .user_img h6 {
   color: #31535a;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
 }
 body main .course_dashboard aside ul {
   display: flex;
@@ -2152,7 +2152,110 @@ body main .my-students .header button:hover {
 }
 body main .goal_details {
   width: 100%;
+  height: 100%;
   padding: 20px 0;
+}
+body main .goal_details .inner_wrap {
+  margin: 0 auto;
+  width: min(100%, 500px);
+}
+body main .goal_details .inner_wrap .start {
+  width: 100%;
+  margin-bottom: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .goal_details .inner_wrap .start .circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .goal_details .inner_wrap .start .circle h5 {
+  margin: 0;
+  color: #81a63d;
+  font-size: 22px;
+}
+body main .goal_details .inner_wrap .goal_steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0px 12px;
+  margin-bottom: 64px;
+}
+body main .goal_details .inner_wrap .goal_steps li {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+body main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
+  justify-content: end;
+}
+body main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+  justify-content: start;
+}
+body main .goal_details .inner_wrap .goal_steps li.level .circle {
+  width: 70px;
+  height: 70px;
+  padding: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efcb96;
+}
+body main .goal_details .inner_wrap .goal_steps li.level .circle img {
+  width: 100%;
+}
+body main .goal_details .inner_wrap .goal_steps li span {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+}
+body main .goal_details .inner_wrap .goal_end {
+  position: relative;
+  width: 100%;
+  border-radius: 600px 600px 0 0;
+  height: 250px;
+  background: #81a63d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 420px) {
+  body main .goal_details .inner_wrap .goal_end {
+    height: 190px;
+  }
+}
+body main .goal_details .inner_wrap .goal_end h5 {
+  margin: 0;
+  transform: translateY(22px);
+  font-size: 54px;
+  color: #fff;
+}
+body main .goal_details .inner_wrap .goal_end::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  height: 180px;
+  background-size: cover;
+  width: 84px;
+  background-image: url("../images/ballon.png");
+}
+body main .goal_details .inner_wrap .goal_end::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 0;
+  height: 180px;
+  background-size: cover;
+  width: 84px;
+  background-image: url("../images/ballon.png");
 }
 body .subscribe {
   padding: 40px 0;
@@ -4109,4 +4212,30 @@ input::-webkit-inner-spin-button {
   background: #31535a;
   color: #fff;
   border-radius: 8px;
+}
+
+.complaints {
+  padding: 16px 0;
+}
+.complaints .title {
+  gap: 12px;
+}
+.complaints .title h2 {
+  color: #31535a;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+}
+.complaints button {
+  background: #81a63d;
+  width: 100%;
+  color: #fff;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 12px;
+}
+@media screen and (max-width: 576px) {
+  .complaints .form_group {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=global.css.map */

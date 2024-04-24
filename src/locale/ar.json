@@ -298,7 +298,12 @@
         "instructorChanged": "تم تغيير المعلم بنجاح",
         "instructorRate": "تقييم المعلم",
         "edit": "تعديل",
-        "studentUpdatedSuccessfully": "تم تحديث الطالب بنجاح"
+        "studentUpdatedSuccessfully": "تم تحديث الطالب بنجاح",
+        "complain": "الشكاوى والمقترحات",
+        "complainSubTitle": "من دواعي سرورنا استقبال شكاويكم ومقترحاتكم للارتقاء بخدماتنا.",
+        "end": "النهاية",
+        "start": "البداية",
+        "complainSent": "تم ارسال الشكوى بنجاح"
     },
     "day": "يوم",
     "hour": "الساعة",
@@ -320,5 +325,6 @@
     "choosePricing": "اختر خطة إشتراك جديدة",
     "onplan": "أنت تستخدم حاليًا خطة الاشتراك هذه.",
     "sendRequestToFindInstructor": "أرسل طلب لنوفر لك معلم في هذا الموعد",
-    "noInstructorFound": "لم يتم العثور على معلم في هذا الموعد"
+    "noInstructorFound": "لم يتم العثور على معلم في هذا الموعد",
+    "complainType": "نوع الشكوى"
 }

@@ -289,7 +289,12 @@
         "instructorChanged": "Instructor Changed Successfully",
         "instructorRate": "Instructor Rate",
         "edit": "Edit",
-        "studentUpdatedSuccessfully": "Student Updated Successfully"
+        "studentUpdatedSuccessfully": "Student Updated Successfully",
+        "complain": "Complaints and Suggestions",
+        "complainSubTitle": "We are pleased to receive your complaints and suggestions to improve our services.",
+        "end": "The End",
+        "start": "Start",
+        "complainSent": "Complain Sent Successfully"
     },
     "day": "Day",
     "hour": "Hour",
@@ -311,5 +316,6 @@
     "choosePricing": "Choose New Pricing Plan",
     "onplan": "You are currently using this pricing plan.",
     "sendRequestToFindInstructor": "Send a request for us to provide you with a teacher at this time.",
-    "noInstructorFound": "No instructor found"
+    "noInstructorFound": "No instructor found",
+    "complainType": "Complaint Type"
 }

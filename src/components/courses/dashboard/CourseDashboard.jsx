@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { NavLink, useParams, Routes, Route } from "react-router-dom";
 import tasks from "../../../assets/images/deliverables.svg";
 import home from "../../../assets/images/home.svg";
+import complainIcon from "../../../assets/images/complain.svg";
 import reports from "../../../assets/images/reports.svg";
 import goals from "../../../assets/images/goals.svg";
 import certificate from "../../../assets/images/certificate.svg";
@@ -21,6 +22,7 @@ import axios from "./../../../util/axios";
 import CertificateViewer from "./certificates/CertificateViewer";
 import GoalDetails from "./goals/GoalDetails";
 import { useSelector } from "react-redux";
+import Complaints from "./Complaints";
 // import { BASE_URL } from "../../../constants";
 
 const CourseDashboard = () => {
@@ -49,7 +51,7 @@ const CourseDashboard = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [menuOpen]);
-  
+
   useEffect(() => {
     axios
       .get(`/members/List_student_subs/?id=${subscriptionId}`)
@@ -124,6 +126,12 @@ const CourseDashboard = () => {
                     {t("dashboard.myAppointments")}
                   </NavLink>
                 </li>
+                <li onClick={() => setMenuOpen(false)}>
+                  <NavLink end to={`/dashboard/${subscriptionId}/complaints`}>
+                    <img src={complainIcon} alt="deliverables" />
+                    {t("dashboard.complain")}
+                  </NavLink>
+                </li>
               </ul>
             </aside>
           </div>
@@ -142,6 +150,7 @@ const CourseDashboard = () => {
                 <Route path="/goals/:goalId" element={<GoalDetails />} />
                 <Route path="/course-students" element={<CourseStudents />} />
                 <Route path="/certificates" element={<CertificatesPage />} />
+                <Route path="/complaints" element={<Complaints />} />
                 <Route
                   path="/certificates/:certificateId"
                   element={<CertificateViewer />}
