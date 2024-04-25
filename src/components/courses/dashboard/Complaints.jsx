@@ -30,23 +30,23 @@ const Complaints = () => {
         console.log(error);
       }
     };
+    getComplaintTypes();
+  }, []);
 
-    getComplaintTypes().then(() => {
-      const getEnrolledStudents = async () => {
-        try {
-          const response = await axios.get(
-            `/members/list_Student/?subscription_id=${subscriptionId}`
-          );
-          if (response?.status === 200 || response?.status === 201) {
-            setEnrolledStudents(response?.data?.message);
-          }
-        } catch (error) {
-          console.log(error);
+  useEffect(() => {
+    const getEnrolledStudents = async () => {
+      try {
+        const response = await axios.get(
+          `/members/list_Student/?subscription_id=${subscriptionId}`
+        );
+        if (response?.status === 200 || response?.status === 201) {
+          setEnrolledStudents(response?.data?.message);
         }
-      };
-
-      getEnrolledStudents();
-    });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getEnrolledStudents();
   }, [subscriptionId]);
 
   const handleSubmit = async (e) => {

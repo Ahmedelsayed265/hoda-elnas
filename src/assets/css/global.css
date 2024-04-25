@@ -1762,7 +1762,8 @@ body main .course_dashboard aside .user_img .img img {
 body main .course_dashboard aside .user_img h6 {
   color: #31535a;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
+  margin-bottom: 16px;
 }
 body main .course_dashboard aside ul {
   display: flex;
@@ -2161,16 +2162,16 @@ body main .goal_details .inner_wrap {
 }
 body main .goal_details .inner_wrap .start {
   width: 100%;
-  margin-bottom: 54px;
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 body main .goal_details .inner_wrap .start .circle {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  width: auto;
+  height: 60px;
+  border-radius: 12px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2183,19 +2184,42 @@ body main .goal_details .inner_wrap .start .circle h5 {
 body main .goal_details .inner_wrap .goal_steps {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  max-width: 350px;
+  margin: 0 auto;
+  gap: 80px;
   padding: 0px 12px;
-  margin-bottom: 64px;
+  margin-bottom: 80px;
 }
 body main .goal_details .inner_wrap .goal_steps li {
   align-items: center;
   gap: 8px;
   display: flex;
+  position: relative;
+}
+body main .goal_details .inner_wrap .goal_steps li::after {
+  width: 2px;
+  z-index: -1;
+  height: 220px;
+  content: "";
+  top: -6px;
+  left: 162px;
+  border: 2px dashed #31535a;
+  position: absolute;
+  transform: rotate(45deg);
 }
 body main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
   justify-content: end;
+  padding-left: 80px;
+  flex-direction: row-reverse;
+}
+body main .goal_details .inner_wrap .goal_steps li:nth-child(even) .content {
+  flex-direction: row-reverse;
+}
+body main .goal_details .inner_wrap .goal_steps li:nth-child(even)::after {
+  transform: rotate(-45deg);
 }
 body main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+  padding-right: 80px;
   justify-content: start;
 }
 body main .goal_details .inner_wrap .goal_steps li.level .circle {
@@ -2210,6 +2234,32 @@ body main .goal_details .inner_wrap .goal_steps li.level .circle {
 }
 body main .goal_details .inner_wrap .goal_steps li.level .circle img {
   width: 100%;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .circle {
+  min-width: 50px;
+  max-width: 50px;
+  height: 50px;
+  padding: 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #31535a;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .circle img {
+  width: 100%;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .content {
+  display: flex;
+  gap: 8px;
+  max-width: 200px;
+  align-items: center;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .content img {
+  height: 64px;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .content h6 {
+  margin: 0;
 }
 body main .goal_details .inner_wrap .goal_steps li span {
   color: #000000;
