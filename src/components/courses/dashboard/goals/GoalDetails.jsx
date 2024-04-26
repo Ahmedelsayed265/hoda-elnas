@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import levelIcon from "../../../../assets/images/level.svg";
 import lock from "../../../../assets/images/lock.svg";
 import step from "../../../../assets/images/step.png";
+import axios from "./../../../../util/axios";
+import { useParams } from "react-router-dom";
 const GoalDetails = () => {
+  const [levels, setLevels] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const { goalId } = useParams();
   const { t } = useTranslation();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `members/List_student_levels/?student_goal_id=${goalId}`
+        );
+        if (response.status === 200) {
+          setLevels(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [goalId]);
+
   return (
     <div className="goal_details">
       <div className="inner_wrap">

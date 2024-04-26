@@ -43,22 +43,6 @@ const ChoosePricingPlans = ({
   }, [courseObj?.slug, lang]);
 
   useEffect(() => {
-    const calculateTotalPrice = (studentsNumber, addons, planInterval) => {
-      let totalAddonPrice = addons.reduce((total, addon) => {
-        const addonPrice =
-          location === "EG" ? addon?.fees_egp : addon?.fees_usd;
-        return total + addonPrice * planInterval;
-      }, 0);
-
-      let basePrice =
-        location === "EG"
-          ? pricingPlan?.saleprice_egp
-          : pricingPlan?.saleprice_usd;
-
-      let totalPrice = studentsNumber * (basePrice + totalAddonPrice);
-
-      return totalPrice >= 0 ? totalPrice : 0.0;
-    };
     const findPricingPlan = (cpw, type, duration) => {
       const plan = pricingPlans?.find(
         (plan) =>
@@ -67,6 +51,7 @@ const ChoosePricingPlans = ({
           plan?.duration === duration
       );
       setPricingPlan(plan);
+      console.log(plan);
 
       let totalPrice;
       if (location === "EG") {
@@ -96,7 +81,25 @@ const ChoosePricingPlans = ({
       formData?.plan,
       formData?.lessonsDuration
     );
+    const calculateTotalPrice = (studentsNumber, addons, planInterval) => {
+      console.log(pricingPlan);
+      let totalAddonPrice = addons.reduce((total, addon) => {
+        const addonPrice =
+          location === "EG" ? addon?.fees_egp : addon?.fees_usd;
+        return total + addonPrice * planInterval;
+      }, 0);
+
+      let basePrice =
+        location === "EG"
+          ? pricingPlan?.saleprice_egp
+          : pricingPlan?.saleprice_usd;
+
+      let totalPrice = studentsNumber * (basePrice + totalAddonPrice);
+
+      return totalPrice >= 0 ? totalPrice : 0.0;
+    };
     if (formData?.addons?.length > 0) {
+      console.log(formData?.addons);
       setFormData((prevFormData) => ({
         ...prevFormData,
         totalPrice: calculateTotalPrice(

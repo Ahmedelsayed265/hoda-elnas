@@ -1737,7 +1737,7 @@ body main .course_dashboard aside {
   background: #f8f8f8;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 8px;
   overflow-y: scroll;
 }
 body main .course_dashboard aside .user_img {
@@ -1763,7 +1763,7 @@ body main .course_dashboard aside .user_img h6 {
   color: #31535a;
   font-weight: 600;
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 body main .course_dashboard aside ul {
   display: flex;

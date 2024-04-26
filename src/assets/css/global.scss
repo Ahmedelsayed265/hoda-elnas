@@ -1677,7 +1677,7 @@ body {
         background: $inputBG;
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 8px;
         overflow-y: scroll;
         .user_img {
           flex-direction: column;
@@ -1700,7 +1700,7 @@ body {
             color: $main;
             font-weight: 600;
             font-size: 16px;
-            margin-bottom: 16px;
+            margin-bottom: 0;
           }
         }
         ul {

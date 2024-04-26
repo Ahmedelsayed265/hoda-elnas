@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import OrderCourseCard from "./cards/OrderCourseCard";
 import AvailableCourse from "./cards/AvailableCourse";
-import Loader from "./../../layout/Loader";
 import inReview from "../../../assets/images/inReview.svg";
 import availableCoursesIcon from "../../../assets/images/availableCourses.svg";
+import DataLoader from "../../ui/DataLoader";
 
 const MyCourses = () => {
   const lang = useSelector((state) => state.language.lang);
@@ -60,7 +60,7 @@ const MyCourses = () => {
     <section className="my_courses">
       <div className="container">
         {loading ? (
-          <Loader />
+          <DataLoader />
         ) : (
           <>
             {mySubscriptions?.length === 0 && orders?.length === 0 ? (

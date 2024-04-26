@@ -56,8 +56,8 @@ const StudentsGoals = () => {
         } else {
           const studentId = subscriptionStudents.find(
             (s) => s.name === forWhom
-          ).studentclass_id;
-          url = `/members/List_student_goal/?student_id=${studentId}`;
+          )?.studentclass_id;
+          url = `/members/List_student_goal/?studentclass_id=${studentId}`;
         }
         const response = await axios.get(url);
         if (response.status === 200) {
@@ -84,7 +84,7 @@ const StudentsGoals = () => {
                 <h5 className="forWhom">
                   {forWhom === t("dashboard.allStudents")
                     ? t("dashboard.allStudentGoals")
-                    : t("dashboard.studentAppointment") + " " + forWhom}
+                    : t("dashboard.studentGoal") + " " + forWhom}
                 </h5>
               </div>
               <div className="d-flex gap-2 buttons">
