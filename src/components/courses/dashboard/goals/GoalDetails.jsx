@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import levelIcon from "../../../../assets/images/level.svg";
 import lock from "../../../../assets/images/lock.svg";
 import check from "../../../../assets/images/check.svg";
-import stepIcon from "../../../../assets/images/step.png";
+// import stepIcon from "../../../../assets/images/step.png";
 import axios from "./../../../../util/axios";
 import { useParams } from "react-router-dom";
 import DataLoader from "./../../../ui/DataLoader";
@@ -104,7 +104,7 @@ const GoalDetails = () => {
                           </div>
                         )}
                       </div>
-                      <img src={stepIcon} alt="step" />
+                      {/* <img src={stepIcon} alt="step" /> */}
                     </div>
                   </li>
                 ))}

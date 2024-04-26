@@ -2200,9 +2200,9 @@ body main .goal_details .inner_wrap .goal_steps li {
 body main .goal_details .inner_wrap .goal_steps li::after {
   width: 2px;
   z-index: -1;
-  height: 220px;
+  height: 200px;
   content: "";
-  top: -6px;
+  top: 0;
   left: 162px;
   border: 2px dashed #31535a;
   position: absolute;
@@ -2240,9 +2240,6 @@ body main .goal_details .inner_wrap .goal_steps li.level .content {
   display: flex;
   flex-direction: column;
 }
-body main .goal_details .inner_wrap .goal_steps li.level .content span {
-  line-height: 24px;
-}
 body main .goal_details .inner_wrap .goal_steps li.step .circle {
   min-width: 50px;
   max-width: 50px;
@@ -2271,9 +2268,6 @@ body main .goal_details .inner_wrap .goal_steps li.step .content h6 {
   line-height: 24px;
   margin: 0;
   color: #000000 !important;
-}
-body main .goal_details .inner_wrap .goal_steps li.step .content span {
-  line-height: 24px;
 }
 body main .goal_details .inner_wrap .goal_steps li.completed .circle {
   background: #81a63d;

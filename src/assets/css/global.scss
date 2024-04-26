@@ -2099,9 +2099,9 @@ body {
             &::after {
               width: 2px;
               z-index: -1;
-              height: 220px;
+              height: 200px;
               content: "";
-              top: -6px;
+              top: 0;
               left: 162px;
               border: 2px dashed $main;
               position: absolute;
@@ -2137,9 +2137,6 @@ body {
               .content {
                 display: flex;
                 flex-direction: column;
-                span {
-                  line-height: 24px;
-                }
               }
             }
             &.step {
@@ -2168,9 +2165,6 @@ body {
                   line-height: 24px;
                   margin: 0;
                   color: $dark !important;
-                }
-                span {
-                  line-height: 24px;
                 }
               }
             }
