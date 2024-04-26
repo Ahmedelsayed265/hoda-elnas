@@ -2192,7 +2192,7 @@ body main .goal_details .inner_wrap .goal_steps {
 }
 body main .goal_details .inner_wrap .goal_steps li {
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   cursor: pointer;
   display: flex;
   position: relative;
@@ -2236,6 +2236,13 @@ body main .goal_details .inner_wrap .goal_steps li.level .circle {
 body main .goal_details .inner_wrap .goal_steps li.level .circle img {
   width: 100%;
 }
+body main .goal_details .inner_wrap .goal_steps li.level .content {
+  display: flex;
+  flex-direction: column;
+}
+body main .goal_details .inner_wrap .goal_steps li.level .content span {
+  line-height: 24px;
+}
 body main .goal_details .inner_wrap .goal_steps li.step .circle {
   min-width: 50px;
   max-width: 50px;
@@ -2263,6 +2270,13 @@ body main .goal_details .inner_wrap .goal_steps li.step .content h6 {
   font-size: 14px;
   line-height: 24px;
   margin: 0;
+  color: #000000 !important;
+}
+body main .goal_details .inner_wrap .goal_steps li.step .content span {
+  line-height: 24px;
+}
+body main .goal_details .inner_wrap .goal_steps li.completed .circle {
+  background: #81a63d;
 }
 body main .goal_details .inner_wrap .goal_steps li span {
   color: #000000;
@@ -3047,6 +3061,9 @@ body.en .course_dashboard .open_menu {
 }
 .stars li.star {
   color: #ffd500;
+}
+.stars img {
+  height: 14px !important;
 }
 
 .loader {
@@ -4307,4 +4324,8 @@ input::-webkit-inner-spin-button {
 }
 .popup-modal ul.iconCheck li::before {
   content: "\f00c";
+}
+
+.completed {
+  color: #81a63d !important;
 }/*# sourceMappingURL=global.css.map */

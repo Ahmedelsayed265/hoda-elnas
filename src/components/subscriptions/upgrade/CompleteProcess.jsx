@@ -150,11 +150,10 @@ const CompleteProcess = ({
         service: "courses"
       });
       if (response?.status === 200 || response?.status === 201) {
-        setCoponData((prevCoponData) => ({
-          ...prevCoponData,
+        setCoponData({
           value: response?.data?.message?.value,
           discount_type: response?.data?.message?.discount_type
-        }));
+        });
         setFormData((prevFormData) => ({
           ...prevFormData,
           copun_type: "promo",
@@ -163,6 +162,7 @@ const CompleteProcess = ({
           discont_percent: response?.data?.message?.value
         }));
         toast.success(t("courseSubscribe.promoCodeApplied"));
+        setPromoCode("");
       } else {
         toast.error(response?.response?.data?.message);
       }

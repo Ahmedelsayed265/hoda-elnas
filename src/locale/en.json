@@ -294,7 +294,9 @@
         "complainSubTitle": "We are pleased to receive your complaints and suggestions to improve our services.",
         "end": "The End",
         "start": "Start",
-        "complainSent": "Complain Sent Successfully"
+        "complainSent": "Complain Sent Successfully",
+        "completed": "Completed",
+        "rate": "Rate"
     },
     "day": "Day",
     "hour": "Hour",

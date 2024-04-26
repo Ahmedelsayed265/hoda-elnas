@@ -155,13 +155,18 @@ const MySubscriptions = () => {
       const response = await axios.put(
         `/members/Cancel_Memebrship/${subscriptionId}/`
       );
-      if (response.status === 200) {
+      if (response?.status === 200) {
         setShowModal(false);
         toast.success(t("cancelSubSuccess"));
         setMySubscriptions(
           mySubscriptions.map((subscription) => {
             if (subscription.id === subscriptionId) {
-              return { ...subscription, status: response.data.object.status };
+              return {
+                ...subscription,
+                status: response?.data?.object?.status,
+                status_check: "cancelled",
+                status_color: response?.data?.object?.status_color
+              };
             }
             return subscription;
           })
