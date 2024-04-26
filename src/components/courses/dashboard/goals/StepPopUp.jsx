@@ -16,7 +16,7 @@ const StepPopUp = ({ showModal, setShowModal, target }) => {
       <Modal.Header closeButton>
         <Modal.Title>
           {target?.step_name}{" "}
-          {target?.step_status && (
+          {target?.step_status?.checked === true && (
             <span className="completed">( {t("dashboard.completed")} )</span>
           )}
         </Modal.Title>
@@ -27,7 +27,7 @@ const StepPopUp = ({ showModal, setShowModal, target }) => {
             <li key={index}> {des}</li>
           ))}
         </ul>
-        {target?.step_status && (
+        {target?.step_status?.checked === true && (
           <div className="d-flex gap-2 align-items-center">
             <span className="completed">{t("dashboard.rate")}: </span>
             <StarsList rate={target?.step_status?.grade} />

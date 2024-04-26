@@ -73,7 +73,7 @@ const GoalDetails = () => {
                   </div>
                   <div className="content">
                     <span>{level?.level_name}</span>
-                    {level?.level_status && (
+                    {level?.level_status?.checked === true && (
                       <div className="d-flex gap-2 align-items-center">
                         <span className="completed">
                           {t("dashboard.completed")}
@@ -85,17 +85,22 @@ const GoalDetails = () => {
                 </li>
                 {level?.steps?.map((step) => (
                   <li
-                    className={`step ${step?.step_status ? "completed" : ""}`}
+                    className={`step ${
+                      step?.step_status?.checked === true ? "completed" : ""
+                    }`}
                     key={step?.step_id}
                     onClick={() => handleShowStepPopUp(step)}
                   >
                     <div className="circle">
-                      <img src={step?.step_status ? check : lock} alt="lock" />
+                      <img
+                        src={step?.step_status?.checked === true ? check : lock}
+                        alt="lock"
+                      />
                     </div>
                     <div className="content">
                       <div className="d-flex flex-column">
                         <h6>{step?.step_name}</h6>
-                        {step?.step_status && (
+                        {step?.step_status?.checked === true && (
                           <div className="d-flex gap-2 align-items-center">
                             <span className="completed">
                               {t("dashboard.completed")}
