@@ -159,7 +159,7 @@ const AppointmentsModal = ({
         });
       } else {
         setShowModal(false);
-        toast.error(t("dashboard.enrollmentFailed"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

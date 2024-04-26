@@ -79,7 +79,7 @@ const CompleteProcess = ({
           navigate("/my-courses");
         }
       } else {
-        toast.error("Something went wrong");
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

@@ -165,7 +165,7 @@ const AssignmentDetails = () => {
         navigate(`/dashboard/${subscriptionId}/assignments`);
         toast.success(t("dashboard.answerSentSuccessfully"));
       } else {
-        toast.error(t("dashboard.somethingWentWrong"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

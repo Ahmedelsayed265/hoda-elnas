@@ -45,6 +45,8 @@ const RegisterFrom = ({ setStepName }) => {
         });
         dispatch(setLogged(true));
         setStepName("payment_method");
+      } else {
+        toast.error(res?.response?.data?.message);
       }
     } catch (error) {
       toast.error(t("auth.someThingWentWrong"));

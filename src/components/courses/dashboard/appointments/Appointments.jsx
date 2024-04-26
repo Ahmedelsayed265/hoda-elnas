@@ -100,7 +100,7 @@ const Appointments = () => {
         appointments.map((a) => (a.id === id ? res?.data?.object : a))
       );
     } else {
-      toast.error(t("auth.someThingWentWrong"));
+      toast.error(res?.response?.data?.message);
     }
   };
 

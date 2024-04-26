@@ -68,7 +68,7 @@ const EditAppointmentModal = ({
           )
         );
       } else {
-        toast.error(t("dashboard.editAppointmentFailed"));
+        toast.error(res?.response?.data?.message);
       }
     } catch (error) {
       toast.error(t("auth.someThingWentWrong"));

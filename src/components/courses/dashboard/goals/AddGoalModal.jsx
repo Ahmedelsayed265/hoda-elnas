@@ -77,7 +77,7 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
         toast.success(t("dashboard.goalAdded"));
         setShowModal(false);
       } else {
-        toast.error(t("auth.someThingWentWrong"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

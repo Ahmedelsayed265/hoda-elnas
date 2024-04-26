@@ -64,7 +64,7 @@ const Complaints = () => {
         cForm.current.reset();
         toast.success(t("dashboard.complainSent"));
       } else {
-        toast.error(t("auth.someThingWentWrong"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

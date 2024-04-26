@@ -158,7 +158,7 @@ const CompleteProcess = ({
         }));
         toast.success(t("courseSubscribe.promoCodeApplied"));
       } else {
-        toast.error(t("courseSubscribe.invalidPromoCode"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

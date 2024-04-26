@@ -49,6 +49,11 @@ const Register = () => {
           navigate("/");
           toast.success(t("auth.accountCreatedSuccessfully"));
         }
+        else{
+          toast.error(loginRes?.response?.data?.message);
+        }
+      } else {
+        toast.error(res?.response?.data?.message);
       }
     } catch (error) {
       toast.error(t("auth.someThingWentWrong"));

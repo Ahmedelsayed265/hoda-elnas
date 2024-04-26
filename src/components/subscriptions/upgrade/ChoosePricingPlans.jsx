@@ -153,7 +153,7 @@ const ChoosePricingPlans = ({
     e.preventDefault();
     if (
       dataForCompare?.addonLength === formData?.addons?.length &&
-      dataForCompare?.student_number === formData?.studentsNumber && // F line
+      dataForCompare?.student_number === formData?.studentsNumber && 
       dataForCompare?.plan_id === formData?.plan_id
     ) {
       toast.error(t("onplan"));

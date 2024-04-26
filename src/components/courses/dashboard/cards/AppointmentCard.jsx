@@ -25,7 +25,7 @@ const AppointmentCard = ({ appointment }) => {
         window.open(meetingLink, "_blank");
       }
     } else {
-      toast.error(t("dashboard.noAvailableLessons"));
+      toast.error(res?.response?.data?.message);
     }
   };
 

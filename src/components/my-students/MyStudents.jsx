@@ -77,7 +77,7 @@ const MyStudents = () => {
           notes: ""
         });
       } else {
-        toast.error(t("dashboard.thisStudentAlreadyExist"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -147,7 +147,7 @@ const MyStudents = () => {
           })
         );
       } else {
-        toast.error(t("auth.someThingWentWrong"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);

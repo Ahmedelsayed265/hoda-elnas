@@ -84,7 +84,7 @@ const CourseStudents = () => {
         setStudentId(response?.data?.object[0]?.id);
         setAllStudents((prev) => [...prev, response?.data?.object[0]]);
       } else {
-        toast.error(t("dashboard.thisStudentAlreadyExist"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -115,7 +115,7 @@ const CourseStudents = () => {
       );
       toast.success(t("dashboard.removedSuccessfully"));
     } else {
-      toast.error(t("auth.someThingWentWrong"));
+      toast.error(response?.response?.data?.message);
     }
   };
 

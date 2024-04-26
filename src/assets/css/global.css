@@ -2193,6 +2193,7 @@ body main .goal_details .inner_wrap .goal_steps {
 body main .goal_details .inner_wrap .goal_steps li {
   align-items: center;
   gap: 8px;
+  cursor: pointer;
   display: flex;
   position: relative;
 }
@@ -2259,6 +2260,8 @@ body main .goal_details .inner_wrap .goal_steps li.step .content img {
   height: 64px;
 }
 body main .goal_details .inner_wrap .goal_steps li.step .content h6 {
+  font-size: 14px;
+  line-height: 24px;
   margin: 0;
 }
 body main .goal_details .inner_wrap .goal_steps li span {
@@ -4288,4 +4291,20 @@ input::-webkit-inner-spin-button {
   .complaints .form_group {
     flex-direction: column;
   }
+}
+
+.popup-modal ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  color: #777777;
+  line-height: 28px;
+}
+.popup-modal ul li::before {
+  content: "\f648";
+  font-family: "Font Awesome 6 pro";
+  color: #81a63d;
+}
+.popup-modal ul.iconCheck li::before {
+  content: "\f00c";
 }/*# sourceMappingURL=global.css.map */

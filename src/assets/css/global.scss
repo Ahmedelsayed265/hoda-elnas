@@ -2093,6 +2093,7 @@ body {
           li {
             align-items: center;
             gap: 8px;
+            cursor: pointer;
             display: flex;
             position: relative;
             &::after {
@@ -2154,6 +2155,8 @@ body {
                   height: 64px;
                 }
                 h6 {
+                  font-size: 14px;
+                  line-height: 24px;
                   margin: 0;
                 }
               }
@@ -4090,6 +4093,27 @@ input::-webkit-inner-spin-button {
   .form_group {
     @media screen and (max-width: 576px) {
       flex-direction: column;
+    }
+  }
+}
+.popup-modal {
+  ul {
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      color: $gray;
+      line-height: 28px;
+      &::before {
+        content: "\f648";
+        font-family: "Font Awesome 6 pro";
+        color: $secondary;
+      }
+    }
+    &.iconCheck {
+      li::before {
+        content: "\f00c";
+      }
     }
   }
 }

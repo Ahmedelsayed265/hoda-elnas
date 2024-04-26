@@ -205,7 +205,7 @@ const SubscribeForm = ({
         }
         toast.success(t("courseSubscribe.promoCodeApplied"));
       } else {
-        toast.error(t("courseSubscribe.invalidPromoCode"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);
@@ -253,7 +253,7 @@ const SubscribeForm = ({
         }
         toast.success(t("courseSubscribe.promoCodeApplied"));
       } else {
-        toast.error(t("courseSubscribe.invalidPromoCode"));
+        toast.error(response?.response?.data?.message);
       }
     } catch (error) {
       console.log(error);
