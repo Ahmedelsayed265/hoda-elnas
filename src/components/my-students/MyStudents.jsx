@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 import AddStudentModal from "../courses/dashboard/students/AddStudentModal";
 import MyStudentCard from "./MyStudentCard";
 import DataLoader from "../ui/DataLoader";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 // import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 
 const MyStudents = () => {
@@ -17,6 +19,9 @@ const MyStudents = () => {
   const [mode, setMode] = useState("add");
   const [loading, setLoading] = useState(false);
   const [studentId, setStudentId] = useState(null);
+  const navigate = useNavigate();
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
   // const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [formData, setFormData] = useState({
     profile: "",
@@ -26,6 +31,12 @@ const MyStudents = () => {
     sex: "",
     notes: ""
   });
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (mode === "add") {
@@ -157,7 +168,7 @@ const MyStudents = () => {
     }
   };
 
-  return (
+  return isAuthenticated ? (
     <section className="my-students">
       <div className="container">
         <div className="row m-0">
@@ -211,7 +222,7 @@ const MyStudents = () => {
         text={t("areYouSureYouWantDleteStudent")}
       /> */}
     </section>
-  );
+  ) : null;
 };
 
 export default MyStudents;

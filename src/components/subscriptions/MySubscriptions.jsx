@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import subsIcon from "../../assets/images/subs.svg";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 import UpgradeModal from "./UpgradeModal";
+import { useCookies } from "react-cookie";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
@@ -28,6 +29,8 @@ const MySubscriptions = () => {
   const [courseLoading, setCourseLoading] = useState(false);
   const [course, setCourse] = useState(null);
   const [subStudents, setSubStudents] = useState([]);
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
 
   const [dataForCompare, setDataForCompare] = useState({
     plan_id: null,
@@ -56,6 +59,12 @@ const MySubscriptions = () => {
     plan: course?.types[0],
     lessonsDuration: course?.duration[0]
   });
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (subscriptionId) {
@@ -222,7 +231,7 @@ const MySubscriptions = () => {
     }
   };
 
-  return (
+  return isAuthenticated ? (
     <section className="my-subscriptions">
       <div className="container">
         <div className="row m-0">
@@ -280,7 +289,7 @@ const MySubscriptions = () => {
         setShowModal={setShowUpgradeModal}
       />
     </section>
-  );
+  ) : null;
 };
 
 export default MySubscriptions;

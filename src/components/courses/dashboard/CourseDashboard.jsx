@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 import CourseStudents from "./students/CourseStudents";
 import Appointments from "./appointments/Appointments";
 import Reports from "./reports/Reports";
@@ -17,6 +18,9 @@ import SideBar from "./SideBar";
 const CourseDashboard = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
 
   useEffect(() => {
     let body = document.querySelector("body");
@@ -41,7 +45,13 @@ const CourseDashboard = () => {
     setMenuOpen(!menuOpen);
   };
 
-  return (
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
+
+  return isAuthenticated ? (
     <section className="course_dashboard">
       <div className="container">
         <div className="row m-0">
@@ -82,7 +92,7 @@ const CourseDashboard = () => {
         </div>
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default CourseDashboard;
