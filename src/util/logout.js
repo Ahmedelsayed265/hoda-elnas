@@ -5,18 +5,27 @@ import { useNavigate } from "react-router-dom";
 import { logout, setLogged, setUser } from "../redux/slices/authedUser";
 import axios from "../util/axios";
 
-export default function Logout() {
+const Logout = () => {
   const [, , deleteCookie] = useCookies();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    deleteCookie("refreshToken");
-    delete axios.defaults.headers.common["Authorization"];
-    dispatch(setUser({}));
-    dispatch(setLogged(false));
-    navigate("/");
-    dispatch(logout());
+    const performLogout = async () => {
+      try {
+        deleteCookie("refreshToken");
+        delete axios.defaults.headers.common["Authorization"];
+        dispatch(setUser({}));
+        dispatch(setLogged(false));
+        dispatch(logout());
+        navigate("/");
+      } catch (error) {
+        console.error("Error during logout:", error);
+      }
+    };
+    performLogout();
   }, [deleteCookie, navigate, dispatch]);
   return null;
-}
+};
+
+export default Logout;
