@@ -6,9 +6,16 @@ const ChooseStudent = ({
   subscriptionStudents,
   formData,
   setFormData,
+  reasons,
   setStep
 }) => {
   const { t } = useTranslation();
+  const handleNext = () => {
+    if (formData.student_id && formData.changing_reason_id) {
+      setStep(formData.oldAppointments ? 4 : 2);
+    }
+  };
+
   return (
     <div className="form-ui">
       <div className="row m-0">
@@ -50,11 +57,23 @@ const ChooseStudent = ({
         <div className="col-12 p-2">
           <div className="input-field">
             <label htmlFor="change_reason">{t("dashboard.changeReason")}</label>
-            <select name="change_reason" id="change_reason">
+            <select
+              name="change_reason"
+              id="change_reason"
+              value={formData.changing_reason_id}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  changing_reason_id: Number(e.target.value)
+                })
+              }
+            >
               <option value="">{t("dashboard.choose")}</option>
-              <option value="reason1">{t("dashboard.reason1")}</option>
-              <option value="reason2">{t("dashboard.reason2")}</option>
-              <option value="reason3">{t("dashboard.reason3")}</option>
+              {reasons.map((reason) => (
+                <option key={reason.id} value={reason.id}>
+                  {reason.reason}
+                </option>
+              ))}
             </select>
           </div>
         </div>
@@ -97,10 +116,7 @@ const ChooseStudent = ({
           </div>
         </div>
         <div className="col-12 p-2 pt-3 d-flex justify-content-end">
-          <button
-            className="continue"
-            onClick={() => setStep(formData.oldAppointments ? 4 : 2)}
-          >
+          <button className="continue" onClick={(e) => handleNext(e)}>
             {t("dashboard.next")}
           </button>
         </div>

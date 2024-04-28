@@ -21,6 +21,7 @@ const ChangeInstructorModal = ({
   const [timeOptions, setTimeOptions] = useState("specific");
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [reasons, setReasons] = useState([]);
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const initialSpesificTiming = {
@@ -35,7 +36,7 @@ const ChangeInstructorModal = ({
   const [formData, setFormData] = useState({
     student_id: null,
     oldAppointments: true,
-    changing_reason_id: 1,
+    changing_reason_id: "",
     subscription_id: +subscriptionId,
     instructor_id: null
   });
@@ -54,6 +55,23 @@ const ChangeInstructorModal = ({
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeOptions, cpw]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `/instructor/List_instructor_changing_reason/`
+        );
+        if (response.status === 200) {
+          setReasons(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleChangeInstructor = async (e) => {
     e.preventDefault();
@@ -140,6 +158,7 @@ const ChangeInstructorModal = ({
             <ChooseStudent
               subscriptionStudents={subscriptionStudents}
               setStep={setStep}
+              reasons={reasons}
               formData={formData}
               setFormData={setFormData}
             />
