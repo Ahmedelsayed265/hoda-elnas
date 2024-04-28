@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -22,6 +22,21 @@ const CompleteProcess = ({
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
   const lang = useSelector((state) => state.language.lang);
+  const [dolarRate, setDolarRate] = useState(null);
+
+  useEffect(() => {
+    const getDolarRate = async () => {
+      try {
+        const response = await axios.get(`/finance/get_dollar_rate/`);
+        if (response?.status === 200) {
+          setDolarRate(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDolarRate();
+  }, []);
 
   const authorization =
     "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
@@ -90,7 +105,10 @@ const CompleteProcess = ({
   const handlePayment = async () => {
     try {
       const payLoad = {
-        amount: formData.totalPrice,
+        amount:
+          location === "EG"
+            ? formData.totalPrice
+            : formData.totalPrice * dolarRate,
         appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
         callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
         currency: "EGP",

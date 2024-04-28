@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "./../../util/axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useCookies } from "react-cookie";
 import RenewModal from "./RenewModal";
 import DataLoader from "../ui/DataLoader";
-import { useSelector } from "react-redux";
 import CourseSubCard from "./CourseSubCard";
-import { useNavigate } from "react-router-dom";
 import subsIcon from "../../assets/images/subs.svg";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 import UpgradeModal from "./UpgradeModal";
-import { useCookies } from "react-cookie";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();
@@ -276,6 +276,7 @@ const MySubscriptions = () => {
         courseLoading={courseLoading}
         setFormData={setOrderData}
         showModal={showRenewModal}
+        sub={mySubscriptions?.find((sub) => sub?.id === subscriptionId)}
         setShowModal={setShowRenewModal}
       />
       <UpgradeModal

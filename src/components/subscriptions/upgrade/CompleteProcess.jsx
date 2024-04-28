@@ -21,12 +21,26 @@ const CompleteProcess = ({
   const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
   const { t } = useTranslation();
-
+  const [dolarRate, setDolarRate] = useState(null);
   const [promoCode, setPromoCode] = useState("");
   const [coponData, setCoponData] = useState({
     value: null,
     discount_type: null
   });
+
+  useEffect(() => {
+    const getDolarRate = async () => {
+      try {
+        const response = await axios.get(`/finance/get_dollar_rate/`);
+        if (response?.status === 200) {
+          setDolarRate(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDolarRate();
+  }, []);
 
   let orderId;
   const navigate = useNavigate();
@@ -96,7 +110,10 @@ const CompleteProcess = ({
   const handlePayment = async () => {
     try {
       const payLoad = {
-        amount: formData.totalPrice,
+        amount:
+          location === "EG"
+            ? formData.totalPrice
+            : formData.totalPrice * dolarRate,
         appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
         callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
         currency: "EGP",

@@ -15,18 +15,34 @@ const CompleteProcess = ({
   course,
   location,
   method,
+  sub,
   setFormData
 }) => {
   const [loading, setLoading] = useState(false);
   const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
   const { t } = useTranslation();
+  const [dolarRate, setDolarRate] = useState(null);
 
   const [promoCode, setPromoCode] = useState("");
   const [coponData, setCoponData] = useState({
     value: null,
     discount_type: null
   });
+
+  useEffect(() => {
+    const getDolarRate = async () => {
+      try {
+        const response = await axios.get(`/finance/get_dollar_rate/`);
+        if (response?.status === 200) {
+          setDolarRate(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDolarRate();
+  }, []);
 
   let orderId;
   const navigate = useNavigate();
@@ -90,7 +106,10 @@ const CompleteProcess = ({
   const handlePayment = async () => {
     try {
       const payLoad = {
-        amount: formData.totalPrice,
+        amount:
+          sub?.currency === "USD"
+            ? formData.totalPrice * dolarRate
+            : formData.totalPrice,
         appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
         callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
         currency: "EGP",
@@ -253,6 +272,7 @@ const CompleteProcess = ({
               validCopun={formData?.validCopun}
               location={location}
               formData={formData}
+              currency={sub?.currency}
               totalPrice={formData?.totalPrice}
             />
           </div>

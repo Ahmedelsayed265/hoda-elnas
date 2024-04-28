@@ -38,7 +38,7 @@ const AdditionalServices = ({
     <div className="input-filed">
       <h6>{t("courseSubscribe.additionalServices")}</h6>
       <ul>
-        {course?.addons.map((addon) => (
+        {course?.addons?.map((addon) => (
           <li key={addon?.name}>
             <div className="check">
               <input
@@ -46,6 +46,9 @@ const AdditionalServices = ({
                 className="checkbox"
                 id={addon?.name}
                 name={addon?.name}
+                checked={
+                  formData?.addons?.find((a) => a?.id === addon?.id) || false
+                }
                 onChange={(e) => handleCheckboxChange(e, addon)}
               />
               <label htmlFor={addon?.name}>{addon?.name}</label>

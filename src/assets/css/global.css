@@ -4304,6 +4304,9 @@ input::-webkit-inner-spin-button {
   }
 }
 
+.popup-modal {
+  padding: 0 24px 16px;
+}
 .popup-modal ul li {
   display: flex;
   align-items: flex-start;
@@ -4322,4 +4325,36 @@ input::-webkit-inner-spin-button {
 
 .completed {
   color: #81a63d !important;
+}
+
+input[type=checkbox] {
+  width: 16px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  cursor: pointer;
+}
+input[type=checkbox]::after {
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, -50%);
+  top: 50%;
+  content: "";
+  font-family: "FontAwesome";
+  width: 16px;
+  height: 16px;
+  border: 1px solid #aaaaaa;
+  border-radius: 2px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #31535a;
+}
+input[type=checkbox]:checked::after {
+  content: "\f00c";
+  background: #31535a;
+  color: #fff;
+  border-color: #31535a;
 }/*# sourceMappingURL=global.css.map */

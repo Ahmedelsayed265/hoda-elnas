@@ -82,7 +82,6 @@ const ChoosePricingPlans = ({
       formData?.lessonsDuration
     );
     const calculateTotalPrice = (studentsNumber, addons, planInterval) => {
-      console.log(pricingPlan);
       let totalAddonPrice = addons.reduce((total, addon) => {
         const addonPrice =
           location === "EG" ? addon?.fees_egp : addon?.fees_usd;
@@ -99,7 +98,6 @@ const ChoosePricingPlans = ({
       return totalPrice >= 0 ? totalPrice : 0.0;
     };
     if (formData?.addons?.length > 0) {
-      console.log(formData?.addons);
       setFormData((prevFormData) => ({
         ...prevFormData,
         totalPrice: calculateTotalPrice(
@@ -153,7 +151,7 @@ const ChoosePricingPlans = ({
     e.preventDefault();
     if (
       dataForCompare?.addonLength === formData?.addons?.length &&
-      dataForCompare?.student_number === formData?.studentsNumber && 
+      dataForCompare?.student_number === formData?.studentsNumber &&
       dataForCompare?.plan_id === formData?.plan_id
     ) {
       toast.error(t("onplan"));

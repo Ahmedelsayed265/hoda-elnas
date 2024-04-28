@@ -4110,6 +4110,7 @@ input::-webkit-inner-spin-button {
   }
 }
 .popup-modal {
+  padding: 0 24px 16px;
   ul {
     li {
       display: flex;
@@ -4132,4 +4133,31 @@ input::-webkit-inner-spin-button {
 }
 .completed {
   color: $secondary !important;
+}
+input[type="checkbox"] {
+  width: 16px;
+  appearance: none;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, -50%);
+    top: 50%;
+    content: "";
+    font-family: "FontAwesome";
+    width: 16px;
+    height: 16px;
+    border: 1px solid $inputHint;
+    border-radius: 2px;
+    font-size: 10px;
+    @include centerFlex();
+    color: $main;
+  }
+  &:checked::after {
+    content: "\f00c";
+    background: $main;
+    color: #fff;
+    border-color: $main;
+  }
 }

@@ -305,7 +305,9 @@
         "start": "البداية",
         "complainSent": "تم ارسال الشكوى بنجاح",
         "completed": "مكتمل",
-        "rate": "التقييم"
+        "rate": "التقييم",
+        "didYouFinishFromThisStep": "هل تم الانتهاء من هذا الخطوة؟",
+        "youDidn'tReachThisStep": "لم يتم الوصول الي هذا الخطوة"
     },
     "day": "يوم",
     "hour": "الساعة",

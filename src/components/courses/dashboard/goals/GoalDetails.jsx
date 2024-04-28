@@ -1,11 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import levelIcon from "../../../../assets/images/level.svg";
 import lock from "../../../../assets/images/lock.svg";
 import check from "../../../../assets/images/check.svg";
-// import stepIcon from "../../../../assets/images/step.png";
 import axios from "./../../../../util/axios";
-import { useParams } from "react-router-dom";
 import DataLoader from "./../../../ui/DataLoader";
 import PopUp from "./PopUp";
 import StepPopUp from "./StepPopUp";
@@ -15,8 +14,10 @@ const GoalDetails = () => {
   const [levels, setLevels] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showStepPopUp, setShowStepPopUp] = useState(false);
+  const [index, setIndex] = useState({});
   const [loading, setLoading] = useState(false);
   const [targetLevel, setTargetLevel] = useState({});
+  const [level, setLevel] = useState("");
   const [targetStep, setTargetStep] = useState({});
   const [goalName, setGoalName] = useState("");
   const { goalId } = useParams();
@@ -48,7 +49,9 @@ const GoalDetails = () => {
     setTargetLevel(target);
   };
 
-  const handleShowStepPopUp = (target) => {
+  const handleShowStepPopUp = (target, level, idx) => {
+    setLevel(level);
+    setIndex(idx);
     setShowStepPopUp(true);
     setTargetStep(target);
   };
@@ -83,13 +86,13 @@ const GoalDetails = () => {
                     )}
                   </div>
                 </li>
-                {level?.steps?.map((step) => (
+                {level?.steps?.map((step, index) => (
                   <li
                     className={`step ${
                       step?.step_status?.checked === true ? "completed" : ""
                     }`}
                     key={step?.step_id}
-                    onClick={() => handleShowStepPopUp(step)}
+                    onClick={() => handleShowStepPopUp(step, level, index)}
                   >
                     <div className="circle">
                       <img
@@ -109,7 +112,6 @@ const GoalDetails = () => {
                           </div>
                         )}
                       </div>
-                      {/* <img src={stepIcon} alt="step" /> */}
                     </div>
                   </li>
                 ))}
@@ -130,6 +132,10 @@ const GoalDetails = () => {
         showModal={showStepPopUp}
         setShowModal={setShowStepPopUp}
         target={targetStep}
+        level={level}
+        index={index}
+        setLevels={setLevels}
+        levels={levels}
       />
     </div>
   );

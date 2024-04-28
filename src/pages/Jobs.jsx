@@ -12,7 +12,7 @@ const Jobs = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("/hr/List_jobs/?Hiring_status=Hiring");
+        const res = await axios.get("/hr/List_jobs/");
         if (res.status === 200) {
           setJobs(res?.data?.message);
         } else {

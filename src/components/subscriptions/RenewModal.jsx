@@ -9,6 +9,7 @@ const RenewModal = ({
   showModal,
   setShowModal,
   formData,
+  sub,
   setFormData,
   courseLoading
 }) => {
@@ -37,6 +38,7 @@ const RenewModal = ({
         setStepName={setStepName}
         formData={formData}
         location={location}
+        sub={sub}
         setFormData={setFormData}
         course={course}
         method={method}

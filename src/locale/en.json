@@ -296,7 +296,9 @@
         "start": "Start",
         "complainSent": "Complain Sent Successfully",
         "completed": "Completed",
-        "rate": "Rate"
+        "rate": "Rate",
+        "didYouFinishFromThisStep": "Did you finish from this step?",
+        "youDidn'tReachThisStep": "You didn't reach this step Yet."
     },
     "day": "Day",
     "hour": "Hour",

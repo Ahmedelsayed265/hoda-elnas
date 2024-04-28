@@ -1,7 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-const TotalPrice = ({ validCopun, totalPrice, location, formData }) => {
+const TotalPrice = ({
+  validCopun,
+  totalPrice,
+  location,
+  formData,
+  currency
+}) => {
   const { t } = useTranslation();
   return (
     <div className="total">
@@ -13,12 +19,18 @@ const TotalPrice = ({ validCopun, totalPrice, location, formData }) => {
       )}
       <div className="price">
         <h3>{t("courseSubscribe.total")}:</h3>
-        <span>
-          {totalPrice}{" "}
-          {location === "EG"
-            ? t("courseSubscribe.egyptianPound")
-            : t("courseSubscribe.dollar")}
-        </span>
+        {currency ? (
+          <span>
+            {totalPrice} {currency}
+          </span>
+        ) : (
+          <span>
+            {totalPrice}{" "}
+            {location === "EG"
+              ? t("courseSubscribe.egyptianPound")
+              : t("courseSubscribe.dollar")}
+          </span>
+        )}
       </div>
     </div>
   );
