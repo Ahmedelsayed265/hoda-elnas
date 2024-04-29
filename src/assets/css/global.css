@@ -2900,6 +2900,7 @@ body .accordion-body p a {
 }
 body.en {
   direction: ltr;
+  overflow-x: hidden !important;
 }
 body.en header .drop_menu {
   padding: 8px 36px 8px 20px;
@@ -4431,4 +4432,33 @@ input[type=checkbox]:checked::after {
 .error {
   font-size: 14px;
   color: red;
+}
+
+.page_title {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #f8f8f8;
+  border-radius: 8px;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.page_title .back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #81a63d;
+  border-radius: 50%;
+}
+.page_title .back i {
+  font-size: 16px;
+  color: #fff;
+}
+.page_title h5 {
+  color: #31535a;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
 }/*# sourceMappingURL=global.css.map */

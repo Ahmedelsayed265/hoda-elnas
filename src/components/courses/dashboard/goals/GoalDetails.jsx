@@ -44,7 +44,7 @@ const GoalDetails = () => {
     };
 
     fetchData();
-  }, [goalId , lang]);
+  }, [goalId, lang]);
 
   const handleShowPopUp = (target) => {
     setShowPopUp(true);
@@ -60,12 +60,13 @@ const GoalDetails = () => {
 
   return (
     <div className="goal_details">
+      <div className="page_title">
+        <button className="back" onClick={() => window.history.back()}>
+          <i className="fa-solid fa-arrow-right-long"></i>
+        </button>
+        <h5>{goalName}</h5>
+      </div>
       <div className="inner_wrap">
-        <div className="start">
-          <div className="circle">
-            <h5>{goalName}</h5>
-          </div>
-        </div>
         {loading ? (
           <DataLoader />
         ) : (

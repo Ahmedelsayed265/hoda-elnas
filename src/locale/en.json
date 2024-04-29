@@ -73,6 +73,9 @@
     "sendRequestToFindInstructor": "Send a request for us to provide you with a teacher at this time.",
     "noInstructorFound": "No instructor found",
     "complainType": "Complaint Type",
+    "StudentReport": " Student Report",
+    "studentCertificate": "Student Certificate",
+    "inDate": "dated",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",

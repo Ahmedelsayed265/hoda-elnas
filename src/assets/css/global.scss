@@ -2772,6 +2772,7 @@ body {
   // ltr mode override
   &.en {
     direction: ltr;
+    overflow-x: hidden !important;
     header {
       .drop_menu {
         padding: 8px 36px 8px 20px;
@@ -2846,19 +2847,19 @@ body {
       .goal_details .inner_wrap .goal_steps li::after {
         transform: rotate(-45deg);
       }
-      .goal_details .inner_wrap .goal_steps li:nth-child(even){
+      .goal_details .inner_wrap .goal_steps li:nth-child(even) {
         &::after {
-        right: 160px;
-        transform: rotate(45deg);
-      }
-      @media screen and (max-width: 390px) {
-        padding-right: 50px;
-        &::after {
-          top: -10px;
-          left: 152px;
-          transform: rotate(40deg);
+          right: 160px;
+          transform: rotate(45deg);
         }
-      }
+        @media screen and (max-width: 390px) {
+          padding-right: 50px;
+          &::after {
+            top: -10px;
+            left: 152px;
+            transform: rotate(40deg);
+          }
+        }
       }
       .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
         padding-left: 80px;
@@ -4224,4 +4225,30 @@ input[type="checkbox"] {
 .error {
   font-size: 14px;
   color: red;
+}
+.page_title {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: $inputBG;
+  border-radius: 8px;
+  gap: 12px;
+  margin-bottom: 48px;
+  .back {
+    @include centerFlex();
+    width: 32px;
+    height: 32px;
+    background: $secondary;
+    border-radius: 50%;
+    i {
+      font-size: 16px;
+      color: $white;
+    }
+  }
+  h5 {
+    color: $main;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
 }
