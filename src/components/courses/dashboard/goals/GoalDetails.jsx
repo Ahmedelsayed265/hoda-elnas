@@ -9,8 +9,10 @@ import DataLoader from "./../../../ui/DataLoader";
 import PopUp from "./PopUp";
 import StepPopUp from "./StepPopUp";
 import StarsList from "../../../layout/StarsList";
+import { useSelector } from "react-redux";
 
 const GoalDetails = () => {
+  const { lang } = useSelector((state) => state.language);
   const [levels, setLevels] = useState([]);
   const [showPopUp, setShowPopUp] = useState(false);
   const [showStepPopUp, setShowStepPopUp] = useState(false);
@@ -42,7 +44,7 @@ const GoalDetails = () => {
     };
 
     fetchData();
-  }, [goalId]);
+  }, [goalId , lang]);
 
   const handleShowPopUp = (target) => {
     setShowPopUp(true);

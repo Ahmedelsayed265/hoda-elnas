@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import studentImage from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 
@@ -9,10 +9,19 @@ const ChooseStudent = ({
   reasons,
   setStep
 }) => {
+  const [isReasonFieldError, setIsReasonFieldError] = useState(false);
+  const [isStudentFieldError, setIsStudentFieldError] = useState(false);
   const { t } = useTranslation();
   const handleNext = () => {
     if (formData.student_id && formData.changing_reason_id) {
       setStep(formData.oldAppointments ? 4 : 2);
+    } else {
+      !formData.student_id
+        ? setIsStudentFieldError(true)
+        : setIsStudentFieldError(false);
+      !formData.changing_reason_id
+        ? setIsReasonFieldError(true)
+        : setIsReasonFieldError(false);
     }
   };
 
@@ -53,6 +62,9 @@ const ChooseStudent = ({
                 </div>
               ))}
           </div>
+          {isStudentFieldError && (
+            <span className="error">{t("error.chooseStudent")}</span>
+          )}
         </div>
         <div className="col-12 p-2">
           <div className="input-field">
@@ -75,6 +87,9 @@ const ChooseStudent = ({
                 </option>
               ))}
             </select>
+            {isReasonFieldError && (
+              <span className="error">{t("error.chooseReason")}</span>
+            )}
           </div>
         </div>
         <div className="col-12 p-2">

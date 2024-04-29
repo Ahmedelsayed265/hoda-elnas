@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useParams } from "react-router-dom";
 import tasks from "../../../assets/images/deliverables.svg";
@@ -9,32 +9,13 @@ import goals from "../../../assets/images/goals.svg";
 import certificate from "../../../assets/images/certificate.svg";
 import calender from "../../../assets/images/calnder.svg";
 import students from "../../../assets/images/students.svg";
-import axios from "./../../../util/axios";
-import { useSelector } from "react-redux";
 
 const SideBar = ({ menuOpen, setMenuOpen, menuRef }) => {
-  const lang = useSelector((state) => state.language.lang);
-  const [sub, setSub] = useState("");
   const { t } = useTranslation();
   const { subscriptionId } = useParams();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `/members/List_student_subs/?id=${subscriptionId}`
-        );
-        setSub(response?.data?.message[0]?.course_name);
-      } catch (error) {
-        console.log(error);
-      } finally {
-      }
-    };
 
-    fetchData();
-  }, [subscriptionId, lang]);
   return (
     <aside className={menuOpen ? "open" : ""} ref={menuRef}>
-      <div className="user_img">{sub && <h6>{sub}</h6>}</div>
       <ul>
         <li onClick={() => setMenuOpen(false)}>
           <NavLink end to={`/dashboard/${subscriptionId}`}>

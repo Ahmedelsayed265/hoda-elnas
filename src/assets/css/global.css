@@ -2202,14 +2202,13 @@ body main .goal_details .inner_wrap .goal_steps li::after {
   z-index: -1;
   height: 200px;
   content: "";
-  top: 0;
-  left: 162px;
+  top: -6px;
+  left: 158px;
   border: 2px dashed #31535a;
   position: absolute;
   transform: rotate(45deg);
 }
 body main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
-  justify-content: end;
   padding-left: 80px;
   flex-direction: row-reverse;
 }
@@ -2217,16 +2216,42 @@ body main .goal_details .inner_wrap .goal_steps li:nth-child(even) .content {
   flex-direction: row-reverse;
 }
 body main .goal_details .inner_wrap .goal_steps li:nth-child(even)::after {
+  top: -16px;
+  left: 160px;
   transform: rotate(-45deg);
+}
+@media screen and (max-width: 390px) {
+  body main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
+    padding-left: 50px;
+  }
+  body main .goal_details .inner_wrap .goal_steps li:nth-child(even)::after {
+    top: -16px;
+    left: 130px;
+  }
 }
 body main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
   padding-right: 80px;
   justify-content: start;
 }
+@media screen and (max-width: 390px) {
+  body main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+    padding-right: 84px;
+  }
+  body main .goal_details .inner_wrap .goal_steps li:nth-child(odd)::after {
+    top: -18px;
+    left: 144px;
+  }
+}
+@media screen and (max-width: 360px) {
+  body main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+    padding-right: 60px;
+  }
+}
 body main .goal_details .inner_wrap .goal_steps li.level .circle {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   padding: 16px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2249,6 +2274,7 @@ body main .goal_details .inner_wrap .goal_steps li.step .circle {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   background: #31535a;
 }
 body main .goal_details .inner_wrap .goal_steps li.step .circle img {
@@ -2934,6 +2960,49 @@ body.en main .what_we_offer table td.circled:before {
 body.en main .custom-card .label {
   left: initial;
   right: 8px;
+}
+body.en main .goal_details .inner_wrap .goal_steps li::after {
+  transform: rotate(-45deg);
+}
+body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even)::after {
+  right: 160px;
+  transform: rotate(45deg);
+}
+@media screen and (max-width: 390px) {
+  body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
+    padding-right: 50px;
+  }
+  body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even)::after {
+    top: -10px;
+    left: 152px;
+    transform: rotate(40deg);
+  }
+}
+body.en main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+  padding-left: 80px;
+  padding-right: 0;
+}
+@media screen and (max-width: 390px) {
+  body.en main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+    padding-left: 84px;
+  }
+  body.en main .goal_details .inner_wrap .goal_steps li:nth-child(odd)::after {
+    top: -10px;
+    left: 152px;
+    transform: rotate(-40deg);
+  }
+}
+@media screen and (max-width: 360px) {
+  body.en main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+    padding-left: 60px;
+  }
+}
+body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
+  padding-right: 80px;
+  padding-left: 0;
+}
+body.en .goal_card .icon i {
+  transform: scale(-1);
 }
 body.en .accordion-button::after {
   margin-left: auto;
@@ -3681,7 +3750,7 @@ input::-webkit-inner-spin-button {
 .appointments-modal .instructor_availabilty .availabilty_row {
   display: flex;
   gap: 8px;
-  align-items: end;
+  align-items: flex-end;
 }
 .appointments-modal .instructor_availabilty .availabilty_row .day {
   display: flex;
@@ -4357,4 +4426,9 @@ input[type=checkbox]:checked::after {
   background: #31535a;
   color: #fff;
   border-color: #31535a;
+}
+
+.error {
+  font-size: 14px;
+  color: red;
 }/*# sourceMappingURL=global.css.map */

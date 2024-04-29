@@ -2075,6 +2075,7 @@ body {
             border-radius: 12px;
             padding: 0 16px;
             @include centerFlex();
+            // visibility: hidden;
             h5 {
               margin: 0;
               color: $secondary;
@@ -2101,32 +2102,51 @@ body {
               z-index: -1;
               height: 200px;
               content: "";
-              top: 0;
-              left: 162px;
+              top: -6px;
+              left: 158px;
               border: 2px dashed $main;
               position: absolute;
               transform: rotate(45deg);
             }
             &:nth-child(even) {
-              justify-content: end;
               padding-left: 80px;
               flex-direction: row-reverse;
               .content {
                 flex-direction: row-reverse;
               }
               &::after {
+                top: -16px;
+                left: 160px;
                 transform: rotate(-45deg);
+              }
+              @media screen and (max-width: 390px) {
+                padding-left: 50px;
+                &::after {
+                  top: -16px;
+                  left: 130px;
+                }
               }
             }
             &:nth-child(odd) {
               padding-right: 80px;
               justify-content: start;
+              @media screen and (max-width: 390px) {
+                padding-right: 84px;
+                &::after {
+                  top: -18px;
+                  left: 144px;
+                }
+              }
+              @media screen and (max-width: 360px) {
+                padding-right: 60px;
+              }
             }
             &.level {
               .circle {
-                width: 70px;
-                height: 70px;
+                width: 50px;
+                height: 50px;
                 padding: 16px;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
                 border-radius: 50%;
                 @include centerFlex();
                 background: #efcb96;
@@ -2147,6 +2167,7 @@ body {
                 padding: 12px;
                 border-radius: 50%;
                 @include centerFlex();
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
                 background: $main;
                 img {
                   width: 100%;
@@ -2822,6 +2843,45 @@ body {
         left: initial;
         right: 8px;
       }
+      .goal_details .inner_wrap .goal_steps li::after {
+        transform: rotate(-45deg);
+      }
+      .goal_details .inner_wrap .goal_steps li:nth-child(even){
+        &::after {
+        right: 160px;
+        transform: rotate(45deg);
+      }
+      @media screen and (max-width: 390px) {
+        padding-right: 50px;
+        &::after {
+          top: -10px;
+          left: 152px;
+          transform: rotate(40deg);
+        }
+      }
+      }
+      .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
+        padding-left: 80px;
+        padding-right: 0;
+        @media screen and (max-width: 390px) {
+          padding-left: 84px;
+          &::after {
+            top: -10px;
+            left: 152px;
+            transform: rotate(-40deg);
+          }
+        }
+        @media screen and (max-width: 360px) {
+          padding-left: 60px;
+        }
+      }
+      .goal_details .inner_wrap .goal_steps li:nth-child(even) {
+        padding-right: 80px;
+        padding-left: 0;
+      }
+    }
+    .goal_card .icon i {
+      transform: scale(-1);
     }
     .accordion-button::after {
       margin-left: auto;
@@ -3534,7 +3594,7 @@ input::-webkit-inner-spin-button {
     .availabilty_row {
       display: flex;
       gap: 8px;
-      align-items: end;
+      align-items: flex-end;
       .day {
         @include centerFlex();
         width: 120px;
@@ -4160,4 +4220,8 @@ input[type="checkbox"] {
     color: #fff;
     border-color: $main;
   }
+}
+.error {
+  font-size: 14px;
+  color: red;
 }
