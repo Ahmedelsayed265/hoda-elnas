@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import { useSelector } from "react-redux";
 
 const WhatWeOffer = () => {

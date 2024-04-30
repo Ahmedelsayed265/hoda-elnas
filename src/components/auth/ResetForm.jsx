@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import ResetByMail from "./ResetByMail";
 import ResetByPhone from "./ResetByPhone";
 

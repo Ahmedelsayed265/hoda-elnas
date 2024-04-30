@@ -90,7 +90,7 @@ const App = () => {
             path="/dashboard/:subscriptionId/*"
             element={<CourseDashboard />}
           />
-          <Route path="/acoustics" element={<Acoustics />} />
+          <Route path="/acoustics/*" element={<Acoustics />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/jobs" element={<Jobs />} />

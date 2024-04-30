@@ -329,5 +329,11 @@
     "error": {
         "chooseStudent": "Please Choose Student",
         "chooseReason": "Please Choose Reason"
+    },
+    "sounds": {
+        "departments": "Departments",
+        "playLists": "Play Lists",
+        "library": "My Library",
+        "myLists": "My Lists"
     }
 }

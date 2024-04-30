@@ -5,7 +5,7 @@ import { setLanguage } from "../../redux/slices/language";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import langIcon from "../../assets/images/lang.svg";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import avatar from "../../assets/images/avatar.jpg";
 import ProfileDropDown from "../ui/ProfileDropDown";
 import axios from "./../../util/axios";

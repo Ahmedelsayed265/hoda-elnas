@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo.svg";
 
 import EmailForm from "../components/auth/EmailForm";
 import PhoneForm from "../components/auth/PhoneForm";

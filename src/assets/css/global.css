@@ -770,7 +770,7 @@ body main .audio-card .img {
   width: 100%;
 }
 body main .audio-card .img img {
-  aspect-ratio: 2/2;
+  aspect-ratio: 3/2;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -779,15 +779,15 @@ body main .audio-card .content {
   padding: 16px;
 }
 body main .audio-card .content h4 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: #81a63d;
+  font-size: 16px;
+  font-weight: 600;
+  color: #31535a;
+  margin: 0;
 }
 body main .audio-card .content .play_btn {
-  min-width: 36px;
-  max-width: 36px;
-  height: 36px;
-  font-size: 14px;
+  min-width: 32px;
+  max-width: 32px;
+  height: 32px;
   cursor: pointer;
   background: #81a63d;
   color: #fff;
@@ -797,6 +797,7 @@ body main .audio-card .content .play_btn {
   border-radius: 50%;
 }
 body main .audio-card .content .play_btn i {
+  font-size: 12px;
   transform: translateX(1px);
 }
 body main .audio-card .content p {
@@ -1216,8 +1217,49 @@ body main .section_title a i {
   margin-right: 4px;
   transform: translateY(2px);
 }
+body main .acoustics {
+  padding: 40px 0;
+}
+body main .acoustics .swiper_pagination_title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body main .acoustics .swiper_pagination_title h5 {
+  color: #31535a;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+body main .acoustics .swiper_pagination_title h5 img {
+  height: 22px;
+}
+body main .acoustics .swiper_pagination_title .swiper_pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+body main .acoustics .swiper_pagination_title .swiper_pagination button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #31535a;
+  color: #31535a;
+}
+body main .acoustics .swiper_pagination_title .swiper_pagination button:hover {
+  background: #81a63d;
+  border-color: #81a63d;
+  color: #fff;
+}
 body main .swiper {
-  padding: 0 4px 60px;
+  padding: 4px 4px 60px;
 }
 body main .swiper .swiper-pagination-bullet {
   width: 8px;
@@ -1730,111 +1772,6 @@ body main .my_courses .noCourses a {
 body main .course_dashboard {
   padding: 16px 0;
 }
-body main .course_dashboard aside {
-  padding: 16px;
-  background: #fff;
-  border-radius: 12px;
-  background: #f8f8f8;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  overflow-y: scroll;
-}
-body main .course_dashboard aside .user_img {
-  flex-direction: column;
-  display: flex;
-  padding: 12px 8px;
-  gap: 12px;
-}
-body main .course_dashboard aside .user_img .img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #f2f2f2;
-}
-body main .course_dashboard aside .user_img .img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-body main .course_dashboard aside .user_img h6 {
-  color: #31535a;
-  font-weight: 600;
-  font-size: 16px;
-  margin-bottom: 0;
-}
-body main .course_dashboard aside ul {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-body main .course_dashboard aside ul li {
-  width: 100%;
-}
-body main .course_dashboard aside ul li a {
-  width: 100%;
-  color: #000000;
-  padding: 6px 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-radius: 8px;
-  transition: 0.3s ease-in-out;
-  font-size: 15px;
-  font-weight: 600;
-}
-body main .course_dashboard aside ul li a img {
-  height: 18px;
-}
-body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
-  background: #fff;
-}
-@media screen and (max-width: 768px) {
-  body main .course_dashboard aside {
-    top: 100px;
-    position: fixed;
-    right: -50%;
-    height: 100%;
-    width: 50%;
-    border-radius: 0;
-    z-index: 999;
-    padding: 16px 8px;
-    background: #fff;
-    transition: 0.3s ease-in-out;
-    border-left: 1px solid #f2f2f2;
-  }
-  body main .course_dashboard aside.open {
-    right: 0;
-  }
-  body main .course_dashboard aside ul li a:hover, body main .course_dashboard aside ul li a.active {
-    background: #f8f8f8;
-  }
-}
-body main .course_dashboard .open_menu {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  border: none;
-  background: none;
-  outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  display: none;
-  background: #81a63d;
-  color: #fff;
-}
-@media screen and (max-width: 768px) {
-  body main .course_dashboard .open_menu {
-    display: flex;
-  }
-}
 body main .course_dashboard .course_dashboard_router {
   padding-top: 0;
 }
@@ -2343,6 +2280,112 @@ body main .goal_details .inner_wrap .goal_end::before {
   background-size: cover;
   width: 84px;
   background-image: url("../images/ballon.png");
+}
+body main .sideMenu {
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: scroll;
+}
+body main .sideMenu .user_img {
+  flex-direction: column;
+  display: flex;
+  padding: 12px 8px;
+  gap: 12px;
+}
+body main .sideMenu .user_img .img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f2f2f2;
+}
+body main .sideMenu .user_img .img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .sideMenu .user_img h6 {
+  color: #31535a;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 0;
+}
+body main .sideMenu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+body main .sideMenu ul li {
+  width: 100%;
+}
+body main .sideMenu ul li a {
+  width: 100%;
+  color: #000000;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  font-size: 14px;
+  font-weight: 600;
+}
+body main .sideMenu ul li a img {
+  height: 18px;
+}
+body main .sideMenu ul li a:hover, body main .sideMenu ul li a.active {
+  background: #fff;
+}
+@media screen and (max-width: 768px) {
+  body main .sideMenu {
+    top: 100px;
+    position: fixed;
+    right: -50%;
+    height: 100%;
+    width: 50%;
+    border-radius: 0;
+    z-index: 999;
+    padding: 16px 8px;
+    background: #fff;
+    transition: 0.3s ease-in-out;
+    border-left: 1px solid #f2f2f2;
+  }
+  body main .sideMenu.open {
+    right: 0;
+  }
+  body main .sideMenu ul li a:hover, body main .sideMenu ul li a.active {
+    background: #f8f8f8;
+  }
+}
+body main .open_menu {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  z-index: 999999;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border: none;
+  background: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  background: #81a63d;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  body main .open_menu {
+    display: flex;
+  }
 }
 body .subscribe {
   padding: 40px 0;

@@ -15,7 +15,7 @@ const SideBar = ({ menuOpen, setMenuOpen, menuRef }) => {
   const { subscriptionId } = useParams();
 
   return (
-    <aside className={menuOpen ? "open" : ""} ref={menuRef}>
+    <aside className={`sideMenu ${menuOpen ? "open" : ""}`} ref={menuRef}>
       <ul>
         <li onClick={() => setMenuOpen(false)}>
           <NavLink end to={`/dashboard/${subscriptionId}`}>

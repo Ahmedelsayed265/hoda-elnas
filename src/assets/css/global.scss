@@ -759,7 +759,7 @@ body {
       .img {
         width: 100%;
         img {
-          aspect-ratio: 2 / 2;
+          aspect-ratio: 3 / 2;
           width: 100%;
           object-fit: cover;
         }
@@ -767,16 +767,17 @@ body {
       .content {
         padding: 16px;
         h4 {
-          font-size: 22px;
-          margin-bottom: 12px;
-          color: $secondary;
+          font-size: 16px;
+          font-weight: 600;
+          color: $main;
+          margin: 0;
         }
         .play_btn {
-          min-width: 36px;
-          max-width: 36px;
-          height: 36px;
-          font-size: 14px;
+          min-width: 32px;
+          max-width: 32px;
+          height: 32px;
           i {
+            font-size: 12px;
             transform: translateX(1px);
           }
           cursor: pointer;
@@ -1184,8 +1185,45 @@ body {
         }
       }
     }
+    .acoustics {
+      padding: 40px 0;
+      .swiper_pagination_title {
+        width: 100%;
+        @include space-between();
+        h5 {
+          color: $main;
+          font-size: 20px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          img {
+            height: 22px;
+          }
+        }
+        .swiper_pagination {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: .25s ease-in-out;
+            @include centerFlex();
+            border: 1px solid $main;
+            color: $main;
+            &:hover {
+              background: $secondary;
+              border-color: $secondary;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
     .swiper {
-      padding: 0 4px 60px;
+      padding: 4px 4px 60px;
       .swiper-pagination-bullet {
         width: 8px;
         height: 8px;
@@ -1670,106 +1708,6 @@ body {
     }
     .course_dashboard {
       padding: 16px 0;
-      aside {
-        padding: 16px;
-        background: $white;
-        border-radius: 12px;
-        background: $inputBG;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        overflow-y: scroll;
-        .user_img {
-          flex-direction: column;
-          display: flex;
-          padding: 12px 8px;
-          gap: 12px;
-          .img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid $inputStroke;
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-          }
-          h6 {
-            color: $main;
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 0;
-          }
-        }
-        ul {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          li {
-            width: 100%;
-            a {
-              width: 100%;
-              color: $dark;
-              padding: 6px 12px;
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              border-radius: 8px;
-              transition: $transation;
-              font-size: 15px;
-              font-weight: 600;
-              img {
-                height: 18px;
-              }
-              &:hover,
-              &.active {
-                background: $white;
-              }
-            }
-          }
-        }
-        @media screen and (max-width: 768px) {
-          top: 100px;
-          position: fixed;
-          right: -50%;
-          height: 100%;
-          width: 50%;
-          border-radius: 0;
-          z-index: 999;
-          padding: 16px 8px;
-          background: $white;
-          transition: $transation;
-          border-left: 1px solid $inputStroke;
-          &.open {
-            right: 0;
-          }
-          ul li a {
-            &:hover,
-            &.active {
-              background: $inputBG;
-            }
-          }
-        }
-      }
-      .open_menu {
-        position: fixed;
-        bottom: 24px;
-        left: 24px;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        box-shadow: $lightShadow;
-        @include clearInput();
-        @include centerFlex();
-        display: none;
-        background: $secondary;
-        color: $white;
-        @media screen and (max-width: 768px) {
-          display: flex;
-        }
-      }
       .course_dashboard_router {
         padding-top: 0;
         .header {
@@ -2236,6 +2174,107 @@ body {
             background-image: url('../images/ballon.png');
           }
         }
+      }
+    }
+    .sideMenu {
+      padding: 16px;
+      background: $white;
+      border-radius: 12px;
+      background: $inputBG;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: scroll;
+      .user_img {
+        flex-direction: column;
+        display: flex;
+        padding: 12px 8px;
+        gap: 12px;
+        .img {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 2px solid $inputStroke;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        h6 {
+          color: $main;
+          font-weight: 600;
+          font-size: 16px;
+          margin-bottom: 0;
+        }
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        li {
+          width: 100%;
+          a {
+            width: 100%;
+            color: $dark;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            transition: $transation;
+            font-size: 14px;
+            font-weight: 600;
+            img {
+              height: 18px;
+            }
+            &:hover,
+            &.active {
+              background: $white;
+            }
+          }
+        }
+      }
+      @media screen and (max-width: 768px) {
+        top: 100px;
+        position: fixed;
+        right: -50%;
+        height: 100%;
+        width: 50%;
+        border-radius: 0;
+        z-index: 999;
+        padding: 16px 8px;
+        background: $white;
+        transition: $transation;
+        border-left: 1px solid $inputStroke;
+        &.open {
+          right: 0;
+        }
+        ul li a {
+          &:hover,
+          &.active {
+            background: $inputBG;
+          }
+        }
+      }
+    }
+    .open_menu {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      z-index: 999999;
+      box-shadow: $lightShadow;
+      @include clearInput();
+      @include centerFlex();
+      display: none;
+      background: $secondary;
+      color: $white;
+      @media screen and (max-width: 768px) {
+        display: flex;
       }
     }
   }

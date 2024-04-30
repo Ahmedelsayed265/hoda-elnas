@@ -338,5 +338,11 @@
     "error": {
         "chooseStudent": "يجب أختيار الطالب",
         "chooseReason": "يجب أختيار سبب التغيير"
+    },
+    "sounds": {
+        "departments": "الاقسام",
+        "playLists": "قوائم التشغيل",
+        "library": "مكتبتى",
+        "myLists": "قوائمي"
     }
 }

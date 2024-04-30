@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import SubmitButton from "../ui/form-elements/SubmitButton";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import Otpcontainer from "./OtpContainer";
 
 import { toast } from "react-toastify";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SubmitButton from "../ui/form-elements/SubmitButton";
 import { useTranslation } from "react-i18next";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import PasswordField from "../ui/form-elements/PasswordField";
 import { toast } from "react-toastify";
 import axios from "./../../util/axios";
