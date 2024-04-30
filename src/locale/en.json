@@ -76,6 +76,7 @@
     "StudentReport": " Student Report",
     "studentCertificate": "Student Certificate",
     "inDate": "dated",
+    "findInstructor": "Your request has been sent and we will provide you with a teacher within the nearest possible time.",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",

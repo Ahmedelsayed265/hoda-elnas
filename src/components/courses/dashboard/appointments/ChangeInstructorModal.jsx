@@ -22,6 +22,7 @@ const ChangeInstructorModal = ({
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
   const [reasons, setReasons] = useState([]);
+  const [findInstructorLoading, setFindInstructorLoading] = useState(false);
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
   const cpw = subslist?.find((sub) => sub.id === +subscriptionId)?.cpw;
   const initialSpesificTiming = {
@@ -121,6 +122,53 @@ const ChangeInstructorModal = ({
     }
   };
 
+  const handleFindInstructor = async (e) => {
+    e.preventDefault();
+    setFindInstructorLoading(true);
+    try {
+      const appointments = [...formData.appointments];
+      const updatedAppointments = appointments.map((appointment) => ({
+        ...appointment,
+        day: DAYS_EN[appointment.day]
+      }));
+      const updatedAppointmentsFinal = updatedAppointments.map(
+        (appointment) => {
+          const { endtime, ...rest } = appointment;
+          return rest;
+        }
+      );
+      if (
+        !formData.oldAppointments &&
+        updatedAppointmentsFinal.some((a) => a.starttime === "")
+      ) {
+        toast.error(t("dashboard.missingAppointmentTime"));
+        setLoading(false);
+        return;
+      }
+      const payLoad = {
+        student_id: formData.student_id,
+        changing_reason_id: formData.changing_reason_id,
+        same_time: formData.oldAppointments
+      };
+      if (!formData.oldAppointments) {
+        payLoad.appointments = updatedAppointmentsFinal;
+      }
+      const response = await axios.post(
+        `/instructor/Change_instructor/`,
+        payLoad
+      );
+      if (response.status === 200) {
+        toast.success(t("findInstructor"));
+        setShowModal(false);
+        setStep(1);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setFindInstructorLoading(false);
+    }
+  };
+
   return (
     <Modal
       show={showModal}
@@ -186,6 +234,8 @@ const ChangeInstructorModal = ({
               subscriptionStudents={subscriptionStudents}
               formData={formData}
               setFormData={setFormData}
+              handleFindInstructor={handleFindInstructor}
+              findInstructorLoading={findInstructorLoading}
               setStep={setStep}
               timeOptions={timeOptions}
             />

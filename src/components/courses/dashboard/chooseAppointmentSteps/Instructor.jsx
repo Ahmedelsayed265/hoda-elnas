@@ -15,6 +15,8 @@ const Instructor = ({
   timeOptions,
   handleEnroll,
   enrollLoading,
+  handleFindInstructor,
+  findInstructorLoading,
   setEnrollmentData
 }) => {
   const { t } = useTranslation();
@@ -90,7 +92,12 @@ const Instructor = ({
       {!fetchLoading && instructors?.length === 0 && (
         <div className="col-12 p-2 d-flex align-items-center justify-content-center gap-2 flex-column mb-3">
           <h6>{t("noInstructorFound")}</h6>
-          <button className="save_bttn">{t("sendRequestToFindInstructor")}</button>
+          <SubmitButton
+            className="save_bttn"
+            loading={findInstructorLoading}
+            name={t("sendRequestToFindInstructor")}
+            onClick={handleFindInstructor}
+          />
         </div>
       )}
       {formData.time_option === "range" && formData.instructor_id && (

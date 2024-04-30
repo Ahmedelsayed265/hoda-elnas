@@ -4392,12 +4392,7 @@ input::-webkit-inner-spin-button {
 .popup-modal ul.iconCheck li::before {
   content: "\f00c";
 }
-
-.completed {
-  color: #81a63d !important;
-}
-
-input[type=checkbox] {
+.popup-modal input[type=checkbox] {
   width: 16px;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -4405,7 +4400,7 @@ input[type=checkbox] {
   position: relative;
   cursor: pointer;
 }
-input[type=checkbox]::after {
+.popup-modal input[type=checkbox]::after {
   position: absolute;
   right: 50%;
   transform: translate(50%, -50%);
@@ -4422,11 +4417,15 @@ input[type=checkbox]::after {
   justify-content: center;
   color: #31535a;
 }
-input[type=checkbox]:checked::after {
+.popup-modal input[type=checkbox]:checked::after {
   content: "\f00c";
   background: #31535a;
   color: #fff;
   border-color: #31535a;
+}
+
+.completed {
+  color: #81a63d !important;
 }
 
 .error {

@@ -23,6 +23,7 @@ const AppointmentsModal = ({
   const [goals, setGoals] = useState([]);
   const [step, setStep] = useState(1);
   const [maxStudents, setMaxStudents] = useState(null);
+  const [findInstructorLoading, setFindInstructorLoading] = useState(false);
   const [timeOptions, setTimeOptions] = useState("specific");
   const [enrollLoading, setEnrollLoading] = useState(false);
   const subslist = useSelector((state) => state.authedUser?.user?.subslist);
@@ -168,6 +169,62 @@ const AppointmentsModal = ({
     }
   };
 
+  const handleFindInstructor = async () => {
+    setFindInstructorLoading(true);
+    const appointments = [...enrollmentData.appointments];
+    const updatedAppointments = appointments.map((appointment) => ({
+      ...appointment,
+      day: DAYS_EN[appointment.day]
+    }));
+    const updatedAppointmentsFinal = updatedAppointments.map((appointment) => {
+      const { endtime, ...rest } = appointment;
+      return rest;
+    });
+    if (updatedAppointmentsFinal.some((a) => a.starttime === "")) {
+      toast.error(t("dashboard.missingAppointmentTime"));
+      setEnrollLoading(false);
+      return;
+    }
+    try {
+      const response = await axios.post("/members/enroll_Student/", {
+        subscription_id: +subscriptionId,
+        appointments: updatedAppointmentsFinal,
+        student_id: studentId,
+        goal_id: enrollmentData.goal_id,
+        option_id: enrollmentData.option_id
+      });
+      if (response.status === 200 && response.data.status === "success") {
+        setShowModal(false);
+        toast.success(t("findInstructor"));
+        setStep(1);
+        setEnrollmentData({
+          goal_id: "",
+          option_id: "",
+          custom_option_id: "",
+          subscription_id: +subscriptionId,
+          instructor_id: null,
+          student_id: studentId,
+          time_option: timeOptions,
+          appointments:
+            timeOptions === "specific"
+              ? Array(cpw)
+                  .fill()
+                  .map(() => ({ ...initialSpesificTiming }))
+              : Array(cpw)
+                  .fill()
+                  .map(() => ({ ...initialRangeTiming }))
+        });
+      } else {
+        setShowModal(false);
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setFindInstructorLoading(false);
+    }
+  };
+
   return (
     <Modal
       show={showModal}
@@ -228,6 +285,8 @@ const AppointmentsModal = ({
               formData={enrollmentData}
               setFormData={setEnrollmentData}
               setStep={setStep}
+              handleFindInstructor={handleFindInstructor}
+              findInstructorLoading={findInstructorLoading}
               handleEnroll={handleEnroll}
               timeOptions={timeOptions}
             />
