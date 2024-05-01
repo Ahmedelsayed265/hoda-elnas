@@ -332,8 +332,14 @@
     },
     "sounds": {
         "departments": "Departments",
-        "playLists": "Play Lists",
+        "playLists": "Playlists",
         "library": "My Library",
-        "myLists": "My Lists"
+        "myLists": "My Lists",
+        "noPlayLists": "No playlists found",
+        "noPlayListsSub": "Create one and keep your favorites in one place",
+        "createPlayList": "Create Playlist",
+        "noLibirary": "You haven't added any sounds to your library",
+        "noLibrarySub": "Listen now and save more",
+        "listenNow": "Listen Now"
     }
 }

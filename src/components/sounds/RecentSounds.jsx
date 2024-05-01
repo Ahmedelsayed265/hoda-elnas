@@ -43,17 +43,21 @@ const RecentSounds = () => {
                     <img src={listIcon} alt="list" /> {list?.name}
                   </h5>
                   <div className="swiper_pagination">
-                    <button>
+                    <button className={`swiper-button-next-${list?.id}`}>
                       <i className="fa-regular fa-angle-right"></i>
                     </button>
-                    <button>
+                    <button className={`swiper-button-prev-${list?.id}`}>
                       <i className="fa-regular fa-angle-left"></i>
                     </button>
                   </div>
                 </div>
               </div>
               <div className="col-12 p-2 pt-3">
-                <Slider slides={list?.files} />
+                <Slider
+                  slides={list?.files}
+                  prevbuttonClass={`.swiper-button-prev-${list?.id}`}
+                  nextbuttonClass={`.swiper-button-next-${list?.id}`}
+                />
               </div>
             </Fragment>
           ))}

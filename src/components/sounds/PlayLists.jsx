@@ -4,12 +4,15 @@ import list from "../../assets/images/list.svg";
 import axios from "./../../util/axios";
 import { useSelector } from "react-redux";
 import DataLoader from "../ui/DataLoader";
+import { BASE_URL } from "../../constants";
+import { Link } from "react-router-dom";
 
 const PlayLists = () => {
   const [playLists, setPlayLists] = useState([]);
   const [loading, setLoading] = useState(false);
   const { lang } = useSelector((state) => state.language);
   const { t } = useTranslation();
+
   useEffect(() => {
     const fetchLists = async () => {
       try {
@@ -41,7 +44,121 @@ const PlayLists = () => {
       ) : (
         <>
           {playLists?.map((list) => (
-            <div className="col-lg-3 col-md-4 col-6 p-2"></div>
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
+          ))}
+          {playLists?.map((list) => (
+            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+              <Link
+                className="listCard"
+                style={{ background: `${list?.color}` }}
+              >
+                <h5>{list?.name}</h5>
+                <div className="img">
+                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                </div>
+              </Link>
+            </div>
           ))}
         </>
       )}

@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation } from "swiper/modules";
 import AudioCard from "../layout/AudioCard";
 
-const Slider = ({ slides }) => {
+const Slider = ({ slides, prevbuttonClass, nextbuttonClass }) => {
   return (
     <Swiper
       spaceBetween={16}
@@ -14,6 +14,10 @@ const Slider = ({ slides }) => {
       loop={true}
       dir="rtl"
       modules={[Navigation, Autoplay]}
+      navigation={{
+        nextEl: nextbuttonClass,
+        prevEl: prevbuttonClass
+      }}
       autoplay={{ delay: 3000, disableOnInteraction: false }}
       breakpoints={{
         992: {
@@ -28,51 +32,6 @@ const Slider = ({ slides }) => {
       }}
       className="teamSwiper"
     >
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
-      {slides?.map((slide) => (
-        <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
-        </SwiperSlide>
-      ))}
       {slides?.map((slide) => (
         <SwiperSlide key={slide?.id}>
           <AudioCard audio={slide} />

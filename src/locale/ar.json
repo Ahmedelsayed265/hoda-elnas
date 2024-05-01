@@ -343,6 +343,12 @@
         "departments": "الاقسام",
         "playLists": "قوائم التشغيل",
         "library": "مكتبتى",
-        "myLists": "قوائمي"
+        "myLists": "قوائمي",
+        "noPlayLists": "لا توجد قوائم تشغيل",
+        "noPlayListsSub": "أنشئ واحدة واحتفظ بمفضلاتك في قائمة واحدة",
+        "createPlayList": "انشاء قائمة تشغيل",
+        "noLibirary": "لم تقم بإضافة صوتيات إلى مكتبتك",
+        "noLibrarySub": "استمع الآن واحتفظ بالمزيد",
+        "listenNow": "استمع الآن"
     }
 }

@@ -37,7 +37,7 @@ const SideBar = ({ menuOpen, setMenuOpen, menuRef }) => {
           </NavLink>
         </li>
         <li onClick={() => setMenuOpen(false)}>
-          <NavLink end to="my-lists">
+          <NavLink end to="my-playlists">
             <img src={myLists} alt="myLists" />
             {t("sounds.myLists")}
           </NavLink>

@@ -1258,6 +1258,49 @@ body main .acoustics .swiper_pagination_title .swiper_pagination button:hover {
   border-color: #81a63d;
   color: #fff;
 }
+body main .acoustics .listCard {
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+body main .acoustics .listCard h5 {
+  font-size: 16px;
+  font-weight: 600;
+}
+body main .acoustics .listCard .img img {
+  height: 60px;
+}
+body main .acoustics .noDataFound {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: column;
+}
+body main .acoustics .noDataFound img {
+  height: 280px;
+}
+body main .acoustics .noDataFound h5 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+body main .acoustics .noDataFound p {
+  color: #777777;
+  margin-bottom: 4px;
+}
+body main .acoustics .noDataFound button {
+  background: #81a63d;
+  color: #fff;
+  padding: 4px 24px;
+  border-radius: 20px;
+}
 body main .swiper {
   padding: 4px 4px 60px;
 }
@@ -3044,6 +3087,9 @@ body.en main .goal_details .inner_wrap .goal_steps li:nth-child(odd) {
 body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
   padding-right: 80px;
   padding-left: 0;
+}
+body.en main .acoustics .swiper_pagination_title .swiper_pagination {
+  flex-direction: row-reverse;
 }
 body.en .goal_card .icon i {
   transform: scale(-1);

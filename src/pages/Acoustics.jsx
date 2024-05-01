@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../components/sounds/SideBar";
 import { Route, Routes } from "react-router-dom";
 import RecentSounds from "../components/sounds/RecentSounds";
-import Departments from "../components/sounds/Departments";
 import PlayLists from "../components/sounds/PlayLists";
+import Categories from "../components/sounds/Categories";
+import MyLibirary from "../components/sounds/MyLibirary";
+import MyPlayLists from "../components/sounds/MyPlayLists";
 
 const Acoustics = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,8 +46,10 @@ const Acoustics = () => {
           <div className="col-lg-9 col-12 p-2">
             <Routes>
               <Route path="*" element={<RecentSounds />} />
-              <Route path="/departments" element={<Departments />} />
+              <Route path="/departments" element={<Categories />} />
               <Route path="/playlists" element={<PlayLists />} />
+              <Route path="/my-library" element={<MyLibirary />} />
+              <Route path="/my-playlists" element={<MyPlayLists />} />
             </Routes>
           </div>
         </div>
