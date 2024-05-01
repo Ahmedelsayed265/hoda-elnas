@@ -6,8 +6,9 @@ import PlayLists from "../components/sounds/PlayLists";
 import Categories from "../components/sounds/Categories";
 import MyLibirary from "../components/sounds/MyLibirary";
 import MyPlayLists from "../components/sounds/MyPlayLists";
+import PlayList from "../components/sounds/PlayList";
 
-const Acoustics = () => {
+const Audios = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -45,9 +46,10 @@ const Acoustics = () => {
           </div>
           <div className="col-lg-9 col-12 p-2">
             <Routes>
-              <Route path="*" element={<RecentSounds />} />
+              <Route path="/" element={<RecentSounds />} />
               <Route path="/departments" element={<Categories />} />
-              <Route path="/playlists" element={<PlayLists />} />
+              <Route path="/playlists/*" element={<PlayLists />} />
+              <Route path="/playlists/:id" element={<PlayList />} />
               <Route path="/my-library" element={<MyLibirary />} />
               <Route path="/my-playlists" element={<MyPlayLists />} />
             </Routes>
@@ -61,4 +63,4 @@ const Acoustics = () => {
   );
 };
 
-export default Acoustics;
+export default Audios;

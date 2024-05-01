@@ -18,7 +18,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import CourseDetails from "./pages/CourseDetails";
-import Acoustics from "./pages/Acoustics";
+import Audios from "./pages/Audios";
 import Jobs from "./pages/Jobs";
 import About from "./pages/About";
 import Faqs from "./pages/Faqs";
@@ -90,7 +90,7 @@ const App = () => {
             path="/dashboard/:subscriptionId/*"
             element={<CourseDashboard />}
           />
-          <Route path="/acoustics/*" element={<Acoustics />} />
+          <Route path="/audios/*" element={<Audios />} />
           <Route path="/visuals" element={<Visuals />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/jobs" element={<Jobs />} />
