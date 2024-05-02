@@ -33,16 +33,19 @@ const PlayList = () => {
   return (
     <div className="row m-0">
       {loading ? (
-        <DataLoader minHeight="300px"/>
+        <DataLoader minHeight="300px" />
       ) : (
         <>
           <div className="col-12 p-2 mb-2">
             <div className="swiper_pagination_title">
-              <div className="d-flex align-items-center gap-3">
+              <div className="d-flex align-items-start gap-3">
                 <button className="back" onClick={() => window.history.back()}>
                   <i className="fa-solid fa-arrow-right-long"></i>
                 </button>
-                <h5 className="mb-0">{playList?.name}</h5>
+                <div className="d-flex flex-column">
+                  <h5 className="mb-0">{playList?.name}</h5>
+                  <p className="mb-0">{playList?.description}</p>
+                </div>
               </div>
             </div>
           </div>

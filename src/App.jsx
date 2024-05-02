@@ -117,12 +117,19 @@ const App = () => {
         </Routes>
       </main>
       {currentAudio && (
-        <AudioPlayer
-          autoPlay
-          src={currentAudio}
-          onEnded={() => dispatch(setSrc(""))}
-          
-        />
+        <div className="audio_player_container">
+          <div className="close_player">
+            <i
+              className="fa-regular fa-circle-xmark"
+              onClick={() => dispatch(setSrc(""))}
+            />
+          </div>
+          <AudioPlayer
+            autoPlay
+            src={currentAudio}
+            onEnded={() => dispatch(setSrc(""))}
+          />
+        </div>
       )}
       <Footer />
       {loading && <Loader />}

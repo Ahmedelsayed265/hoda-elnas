@@ -760,6 +760,7 @@ body main .custom-card .sno span {
 }
 body main .audio-card {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -798,7 +799,6 @@ body main .audio-card .content .play_btn {
 }
 body main .audio-card .content .play_btn i {
   font-size: 12px;
-  transform: translateX(1px);
 }
 body main .audio-card .content p {
   margin: 0;
@@ -1257,6 +1257,9 @@ body main .acoustics .swiper_pagination_title .swiper_pagination button:hover {
   background: #81a63d;
   border-color: #81a63d;
   color: #fff;
+}
+body main .acoustics .swiper-slide {
+  height: auto;
 }
 body main .acoustics .listCard {
   padding: 12px 16px;
@@ -4587,10 +4590,6 @@ input::-webkit-inner-spin-button {
 .rhap_container {
   box-shadow: none;
   border-top: 1px solid #eeeeee;
-  position: sticky;
-  bottom: 0;
-  background: #fff;
-  z-index: 9;
 }
 
 .rhap_download-progress {
@@ -4603,4 +4602,23 @@ input::-webkit-inner-spin-button {
 
 .rhap_volume-indicator {
   background: #81a63d;
+}
+
+.close_player {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px;
+}
+.close_player i {
+  font-size: 18px;
+  color: #81a63d;
+  cursor: pointer;
+}
+
+.audio_player_container {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  z-index: 9;
 }/*# sourceMappingURL=global.css.map */
