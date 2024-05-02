@@ -2856,6 +2856,22 @@ body {
   &.en {
     direction: ltr;
     overflow-x: hidden !important;
+    .sideMenu {
+      @media screen and (max-width: 768px) {
+        right: initial;
+        left: -50%;
+        border-right: 1px solid $inputStroke;
+        border-left: 0;
+        &.open {
+          left: 0;
+          right: initial;
+        }
+      }
+    }
+    .open_menu {
+      right: 24px;
+      left: initial;
+    }
     header {
       .drop_menu {
         padding: 8px 36px 8px 20px;
@@ -2977,24 +2993,7 @@ body {
     .modal-header button {
       margin: 0 0 0 auto !important;
     }
-    .course_dashboard {
-      aside {
-        @media screen and (max-width: 768px) {
-          right: initial;
-          left: -50%;
-          border-right: 1px solid $inputStroke;
-          border-left: 0;
-          &.open {
-            left: 0;
-            right: initial;
-          }
-        }
-      }
-      .open_menu {
-        right: 24px;
-        left: initial;
-      }
-    }
+    
   }
 }
 .button-86 {

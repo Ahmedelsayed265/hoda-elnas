@@ -38,7 +38,7 @@ import MyStudents from "./components/my-students/MyStudents";
 import useFetchData from "./util/useFetchData ";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { setSrc } from "./redux/slices/audioSrc";
+import { setId, setSrc } from "./redux/slices/audioSrc";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -127,7 +127,10 @@ const App = () => {
           <AudioPlayer
             autoPlay
             src={currentAudio}
-            onEnded={() => dispatch(setSrc(""))}
+            onEnded={() => {
+              dispatch(setSrc(""));
+              dispatch(setId(""));
+            }}
           />
         </div>
       )}
