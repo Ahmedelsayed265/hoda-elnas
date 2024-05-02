@@ -32,7 +32,7 @@ const RecentSounds = () => {
   return (
     <>
       {loading ? (
-        <DataLoader />
+        <DataLoader minHeight="300px"/>
       ) : (
         <div className="row m-0">
           {lists?.map((list) => (

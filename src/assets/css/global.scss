@@ -1233,7 +1233,7 @@ body {
         }
         .img {
           img {
-            height: 60px;
+            height: 50px;
           }
         }
       }
@@ -4317,21 +4317,67 @@ input::-webkit-inner-spin-button {
   border-radius: 8px;
   gap: 12px;
   margin-bottom: 48px;
-  .back {
-    @include centerFlex();
-    width: 32px;
-    height: 32px;
-    background: $secondary;
-    border-radius: 50%;
-    i {
-      font-size: 16px;
-      color: $white;
-    }
-  }
   h5 {
     color: $main;
     font-size: 16px;
     font-weight: 600;
     margin: 0;
   }
+}
+.back {
+  @include centerFlex();
+  width: 30px;
+  height: 30px;
+  background: $secondary;
+  border-radius: 50%;
+  i {
+    font-size: 14px;
+    color: $white;
+  }
+}
+.rhap_container {
+  direction: ltr !important;
+}
+.rhap_progress-indicator {
+  width: 16px;
+  height: 16px;
+  top: -6px;
+  box-shadow: none;
+  background: $secondary;
+}
+.rhap_progress-filled {
+  background: $secondary;
+}
+.rhap_time {
+  color: $dark;
+  font-size: 14px;
+  font-weight: 500;
+}
+.rhap_button-clear {
+  svg path {
+    fill: $secondary;
+  }
+  svg {
+    width: 24px;
+  }
+  &.rhap_play-pause-button svg {
+    width: 36px;
+  }
+}
+.rhap_container {
+  box-shadow: none;
+  border-top: 1px solid $lightGray;
+  position: sticky;
+  bottom: 0;
+  background: $white;
+  z-index: 9;
+}
+.rhap_download-progress {
+  background: $inputStroke;
+}
+.rhap_volume-bar {
+  background: $inputStroke;
+}
+.rhap_volume-indicator {
+  background: $secondary;
 }

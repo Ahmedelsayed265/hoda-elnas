@@ -36,6 +36,9 @@ import CourseDashboard from "./components/courses/dashboard/CourseDashboard";
 import MySubscriptions from "./components/subscriptions/MySubscriptions";
 import MyStudents from "./components/my-students/MyStudents";
 import useFetchData from "./util/useFetchData ";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+import { setSrc } from "./redux/slices/audioSrc";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -44,6 +47,7 @@ const App = () => {
   const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
   const loading = useFetchData(dispatch, lang);
+  const currentAudio = useSelector((state) => state.audioSrc.src);
 
   useEffect(() => {
     if (decodedToken && !isExpired) {
@@ -112,6 +116,14 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
+      {currentAudio && (
+        <AudioPlayer
+          autoPlay
+          src={currentAudio}
+          onEnded={() => dispatch(setSrc(""))}
+          
+        />
+      )}
       <Footer />
       {loading && <Loader />}
     </>

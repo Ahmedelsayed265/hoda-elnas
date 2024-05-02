@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 import audioPoster from "../../assets/images/audio.jpeg";
 import sound from "../../assets/images/Headphones.svg";
 import { BASE_URL } from "../../constants";
+import { useDispatch } from "react-redux";
+import { setSrc } from "../../redux/slices/audioSrc";
 
 const AudioCard = ({ audio }) => {
+  const dispatch = useDispatch();
+  const playSound = (file) => {
+    if (file) {
+      const decodedUrlBase64 = decodeURIComponent(file);
+      const decodedUrl = atob(decodedUrlBase64);
+      dispatch(setSrc(`${BASE_URL}${decodedUrl}`));
+    }
+  };
   return (
     <div className="audio-card">
       <Link to="/courses/1" className="img">
@@ -20,7 +30,7 @@ const AudioCard = ({ audio }) => {
           <Link to="/courses/1">
             <h4>{audio?.name || "عنوان الصوت"}</h4>
           </Link>
-          <div className="play_btn">
+          <div className="play_btn" onClick={() => playSound(audio?.file)}>
             <i className="fa-duotone fa-play"></i>
           </div>
         </div>

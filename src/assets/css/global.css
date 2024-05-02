@@ -1272,7 +1272,7 @@ body main .acoustics .listCard h5 {
   font-weight: 600;
 }
 body main .acoustics .listCard .img img {
-  height: 60px;
+  height: 50px;
 }
 body main .acoustics .noDataFound {
   width: 100%;
@@ -4531,22 +4531,76 @@ input::-webkit-inner-spin-button {
   gap: 12px;
   margin-bottom: 48px;
 }
-.page_title .back {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: #81a63d;
-  border-radius: 50%;
-}
-.page_title .back i {
-  font-size: 16px;
-  color: #fff;
-}
 .page_title h5 {
   color: #31535a;
   font-size: 16px;
   font-weight: 600;
   margin: 0;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #81a63d;
+  border-radius: 50%;
+}
+.back i {
+  font-size: 14px;
+  color: #fff;
+}
+
+.rhap_container {
+  direction: ltr !important;
+}
+
+.rhap_progress-indicator {
+  width: 16px;
+  height: 16px;
+  top: -6px;
+  box-shadow: none;
+  background: #81a63d;
+}
+
+.rhap_progress-filled {
+  background: #81a63d;
+}
+
+.rhap_time {
+  color: #000000;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rhap_button-clear svg path {
+  fill: #81a63d;
+}
+.rhap_button-clear svg {
+  width: 24px;
+}
+.rhap_button-clear.rhap_play-pause-button svg {
+  width: 36px;
+}
+
+.rhap_container {
+  box-shadow: none;
+  border-top: 1px solid #eeeeee;
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  z-index: 9;
+}
+
+.rhap_download-progress {
+  background: #f2f2f2;
+}
+
+.rhap_volume-bar {
+  background: #f2f2f2;
+}
+
+.rhap_volume-indicator {
+  background: #81a63d;
 }/*# sourceMappingURL=global.css.map */

@@ -13,6 +13,7 @@ import grantees from "./slices/granteesObj";
 import comparsion from "./slices/comparsion";
 import feedBacks from "./slices/feedBacks";
 import sectionsTitles from "./slices/sectionsTitles";
+import audioSrc from "./slices/audioSrc";
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +30,7 @@ export const store = configureStore({
     grantees,
     comparsion,
     feedBacks,
-    sectionsTitles
+    sectionsTitles,
+    audioSrc
   }
 });

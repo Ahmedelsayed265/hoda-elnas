@@ -43,12 +43,13 @@ const Categories = () => {
         </div>
       </div>
       {loading ? (
-        <DataLoader />
+        <DataLoader minHeight="300px"/>
       ) : (
         <>
           {playLists?.map((list) => (
             <div className="col-lg-4 col-6 p-2" key={list?.id}>
               <Link
+                to={`/audios/categories/${list?.slug}`}
                 className="listCard"
                 style={{ background: `${list?.color}` }}
               >
