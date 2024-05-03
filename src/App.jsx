@@ -39,6 +39,7 @@ import useFetchData from "./util/useFetchData ";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { setId, setSrc } from "./redux/slices/audioSrc";
+import LibirarySubscribe from "./components/libirary/LibirarySubscribe";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -107,6 +108,7 @@ const App = () => {
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/my-subscriptions" element={<MySubscriptions />} />
           <Route path="/my-students" element={<MyStudents />} />
+          <Route path="/library-subscribe" element={<LibirarySubscribe />} />
           {/* auth pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

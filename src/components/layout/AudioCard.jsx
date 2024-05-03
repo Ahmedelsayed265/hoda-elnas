@@ -34,20 +34,13 @@ const AudioCard = ({ audio }) => {
           }
           alt="course"
         />
-        <div className="likes_container">
-          {audio?.paid === true ? (
-            <button className="subscribe">{t("sounds.subscribeNow")}</button>
-          ) : (
-            <>
-              <button>
-                <i className="fa-solid fa-thumbs-up"></i>
-              </button>
-              <button>
-                <i className="fa-solid fa-thumbs-down"></i>
-              </button>
-            </>
-          )}
-        </div>
+        {audio?.paid === true && (
+          <div className="subscribe">
+            <Link to="/library-subscribe" className="subscribe">
+              {t("sounds.subscribeNow")}
+            </Link>
+          </div>
+        )}
       </div>
       <div className="content">
         <div className="d-flex align-items-center justify-content-between mb-2">
@@ -72,10 +65,30 @@ const AudioCard = ({ audio }) => {
           )}
         </div>
         <p>{audio?.description || "وصف الصوت"}</p>
-        <p>
-          <img src={sound} alt="sound" />
-          <span>{audio?.length || "00:00:00"}</span>
-        </p>
+        <div className="d-flex align-items-center justify-content-between mt-2">
+          <p>
+            <img src={sound} alt="sound" />
+            <span>{audio?.length || "00:00:00"}</span>
+          </p>
+          <div
+            className={`likes_container ${
+              audio?.paid === true ? "disabled" : ""
+            }`}
+          >
+            <div className="likes">
+              <button>
+                <i className="fa-solid fa-thumbs-up"></i>
+              </button>
+              <span>{audio?.likes || 0}</span>
+            </div>
+            <div className="dislikes">
+              <button>
+                <i className="fa-solid fa-thumbs-down"></i>
+              </button>
+              <span>{audio?.dislikes || 0}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

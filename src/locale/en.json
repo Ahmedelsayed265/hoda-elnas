@@ -77,6 +77,9 @@
     "studentCertificate": "Student Certificate",
     "inDate": "dated",
     "findInstructor": "Your request has been sent and we will provide you with a teacher within the nearest possible time.",
+    "year": "Year",
+    "month": "Month",
+    "insteadOf": "instead of",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -341,6 +344,9 @@
         "noLibirary": "You haven't added any sounds to your library",
         "noLibrarySub": "Listen now and save more",
         "listenNow": "Listen Now",
-        "subscribeNow": "Subscribe Now"
+        "subscribeNow": "Subscribe Now",
+        "subscribe": "Subscribe",
+        "hodaElnasLibirarySubscribe": "Subscribe to Huda People Library",
+        "hodaElnasLibirarySubscribeDesc": "Don't miss the opportunity to join. Subscribe now and enjoy the exclusive benefits."
     }
 }

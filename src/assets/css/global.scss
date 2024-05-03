@@ -765,24 +765,18 @@ body {
           width: 100%;
           object-fit: cover;
         }
-        .likes_container {
+        .subscribe {
           position: absolute;
-          top: 12px;
-          right: 12px;
-          display: flex;
-          gap: 8px;
-          button {
-            width: 30px;
-            height: 30px;
+          top: 8px;
+          right: 8px;
+          a {
+            width: auto;
+            font-size: 14px;
+            white-space: nowrap;
+            border-radius: 4px;
             background: $secondary;
-            border-radius: 50%;
-            @include centerFlex();
             color: $white;
-            &.subscribe {
-              width: auto;
-              border-radius: 4px;
-              padding: 2px 8px;
-            }
+            padding: 0 10px;
           }
         }
       }
@@ -824,6 +818,33 @@ body {
           }
           span {
             font-weight: 600;
+          }
+        }
+        .likes_container {
+          display: flex;
+          gap: 16px;
+          button {
+            border-radius: 50%;
+            @include centerFlex();
+            color: #cecece;
+            font-size: 16px;
+          }
+          span {
+            color: $dark;
+            line-height: normal;
+          }
+          .dislikes {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          .likes {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+          &.disabled {
+            pointer-events: none;
           }
         }
       }
@@ -1457,6 +1478,119 @@ body {
         color: $main;
         margin-bottom: 32px;
         line-height: 24px;
+      }
+    }
+    .libirary_subscribe {
+      padding: 40px 0;
+      .title_section {
+        h1 {
+          text-align: center;
+          color: $main;
+          font-size: 32px;
+          @media screen and (max-width: 576px) {
+            font-size: 26px;
+          }
+        }
+        p {
+          text-align: center;
+          font-size: 18px;
+          color: $gray;
+          @media screen and (max-width: 576px) {
+            font-size: 14px;
+          }
+        }
+      }
+      .plan {
+        height: 100%;
+        padding: 22px 16px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        .convertion {
+          color: red;
+          line-height: normal;
+          margin: 0;
+          font-weight: 600;
+          font-size: 14px;
+        }
+        h3 {
+          font-size: 28px;
+          color: $main;
+        }
+        ul {
+          display: flex;
+          gap: 8px;
+          position: relative;
+          flex-direction: column;
+          margin-bottom: 12px;
+          li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            position: relative;
+            font-size: 14px;
+            color: $gray;
+            line-height: 24px;
+            &::before {
+              content: "\f058";
+              font-weight: 600;
+              font-size: 16px;
+              color: $secondary;
+              font-family: "Font Awesome 6 pro";
+            }
+          }
+        }
+        .line {
+          margin: 16px 0;
+          width: 100%;
+          height: 1px;
+          background: $inputStroke;
+        }
+        .price_subscribe {
+          @include space-between();
+          margin-top: auto;
+          button {
+            background: $secondary;
+            color: $white;
+            font-size: 16px;
+            width: auto;
+            padding: 2px 24px;
+            border-radius: 100px;
+            @include centerFlex();
+          }
+          .price {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            h5 {
+              font-size: 20px;
+              font-weight: 600;
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              color: $secondary;
+              margin: 0;
+              span {
+                font-weight: 600;
+                font-size: 14px;
+                color: $dark;
+                line-height: normal;
+              }
+            }
+            p {
+              font-size: 12px;
+              font-weight: 600;
+              margin: 0;
+              line-height: normal;
+              color: $gray;
+              text-decoration: line-through;
+              span {
+                line-height: normal;
+              }
+            }
+          }
+        }
       }
     }
     .our_parteners {

@@ -777,27 +777,19 @@ body main .audio-card .img img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-body main .audio-card .img .likes_container {
+body main .audio-card .img .subscribe {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  display: flex;
-  gap: 8px;
+  top: 8px;
+  right: 8px;
 }
-body main .audio-card .img .likes_container button {
-  width: 30px;
-  height: 30px;
-  background: #81a63d;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-body main .audio-card .img .likes_container button.subscribe {
+body main .audio-card .img .subscribe a {
   width: auto;
+  font-size: 14px;
+  white-space: nowrap;
   border-radius: 4px;
-  padding: 2px 8px;
+  background: #81a63d;
+  color: #fff;
+  padding: 0 10px;
 }
 body main .audio-card .content {
   padding: 16px;
@@ -841,6 +833,35 @@ body main .audio-card .content p img {
 }
 body main .audio-card .content p span {
   font-weight: 600;
+}
+body main .audio-card .content .likes_container {
+  display: flex;
+  gap: 16px;
+}
+body main .audio-card .content .likes_container button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 16px;
+}
+body main .audio-card .content .likes_container span {
+  color: #000000;
+  line-height: normal;
+}
+body main .audio-card .content .likes_container .dislikes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .audio-card .content .likes_container .likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .audio-card .content .likes_container.disabled {
+  pointer-events: none;
 }
 body main .job-card {
   width: 100%;
@@ -1510,6 +1531,125 @@ body main .library .section_subtitle {
   color: #31535a;
   margin-bottom: 32px;
   line-height: 24px;
+}
+body main .libirary_subscribe {
+  padding: 40px 0;
+}
+body main .libirary_subscribe .title_section h1 {
+  text-align: center;
+  color: #31535a;
+  font-size: 32px;
+}
+@media screen and (max-width: 576px) {
+  body main .libirary_subscribe .title_section h1 {
+    font-size: 26px;
+  }
+}
+body main .libirary_subscribe .title_section p {
+  text-align: center;
+  font-size: 18px;
+  color: #777777;
+}
+@media screen and (max-width: 576px) {
+  body main .libirary_subscribe .title_section p {
+    font-size: 14px;
+  }
+}
+body main .libirary_subscribe .plan {
+  height: 100%;
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+body main .libirary_subscribe .plan .convertion {
+  color: red;
+  line-height: normal;
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+body main .libirary_subscribe .plan h3 {
+  font-size: 28px;
+  color: #31535a;
+}
+body main .libirary_subscribe .plan ul {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+body main .libirary_subscribe .plan ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  font-size: 14px;
+  color: #777777;
+  line-height: 24px;
+}
+body main .libirary_subscribe .plan ul li::before {
+  content: "\f058";
+  font-weight: 600;
+  font-size: 16px;
+  color: #81a63d;
+  font-family: "Font Awesome 6 pro";
+}
+body main .libirary_subscribe .plan .line {
+  margin: 16px 0;
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+}
+body main .libirary_subscribe .plan .price_subscribe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+body main .libirary_subscribe .plan .price_subscribe button {
+  background: #81a63d;
+  color: #fff;
+  font-size: 16px;
+  width: auto;
+  padding: 2px 24px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .libirary_subscribe .plan .price_subscribe .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+body main .libirary_subscribe .plan .price_subscribe .price h5 {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #81a63d;
+  margin: 0;
+}
+body main .libirary_subscribe .plan .price_subscribe .price h5 span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  line-height: normal;
+}
+body main .libirary_subscribe .plan .price_subscribe .price p {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  line-height: normal;
+  color: #777777;
+  text-decoration: line-through;
+}
+body main .libirary_subscribe .plan .price_subscribe .price p span {
+  line-height: normal;
 }
 body main .our_parteners {
   padding: 60px 0;

@@ -77,6 +77,9 @@
     "studentCertificate": "شهادة الطالب",
     "inDate": "بتاريخ",
     "findInstructor": "تم ارسال طلبك وسيتم توفير معلم فى الوقت المحدد فى اقرب وقت",
+    "year": "سنة",
+    "month": "شهر",
+    "insteadOf": "بدلا من ",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -190,7 +193,7 @@
         "installmentDuration": "مدة التقسيط",
         "subscribe": "دفع وإشتراك",
         "egyptianPound": "ج.م",
-        "dollar": "USD",
+        "dollar": "دولار",
         "monthlyInstallment": "قسط شهري",
         "weeklyInstallment": "قسط اسبوعي",
         "haveRead": "لقد قرأت وأوافق على",
@@ -350,6 +353,9 @@
         "noLibirary": "لم تقم بإضافة صوتيات إلى مكتبتك",
         "noLibrarySub": "استمع الآن واحتفظ بالمزيد",
         "listenNow": "استمع الآن",
-        "subscribeNow": " اشترك الآن"
+        "subscribeNow": " اشترك الآن",
+        "subscribe": "اشترك",
+        "hodaElnasLibirarySubscribe": "اشترك في مكتبة هدى للناس",
+        "hodaElnasLibirarySubscribeDesc": "لا تفوّت فرصة الانضمام اشترك الآن واستمتع بالمزايا الحصرية"
     }
 }

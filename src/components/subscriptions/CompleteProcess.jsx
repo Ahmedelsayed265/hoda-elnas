@@ -108,8 +108,8 @@ const CompleteProcess = ({
       const payLoad = {
         amount:
           sub?.currency === "USD"
-            ? formData.totalPrice * dolarRate
-            : formData.totalPrice,
+            ? parseFloat(formData.totalPrice * dolarRate).toFixed(2)
+            : parseFloat(formData.totalPrice).toFixed(2),
         appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
         callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
         currency: "EGP",
