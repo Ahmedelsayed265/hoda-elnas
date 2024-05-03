@@ -768,6 +768,7 @@ body main .audio-card {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 body main .audio-card .img {
+  position: relative;
   width: 100%;
 }
 body main .audio-card .img img {
@@ -775,6 +776,23 @@ body main .audio-card .img img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+body main .audio-card .img .likes_container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+}
+body main .audio-card .img .likes_container button {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #81a63d;
 }
 body main .audio-card .content {
   padding: 16px;
@@ -800,11 +818,14 @@ body main .audio-card .content .play_btn {
 body main .audio-card .content .play_btn i {
   font-size: 12px;
 }
+body main .audio-card .content .play_btn.lock {
+  background: red;
+}
 body main .audio-card .content p {
   margin: 0;
   font-weight: 500;
   color: #31535a;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   display: flex;
   gap: 8px;
@@ -812,6 +833,9 @@ body main .audio-card .content p {
 }
 body main .audio-card .content p img {
   height: 16px;
+}
+body main .audio-card .content p span {
+  font-weight: 600;
 }
 body main .job-card {
   width: 100%;

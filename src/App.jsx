@@ -121,7 +121,10 @@ const App = () => {
           <div className="close_player">
             <i
               className="fa-regular fa-circle-xmark"
-              onClick={() => dispatch(setSrc(""))}
+              onClick={() => {
+                dispatch(setSrc(""));
+                dispatch(setId(""));
+              }}
             />
           </div>
           <AudioPlayer

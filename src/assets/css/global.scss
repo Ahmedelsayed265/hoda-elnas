@@ -758,11 +758,27 @@ body {
       overflow: hidden;
       box-shadow: $lightShadow;
       .img {
+        position: relative;
         width: 100%;
         img {
           aspect-ratio: 3 / 2;
           width: 100%;
           object-fit: cover;
+        }
+        .likes_container {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          display: flex;
+          gap: 8px;
+          button {
+            width: 30px;
+            height: 30px;
+            background: $white;
+            border-radius: 50%;
+            @include centerFlex();
+            color: $secondary;
+          }
         }
       }
       .content {
@@ -785,18 +801,24 @@ body {
           color: $white;
           @include centerFlex();
           border-radius: 50%;
+          &.lock {
+            background: red;
+          }
         }
         p {
           margin: 0;
           font-weight: 500;
           color: $main;
-          font-size: 16px;
+          font-size: 14px;
           line-height: 24px;
           display: flex;
           gap: 8px;
           align-items: center;
           img {
             height: 16px;
+          }
+          span{
+            font-weight: 600;
           }
         }
       }
@@ -1221,7 +1243,7 @@ body {
           }
         }
       }
-      .swiper-slide{
+      .swiper-slide {
         height: auto;
       }
       .listCard {
@@ -2993,7 +3015,6 @@ body {
     .modal-header button {
       margin: 0 0 0 auto !important;
     }
-    
   }
 }
 .button-86 {

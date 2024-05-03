@@ -43,11 +43,11 @@ const Categories = () => {
         </div>
       </div>
       {loading ? (
-        <DataLoader minHeight="300px"/>
+        <DataLoader minHeight="300px" />
       ) : (
         <>
           {playLists?.map((list) => (
-            <div className="col-lg-4 col-6 p-2" key={list?.id}>
+            <div className="col-lg-4 col-6 p-lg-2 p-1" key={list?.id}>
               <Link
                 to={`/audios/categories/${list?.slug}`}
                 className="listCard"

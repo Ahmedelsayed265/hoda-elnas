@@ -25,14 +25,22 @@ const AudioCard = ({ audio }) => {
 
   return (
     <div className="audio-card">
-      <Link className="img">
+      <div className="img">
         <img
           src={
             audio?.background ? `${BASE_URL}${audio?.background}` : audioPoster
           }
           alt="course"
         />
-      </Link>
+        <div className="likes_container">
+          <button>
+            <i className="fa-solid fa-thumbs-up"></i>
+          </button>
+          <button>
+            <i className="fa-solid fa-thumbs-down"></i>
+          </button>
+        </div>
+      </div>
       <div className="content">
         <div className="d-flex align-items-center justify-content-between mb-2">
           <Link>
@@ -44,10 +52,14 @@ const AudioCard = ({ audio }) => {
             </div>
           ) : (
             <div
-              className="play_btn"
+              className={`play_btn ${audio?.paid === true ? "lock" : ""}`}
               onClick={() => playSound(audio?.file, audio?.id)}
             >
-              <i className="fa-duotone fa-play"></i>
+              {audio?.paid === true ? (
+                <i className="fa-sharp fa-solid fa-lock"></i>
+              ) : (
+                <i className="fa-duotone fa-play"></i>
+              )}
             </div>
           )}
         </div>
