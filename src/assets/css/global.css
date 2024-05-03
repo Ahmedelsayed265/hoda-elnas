@@ -787,12 +787,17 @@ body main .audio-card .img .likes_container {
 body main .audio-card .img .likes_container button {
   width: 30px;
   height: 30px;
-  background: #fff;
+  background: #81a63d;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #81a63d;
+  color: #fff;
+}
+body main .audio-card .img .likes_container button.subscribe {
+  width: auto;
+  border-radius: 4px;
+  padding: 2px 8px;
 }
 body main .audio-card .content {
   padding: 16px;

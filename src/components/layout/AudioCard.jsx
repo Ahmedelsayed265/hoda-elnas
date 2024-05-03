@@ -5,9 +5,11 @@ import sound from "../../assets/images/Headphones.svg";
 import { BASE_URL } from "../../constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setId, setSrc } from "../../redux/slices/audioSrc";
+import { useTranslation } from "react-i18next";
 
 const AudioCard = ({ audio }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const id = useSelector((state) => state.audioSrc.id);
   const playSound = (file, id) => {
     if (file) {
@@ -33,12 +35,18 @@ const AudioCard = ({ audio }) => {
           alt="course"
         />
         <div className="likes_container">
-          <button>
-            <i className="fa-solid fa-thumbs-up"></i>
-          </button>
-          <button>
-            <i className="fa-solid fa-thumbs-down"></i>
-          </button>
+          {audio?.paid === true ? (
+            <button className="subscribe">{t("sounds.subscribeNow")}</button>
+          ) : (
+            <>
+              <button>
+                <i className="fa-solid fa-thumbs-up"></i>
+              </button>
+              <button>
+                <i className="fa-solid fa-thumbs-down"></i>
+              </button>
+            </>
+          )}
         </div>
       </div>
       <div className="content">

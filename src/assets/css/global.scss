@@ -774,10 +774,15 @@ body {
           button {
             width: 30px;
             height: 30px;
-            background: $white;
+            background: $secondary;
             border-radius: 50%;
             @include centerFlex();
-            color: $secondary;
+            color: $white;
+            &.subscribe {
+              width: auto;
+              border-radius: 4px;
+              padding: 2px 8px;
+            }
           }
         }
       }
@@ -817,7 +822,7 @@ body {
           img {
             height: 16px;
           }
-          span{
+          span {
             font-weight: 600;
           }
         }

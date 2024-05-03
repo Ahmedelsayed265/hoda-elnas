@@ -50,7 +50,7 @@ const Category = () => {
             </div>
           </div>
           {category?.files?.map((file) => (
-            <div className="col-lg-4 col-md-6 col-12 p-lg-2" key={file?.id}>
+            <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
               <AudioCard audio={file} />
             </div>
           ))}

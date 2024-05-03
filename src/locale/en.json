@@ -340,6 +340,7 @@
         "createPlayList": "Create Playlist",
         "noLibirary": "You haven't added any sounds to your library",
         "noLibrarySub": "Listen now and save more",
-        "listenNow": "Listen Now"
+        "listenNow": "Listen Now",
+        "subscribeNow": "Subscribe Now"
     }
 }

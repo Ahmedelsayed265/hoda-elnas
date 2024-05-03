@@ -349,6 +349,7 @@
         "createPlayList": "انشاء قائمة تشغيل",
         "noLibirary": "لم تقم بإضافة صوتيات إلى مكتبتك",
         "noLibrarySub": "استمع الآن واحتفظ بالمزيد",
-        "listenNow": "استمع الآن"
+        "listenNow": "استمع الآن",
+        "subscribeNow": " اشترك الآن"
     }
 }
