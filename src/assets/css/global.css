@@ -1354,6 +1354,87 @@ body main .acoustics .noDataFound button {
   padding: 4px 24px;
   border-radius: 20px;
 }
+body main .acoustics .sound_img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+body main .acoustics .sound_img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+body main .acoustics .subscribe {
+  color: #fff;
+  background: #81a63d;
+  padding: 4px 24px;
+  border-radius: 20px;
+}
+body main .acoustics .likes_container {
+  display: flex;
+  margin-top: 16px;
+  gap: 24px;
+}
+body main .acoustics .likes_container button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 18px;
+}
+body main .acoustics .likes_container span {
+  color: #000000;
+  line-height: normal;
+}
+body main .acoustics .likes_container .dislikes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .acoustics .likes_container .likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .acoustics .likes_container.disabled {
+  pointer-events: none;
+}
+body main .acoustics .sound_content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+body main .acoustics .sound_content h5 {
+  font-size: 26px;
+  color: #81a63d;
+}
+body main .acoustics .sound_content p {
+  line-height: 28px;
+  font-size: 16px;
+  color: #777777;
+}
+body main .acoustics .sound_content .buttons {
+  display: flex;
+  gap: 16px;
+}
+body main .acoustics .sound_content .buttons .play_btnn {
+  background: #31535a;
+  padding: 2px 12px;
+  border-radius: 20px;
+  display: flex;
+  color: #fff;
+  width: 120px;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+}
+body main .acoustics .sound_content .buttons .play_btnn i {
+  font-size: 14px;
+}
 body main .swiper {
   padding: 4px 4px 60px;
 }
@@ -4757,8 +4838,9 @@ input::-webkit-inner-spin-button {
 }
 
 .rhap_container {
-  box-shadow: none;
-  border-top: 1px solid #eeeeee;
+  box-shadow: none !important;
+  border: none !important;
+  padding-top: 4px !important;
 }
 
 .rhap_download-progress {
@@ -4790,4 +4872,16 @@ input::-webkit-inner-spin-button {
   bottom: 0;
   background: #fff;
   z-index: 9;
+}
+
+.audio_title {
+  color: #31535a;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 0 0;
+  border-top: 1px solid #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }/*# sourceMappingURL=global.css.map */

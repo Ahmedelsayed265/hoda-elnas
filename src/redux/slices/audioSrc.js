@@ -4,7 +4,9 @@ export const audioSrc = createSlice({
   name: "audioSrc",
   initialState: {
     src: "",
-    id: ""
+    id: "",
+    name: "",
+    isPlaying: false
   },
   reducers: {
     setSrc: (state, action) => {
@@ -12,9 +14,15 @@ export const audioSrc = createSlice({
     },
     setId: (state, action) => {
       state.id = action.payload;
+    },
+    setName: (state, action) => {
+      state.name = action.payload;
+    },
+    setIsPlaying: (state, action) => {
+      state.isPlaying = action.payload;
     }
   }
 });
 
-export const { setSrc, setId } = audioSrc.actions;
+export const { setSrc, setId, setName, setIsPlaying } = audioSrc.actions;
 export default audioSrc.reducer;

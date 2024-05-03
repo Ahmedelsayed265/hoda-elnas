@@ -1313,6 +1313,84 @@ body {
           border-radius: 20px;
         }
       }
+      .sound_img {
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        border-radius: 12px;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      .subscribe {
+        color: $white;
+        background: $secondary;
+        padding: 4px 24px;
+        border-radius: 20px;
+      }
+      .likes_container {
+        display: flex;
+        margin-top: 16px;
+        gap: 24px;
+        button {
+          border-radius: 50%;
+          @include centerFlex();
+          color: #cecece;
+          font-size: 18px;
+        }
+        span {
+          color: $dark;
+          line-height: normal;
+        }
+        .dislikes {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .likes {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        &.disabled {
+          pointer-events: none;
+        }
+      }
+      .sound_content {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        h5 {
+          font-size: 26px;
+          color: $secondary;
+        }
+        p {
+          line-height: 28px;
+          font-size: 16px;
+          color: $gray;
+        }
+        .buttons {
+          display: flex;
+          gap: 16px;
+          .play_btnn {
+            background: $main;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: flex;
+            color: $white;
+            width: 120px;
+            justify-content: center;
+            cursor: pointer;
+            align-items: center;
+            gap: 8px;
+            i {
+              font-size: 14px;
+            }
+          }
+        }
+      }
     }
     .swiper {
       padding: 4px 4px 60px;
@@ -4527,8 +4605,9 @@ input::-webkit-inner-spin-button {
   }
 }
 .rhap_container {
-  box-shadow: none;
-  border-top: 1px solid $lightGray;
+  box-shadow: none !important;
+  border: none !important;
+  padding-top: 4px !important;
 }
 .rhap_download-progress {
   background: $inputStroke;
@@ -4555,4 +4634,13 @@ input::-webkit-inner-spin-button {
   bottom: 0;
   background: $white;
   z-index: 9;
+}
+.audio_title {
+  color: $main;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px 0 0;
+  border-top: 1px solid $inputStroke;
+  @include centerFlex();
+  margin: 0;
 }

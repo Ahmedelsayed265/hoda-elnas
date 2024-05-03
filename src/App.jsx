@@ -38,7 +38,7 @@ import MyStudents from "./components/my-students/MyStudents";
 import useFetchData from "./util/useFetchData ";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-import { setId, setSrc } from "./redux/slices/audioSrc";
+import { setId, setIsPlaying, setSrc } from "./redux/slices/audioSrc";
 import LibirarySubscribe from "./components/libirary/LibirarySubscribe";
 
 const App = () => {
@@ -48,7 +48,7 @@ const App = () => {
   const lang = useSelector((state) => state.language.lang);
   const dispatch = useDispatch();
   const loading = useFetchData(dispatch, lang);
-  const currentAudio = useSelector((state) => state.audioSrc.src);
+  const currentAudio = useSelector((state) => state.audioSrc);
 
   useEffect(() => {
     if (decodedToken && !isExpired) {
@@ -118,7 +118,7 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </main>
-      {currentAudio && (
+      {currentAudio.src && (
         <div className="audio_player_container">
           <div className="close_player">
             <i
@@ -126,15 +126,24 @@ const App = () => {
               onClick={() => {
                 dispatch(setSrc(""));
                 dispatch(setId(""));
+                dispatch(setIsPlaying(false));
               }}
             />
           </div>
+          <h5 className="audio_title">"{currentAudio.name}"</h5>
           <AudioPlayer
             autoPlay
-            src={currentAudio}
+            src={currentAudio.src}
             onEnded={() => {
               dispatch(setSrc(""));
+              dispatch(setIsPlaying(false));
               dispatch(setId(""));
+            }}
+            onPlay={() => {
+              dispatch(setIsPlaying(true));
+            }}
+            onPause={() => {
+              dispatch(setIsPlaying(false));
             }}
           />
         </div>

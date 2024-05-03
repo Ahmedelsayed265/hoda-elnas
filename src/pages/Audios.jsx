@@ -8,6 +8,7 @@ import MyLibirary from "../components/sounds/MyLibirary";
 import MyPlayLists from "../components/sounds/MyPlayLists";
 import PlayList from "../components/sounds/PlayList";
 import Category from "../components/sounds/Category";
+import Sound from "../components/sounds/Sound";
 
 const Audios = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ const Audios = () => {
           <div className="col-lg-9 col-12 p-2">
             <Routes>
               <Route path="/" element={<RecentSounds />} />
+              <Route path="/:id" element={<Sound />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/:slug" element={<Category />} />
               <Route path="/playlists/*" element={<PlayLists />} />
