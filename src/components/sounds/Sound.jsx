@@ -59,30 +59,19 @@ const Sound = () => {
 
   const handleReacting = async (id, react) => {
     try {
-      const res = axios.post("/learningcenter/Add_like_or_dislike/audio/", {
-        item_id: id,
-        react: react
-      });
-      if (res.status === 200) {
-        if (react === "like") {
-          setAudio({
-            ...audio,
-            user_reaction: "like",
-            likes: audio?.likes + 1
-          });
-        } else if (react === "dislike") {
-          setAudio({
-            ...audio,
-            user_reaction: "dislike",
-            dislikes: audio?.dislikes + 1
-          });
-        } else if (react === "null") {
-          setAudio({
-            ...audio,
-            user_reaction: null,
-            likes: audio?.likes - 1
-          });
+      const res = await axios.post(
+        "/learningcenter/Add_like_or_dislike/audio/",
+        {
+          item_id: id,
+          react: react
         }
+      );
+      if (res.status === 200) {
+        setAudio((prev) => ({
+          ...prev,
+          likes: res?.data?.object?.likes,
+          dislikes: res?.data?.object?.dislikes
+        }));
       }
     } catch (error) {
       console.log(error);
