@@ -18,7 +18,7 @@ const Slider = ({ slides, prevbuttonClass, nextbuttonClass }) => {
         nextEl: nextbuttonClass,
         prevEl: prevbuttonClass
       }}
-      autoplay={{ delay: 3000, disableOnInteraction: false }}
+      autoplay={{ delay: 5000, disableOnInteraction: false }}
       breakpoints={{
         992: {
           slidesPerView: 3

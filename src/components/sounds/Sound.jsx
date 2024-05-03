@@ -58,6 +58,38 @@ const Sound = () => {
     dispatch(setId(""));
   };
 
+  const handleReacting = async (id, react) => {
+    try {
+      const res = axios.post("/learningcenter/Add_like_or_dislike/audio/", {
+        item_id: id,
+        react: react
+      });
+      if (res.status === 200) {
+        if (react === "like") {
+          setAudio({
+            ...audio,
+            user_reaction: "like",
+            likes: audio?.likes + 1
+          });
+        } else if (react === "dislike") {
+          setAudio({
+            ...audio,
+            user_reaction: "dislike",
+            dislikes: audio?.dislikes + 1
+          });
+        } else if (react === "null") {
+          setAudio({
+            ...audio,
+            user_reaction: null,
+            likes: audio?.likes - 1
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -82,18 +114,34 @@ const Sound = () => {
               />
             </div>
             <div
-              className={`likes_container ${
+              className={`likes_container mt-3 ${
                 audio?.paid === true ? "disabled" : ""
               }`}
             >
               <div className="likes">
-                <button>
+                <button
+                  className={audio?.user_reaction === "like" ? "active" : ""}
+                  onClick={() =>
+                    handleReacting(
+                      audio?.id,
+                      audio?.user_reaction === null ? "like" : "null"
+                    )
+                  }
+                >
                   <i className="fa-solid fa-thumbs-up"></i>
                 </button>
                 <span>{audio?.likes || 0}</span>
               </div>
               <div className="dislikes">
-                <button>
+                <button
+                  className={audio?.user_reaction === "dislike" ? "active" : ""}
+                  onClick={() =>
+                    handleReacting(
+                      audio?.id,
+                      audio?.user_reaction === null ? "dislike" : "null"
+                    )
+                  }
+                >
                   <i className="fa-solid fa-thumbs-down"></i>
                 </button>
                 <span>{audio?.dislikes || 0}</span>
@@ -104,7 +152,7 @@ const Sound = () => {
             <div className="sound_content">
               <h5 className="mb-0">{audio?.name}</h5>
               <p className="mb-0">{audio?.description}</p>
-              <div className="buttons">
+              <div className="buttons mt-2">
                 {audio?.paid === true ? (
                   <Link to="/library-subscribe" className="subscribe">
                     {t("sounds.subscribeNow")}
@@ -125,6 +173,12 @@ const Sound = () => {
                         {t("sounds.play")}
                       </div>
                     )}
+                    <button className="add_to_library">
+                      <span>
+                        <i className="fa-regular fa-bookmark"></i>
+                      </span>
+                      {t("sounds.addToMyLibrary")}
+                    </button>
                   </>
                 )}
               </div>

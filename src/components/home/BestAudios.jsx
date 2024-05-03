@@ -31,7 +31,7 @@ const BestAudios = () => {
       }}
       className="teamSwiper"
     >
-      <SwiperSlide>
+      {/* <SwiperSlide>
         <AudioCard />
       </SwiperSlide>
 
@@ -53,7 +53,7 @@ const BestAudios = () => {
 
       <SwiperSlide>
         <AudioCard />
-      </SwiperSlide>
+      </SwiperSlide> */}
     </Swiper>
   );
 };

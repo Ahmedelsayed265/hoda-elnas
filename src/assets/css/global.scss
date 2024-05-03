@@ -821,12 +821,6 @@ body {
         .likes_container {
           display: flex;
           gap: 16px;
-          button {
-            border-radius: 50%;
-            @include centerFlex();
-            color: #cecece;
-            font-size: 16px;
-          }
           span {
             color: $dark;
             line-height: normal;
@@ -835,11 +829,29 @@ body {
             display: flex;
             align-items: center;
             gap: 6px;
+            button {
+              border-radius: 50%;
+              @include centerFlex();
+              color: #cecece;
+              font-size: 16px;
+              &.active {
+                color: red !important;
+              }
+            }
           }
           .likes {
             display: flex;
             align-items: center;
             gap: 6px;
+            button {
+              border-radius: 50%;
+              @include centerFlex();
+              color: #cecece;
+              font-size: 16px;
+              &.active {
+                color: $secondary !important;
+              }
+            }
           }
           &.disabled {
             pointer-events: none;
@@ -1324,14 +1336,8 @@ body {
       }
       .likes_container {
         display: flex;
-        margin-top: 16px;
         gap: 24px;
-        button {
-          border-radius: 50%;
-          @include centerFlex();
-          color: #cecece;
-          font-size: 18px;
-        }
+
         span {
           color: $dark;
           line-height: normal;
@@ -1340,11 +1346,29 @@ body {
           display: flex;
           align-items: center;
           gap: 6px;
+          button {
+            border-radius: 50%;
+            @include centerFlex();
+            color: #cecece;
+            font-size: 18px;
+            &.active {
+              color: red !important;
+            }
+          }
         }
         .likes {
           display: flex;
           align-items: center;
           gap: 6px;
+          button {
+            border-radius: 50%;
+            @include centerFlex();
+            color: #cecece;
+            font-size: 18px;
+            &.active {
+              color: $secondary !important;
+            }
+          }
         }
         &.disabled {
           pointer-events: none;
@@ -1371,7 +1395,23 @@ body {
         }
         .buttons {
           display: flex;
-          gap: 16px;
+          gap: 28px;
+          .add_to_library {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            span {
+              font-size: 14px;
+              width: 36px;
+              @include centerFlex();
+              height: 36px;
+              border-radius: 50%;
+              color: $white;
+              background: $secondary;
+            }
+          }
           .play_btnn {
             background: $main;
             padding: 2px 12px;

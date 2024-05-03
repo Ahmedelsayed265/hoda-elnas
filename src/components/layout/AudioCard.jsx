@@ -12,6 +12,7 @@ import {
 } from "../../redux/slices/audioSrc";
 import { useTranslation } from "react-i18next";
 import useTruncateString from "../../hooks/useTruncateString";
+import axios from "./../../util/axios";
 
 const AudioCard = ({ audio }) => {
   const truncatedString = useTruncateString(audio?.description);
@@ -34,6 +35,19 @@ const AudioCard = ({ audio }) => {
   const stopSound = () => {
     dispatch(setSrc(""));
     dispatch(setId(""));
+  };
+
+  const handleReacting = async (id, react) => {
+    try {
+      const res = axios.post("/learningcenter/Add_like_or_dislike/audio/", {
+        item_id: id,
+        react: react
+      });
+      if (res.status === 200) {
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -85,13 +99,29 @@ const AudioCard = ({ audio }) => {
             }`}
           >
             <div className="likes">
-              <button>
+              <button
+                className={audio?.user_reaction === "like" ? "active" : ""}
+                onClick={() =>
+                  handleReacting(
+                    audio?.id,
+                    audio?.user_reaction === null ? "like" : "null"
+                  )
+                }
+              >
                 <i className="fa-solid fa-thumbs-up"></i>
               </button>
               <span>{audio?.likes || 0}</span>
             </div>
             <div className="dislikes">
-              <button>
+              <button
+                className={audio?.user_reaction === "dislike" ? "active" : ""}
+                onClick={() =>
+                  handleReacting(
+                    audio?.id,
+                    audio?.user_reaction === null ? "dislike" : "null"
+                  )
+                }
+              >
                 <i className="fa-solid fa-thumbs-down"></i>
               </button>
               <span>{audio?.dislikes || 0}</span>

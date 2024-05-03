@@ -836,14 +836,6 @@ body main .audio-card .content .likes_container {
   display: flex;
   gap: 16px;
 }
-body main .audio-card .content .likes_container button {
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #cecece;
-  font-size: 16px;
-}
 body main .audio-card .content .likes_container span {
   color: #000000;
   line-height: normal;
@@ -853,10 +845,32 @@ body main .audio-card .content .likes_container .dislikes {
   align-items: center;
   gap: 6px;
 }
+body main .audio-card .content .likes_container .dislikes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 16px;
+}
+body main .audio-card .content .likes_container .dislikes button.active {
+  color: red !important;
+}
 body main .audio-card .content .likes_container .likes {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+body main .audio-card .content .likes_container .likes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 16px;
+}
+body main .audio-card .content .likes_container .likes button.active {
+  color: #81a63d !important;
 }
 body main .audio-card .content .likes_container.disabled {
   pointer-events: none;
@@ -1366,16 +1380,7 @@ body main .acoustics .sound_img img {
 }
 body main .acoustics .likes_container {
   display: flex;
-  margin-top: 16px;
   gap: 24px;
-}
-body main .acoustics .likes_container button {
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #cecece;
-  font-size: 18px;
 }
 body main .acoustics .likes_container span {
   color: #000000;
@@ -1386,10 +1391,32 @@ body main .acoustics .likes_container .dislikes {
   align-items: center;
   gap: 6px;
 }
+body main .acoustics .likes_container .dislikes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 18px;
+}
+body main .acoustics .likes_container .dislikes button.active {
+  color: red !important;
+}
 body main .acoustics .likes_container .likes {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+body main .acoustics .likes_container .likes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 18px;
+}
+body main .acoustics .likes_container .likes button.active {
+  color: #81a63d !important;
 }
 body main .acoustics .likes_container.disabled {
   pointer-events: none;
@@ -1416,7 +1443,25 @@ body main .acoustics .sound_content .subscribe {
 }
 body main .acoustics .sound_content .buttons {
   display: flex;
-  gap: 16px;
+  gap: 28px;
+}
+body main .acoustics .sound_content .buttons .add_to_library {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+body main .acoustics .sound_content .buttons .add_to_library span {
+  font-size: 14px;
+  width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  background: #81a63d;
 }
 body main .acoustics .sound_content .buttons .play_btnn {
   background: #31535a;
