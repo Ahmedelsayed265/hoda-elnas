@@ -46,11 +46,9 @@ const AudioCard = ({ audio }) => {
           alt="course"
         />
         {audio?.paid === true && (
-          <div className="subscribe">
-            <Link to="/library-subscribe" className="subscribe">
-              {t("sounds.subscribeNow")}
-            </Link>
-          </div>
+          <Link to="/library-subscribe" className="subscribe">
+            {t("sounds.subscribeNow")}
+          </Link>
         )}
       </div>
       <div className="content">

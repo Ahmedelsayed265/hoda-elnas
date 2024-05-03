@@ -779,10 +779,8 @@ body main .audio-card .img img {
 }
 body main .audio-card .img .subscribe {
   position: absolute;
-  top: 8px;
-  right: 8px;
-}
-body main .audio-card .img .subscribe a {
+  top: 12px;
+  right: 12px;
   width: auto;
   font-size: 14px;
   white-space: nowrap;
@@ -1366,12 +1364,6 @@ body main .acoustics .sound_img img {
   -o-object-fit: cover;
      object-fit: cover;
 }
-body main .acoustics .subscribe {
-  color: #fff;
-  background: #81a63d;
-  padding: 4px 24px;
-  border-radius: 20px;
-}
 body main .acoustics .likes_container {
   display: flex;
   margin-top: 16px;
@@ -1415,6 +1407,12 @@ body main .acoustics .sound_content p {
   line-height: 28px;
   font-size: 16px;
   color: #777777;
+}
+body main .acoustics .sound_content .subscribe {
+  color: #fff;
+  background: #81a63d;
+  padding: 4px 24px;
+  border-radius: 20px;
 }
 body main .acoustics .sound_content .buttons {
   display: flex;
