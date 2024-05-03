@@ -14,13 +14,12 @@ import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
 
 const Sound = () => {
-  const [audio, setAudio] = useState({});
-  const { lang } = useSelector((state) => state.language);
-  const isPlaying = useSelector((state) => state.audioSrc.isPlaying);
   const { id } = useParams();
-  const soundId = useSelector((state) => state.audioSrc.id);
   const { t } = useTranslation();
+  const { lang } = useSelector((state) => state.language);
+  const { soundId, isPlaying } = useSelector((state) => state.audioSrc);
   const dispatch = useDispatch();
+  const [audio, setAudio] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
