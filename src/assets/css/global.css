@@ -3805,7 +3805,8 @@ input::-webkit-inner-spin-button {
 .subcribeModal .complete_process .subscribtion_info .details {
   margin: 10px 0;
   color: #000000;
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 24px;
   font-weight: 600;
 }
 .subcribeModal .complete_process .subscribtion_info .total {
@@ -3851,6 +3852,69 @@ input::-webkit-inner-spin-button {
   width: 14px;
   height: 14px;
   cursor: pointer;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content {
+  align-items: flex-start;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content h2 {
+  margin-bottom: 16px;
+  font-size: 26px;
+  color: #81a63d;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content ul {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content ul li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  position: relative;
+  font-size: 14px;
+  color: #777777;
+  line-height: 24px;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content ul li::before {
+  content: "\f058";
+  font-weight: 600;
+  font-size: 16px;
+  color: #81a63d;
+  font-family: "Font Awesome 6 pro";
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content .price h5 {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #81a63d;
+  margin: 0;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content .price h5 span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  line-height: normal;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content .price p {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  line-height: normal;
+  color: #777777;
+  text-decoration: line-through;
+}
+.subcribeModal .complete_process .subscribtion_info.libriry_content .price p span {
+  line-height: normal;
 }
 .subcribeModal .complete_process .upload_photo {
   flex: 2;

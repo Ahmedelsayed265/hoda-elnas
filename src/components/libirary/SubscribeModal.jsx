@@ -3,16 +3,11 @@ import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import LoginOrRegiester from "../courses/subscription/auth/LoginOrRegiester";
-import SelectPayMethod from "../courses/subscription/subscription-steps/SelectPayMethod";
+import SelectPayMethod from "./SelectPayMethod";
 // import CompleteProcess from "../subscription/subscription-steps/CompleteProcess";
+import CompleteProcess from "./CompleteProcess";
 
-const SubscribeModal = ({
-  showModal,
-  setShowModal,
-  formData,
-  course,
-  location
-}) => {
+const SubscribeModal = ({ showModal, setShowModal, plan, location }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
   const [method, setMethod] = useState({});
@@ -30,24 +25,22 @@ const SubscribeModal = ({
   } else if (stepName === "payment_method") {
     targetComponent = (
       <SelectPayMethod
-        formData={formData}
         setStepName={setStepName}
+        plan={plan}
         method={method}
         setMethod={setMethod}
       />
     );
+  } else {
+    targetComponent = (
+      <CompleteProcess
+        setStepName={setStepName}
+        plan={plan}
+        location={location}
+        method={method}
+      />
+    );
   }
-  //   } else {
-  //     targetComponent = (
-  //       <CompleteProcess
-  //         setStepName={setStepName}
-  //         formData={formData}
-  //         location={location}
-  //         course={course}
-  //         method={method}
-  //       />
-  //     );
-  //   }
   return (
     <Modal
       show={showModal}

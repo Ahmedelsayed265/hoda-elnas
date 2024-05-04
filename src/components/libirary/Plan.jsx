@@ -40,7 +40,7 @@ const Plan = ({ plan, location, onSubscribe }) => {
               </span>{" "}
             </p>
           </div>
-          <button onClick={() => onSubscribe(plan?.id)}>
+          <button onClick={() => onSubscribe(plan)}>
             {t("sounds.subscribe")}
           </button>
         </div>

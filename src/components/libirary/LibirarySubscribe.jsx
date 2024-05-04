@@ -8,14 +8,14 @@ import Plan from "./Plan";
 import SubscribeModal from "./SubscribeModal";
 
 const LibirarySubscribe = () => {
-  const { t } = useTranslation();
   const locationData = useUserLocation();
   const location = locationData?.country;
+  const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
   const [plans, setPlans] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [planId, setPlanId] = useState(null);
+  const [plan, setPlan] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,8 +36,8 @@ const LibirarySubscribe = () => {
     fetchData();
   }, [lang]);
 
-  const subscribe = (planeId) => {
-    setPlanId(planeId);
+  const subscribe = (plane) => {
+    setPlan(plane);
     setShowModal(true);
   };
 
@@ -67,7 +67,12 @@ const LibirarySubscribe = () => {
           </div>
         )}
       </div>
-      <SubscribeModal showModal={showModal} setShowModal={setShowModal} />
+      <SubscribeModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        plan={plan}
+        location={location}
+      />
     </section>
   );
 };
