@@ -1337,7 +1337,6 @@ body {
       .likes_container {
         display: flex;
         gap: 24px;
-
         span {
           color: $dark;
           line-height: normal;
@@ -4670,10 +4669,10 @@ input::-webkit-inner-spin-button {
 .audio_player_container {
   position: sticky;
   bottom: 0;
-  background: $white;
   z-index: 9;
 }
 .audio_title {
+  background: $white;
   color: $main;
   font-size: 16px;
   font-weight: 600;

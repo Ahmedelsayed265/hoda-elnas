@@ -4913,11 +4913,11 @@ input::-webkit-inner-spin-button {
 .audio_player_container {
   position: sticky;
   bottom: 0;
-  background: #fff;
   z-index: 9;
 }
 
 .audio_title {
+  background: #fff;
   color: #31535a;
   font-size: 16px;
   font-weight: 600;

@@ -17,7 +17,8 @@ const Sound = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
-  const { soundId, isPlaying } = useSelector((state) => state.audioSrc);
+  const soundId = useSelector((state) => state.audioSrc.id);
+  const isPlaying = useSelector((state) => state.audioSrc.isPlaying);
   const dispatch = useDispatch();
   const [audio, setAudio] = useState({});
   const [loading, setLoading] = useState(true);
@@ -109,12 +110,7 @@ const Sound = () => {
               <div className="likes">
                 <button
                   className={audio?.user_reaction === "like" ? "active" : ""}
-                  onClick={() =>
-                    handleReacting(
-                      audio?.id,
-                      audio?.user_reaction === null ? "like" : "null"
-                    )
-                  }
+                  onClick={() => handleReacting(audio?.id, "like")}
                 >
                   <i className="fa-solid fa-thumbs-up"></i>
                 </button>
@@ -123,12 +119,7 @@ const Sound = () => {
               <div className="dislikes">
                 <button
                   className={audio?.user_reaction === "dislike" ? "active" : ""}
-                  onClick={() =>
-                    handleReacting(
-                      audio?.id,
-                      audio?.user_reaction === null ? "dislike" : "null"
-                    )
-                  }
+                  onClick={() => handleReacting(audio?.id, "dislike")}
                 >
                   <i className="fa-solid fa-thumbs-down"></i>
                 </button>

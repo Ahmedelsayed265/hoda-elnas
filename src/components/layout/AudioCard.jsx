@@ -1,20 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../constants";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
 import audioPoster from "../../assets/images/audio.jpeg";
 import sound from "../../assets/images/Headphones.svg";
-import { BASE_URL } from "../../constants";
-import { useDispatch, useSelector } from "react-redux";
+import useTruncateString from "../../hooks/useTruncateString";
 import {
   setId,
   setIsPlaying,
   setName,
   setSrc
 } from "../../redux/slices/audioSrc";
-import { useTranslation } from "react-i18next";
-import useTruncateString from "../../hooks/useTruncateString";
-import axios from "./../../util/axios";
 
-const AudioCard = ({ audio }) => {
+const AudioCard = ({ audio, onReact }) => {
   const truncatedString = useTruncateString(audio?.description);
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -35,19 +34,6 @@ const AudioCard = ({ audio }) => {
   const stopSound = () => {
     dispatch(setSrc(""));
     dispatch(setId(""));
-  };
-
-  const handleReacting = async (id, react) => {
-    try {
-      const res = axios.post("/learningcenter/Add_like_or_dislike/audio/", {
-        item_id: id,
-        react: react
-      });
-      if (res.status === 200) {
-      }
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
@@ -101,12 +87,7 @@ const AudioCard = ({ audio }) => {
             <div className="likes">
               <button
                 className={audio?.user_reaction === "like" ? "active" : ""}
-                onClick={() =>
-                  handleReacting(
-                    audio?.id,
-                    audio?.user_reaction === null ? "like" : "null"
-                  )
-                }
+                onClick={() => onReact(audio?.id, "like")}
               >
                 <i className="fa-solid fa-thumbs-up"></i>
               </button>
@@ -115,12 +96,7 @@ const AudioCard = ({ audio }) => {
             <div className="dislikes">
               <button
                 className={audio?.user_reaction === "dislike" ? "active" : ""}
-                onClick={() =>
-                  handleReacting(
-                    audio?.id,
-                    audio?.user_reaction === null ? "dislike" : "null"
-                  )
-                }
+                onClick={() => onReact(audio?.id, "dislike")}
               >
                 <i className="fa-solid fa-thumbs-down"></i>
               </button>

@@ -5,7 +5,7 @@ import "swiper/css/pagination";
 import { Autoplay, Navigation } from "swiper/modules";
 import AudioCard from "../layout/AudioCard";
 
-const Slider = ({ slides, prevbuttonClass, nextbuttonClass }) => {
+const Slider = ({ slides, prevbuttonClass, nextbuttonClass, onReacting }) => {
   return (
     <Swiper
       spaceBetween={16}
@@ -34,7 +34,7 @@ const Slider = ({ slides, prevbuttonClass, nextbuttonClass }) => {
     >
       {slides?.map((slide) => (
         <SwiperSlide key={slide?.id}>
-          <AudioCard audio={slide} />
+          <AudioCard audio={slide} onReact={onReacting} />
         </SwiperSlide>
       ))}
     </Swiper>

@@ -30,6 +30,37 @@ const PlayList = () => {
     fetchLists();
   }, [slug, lang]);
 
+  const handleReacting = async (id, react) => {
+    try {
+      const res = await axios.post(
+        "/learningcenter/Add_like_or_dislike/audio/",
+        {
+          item_id: id,
+          react: react
+        }
+      );
+      if (res.status === 200) {
+        const files = [...PlayList?.files];
+        setPlayList((prev) => ({
+          ...prev,
+          files: files.map((file) => {
+            if (file?.id === id) {
+              return {
+                ...file,
+                likes: res?.data?.object?.likes,
+                dislikes: res?.data?.object?.dislikes,
+                user_reaction: res?.data?.object?.user_reaction
+              };
+            }
+            return file;
+          })
+        }));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="row m-0">
       {loading ? (
@@ -51,7 +82,7 @@ const PlayList = () => {
           </div>
           {playList?.files?.map((file) => (
             <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
-              <AudioCard audio={file} />
+              <AudioCard audio={file} onReact={handleReacting} />
             </div>
           ))}
         </>
