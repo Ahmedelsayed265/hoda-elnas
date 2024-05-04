@@ -1360,7 +1360,8 @@ body main .acoustics .noDataFound p {
   color: #777777;
   margin-bottom: 4px;
 }
-body main .acoustics .noDataFound button {
+body main .acoustics .noDataFound button,
+body main .acoustics .noDataFound a {
   background: #81a63d;
   color: #fff;
   padding: 4px 24px;

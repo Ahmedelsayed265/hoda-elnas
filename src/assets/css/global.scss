@@ -1316,7 +1316,8 @@ body {
           color: $gray;
           margin-bottom: 4px;
         }
-        button {
+        button,
+        a {
           background: $secondary;
           color: $white;
           padding: 4px 24px;

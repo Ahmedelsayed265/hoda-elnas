@@ -12,6 +12,7 @@ import {
 } from "../../redux/slices/audioSrc";
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
+import { toast } from "react-toastify";
 
 const Sound = () => {
   const { id } = useParams();
@@ -81,6 +82,21 @@ const Sound = () => {
     }
   };
 
+  const addToLibrary = async () => {
+    try {
+      const res = await axios.put(
+        `/members/Add_audio_to_user_list/${audio?.id}/`
+      );
+      if (res.status === 200) {
+        toast.success(t("sounds.addedToLibrary"));
+      } else {
+        toast.error(res?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       {loading ? (
@@ -141,7 +157,7 @@ const Sound = () => {
                 ) : (
                   <div className="d-flex flex-column gap-3">
                     <div className="d-flex gap-4">
-                      <button className="add_to_library">
+                      <button className="add_to_library" onClick={addToLibrary}>
                         <span>
                           <i className="fa-regular fa-bookmark"></i>
                         </span>
