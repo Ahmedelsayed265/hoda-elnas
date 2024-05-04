@@ -1380,6 +1380,9 @@ body {
         h5 {
           font-size: 26px;
           color: $secondary;
+          @media screen and (max-width: 567px) {
+            font-size: 22px;
+          }
         }
         p {
           line-height: 28px;
@@ -3132,6 +3135,9 @@ body {
   &.en {
     direction: ltr;
     overflow-x: hidden !important;
+    .back i {
+      transform: scaleX(-1) !important;
+    }
     .sideMenu {
       @media screen and (max-width: 768px) {
         right: initial;

@@ -1430,6 +1430,11 @@ body main .acoustics .sound_content h5 {
   font-size: 26px;
   color: #81a63d;
 }
+@media screen and (max-width: 567px) {
+  body main .acoustics .sound_content h5 {
+    font-size: 22px;
+  }
+}
 body main .acoustics .sound_content p {
   line-height: 28px;
   font-size: 16px;
@@ -3283,6 +3288,9 @@ body .accordion-body p a {
 body.en {
   direction: ltr;
   overflow-x: hidden !important;
+}
+body.en .back i {
+  transform: scaleX(-1) !important;
 }
 @media screen and (max-width: 768px) {
   body.en .sideMenu {

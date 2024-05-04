@@ -9,6 +9,7 @@ const Category = () => {
   const { slug } = useParams();
   const { lang } = useSelector((state) => state.language);
   const [category, setCategory] = useState([]);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const Category = () => {
       }
     };
     fetchLists();
-  }, [slug, lang]);
+  }, [slug, lang, hasAccess]);
 
   const handleReacting = async (id, react) => {
     try {

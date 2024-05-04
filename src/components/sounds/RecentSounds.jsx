@@ -9,6 +9,7 @@ const RecentSounds = () => {
   const [lists, setLists] = useState([]);
   const [loading, setLoading] = useState(false);
   const { lang } = useSelector((state) => state.language);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
 
   useEffect(() => {
     const fetchLists = async () => {
@@ -27,7 +28,7 @@ const RecentSounds = () => {
       }
     };
     fetchLists();
-  }, [lang]);
+  }, [lang, hasAccess]);
 
   const handleReacting = async (id, react, listId) => {
     console.log(id, react, listId);

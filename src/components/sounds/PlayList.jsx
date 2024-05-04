@@ -8,6 +8,7 @@ import AudioCard from "../layout/AudioCard";
 const PlayList = () => {
   const { slug } = useParams();
   const { lang } = useSelector((state) => state.language);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
   const [playList, setPlayList] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -28,7 +29,7 @@ const PlayList = () => {
       }
     };
     fetchLists();
-  }, [slug, lang]);
+  }, [slug, lang, hasAccess]);
 
   const handleReacting = async (id, react) => {
     try {
@@ -40,7 +41,7 @@ const PlayList = () => {
         }
       );
       if (res.status === 200) {
-        const files = [...PlayList?.files];
+        const files = [...playList?.files];
         setPlayList((prev) => ({
           ...prev,
           files: files.map((file) => {

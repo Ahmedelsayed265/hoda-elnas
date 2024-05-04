@@ -17,6 +17,7 @@ const Sound = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
   const soundId = useSelector((state) => state.audioSrc.id);
   const isPlaying = useSelector((state) => state.audioSrc.isPlaying);
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const Sound = () => {
       }
     };
     fetchAudio();
-  }, [id, lang]);
+  }, [id, lang, hasAccess]);
 
   const playSound = (file, id) => {
     if (file) {
@@ -71,7 +72,8 @@ const Sound = () => {
         setAudio((prev) => ({
           ...prev,
           likes: res?.data?.object?.likes,
-          dislikes: res?.data?.object?.dislikes
+          dislikes: res?.data?.object?.dislikes,
+          user_reaction: res?.data?.object?.user_reaction
         }));
       }
     } catch (error) {

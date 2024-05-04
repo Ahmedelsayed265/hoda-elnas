@@ -38,7 +38,7 @@ const AudioCard = ({ audio, onReact }) => {
 
   return (
     <div className="audio-card">
-      <div className="img">
+      <Link to={`/audios/${audio?.id}`} className="img">
         <img
           src={
             audio?.background ? `${BASE_URL}${audio?.background}` : audioPoster
@@ -50,7 +50,7 @@ const AudioCard = ({ audio, onReact }) => {
             {t("sounds.subscribeNow")}
           </Link>
         )}
-      </div>
+      </Link>
       <div className="content">
         <div className="d-flex align-items-center justify-content-between mb-2">
           <Link to={`/audios/${audio?.id}`}>
