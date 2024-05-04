@@ -47,6 +47,7 @@ const CompleteProcess = ({
     authorization: authorization
   };
 
+  // create order api
   const handlePayProcess = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -55,14 +56,13 @@ const CompleteProcess = ({
         toast.error(t("uploadTransferPhoto"));
         return;
       }
-
       // pay load
       const dataToSend = {
         user_id: user?.id,
         start_date: formData?.startDate,
         students: formData?.studentsNumber,
         currency: location === "EG" ? "EGP" : "USD",
-        method: "card",
+        method: "geidea",
         pricing_plan_id: formData?.planId,
         couponcode: formData.copun_type === "promo" ? formData.copun_name : "",
         referralcode:
@@ -102,6 +102,8 @@ const CompleteProcess = ({
       setLoading(false);
     }
   };
+
+  // handle payment with geidea
   const handlePayment = async () => {
     try {
       const payLoad = {
@@ -137,6 +139,8 @@ const CompleteProcess = ({
       console.error(error);
     }
   };
+
+  // initiate gedia checkout
   const initiateGediaCheckout = (sessionId) => {
     let onSuccess = function (data) {
       navigate("/my-courses");

@@ -106,7 +106,7 @@ const Sound = () => {
             </div>
             <div
               className={`likes_container mt-3 ${
-                audio?.paid === true ? "disabled" : ""
+                audio?.paid === true && !hasAccess ? "disabled" : ""
               }`}
             >
               <div className="likes">
@@ -139,7 +139,21 @@ const Sound = () => {
                     {t("sounds.subscribeNow")}
                   </Link>
                 ) : (
-                  <>
+                  <div className="d-flex flex-column gap-3">
+                    <div className="d-flex gap-4">
+                      <button className="add_to_library">
+                        <span>
+                          <i className="fa-regular fa-bookmark"></i>
+                        </span>
+                        {t("sounds.addToMyLibrary")}
+                      </button>
+                      <button className="add_to_library">
+                        <span>
+                          <i className="fa-regular fa-plus"></i>
+                        </span>
+                        {t("sounds.addToPlaylist")}
+                      </button>
+                    </div>
                     {soundId === audio?.id && isPlaying === true ? (
                       <div className="play_btnn" onClick={stopSound}>
                         <i className="fa-duotone fa-pause"></i>
@@ -154,13 +168,7 @@ const Sound = () => {
                         {t("sounds.play")}
                       </div>
                     )}
-                    <button className="add_to_library">
-                      <span>
-                        <i className="fa-regular fa-bookmark"></i>
-                      </span>
-                      {t("sounds.addToMyLibrary")}
-                    </button>
-                  </>
+                  </div>
                 )}
               </div>
             </div>

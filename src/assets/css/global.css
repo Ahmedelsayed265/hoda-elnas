@@ -1457,13 +1457,18 @@ body main .acoustics .sound_content .buttons .add_to_library {
   font-weight: 600;
   font-size: 14px;
 }
+@media screen and (max-width: 567px) {
+  body main .acoustics .sound_content .buttons .add_to_library {
+    font-size: 12px;
+  }
+}
 body main .acoustics .sound_content .buttons .add_to_library span {
-  font-size: 14px;
-  width: 36px;
+  font-size: 13px;
+  width: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 36px;
+  height: 32px;
   border-radius: 50%;
   color: #fff;
   background: #81a63d;

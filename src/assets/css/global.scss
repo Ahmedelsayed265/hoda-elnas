@@ -1404,11 +1404,14 @@ body {
             gap: 8px;
             font-weight: 600;
             font-size: 14px;
+            @media screen and (max-width: 567px) {
+              font-size: 12px;
+            }
             span {
-              font-size: 14px;
-              width: 36px;
+              font-size: 13px;
+              width: 32px;
               @include centerFlex();
-              height: 36px;
+              height: 32px;
               border-radius: 50%;
               color: $white;
               background: $secondary;

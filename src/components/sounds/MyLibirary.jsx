@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,8 @@ import noResults from "../../assets/images/nodata.svg";
 const MyLibirary = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [loading , setLoading] = useState(false);
+  const [library , setLibrary] = useState([]);
   const [cookies] = useCookies(["refreshToken"]);
   const isAuthenticated = cookies.refreshToken ? true : false;
   useEffect(() => {
@@ -14,6 +16,10 @@ const MyLibirary = () => {
       navigate("/login");
     }
   }, [isAuthenticated, navigate]);
+
+  useEffect(() => {
+    
+  }, []);
   return (
     <div className="row m-0">
       <div className="col-12 p-2">

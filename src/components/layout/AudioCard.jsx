@@ -19,6 +19,7 @@ const AudioCard = ({ audio, onReact }) => {
   const { t } = useTranslation();
   const id = useSelector((state) => state.audioSrc.id);
   const isPlaying = useSelector((state) => state.audioSrc.isPlaying);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
 
   const playSound = (file, id) => {
     if (file) {
@@ -81,7 +82,7 @@ const AudioCard = ({ audio, onReact }) => {
           </p>
           <div
             className={`likes_container ${
-              audio?.paid === true ? "disabled" : ""
+              audio?.paid === true && !hasAccess ? "disabled" : ""
             }`}
           >
             <div className="likes">
