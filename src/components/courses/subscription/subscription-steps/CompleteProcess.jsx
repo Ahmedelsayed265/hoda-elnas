@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "../../../../util/axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
@@ -15,37 +15,12 @@ const CompleteProcess = ({
   location,
   method
 }) => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [showMethod, setShowMethod] = useState(false);
   const [reciept, setReciept] = useState(null);
-  let orderId;
   const navigate = useNavigate();
   const user = useSelector((state) => state.authedUser.user);
-  const lang = useSelector((state) => state.language.lang);
-  const [dolarRate, setDolarRate] = useState(null);
-
-  useEffect(() => {
-    const getDolarRate = async () => {
-      try {
-        const response = await axios.get(`/finance/get_dollar_rate/`);
-        if (response?.status === 200) {
-          setDolarRate(response?.data?.message);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getDolarRate();
-  }, []);
-
-  const authorization =
-    "Basic NWY0NDYzNjgtNzU5Ni00YmMxLTg2YzMtYWJjNTRlOTkwOTVmOjFlOTUwNWIyLTllNTktNGU3Ny04NDkxLWI1ODFkMzFhYmM5Nw==";
-
-  const headers = {
-    accept: "application/json",
-    "content-type": "application/json",
-    authorization: authorization
-  };
 
   // create order api
   const handlePayProcess = async (e) => {
@@ -62,7 +37,7 @@ const CompleteProcess = ({
         start_date: formData?.startDate,
         students: formData?.studentsNumber,
         currency: location === "EG" ? "EGP" : "USD",
-        method: "geidea",
+        method: method?.identifier,
         pricing_plan_id: formData?.planId,
         couponcode: formData.copun_type === "promo" ? formData.copun_name : "",
         referralcode:
@@ -86,9 +61,8 @@ const CompleteProcess = ({
         reqOptions
       );
       if (response?.status === 200 || response?.status === 201) {
-        orderId = response?.data?.id;
         if (method?.attribute === "auto") {
-          handlePayment();
+          initiateGediaCheckout(response?.data?.object?.session_id);
         } else {
           toast.success(t("inreview"));
           navigate("/my-courses");
@@ -100,43 +74,6 @@ const CompleteProcess = ({
       console.log(error);
     } finally {
       setLoading(false);
-    }
-  };
-
-  // handle payment with geidea
-  const handlePayment = async () => {
-    try {
-      const payLoad = {
-        amount:
-          location === "EG"
-            ? parseFloat(formData.totalPrice).toFixed(2)
-            : parseFloat(formData.totalPrice * dolarRate).toFixed(2),
-        appearance: { receiptPage: true, styles: { hppProfile: "simple" } },
-        callbackUrl: "https://backend.hodaelnas.online/members/geideacallback/",
-        currency: "EGP",
-        customer: {
-          email: user.email,
-          phoneNumber: user.phone
-        },
-        metadata: { custom: `${orderId}` },
-        language: lang,
-        merchantReferenceId: "JoinCommunity",
-        order: { integrationType: "HPP" },
-        paymentOperation: "Pay"
-      };
-      const response = await fetch(
-        "https://api.merchant.geidea.net/payment-intent/api/v1/direct/session",
-        {
-          method: "POST",
-          headers: headers,
-          body: JSON.stringify(payLoad)
-        }
-      );
-      const responseData = await response.json();
-      const session = responseData?.session;
-      initiateGediaCheckout(session?.id);
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -155,8 +92,6 @@ const CompleteProcess = ({
     const payment = new window.GeideaCheckout(onSuccess, onError, onCancel);
     payment.startPayment(sessionId);
   };
-
-  const { t } = useTranslation();
 
   return (
     <div className="complete_process">
