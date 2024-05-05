@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../../util/axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -19,7 +19,7 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
   const [finalAmount, setFinalAmount] = useState(
     location === "EG" ? plan?.saleprice_egp : plan?.saleprice_usd
   );
-  const [coponData, setCoponData] = useState({
+  const [couponData, setCouponData] = useState({
     value: null,
     discount_type: null
   });
@@ -62,7 +62,7 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
           initiateGediaCheckout(response?.data?.object?.session_id);
         } else {
           toast.success(t("renewApplicationInReview"));
-          navigate("/my-courses");
+          navigate("/audios");
         }
       } else {
         toast.error("Something went wrong");
@@ -89,43 +89,89 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
     payment.startPayment(sessionId);
   };
 
+  const handleAddPromo = async (e) => {
+    e.preventDefault();
+    if (promoCode === "") return;
+    try {
+      const response = await axios.post("/members/Check_coupon/", {
+        couponcode: promoCode,
+        service: "courses"
+      });
+      if (response?.status === 200 || response?.status === 201) {
+        if (couponData?.value === "") {
+          setCouponData({
+            value: response?.data?.message?.value,
+            discount_type: response?.data?.message?.discount_type
+          });
+        } else {
+          if (response?.data?.value < couponData?.value) {
+            return;
+          } else {
+            setCouponData({
+              value: response?.data?.message?.value,
+              discount_type: response?.data?.message?.discount_type
+            });
+          }
+        }
+        toast.success(t("courseSubscribe.promoCodeApplied"));
+      } else {
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleAddReferral = async (e) => {
+    e.preventDefault();
+    if (referralCode === "") return;
+    try {
+      const response = await axios.post("/members/Check_referralcode/", {
+        referralcode: referralCode
+      });
+      if (response?.status === 200 || response?.status === 201) {
+        if (couponData?.value === "") {
+          setCouponData({
+            value: response?.data?.message[0]?.value,
+            discount_type: response?.data?.message[0]?.type
+          });
+        } else {
+          if (response?.data?.[0]?.value < couponData?.value) {
+            return;
+          } else {
+            setCouponData({
+              value: response?.data?.message[0]?.value,
+              discount_type: response?.data?.message[0]?.type
+            });
+          }
+        }
+        toast.success(t("courseSubscribe.promoCodeApplied"));
+      } else {
+        toast.error(response?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (couponData.value && couponData.discount_type === "percentage") {
+      location === "EG"
+        ? setFinalAmount((plan?.saleprice_egp * (100 - couponData.value)) / 100)
+        : setFinalAmount(
+            (plan?.saleprice_usd * (100 - couponData.value)) / 100
+          );
+    } else {
+      location === "EG"
+        ? setFinalAmount(plan?.saleprice_egp - couponData.value)
+        : setFinalAmount(plan?.saleprice_usd - couponData.value);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [couponData, location, plan]);
+
   return (
     <div className="complete_process">
       <div className="row m-0">
-        <div className="col-lg-6 col-12 p-2">
-          <div className="form-ui">
-            <div className=" w-100 d-flex align-items-end gap-2">
-              <InputField
-                labelPlaceholder={t("courseSubscribe.discountCopon")}
-                icon={<i className="fa-light fa-tag"></i>}
-                name={"discountCopon"}
-                placeHolder={"kid1234"}
-                value={promoCode}
-                handleChange={(e) => setPromoCode(e.target.value)}
-              />
-              <button className="add-discount">
-                {t("courseSubscribe.addDiscount")}
-              </button>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-6 col-12 p-2">
-          <div className="form-ui">
-            <div className="w-100 d-flex align-items-end gap-2">
-              <InputField
-                labelPlaceholder={t("courseSubscribe.friendCopon")}
-                icon={<i className="fa-light fa-tag"></i>}
-                name={"friendCopon"}
-                placeHolder={"kid1234"}
-                value={referralCode}
-                handleChange={(e) => setReferralCode(e.target.value)}
-              />
-              <button className="add-discount">
-                {t("courseSubscribe.addDiscount")}
-              </button>
-            </div>
-          </div>
-        </div>
         <div className="col-12 mt-3 p-2 d-flex gap-3 flex-lg-row flex-column">
           <div
             className={`subscribtion_info libriry_content ${
@@ -140,13 +186,13 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
             </ul>
             <div className="price">
               <h5>
-                {location === "EG" ? plan?.saleprice_egp : plan?.slaeprice_usd}{" "}
+                {finalAmount}{" "}
                 <span>
                   {location === "EG"
                     ? t("courseSubscribe.egyptianPound")
                     : t("courseSubscribe.dollar")}
                 </span>
-                <span>/ {plan?.interval === 12 ? t("month") : t("year")}</span>
+                <span>/ {plan?.interval === 12 ? t("year") : t("month")}</span>
               </h5>
               <p>
                 {t("insteadOf")}{" "}
@@ -212,6 +258,46 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
               )}
             </div>
           )}
+        </div>
+        <div className="col-lg-6 col-12 p-2">
+          <div className="form-ui">
+            <div className=" w-100 d-flex align-items-end gap-2">
+              <InputField
+                labelPlaceholder={t("courseSubscribe.discountCopon")}
+                icon={<i className="fa-light fa-tag"></i>}
+                name={"discountCopon"}
+                placeHolder={"kid1234"}
+                value={promoCode}
+                handleChange={(e) => setPromoCode(e.target.value)}
+              />
+              <button
+                className="add-discount"
+                onClick={(e) => handleAddPromo(e)}
+              >
+                {t("courseSubscribe.addDiscount")}
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="col-lg-6 col-12 p-2">
+          <div className="form-ui">
+            <div className="w-100 d-flex align-items-end gap-2">
+              <InputField
+                labelPlaceholder={t("courseSubscribe.friendCopon")}
+                icon={<i className="fa-light fa-tag"></i>}
+                name={"friendCopon"}
+                placeHolder={"kid1234"}
+                value={referralCode}
+                handleChange={(e) => setReferralCode(e.target.value)}
+              />
+              <button
+                className="add-discount"
+                onClick={(e) => handleAddReferral(e)}
+              >
+                {t("courseSubscribe.addDiscount")}
+              </button>
+            </div>
+          </div>
         </div>
         {/* Buttons */}
         <div className="col-12 p-2 mt-3 d-flex justify-content-between">

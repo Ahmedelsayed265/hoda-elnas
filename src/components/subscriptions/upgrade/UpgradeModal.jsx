@@ -1,28 +1,41 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import SelectPayMethod from "./upgrade/SelectPayMethod";
-import useUserLocation from "../../hooks/useUserLocation";
+import SelectPayMethod from "./SelectPayMethod";
+import useUserLocation from "../../../hooks/useUserLocation";
+import ChoosePricingPlans from "./ChoosePricingPlans";
 import CompleteProcess from "./CompleteProcess";
 
-const RenewModal = ({
+const UpgradeModal = ({
   showModal,
   setShowModal,
   formData,
-  sub,
+  dataForCompare,
   setFormData,
+  courseObj,
+  subStudents,
   courseLoading
 }) => {
   const { t } = useTranslation();
-  const [stepName, setStepName] = useState("payment_method");
+  const [stepName, setStepName] = useState("choose_pricing_plan");
   const [method, setMethod] = useState({});
   const locationData = useUserLocation();
   const location = locationData?.country;
-
   const course = null;
   let targetComponent;
-
-  if (stepName === "payment_method") {
+  if (stepName === "choose_pricing_plan") {
+    targetComponent = (
+      <ChoosePricingPlans
+        formData={formData}
+        setFormData={setFormData}
+        dataForCompare={dataForCompare}
+        courseObj={courseObj}
+        courseLoading={courseLoading}
+        subStudents={subStudents}
+        setStepName={setStepName}
+      />
+    );
+  } else if (stepName === "payment_method") {
     targetComponent = (
       <SelectPayMethod
         formData={formData}
@@ -36,10 +49,9 @@ const RenewModal = ({
     targetComponent = (
       <CompleteProcess
         setStepName={setStepName}
+        setFormData={setFormData}
         formData={formData}
         location={location}
-        sub={sub}
-        setFormData={setFormData}
         course={course}
         method={method}
       />
@@ -53,7 +65,7 @@ const RenewModal = ({
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title>{t("renewSub")}</Modal.Title>
+        <Modal.Title>{t("upgradeSub")}</Modal.Title>
       </Modal.Header>
       <Modal.Body className="subcribeModal">
         {/* tabs */}
@@ -62,11 +74,26 @@ const RenewModal = ({
             <div className="col-lg-4 col-12 p-2">
               <div
                 className={`wizard_tab ${
-                  stepName === "payment_method" ? "active" : ""
+                  stepName === "choose_pricing_plan" ? "active" : ""
                 }`}
               >
                 <div className="num">
                   <span> 1</span>
+                </div>
+                <div className="content">
+                  <h6>{t("pricingPlan")}</h6>
+                  <p>{t("choosePricing")}</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-12 p-2">
+              <div
+                className={`wizard_tab ${
+                  stepName === "payment_method" ? "active" : ""
+                }`}
+              >
+                <div className="num">
+                  <span>2</span>
                 </div>
                 <div className="content">
                   <h6>{t("courseSubscribe.paymentMethods")}</h6>
@@ -97,4 +124,4 @@ const RenewModal = ({
   );
 };
 
-export default RenewModal;
+export default UpgradeModal;

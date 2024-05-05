@@ -104,16 +104,25 @@ const CompleteProcess = ({
         service: "courses"
       });
       if (response?.status === 200 || response?.status === 201) {
-        setCoponData({
+        const newCouponData = {
           value: response?.data?.message?.value,
           discount_type: response?.data?.message?.discount_type
-        });
+        };
+        if (
+          coponData.value !== null &&
+          coponData.value === newCouponData.value &&
+          coponData.discount_type === newCouponData.discount_type
+        ) {
+          toast.warning(t("courseSubscribe.couponAlreadyApplied"));
+          return;
+        }
+        setCoponData(newCouponData);
         setFormData((prevFormData) => ({
           ...prevFormData,
           copun_type: "promo",
           validCopun: true,
           copun_name: promoCode,
-          discont_percent: response?.data?.message?.value
+          discont_percent: newCouponData.value
         }));
         toast.success(t("courseSubscribe.promoCodeApplied"));
         setPromoCode("");

@@ -216,7 +216,8 @@
         "copoun": "coupon",
         "active": "Active",
         "deactive": "Deactive",
-        "perMonth": "Per Month"
+        "perMonth": "Per Month",
+        "couponAlreadyApplied": "Coupon already applied"
     },
     "dashboard": {
         "tasks": "Tasks",

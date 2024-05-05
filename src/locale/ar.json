@@ -217,7 +217,8 @@
         "copoun": "كوبون",
         "active": "نشط",
         "deactive": "غير نشط",
-        "perMonth": "شهريا"
+        "perMonth": "شهريا",
+        "couponAlreadyApplied": "تم تطبيق هذا الكوبون من قبل"
     },
     "dashboard": {
         "tasks": "المهام",

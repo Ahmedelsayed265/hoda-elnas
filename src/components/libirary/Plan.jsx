@@ -26,7 +26,7 @@ const Plan = ({ plan, location, onSubscribe }) => {
                   ? t("courseSubscribe.egyptianPound")
                   : t("courseSubscribe.dollar")}
               </span>
-              <span>/ {plan?.interval === 12 ? t("month") : t("year")}</span>
+              <span>/ {plan?.interval === 12 ? t("year") : t("month")}</span>
             </h5>
             <p>
               {t("insteadOf")}{" "}

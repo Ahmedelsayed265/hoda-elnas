@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
-import RenewModal from "./RenewModal";
+import RenewModal from "./renew/RenewModal";
 import DataLoader from "../ui/DataLoader";
 import CourseSubCard from "./CourseSubCard";
 import subsIcon from "../../assets/images/subs.svg";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
-import UpgradeModal from "./UpgradeModal";
+import UpgradeModal from "./upgrade/UpgradeModal";
 
 const MySubscriptions = () => {
   const { t } = useTranslation();

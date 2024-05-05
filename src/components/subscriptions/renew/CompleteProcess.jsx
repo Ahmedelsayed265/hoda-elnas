@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../util/axios";
+import axios from "../../../util/axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../constants";
-import TotalPrice from "../courses/subscription/TotalPrice";
-import SubmitButton from "../ui/form-elements/SubmitButton";
-import InputField from "../ui/InputField";
+import { BASE_URL } from "../../../constants";
+import TotalPrice from "../../courses/subscription/TotalPrice";
+import SubmitButton from "../../ui/form-elements/SubmitButton";
+import InputField from "../../ui/InputField";
 
 const CompleteProcess = ({
   setStepName,
@@ -99,16 +99,25 @@ const CompleteProcess = ({
         service: "courses"
       });
       if (response?.status === 200 || response?.status === 201) {
-        setCoponData({
+        const newCouponData = {
           value: response?.data?.message?.value,
           discount_type: response?.data?.message?.discount_type
-        });
+        };
+        if (
+          coponData.value !== null &&
+          coponData.value === newCouponData.value &&
+          coponData.discount_type === newCouponData.discount_type
+        ) {
+          toast.warning(t("courseSubscribe.couponAlreadyApplied"));
+          return;
+        }
+        setCoponData(newCouponData);
         setFormData((prevFormData) => ({
           ...prevFormData,
           copun_type: "promo",
           validCopun: true,
           copun_name: promoCode,
-          discont_percent: response?.data?.message?.value
+          discont_percent: newCouponData.value
         }));
         toast.success(t("courseSubscribe.promoCodeApplied"));
         setPromoCode("");
