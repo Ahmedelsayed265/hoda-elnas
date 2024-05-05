@@ -242,7 +242,7 @@ const MySubscriptions = () => {
     <section className="my-subscriptions">
       <div className="container">
         <div className="row m-0">
-          {librarySubs.length < 0 ? (
+          {librarySubs.length < 1 ? (
             <div className="col-12 p-2">
               <div className="librarySubLink">
                 <Link to="/library-subscribe">{t("librarySubAds")}</Link>
@@ -250,6 +250,14 @@ const MySubscriptions = () => {
             </div>
           ) : (
             <>
+              <div className="col-12 p-2">
+                <div className="section_title">
+                  <div className="img">
+                    <img src={subsIcon} alt="subs" />
+                  </div>
+                  <h2>{t("LibrarySub")}</h2>
+                </div>
+              </div>
               {librarySubs?.map((sub) => (
                 <div className="col-lg-4 col-md-6 col-12 p-2" key={sub?.id}>
                   <CourseSubCard
