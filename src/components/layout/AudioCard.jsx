@@ -13,7 +13,7 @@ import {
   setSrc
 } from "../../redux/slices/audioSrc";
 
-const AudioCard = ({ audio, onReact, hasRemoveBtn }) => {
+const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
   const truncatedString = useTruncateString(audio?.description);
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -49,6 +49,11 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn }) => {
         {audio?.paid === true && (
           <Link to="/library-subscribe" className="subscribe">
             {t("sounds.subscribeNow")}
+          </Link>
+        )}
+        {hasRemoveBtn && (
+          <Link className="remove" onClick={() => onRemove(audio?.id)}>
+            <i className="fa-solid fa-trash-xmark"></i>
           </Link>
         )}
       </Link>

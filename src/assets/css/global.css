@@ -789,6 +789,20 @@ body main .audio-card .img .subscribe {
   color: #fff;
   padding: 0 10px;
 }
+body main .audio-card .img .remove {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: red;
+  color: #fff;
+}
 body main .audio-card .content {
   padding: 16px;
 }

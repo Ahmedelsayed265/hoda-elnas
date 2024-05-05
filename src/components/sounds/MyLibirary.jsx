@@ -7,6 +7,7 @@ import axios from "./../../util/axios";
 import DataLoader from "./../ui/DataLoader";
 import AudioCard from "../layout/AudioCard";
 import list from "../../assets/images/lib.svg";
+import { toast } from "react-toastify";
 
 const MyLibirary = () => {
   const { t } = useTranslation();
@@ -40,6 +41,25 @@ const MyLibirary = () => {
 
     fetchLibrary();
   }, []);
+
+  const removeFromLibrary = async (id) => {
+    try {
+      const res = await axios.delete(
+        `/members/Delete_file_audio_list_fav/?audio_id=${id}`
+      );
+      if (res.status === 200) {
+        toast.success(t("sounds.removedFromLibrary"));
+        setLibrary((prev) => ({
+          ...prev,
+          files: prev?.files?.filter((file) => file?.id !== id)
+        }));
+      } else {
+        toast.error(res?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleReacting = async (id, react) => {
     try {
@@ -78,7 +98,7 @@ const MyLibirary = () => {
         <DataLoader minHeight="300px" />
       ) : (
         <>
-          {library.length === 0 ? (
+          {library?.files?.length < 1 ? (
             <div className="col-12 p-2">
               <div className="noDataFound">
                 <img src={noResults} alt="no results" />
@@ -102,6 +122,7 @@ const MyLibirary = () => {
                     audio={file}
                     onReact={handleReacting}
                     hasRemoveBtn={true}
+                    onRemove={removeFromLibrary}
                   />
                 </div>
               ))}
