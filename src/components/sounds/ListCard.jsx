@@ -20,12 +20,12 @@ const ListCard = ({ list, onDelete, onEdit }) => {
         <p>{list?.date_create}</p>
       </div>
       <div className="buttons">
-        <button onClick={() => onEdit(list)}>
+        <Link onClick={() => onEdit(list)}>
           <i className="fa-light fa-pen-to-square"></i>
-        </button>
-        <button onClick={() => onDelete(list?.id)}>
+        </Link>
+        <Link onClick={() => onDelete(list?.id)}>
           <i className="fa-sharp fa-solid fa-trash"></i>
-        </button>
+        </Link>
       </div>
     </Link>
   );

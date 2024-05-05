@@ -1312,8 +1312,10 @@ body {
           gap: 12px;
           margin-right: auto;
           color: $secondary;
-          button {
+          a {
+            @include centerFlex();
             background: $inputBG;
+            color: $secondary;
             width: 30px;
             height: 30px;
             border-radius: 50%;

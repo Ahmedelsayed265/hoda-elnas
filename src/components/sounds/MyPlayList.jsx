@@ -32,7 +32,9 @@ const MyPlayList = () => {
             <button className="back" onClick={() => window.history.back()}>
               <i className="fa-solid fa-arrow-right-long"></i>
             </button>
-            <h5 className="mb-0">{t("sounds.list")}: "{playList?.listname}"</h5>
+            <h5 className="mb-0">
+              {t("sounds.list")}: "{playList?.listname}"
+            </h5>
           </div>
         </div>
       </div>

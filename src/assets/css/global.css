@@ -1353,14 +1353,18 @@ body main .acoustics .list-card .buttons {
   margin-right: auto;
   color: #81a63d;
 }
-body main .acoustics .list-card .buttons button {
+body main .acoustics .list-card .buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #f8f8f8;
+  color: #81a63d;
   width: 30px;
   height: 30px;
   border-radius: 50%;
   font-size: 14px;
 }
-body main .acoustics .list-card .buttons button:nth-child(2) {
+body main .acoustics .list-card .buttons a:nth-child(2) {
   color: red;
 }
 body main .acoustics .swiper_pagination_title {

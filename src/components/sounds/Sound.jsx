@@ -13,6 +13,7 @@ import {
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
 import { toast } from "react-toastify";
+import AddAudioToPlayListModal from "./AddAudioToPlayListModal";
 
 const Sound = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const Sound = () => {
   const dispatch = useDispatch();
   const [audio, setAudio] = useState({});
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchAudio = async () => {
@@ -195,7 +197,10 @@ const Sound = () => {
                           ? t("sounds.removeFromMyLibrary")
                           : t("sounds.addToMyLibrary")}
                       </button>
-                      <button className="add_to_library">
+                      <button
+                        className="add_to_library"
+                        onClick={() => setShowModal(true)}
+                      >
                         <span>
                           <i className="fa-regular fa-plus"></i>
                         </span>
@@ -223,6 +228,10 @@ const Sound = () => {
           </div>
         </div>
       )}
+      <AddAudioToPlayListModal
+        setShowModal={setShowModal}
+        showModal={showModal}
+      />
     </>
   );
 };
