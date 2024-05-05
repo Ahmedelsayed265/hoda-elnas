@@ -4490,6 +4490,19 @@ input::-webkit-inner-spin-button {
 }
 .my-subscriptions {
   padding: 40px 0;
+  .librarySubLink {
+    margin-bottom: 24px;
+    width: 100%;
+    padding: 16px;
+    box-shadow: $lightShadow;
+    background: $main;
+    border-radius: 12px;
+    @include centerFlex();
+    a {
+      color: $white;
+      text-align: center;
+    }
+  }
   .section_title {
     display: flex;
     align-items: center;

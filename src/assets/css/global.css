@@ -4718,6 +4718,21 @@ input::-webkit-inner-spin-button {
 .my-subscriptions {
   padding: 40px 0;
 }
+.my-subscriptions .librarySubLink {
+  margin-bottom: 24px;
+  width: 100%;
+  padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background: #31535a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my-subscriptions .librarySubLink a {
+  color: #fff;
+  text-align: center;
+}
 .my-subscriptions .section_title {
   display: flex;
   align-items: center;

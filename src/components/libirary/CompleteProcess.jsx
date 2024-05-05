@@ -76,7 +76,7 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
 
   const initiateGediaCheckout = (sessionId) => {
     let onSuccess = function (data) {
-      navigate("/my-courses");
+      navigate("/audios");
     };
     let onError = function (data) {
       console.error("Error occurred during payment:", data);

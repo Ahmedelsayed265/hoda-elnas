@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "./../../util/axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import RenewModal from "./renew/RenewModal";
@@ -21,6 +21,7 @@ const MySubscriptions = () => {
 
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [librarySubs, setLibrarySubs] = useState([]);
   const [showRenewModal, setShowRenewModal] = useState(false);
   const [subscriptionId, setSubscriptionId] = useState(null);
   const [mySubscriptions, setMySubscriptions] = useState([]);
@@ -141,8 +142,14 @@ const MySubscriptions = () => {
         const subscriptionsResponse = await axios.get(
           `/members/List_student_subs/?user_id=${user.id}`
         );
+        const libraryRes = await axios.get(
+          `/members/List_order/?user_id=${user.id}&approved=true&service=library`
+        );
         if (subscriptionsResponse.status === 200) {
           setMySubscriptions(subscriptionsResponse?.data?.message);
+        }
+        if (libraryRes.status === 200) {
+          setLibrarySubs(libraryRes?.data?.message);
         }
       } catch (err) {
         console.log(err);
@@ -235,6 +242,11 @@ const MySubscriptions = () => {
     <section className="my-subscriptions">
       <div className="container">
         <div className="row m-0">
+          <div className="col-12 p-2">
+            <div className="librarySubLink">
+              <Link to="/library-subscribe">{t("librarySubAds")}</Link>
+            </div>
+          </div>
           <div className="col-12 p-2">
             <div className="section_title">
               <div className="img">
