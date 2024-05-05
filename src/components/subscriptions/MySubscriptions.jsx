@@ -242,12 +242,27 @@ const MySubscriptions = () => {
     <section className="my-subscriptions">
       <div className="container">
         <div className="row m-0">
-          <div className="col-12 p-2">
-            <div className="librarySubLink">
-              <Link to="/library-subscribe">{t("librarySubAds")}</Link>
+          {librarySubs.length < 0 ? (
+            <div className="col-12 p-2">
+              <div className="librarySubLink">
+                <Link to="/library-subscribe">{t("librarySubAds")}</Link>
+              </div>
             </div>
-          </div>
-          <div className="col-12 p-2">
+          ) : (
+            <>
+              {librarySubs?.map((sub) => (
+                <div className="col-lg-4 col-md-6 col-12 p-2" key={sub?.id}>
+                  <CourseSubCard
+                    subscription={sub}
+                    onRenewOrder={() => renewOrder(sub?.id)}
+                    onUpgradeOrder={() => upgradeOrder(sub?.id)}
+                    onCancel={() => handleCancelSubscription(sub?.id)}
+                  />
+                </div>
+              ))}
+            </>
+          )}
+          <div className="col-12 p-2 mt-4">
             <div className="section_title">
               <div className="img">
                 <img src={subsIcon} alt="subs" />

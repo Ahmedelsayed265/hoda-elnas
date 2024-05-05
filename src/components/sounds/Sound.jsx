@@ -84,11 +84,28 @@ const Sound = () => {
 
   const addToLibrary = async () => {
     try {
-      const res = await axios.put(
-        `/members/Add_audio_to_user_list/${audio?.id}/`
-      );
+      const res = await axios.put(`/members/Add_audio_to_user_fav/`, {
+        audio_id: audio?.id
+      });
       if (res.status === 200) {
         toast.success(t("sounds.addedToLibrary"));
+        setAudio(res?.data?.object[0]);
+      } else {
+        toast.error(res?.response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromLibrary = async () => {
+    try {
+      const res = await axios.delete(
+        `/members/Delete_file_audio_list_fav/?audio_id=${audio?.id}`
+      );
+      if (res.status === 200) {
+        toast.success(t("sounds.removedFromLibrary"));
+        setAudio(res?.data?.object[0]);
       } else {
         toast.error(res?.response?.data?.message);
       }
@@ -157,11 +174,26 @@ const Sound = () => {
                 ) : (
                   <div className="d-flex flex-column gap-3">
                     <div className="d-flex gap-4">
-                      <button className="add_to_library" onClick={addToLibrary}>
+                      <button
+                        className={`add_to_library ${
+                          audio?.in_fav === true ? "danger" : ""
+                        }`}
+                        onClick={
+                          audio?.in_fav === true
+                            ? removeFromLibrary
+                            : addToLibrary
+                        }
+                      >
                         <span>
-                          <i className="fa-regular fa-bookmark"></i>
+                          {audio?.in_fav === true ? (
+                            <i className="fa-sharp fa-solid fa-bookmark-slash"></i>
+                          ) : (
+                            <i className="fa-regular fa-bookmark"></i>
+                          )}
                         </span>
-                        {t("sounds.addToMyLibrary")}
+                        {audio?.in_fav === true
+                          ? t("sounds.removeFromMyLibrary")
+                          : t("sounds.addToMyLibrary")}
                       </button>
                       <button className="add_to_library">
                         <span>

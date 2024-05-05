@@ -1455,6 +1455,7 @@ body main .acoustics .sound_content .buttons .add_to_library {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #000000;
   font-weight: 600;
   font-size: 14px;
 }
@@ -1473,6 +1474,9 @@ body main .acoustics .sound_content .buttons .add_to_library span {
   border-radius: 50%;
   color: #fff;
   background: #81a63d;
+}
+body main .acoustics .sound_content .buttons .add_to_library.danger span {
+  background: red;
 }
 body main .acoustics .sound_content .buttons .play_btnn {
   background: #31535a;
@@ -3426,6 +3430,9 @@ body.en .accordion-button::after {
 }
 body.en .modal-header button {
   margin: 0 0 0 auto !important;
+}
+body.en .audio-card {
+  direction: ltr !important;
 }
 
 .button-86 {

@@ -1403,6 +1403,7 @@ body {
             display: flex;
             align-items: center;
             gap: 8px;
+            color: $dark;
             font-weight: 600;
             font-size: 14px;
             @media screen and (max-width: 567px) {
@@ -1416,6 +1417,9 @@ body {
               border-radius: 50%;
               color: $white;
               background: $secondary;
+            }
+            &.danger span {
+              background: red;
             }
           }
           .play_btnn {
@@ -3278,6 +3282,9 @@ body {
     }
     .modal-header button {
       margin: 0 0 0 auto !important;
+    }
+    .audio-card {
+      direction: ltr !important;
     }
   }
 }

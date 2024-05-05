@@ -338,7 +338,7 @@
     "sounds": {
         "departments": "Departments",
         "playLists": "Playlists",
-        "library": "My Library",
+        "library": "Favourites",
         "myLists": "My Lists",
         "noPlayLists": "No playlists found",
         "noPlayListsSub": "Create one and keep your favorites in one place",
@@ -348,9 +348,12 @@
         "listenNow": "Listen Now",
         "subscribeNow": "Subscribe Now",
         "subscribe": "Subscribe",
+        "removeFromMyLibrary": "Remove From Favourites",
         "play": "Play",
         "pause": "Pause",
-        "addToMyLibrary": "Add To My Library",
+        "addedToLibrary": "Added To Favourites",
+        "removedFromLibrary": "Removed From Favourites",
+        "addToMyLibrary": "Add To My Favourites",
         "addToPlaylist": "Add To Playlist",
         "hodaElnasLibirarySubscribe": "Subscribe to Huda People Library",
         "hodaElnasLibirarySubscribeDesc": "Don't miss the opportunity to join. Subscribe now and enjoy the exclusive benefits."

@@ -347,7 +347,7 @@
     "sounds": {
         "departments": "الاقسام",
         "playLists": "قوائم التشغيل",
-        "library": "مكتبتى",
+        "library": "المفضلة",
         "myLists": "قوائمي",
         "noPlayLists": "لا توجد قوائم تشغيل",
         "noPlayListsSub": "أنشئ واحدة واحتفظ بمفضلاتك في قائمة واحدة",
@@ -359,7 +359,10 @@
         "subscribe": "اشترك",
         "pause": "إيقاف",
         "play": "تشغيل",
-        "addToMyLibrary": "إضافة الى مكتبتى",
+        "addedToLibrary": "تمت الاضافة الى المفضلة",
+        "removedFromLibrary": "تم الحذف من المفضلة",
+        "addToMyLibrary": "إضافة الى المفضلة",
+        "removeFromMyLibrary": "حذف من المفضلة",
         "addToPlaylist": "إضافة الى قائمة تشغيل",
         "hodaElnasLibirarySubscribe": "اشترك في مكتبة هدى للناس",
         "hodaElnasLibirarySubscribeDesc": "لا تفوّت فرصة الانضمام اشترك الآن واستمتع بالمزايا الحصرية"

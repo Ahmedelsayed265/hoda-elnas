@@ -13,7 +13,7 @@ import {
   setSrc
 } from "../../redux/slices/audioSrc";
 
-const AudioCard = ({ audio, onReact }) => {
+const AudioCard = ({ audio, onReact, hasRemoveBtn }) => {
   const truncatedString = useTruncateString(audio?.description);
   const dispatch = useDispatch();
   const { t } = useTranslation();
