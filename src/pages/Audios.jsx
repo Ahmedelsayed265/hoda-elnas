@@ -9,6 +9,7 @@ import MyPlayLists from "../components/sounds/MyPlayLists";
 import PlayList from "../components/sounds/PlayList";
 import Category from "../components/sounds/Category";
 import Sound from "../components/sounds/Sound";
+import MyPlayList from "../components/sounds/MyPlayList";
 
 const Audios = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,7 +56,8 @@ const Audios = () => {
               <Route path="/playlists/*" element={<PlayLists />} />
               <Route path="/playlists/:slug" element={<PlayList />} />
               <Route path="/my-library" element={<MyLibirary />} />
-              <Route path="/my-playlists" element={<MyPlayLists />} />
+              <Route path="/my-playlists/*" element={<MyPlayLists />} />
+              <Route path="/my-playlists/:id" element={<MyPlayList />} />
             </Routes>
           </div>
         </div>

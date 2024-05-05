@@ -1257,6 +1257,73 @@ body {
     }
     .acoustics {
       padding: 40px 0;
+      .create_list {
+        button {
+          border-radius: 8px;
+          padding: 4px 12px;
+          background: $secondary;
+          color: $white;
+        }
+      }
+      .list-card {
+        padding: 12px;
+        display: flex;
+        border-radius: 12px;
+        box-shadow: $lightShadow;
+        gap: 8px;
+        .icon {
+          width: 80px;
+          background: $inputBG;
+          @include centerFlex();
+          height: 80px;
+          border-radius: 8px;
+          img {
+            height: 36px;
+          }
+        }
+        .content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 8px;
+          padding: 4px 0;
+          h6 {
+            color: $dark;
+            font-size: 16px;
+            margin: 0;
+            font-weight: 600;
+          }
+          p {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 0;
+            line-height: normal;
+            font-size: 14px;
+            color: $gray;
+            img {
+              height: 16px;
+            }
+          }
+        }
+        .buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-right: auto;
+          color: $secondary;
+          button {
+            background: $inputBG;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-size: 14px;
+            &:nth-child(2) {
+              color: red;
+            }
+          }
+        }
+      }
       .swiper_pagination_title {
         width: 100%;
         @include space-between();
@@ -2609,7 +2676,7 @@ body {
       width: 42px;
       height: 42px;
       border-radius: 50%;
-      z-index: 999999;
+      z-index: 999;
       box-shadow: $lightShadow;
       @include clearInput();
       @include centerFlex();
@@ -3209,6 +3276,10 @@ body {
       }
     }
     main {
+      .acoustics .list-card .buttons {
+        margin-left: auto;
+        margin-right: 0;
+      }
       .section_title a i {
         transform: translateY(2px) scale(-1);
         margin-left: 4px;

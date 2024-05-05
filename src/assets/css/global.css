@@ -1296,6 +1296,73 @@ body main .section_title a i {
 body main .acoustics {
   padding: 40px 0;
 }
+body main .acoustics .create_list button {
+  border-radius: 8px;
+  padding: 4px 12px;
+  background: #81a63d;
+  color: #fff;
+}
+body main .acoustics .list-card {
+  padding: 12px;
+  display: flex;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  gap: 8px;
+}
+body main .acoustics .list-card .icon {
+  width: 80px;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  border-radius: 8px;
+}
+body main .acoustics .list-card .icon img {
+  height: 36px;
+}
+body main .acoustics .list-card .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+body main .acoustics .list-card .content h6 {
+  color: #000000;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+body main .acoustics .list-card .content p {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  line-height: normal;
+  font-size: 14px;
+  color: #777777;
+}
+body main .acoustics .list-card .content p img {
+  height: 16px;
+}
+body main .acoustics .list-card .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-right: auto;
+  color: #81a63d;
+}
+body main .acoustics .list-card .buttons button {
+  background: #f8f8f8;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 14px;
+}
+body main .acoustics .list-card .buttons button:nth-child(2) {
+  color: red;
+}
 body main .acoustics .swiper_pagination_title {
   width: 100%;
   display: flex;
@@ -2738,7 +2805,7 @@ body main .open_menu {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  z-index: 999999;
+  z-index: 999;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border: none;
   background: none;
@@ -3355,6 +3422,10 @@ body.en footer .about {
 body.en footer ul li {
   padding-left: 0;
   padding-right: 16px;
+}
+body.en main .acoustics .list-card .buttons {
+  margin-left: auto;
+  margin-right: 0;
 }
 body.en main .section_title a i {
   transform: translateY(2px) scale(-1);

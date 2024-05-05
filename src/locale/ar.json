@@ -353,6 +353,7 @@
         "noPlayLists": "لا توجد قوائم تشغيل",
         "noPlayListsSub": "أنشئ واحدة واحتفظ بمفضلاتك في قائمة واحدة",
         "createPlayList": "انشاء قائمة تشغيل",
+        "renamePlayList": "تغيير اسم القائمة ",
         "noLibirary": "لم تقم بإضافة صوتيات إلى مكتبتك",
         "noLibrarySub": "استمع الآن واحتفظ بالمزيد",
         "listenNow": "استمع الآن",
@@ -366,6 +367,14 @@
         "removeFromMyLibrary": "حذف من المفضلة",
         "addToPlaylist": "إضافة الى قائمة تشغيل",
         "hodaElnasLibirarySubscribe": "اشترك في مكتبة هدى للناس",
-        "hodaElnasLibirarySubscribeDesc": "لا تفوّت فرصة الانضمام اشترك الآن واستمتع بالمزايا الحصرية"
+        "hodaElnasLibirarySubscribeDesc": "لا تفوّت فرصة الانضمام اشترك الآن واستمتع بالمزايا الحصرية",
+        "title": "إسم القائمة",
+        "create": "انشاء",
+        "file": "ملف",
+        "rename": "إعادة تسمية",
+        "list": "قائمة",
+        "playListUpdated": "تم تحديث القائمة بنجاح",
+        "playListDeleted": "تم حذف القائمة بنجاح",
+        "playListCreated": "تم انشاء القائمة بنجاح"
     }
 }

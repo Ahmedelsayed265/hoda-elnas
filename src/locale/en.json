@@ -337,13 +337,14 @@
         "chooseReason": "Please Choose Reason"
     },
     "sounds": {
-        "departments": "Departments",
+        "departments": "Categories",
         "playLists": "Playlists",
         "library": "Favourites",
         "myLists": "My Lists",
         "noPlayLists": "No playlists found",
         "noPlayListsSub": "Create one and keep your favorites in one place",
         "createPlayList": "Create Playlist",
+        "renamePlayList": "Rename Playlist",
         "noLibirary": "You haven't added any sounds to your library",
         "noLibrarySub": "Listen now and save more",
         "listenNow": "Listen Now",
@@ -357,6 +358,14 @@
         "addToMyLibrary": "Add To My Favourites",
         "addToPlaylist": "Add To Playlist",
         "hodaElnasLibirarySubscribe": "Subscribe to Huda People Library",
-        "hodaElnasLibirarySubscribeDesc": "Don't miss the opportunity to join. Subscribe now and enjoy the exclusive benefits."
+        "hodaElnasLibirarySubscribeDesc": "Don't miss the opportunity to join. Subscribe now and enjoy the exclusive benefits.",
+        "title": "Playlist Title",
+        "create": "Create",
+        "file": "File",
+        "rename": "Rename",
+        "list": "List",
+        "playListUpdated": "Playlist Updated Successfully",
+        "playListDeleted": "Playlist Deleted Successfully",
+        "playListCreated": "Playlist Created Successfully"
     }
 }
