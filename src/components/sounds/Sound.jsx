@@ -90,7 +90,6 @@ const Sound = () => {
         audio_id: audio?.id
       });
       if (res.status === 200) {
-        toast.success(t("sounds.addedToLibrary"));
         setAudio(res?.data?.object[0]);
       } else {
         toast.error(res?.response?.data?.message);
@@ -106,7 +105,6 @@ const Sound = () => {
         `/members/Delete_file_audio_list_fav/?audio_id=${audio?.id}`
       );
       if (res.status === 200) {
-        toast.success(t("sounds.removedFromLibrary"));
         setAudio(res?.data?.object[0]);
       } else {
         toast.error(res?.response?.data?.message);
@@ -231,6 +229,7 @@ const Sound = () => {
       <AddAudioToPlayListModal
         setShowModal={setShowModal}
         showModal={showModal}
+        audio={audio}
       />
     </>
   );

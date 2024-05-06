@@ -101,7 +101,7 @@ const MyLibirary = () => {
           {library?.files?.length < 1 ? (
             <div className="col-12 p-2">
               <div className="noDataFound">
-                <img src={noResults} alt="no results" />
+                <img src={noResults} alt="no results" className="mb-3" />
                 <h5>{t("sounds.noLibirary")}</h5>
                 <p>{t("sounds.noLibrarySub")}</p>
                 <Link to="/audios">{t("sounds.listenNow")}</Link>
