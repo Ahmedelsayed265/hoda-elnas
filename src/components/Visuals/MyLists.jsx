@@ -5,12 +5,12 @@ import noResults from "../../assets/images/no-results.svg";
 import { useTranslation } from "react-i18next";
 import axios from "./../../util/axios";
 import DataLoader from "../ui/DataLoader";
-import AddPlayListModal from "./AddPlayListModal";
+// import AddPlayListModal from "./AddPlayListModal";
 import lib from "../../assets/images/lib.svg";
-import ListCard from "./ListCard";
 import { toast } from "react-toastify";
+import ListCard from './../sounds/ListCard';
 
-const MyPlayLists = () => {
+const MyLists = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [cookies] = useCookies(["refreshToken"]);
@@ -105,15 +105,15 @@ const MyPlayLists = () => {
           )}
         </>
       )}
-      <AddPlayListModal
+      {/* <AddPlayListModal
         showModal={showModal}
         setShowModal={setShowModal}
         setPlayLists={setPlayLists}
         forEditPlayList={playList}
         setPlayList={setPlayList}
-      />
+      /> */}
     </div>
   );
 };
 
-export default MyPlayLists;
+export default MyLists;

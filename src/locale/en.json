@@ -371,6 +371,9 @@
         "audioAddedToPlayList": "Audio Added To Playlist",
         "playListUpdated": "Playlist Updated Successfully",
         "playListDeleted": "Playlist Deleted Successfully",
-        "playListCreated": "Playlist Created Successfully"
+        "playListCreated": "Playlist Created Successfully",
+        "addTolist": "Add To List",
+        "browseNow": "Browse Now",
+        "emptyResourcesLibrary": "Visuals Library Is Empty"
     }
 }

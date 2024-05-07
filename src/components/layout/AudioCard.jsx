@@ -39,7 +39,7 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
 
   return (
     <div className="audio-card">
-      <Link to={`/audios/${audio?.id}`} className="img">
+      <Link to={`/audios/${audio?.slug}`} className="img">
         <img
           src={
             audio?.background ? `${BASE_URL}${audio?.background}` : audioPoster
@@ -59,7 +59,7 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
       </Link>
       <div className="content">
         <div className="d-flex align-items-center justify-content-between mb-2">
-          <Link to={`/audios/${audio?.id}`}>
+          <Link to={`/audios/${audio?.slug}`}>
             <h4>{audio?.name || "عنوان الصوت"}</h4>
           </Link>
           {id === audio?.id && isPlaying === true ? (

@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import noResults from "../../assets/images/nodata.svg";
 import axios from "./../../util/axios";
 import DataLoader from "./../ui/DataLoader";
-import AudioCard from "../layout/AudioCard";
 import list from "../../assets/images/favourites.svg";
 import { toast } from "react-toastify";
+import VisualCard from "../layout/VisualCard";
 
-const MyLibirary = () => {
+const Favourites = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,7 @@ const MyLibirary = () => {
       try {
         setLoading(true);
         const libraryResponse = await axios.get(
-          `/members/List_useraudiolist_files_fav/`
+          `/members/List_userresourcelist_files_fav/`
         );
         if (libraryResponse.status === 200) {
           setLibrary(libraryResponse?.data?.message);
@@ -45,7 +45,7 @@ const MyLibirary = () => {
   const removeFromLibrary = async (id) => {
     try {
       const res = await axios.delete(
-        `/members/Delete_file_audio_list_fav/?audio_id=${id}`
+        `/members/Delete_file_audio_list_fav/?resource_id=${id}`
       );
       if (res.status === 200) {
         toast.success(t("sounds.removedFromLibrary"));
@@ -102,9 +102,8 @@ const MyLibirary = () => {
             <div className="col-12 p-2">
               <div className="noDataFound">
                 <img src={noResults} alt="no results" className="mb-3" />
-                <h5>{t("sounds.noLibirary")}</h5>
-                <p>{t("sounds.noLibrarySub")}</p>
-                <Link to="/audios">{t("sounds.listenNow")}</Link>
+                <h5>{t("sounds.emptyResourcesLibrary")}</h5>
+                <Link to="/visuals">{t("sounds.browseNow")}</Link>
               </div>
             </div>
           ) : (
@@ -118,8 +117,8 @@ const MyLibirary = () => {
               </div>
               {library?.files?.map((file) => (
                 <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
-                  <AudioCard
-                    audio={file}
+                  <VisualCard
+                    file={file}
                     onReact={handleReacting}
                     hasRemoveBtn={true}
                     onRemove={removeFromLibrary}
@@ -134,4 +133,4 @@ const MyLibirary = () => {
   );
 };
 
-export default MyLibirary;
+export default Favourites;

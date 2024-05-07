@@ -37,7 +37,7 @@ const Audios = () => {
   }, [menuOpen]);
 
   return (
-    <section className="acoustics">
+    <section className="library_section">
       <div className="container">
         <div className="row m-0">
           <div className="col-lg-3 col-md-4 col-6 p-2">
@@ -50,7 +50,7 @@ const Audios = () => {
           <div className="col-lg-9 col-12 p-2">
             <Routes>
               <Route path="/" element={<RecentSounds />} />
-              <Route path="/:id" element={<Sound />} />
+              <Route path="/:slug" element={<Sound />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/:slug" element={<Category />} />
               <Route path="/playlists/*" element={<PlayLists />} />

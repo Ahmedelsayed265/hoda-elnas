@@ -64,14 +64,16 @@ const MyPlayList = () => {
     }
   };
 
-  const removeFromPlayList = async (id) => {
+  const removeFromPlayList = async (fileId) => {
     try {
-      const res = await axios.delete(`/members/Delete_file_audio_list/${id}/`);
+      const res = await axios.delete(
+        `/members/Delete_file_audio_list/${id}/?file_id=${fileId}`
+      );
       if (res.status === 200) {
         toast.success(t("sounds.removedFromPlayList"));
         setPlayList((prev) => ({
           ...prev,
-          files: prev?.files?.filter((file) => file?.id !== id)
+          files: prev?.files?.filter((file) => file?.id !== fileId)
         }));
       } else {
         toast.error(res?.response?.data?.message);

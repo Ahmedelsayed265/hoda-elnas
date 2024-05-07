@@ -1,9 +1,9 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
-import VisualCard from "../layout/VisualCard";
+// import VisualCard from "../layout/VisualCard";
 
 const BestVisuals = () => {
   return (
@@ -31,7 +31,7 @@ const BestVisuals = () => {
       }}
       className="teamSwiper"
     >
-      <SwiperSlide>
+      {/* <SwiperSlide>
         <VisualCard />
       </SwiperSlide>
 
@@ -45,7 +45,7 @@ const BestVisuals = () => {
 
       <SwiperSlide>
         <VisualCard />
-      </SwiperSlide>
+      </SwiperSlide> */}
     </Swiper>
   );
 };

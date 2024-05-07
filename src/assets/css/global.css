@@ -699,8 +699,51 @@ body main .custom-card .content p {
 body main .custom-card .content p img {
   height: 16px;
 }
+body main .custom-card .content .likes_container {
+  display: flex;
+  gap: 16px;
+}
+body main .custom-card .content .likes_container span {
+  color: #000000;
+  line-height: normal;
+}
+body main .custom-card .content .likes_container .dislikes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .custom-card .content .likes_container .dislikes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 16px;
+}
+body main .custom-card .content .likes_container .dislikes button.active {
+  color: red !important;
+}
+body main .custom-card .content .likes_container .likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body main .custom-card .content .likes_container .likes button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cecece;
+  font-size: 16px;
+}
+body main .custom-card .content .likes_container .likes button.active {
+  color: #81a63d !important;
+}
+body main .custom-card .content .likes_container.disabled {
+  pointer-events: none;
+}
 body main .custom-card.longImg .img img {
-  aspect-ratio: 1/1;
+  aspect-ratio: 3/2;
 }
 body main .custom-card.longImg .content h4 {
   margin: 0;
@@ -1293,23 +1336,23 @@ body main .section_title a i {
   margin-right: 4px;
   transform: translateY(2px);
 }
-body main .acoustics {
+body main .library_section {
   padding: 40px 0;
 }
-body main .acoustics .create_list button {
+body main .library_section .create_list button {
   border-radius: 8px;
   padding: 4px 12px;
   background: #81a63d;
   color: #fff;
 }
-body main .acoustics .list-card {
+body main .library_section .list-card {
   padding: 12px;
   display: flex;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   gap: 8px;
 }
-body main .acoustics .list-card .icon {
+body main .library_section .list-card .icon {
   width: 80px;
   background: #f8f8f8;
   display: flex;
@@ -1318,23 +1361,23 @@ body main .acoustics .list-card .icon {
   height: 80px;
   border-radius: 8px;
 }
-body main .acoustics .list-card .icon img {
+body main .library_section .list-card .icon img {
   height: 36px;
 }
-body main .acoustics .list-card .content {
+body main .library_section .list-card .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
   padding: 4px 0;
 }
-body main .acoustics .list-card .content h6 {
+body main .library_section .list-card .content h6 {
   color: #000000;
   font-size: 16px;
   margin: 0;
   font-weight: 600;
 }
-body main .acoustics .list-card .content p {
+body main .library_section .list-card .content p {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -1343,17 +1386,17 @@ body main .acoustics .list-card .content p {
   font-size: 14px;
   color: #777777;
 }
-body main .acoustics .list-card .content p img {
+body main .library_section .list-card .content p img {
   height: 16px;
 }
-body main .acoustics .list-card .buttons {
+body main .library_section .list-card .buttons {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-right: auto;
   color: #81a63d;
 }
-body main .acoustics .list-card .buttons a {
+body main .library_section .list-card .buttons a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1364,16 +1407,16 @@ body main .acoustics .list-card .buttons a {
   border-radius: 50%;
   font-size: 14px;
 }
-body main .acoustics .list-card .buttons a:nth-child(2) {
+body main .library_section .list-card .buttons a:nth-child(2) {
   color: red;
 }
-body main .acoustics .swiper_pagination_title {
+body main .library_section .swiper_pagination_title {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-body main .acoustics .swiper_pagination_title h5 {
+body main .library_section .swiper_pagination_title h5 {
   color: #31535a;
   font-size: 20px;
   font-weight: 600;
@@ -1381,15 +1424,15 @@ body main .acoustics .swiper_pagination_title h5 {
   align-items: center;
   gap: 12px;
 }
-body main .acoustics .swiper_pagination_title h5 img {
+body main .library_section .swiper_pagination_title h5 img {
   height: 22px;
 }
-body main .acoustics .swiper_pagination_title .swiper_pagination {
+body main .library_section .swiper_pagination_title .swiper_pagination {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-body main .acoustics .swiper_pagination_title .swiper_pagination button {
+body main .library_section .swiper_pagination_title .swiper_pagination button {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1400,15 +1443,15 @@ body main .acoustics .swiper_pagination_title .swiper_pagination button {
   border: 1px solid #31535a;
   color: #31535a;
 }
-body main .acoustics .swiper_pagination_title .swiper_pagination button:hover {
+body main .library_section .swiper_pagination_title .swiper_pagination button:hover {
   background: #81a63d;
   border-color: #81a63d;
   color: #fff;
 }
-body main .acoustics .swiper-slide {
+body main .library_section .swiper-slide {
   height: auto;
 }
-body main .acoustics .listCard {
+body main .library_section .listCard {
   padding: 12px 16px;
   border-radius: 12px;
   color: #000000;
@@ -1417,14 +1460,14 @@ body main .acoustics .listCard {
   justify-content: space-between;
   align-items: flex-end;
 }
-body main .acoustics .listCard h5 {
+body main .library_section .listCard h5 {
   font-size: 16px;
   font-weight: 600;
 }
-body main .acoustics .listCard .img img {
+body main .library_section .listCard .img img {
   height: 50px;
 }
-body main .acoustics .noDataFound {
+body main .library_section .noDataFound {
   width: 100%;
   display: flex;
   align-items: center;
@@ -1432,52 +1475,52 @@ body main .acoustics .noDataFound {
   gap: 8px;
   flex-direction: column;
 }
-body main .acoustics .noDataFound img {
+body main .library_section .noDataFound img {
   height: 280px;
 }
-body main .acoustics .noDataFound h5 {
+body main .library_section .noDataFound h5 {
   font-size: 20px;
   font-weight: 600;
   color: #000000;
   margin: 0;
 }
-body main .acoustics .noDataFound p {
+body main .library_section .noDataFound p {
   color: #777777;
   margin-bottom: 4px;
 }
-body main .acoustics .noDataFound button,
-body main .acoustics .noDataFound a {
+body main .library_section .noDataFound button,
+body main .library_section .noDataFound a {
   background: #81a63d;
   color: #fff;
   padding: 4px 24px;
   border-radius: 20px;
 }
-body main .acoustics .sound_img {
+body main .library_section .sound_img {
   width: 100%;
   aspect-ratio: 3/2;
   border-radius: 12px;
   overflow: hidden;
 }
-body main .acoustics .sound_img img {
+body main .library_section .sound_img img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-body main .acoustics .likes_container {
+body main .library_section .likes_container {
   display: flex;
   gap: 24px;
 }
-body main .acoustics .likes_container span {
+body main .library_section .likes_container span {
   color: #000000;
   line-height: normal;
 }
-body main .acoustics .likes_container .dislikes {
+body main .library_section .likes_container .dislikes {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-body main .acoustics .likes_container .dislikes button {
+body main .library_section .likes_container .dislikes button {
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1485,15 +1528,15 @@ body main .acoustics .likes_container .dislikes button {
   color: #cecece;
   font-size: 18px;
 }
-body main .acoustics .likes_container .dislikes button.active {
+body main .library_section .likes_container .dislikes button.active {
   color: red !important;
 }
-body main .acoustics .likes_container .likes {
+body main .library_section .likes_container .likes {
   display: flex;
   align-items: center;
   gap: 6px;
 }
-body main .acoustics .likes_container .likes button {
+body main .library_section .likes_container .likes button {
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1501,42 +1544,42 @@ body main .acoustics .likes_container .likes button {
   color: #cecece;
   font-size: 18px;
 }
-body main .acoustics .likes_container .likes button.active {
+body main .library_section .likes_container .likes button.active {
   color: #81a63d !important;
 }
-body main .acoustics .likes_container.disabled {
+body main .library_section .likes_container.disabled {
   pointer-events: none;
 }
-body main .acoustics .sound_content {
+body main .library_section .sound_content {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-body main .acoustics .sound_content h5 {
+body main .library_section .sound_content h5 {
   font-size: 26px;
   color: #81a63d;
 }
 @media screen and (max-width: 567px) {
-  body main .acoustics .sound_content h5 {
+  body main .library_section .sound_content h5 {
     font-size: 22px;
   }
 }
-body main .acoustics .sound_content p {
+body main .library_section .sound_content p {
   line-height: 28px;
   font-size: 16px;
   color: #777777;
 }
-body main .acoustics .sound_content .subscribe {
+body main .library_section .sound_content .subscribe {
   color: #fff;
   background: #81a63d;
   padding: 4px 24px;
   border-radius: 20px;
 }
-body main .acoustics .sound_content .buttons {
+body main .library_section .sound_content .buttons {
   display: flex;
   gap: 28px;
 }
-body main .acoustics .sound_content .buttons .add_to_library {
+body main .library_section .sound_content .buttons .add_to_library {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1545,11 +1588,11 @@ body main .acoustics .sound_content .buttons .add_to_library {
   font-size: 14px;
 }
 @media screen and (max-width: 567px) {
-  body main .acoustics .sound_content .buttons .add_to_library {
+  body main .library_section .sound_content .buttons .add_to_library {
     font-size: 12px;
   }
 }
-body main .acoustics .sound_content .buttons .add_to_library span {
+body main .library_section .sound_content .buttons .add_to_library span {
   font-size: 13px;
   width: 32px;
   display: flex;
@@ -1560,10 +1603,10 @@ body main .acoustics .sound_content .buttons .add_to_library span {
   color: #fff;
   background: #81a63d;
 }
-body main .acoustics .sound_content .buttons .add_to_library.danger span {
+body main .library_section .sound_content .buttons .add_to_library.danger span {
   background: red;
 }
-body main .acoustics .sound_content .buttons .play_btnn {
+body main .library_section .sound_content .buttons .play_btnn {
   background: #31535a;
   padding: 2px 12px;
   border-radius: 20px;
@@ -1575,7 +1618,7 @@ body main .acoustics .sound_content .buttons .play_btnn {
   align-items: center;
   gap: 8px;
 }
-body main .acoustics .sound_content .buttons .play_btnn i {
+body main .library_section .sound_content .buttons .play_btnn i {
   font-size: 14px;
 }
 body main .swiper {
