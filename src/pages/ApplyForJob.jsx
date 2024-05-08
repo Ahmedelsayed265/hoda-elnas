@@ -4,21 +4,48 @@ import InputField from "../components/ui/form-elements/InputField";
 import Gender from "./../components/ui/form-elements/Gender";
 import TextField from "../components/ui/form-elements/TextField";
 import SubmitButton from "./../components/ui/form-elements/SubmitButton";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const ApplyForJob = () => {
-  const [formData, setFormData] = useState({
-    full_name: "",
-    email: "",
-    gender: "",
-    about: "",
-    why_you_want_to_join: ""
-  });
+  const { id } = useParams();
   const { t } = useTranslation();
+  const userId = useSelector((state) => state.auth.user?.id);
+
+  const [formData, setFormData] = useState({
+    job_id: id,
+    user_id: userId,
+    address: "",
+    education_level: "",
+    degrees_or_certifications: "",
+    major_or_area_of_study: "",
+    work_history: "",
+    relevant_experience: "",
+    significant_accomplishment: "",
+    technical_skills: "",
+    software_experience: "",
+    challenges_overcome: "",
+    conflict_resolution: "",
+    working_under_pressure: "",
+    work_environment_preference: "",
+    teamwork_preference: "",
+    salary_expectation: "",
+    availability_start_date: "",
+    availability_restrictions: "",
+    additional_info: "",
+    questions_for_company: "",
+    cv: "",
+    linkedin: "",
+    why_you: ""
+  });
 
   return (
     <section className="apply-for-job">
       <div className="container">
         <div className="row m-0 justify-content-center">
+          <div className="col-12 p-2">
+            <h3>{t("joinOurTeam")}</h3>
+          </div>
           <div className="col-lg-10 col-12">
             <form className="form-ui ">
               <div className="form_group">

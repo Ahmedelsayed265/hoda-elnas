@@ -2147,6 +2147,11 @@ body main .job_details .content .job_title h4 i {
   color: #81a63d;
   font-size: 20px;
 }
+@media screen and (max-width: 576px) {
+  body main .job_details .content .job_title h4 {
+    font-size: 18px;
+  }
+}
 body main .job_details .content .job_title a {
   background: #81a63d;
   color: #fff;
@@ -2192,6 +2197,13 @@ body main .job_details .content .about_job ul li {
 body main .apply-for-job,
 body main .contact_section {
   padding: 40px 0;
+}
+body main .apply-for-job h3,
+body main .contact_section h3 {
+  text-align: center;
+  color: #81a63d;
+  font-size: 28px;
+  margin-bottom: 24px;
 }
 body main .apply-for-job .form-ui,
 body main .contact_section .form-ui {

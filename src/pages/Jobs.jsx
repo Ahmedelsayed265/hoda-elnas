@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import JobCard from "../components/layout/JobCard";
 import axios from "./../util/axios";
 import { toast } from "react-toastify";
+import DataLoader from "../components/ui/DataLoader";
 
 const Jobs = () => {
   const { t } = useTranslation();
@@ -26,7 +27,7 @@ const Jobs = () => {
     };
     fetchJobs();
   }, []);
-  console.log(jobs);
+  
   return (
     <section className="jobs_page">
       <div className="container">
@@ -34,20 +35,17 @@ const Jobs = () => {
           <h1>{t("availbleJobs")}</h1>
           <p>{t("availableJobsSubTitle")}</p>
         </div>
-        <div className="row m-0">
-          <div className="col-lg-3 col-md-4 col-6 p-2">
-            <JobCard />
+        {loading ? (
+          <DataLoader />
+        ) : (
+          <div className="row m-0">
+            {jobs?.map((job) => (
+              <div className="col-lg-3 col-md-4 col-6 p-2" key={job.id}>
+                <JobCard job={job} />
+              </div>
+            ))}
           </div>
-          <div className="col-lg-3 col-md-4 col-6 p-2">
-            <JobCard />
-          </div>
-          <div className="col-lg-3 col-md-4 col-6 p-2">
-            <JobCard />
-          </div>
-          <div className="col-lg-3 col-md-4 col-6 p-2">
-            <JobCard />
-          </div>
-        </div>
+        )}
       </div>
     </section>
   );
