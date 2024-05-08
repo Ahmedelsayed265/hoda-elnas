@@ -2217,6 +2217,10 @@ body main .contact_section .form-ui {
     flex-direction: column;
   }
 }
+body main .apply-for-job .form-ui textarea,
+body main .contact_section .form-ui textarea {
+  height: 120px;
+}
 body main .apply-for-job .contact_info h3,
 body main .contact_section .contact_info h3 {
   color: #31535a;
@@ -3788,24 +3792,30 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
-.subcribeModal .wizard_tabs {
+.wizard_tabs {
   border-bottom: 1px solid #f8f8f8;
-}
-.subcribeModal .wizard_tabs .wizard_tab {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.wizard_tabs .wizard_tab {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   gap: 12px;
 }
-.subcribeModal .wizard_tabs .wizard_tab.active .num {
+.wizard_tabs .wizard_tab.active .num {
   background: #81a63d;
   color: #fff;
 }
-.subcribeModal .wizard_tabs .wizard_tab.active .content h6 {
+.wizard_tabs .wizard_tab.active .content h6 {
   color: #81a63d;
 }
-.subcribeModal .wizard_tabs .wizard_tab .num {
-  width: 42px;
-  height: 42px;
+.wizard_tabs .wizard_tab .num {
+  width: 36px;
+  height: 36px;
   border-radius: 4px;
   background: #dce9c4;
   color: #000000;
@@ -3815,19 +3825,20 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   font-size: 16px;
 }
-.subcribeModal .wizard_tabs .wizard_tab .content h6 {
+.wizard_tabs .wizard_tab .content h6 {
   font-size: 16px;
   color: #777777;
   transition: 0.3s ease-in-out;
   line-height: 24px;
   margin: 0;
 }
-.subcribeModal .wizard_tabs .wizard_tab .content p {
+.wizard_tabs .wizard_tab .content p {
   font-size: 12px;
   color: #777777;
   line-height: 24px;
   margin: 0;
 }
+
 .subcribeModal .loginOrRegiester .title {
   width: 100%;
   display: flex;

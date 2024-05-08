@@ -2119,6 +2119,9 @@ body {
             flex-direction: column;
           }
         }
+        textarea {
+          height: 120px;
+        }
       }
       .contact_info {
         h3 {
@@ -3620,51 +3623,55 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
 }
-.subcribeModal {
-  .wizard_tabs {
-    border-bottom: 1px solid $inputBG;
-    .wizard_tab {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      &.active {
-        .num {
-          background: $secondary;
-          color: $white;
-        }
-        .content {
-          h6 {
-            color: $secondary;
-          }
-        }
-      }
+.wizard_tabs {
+  border-bottom: 1px solid $inputBG;
+  @include space-between();
+  gap: 8px;
+  flex-wrap: wrap;
+  .wizard_tab {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+    &.active {
       .num {
-        width: 42px;
-        height: 42px;
-        border-radius: 4px;
-        background: #dce9c4;
-        color: $dark;
-        transition: $transation;
-        @include centerFlex();
-        font-size: 16px;
+        background: $secondary;
+        color: $white;
       }
       .content {
         h6 {
-          font-size: 16px;
-          color: $gray;
-          transition: $transation;
-          line-height: 24px;
-          margin: 0;
-        }
-        p {
-          font-size: 12px;
-          color: $gray;
-          line-height: 24px;
-          margin: 0;
+          color: $secondary;
         }
       }
     }
+    .num {
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      background: #dce9c4;
+      color: $dark;
+      transition: $transation;
+      @include centerFlex();
+      font-size: 16px;
+    }
+    .content {
+      h6 {
+        font-size: 16px;
+        color: $gray;
+        transition: $transation;
+        line-height: 24px;
+        margin: 0;
+      }
+      p {
+        font-size: 12px;
+        color: $gray;
+        line-height: 24px;
+        margin: 0;
+      }
+    }
   }
+}
+.subcribeModal {
   .loginOrRegiester {
     .title {
       width: 100%;

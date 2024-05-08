@@ -392,5 +392,33 @@
         "removeSoundFromList": "هل أنت متأكد أنك تريد إزالة هذا الملف من القائمة؟",
         "deletePlayList": "هل أنت متأكد أنك تريد حذف هذه القائمة؟",
         "previewContent": "عرض المحتوى"
+    },
+    "applyForJob": {
+        "education": "التعليم",
+        "experience": "الخبرة",
+        "personal": "المعلومات الشخصية",
+        "workDetails": "تفاصيل العمل",
+        "closerShot": "السيرة الذاتية",
+        "address": "العنوان الحالى",
+        "whyYou": "لماذا أنت؟",
+        "linkedin": "لينكدان",
+        "questionsForCompany": "لديك أسئلة؟",
+        "availabilityStartDate": "تاريخ بدئ العمل",
+        "availabilityRestrictions": "محدوديات العمل",
+        "additionalInfo": "معلومات اضافية",
+        "salaryExpectation": "الراتب المتوقع",
+        "educationLevel": "المستوى التعليمي",
+        "technicalSkills": "المهارات التقنية",
+        "workHistory": "سجل العمل",
+        "softwareExperience": "الخبرة البرمجية",
+        "majorOrAreaOfStudy": "التخصص الدارسى",
+        "degreesOrCertifications": "الشهادات والتوثيقات",
+        "relevantExperience": "الخبرة ذات الصلة",
+        "significantAccomplishment": "إنجازاتك",
+        "workEnvironmentPreference": "تفضيلات مكان العمل",
+        "teamworkPreference": "تفضيلات مجموعة العمل",
+        "challengesOvercome": "المشكلات التي تجاهلها",
+        "conflictResolution": "حل النزاعات",
+        "workingUnderPressure": "العمل تحت ضغط"
     }
 }
