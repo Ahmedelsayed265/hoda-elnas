@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import noResults from "../../assets/images/nodata.svg";
 import axios from "./../../util/axios";
 import DataLoader from "./../ui/DataLoader";
 import list from "../../assets/images/favourites.svg";
-import { toast } from "react-toastify";
 import VisualCard from "../layout/VisualCard";
+import ConfirmDeleteModal from "./../ui/ConfirmDeleteModal";
 
 const Favourites = () => {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ const Favourites = () => {
   const [loading, setLoading] = useState(false);
   const [library, setLibrary] = useState([]);
   const [cookies] = useCookies(["refreshToken"]);
+  const [showModal, setShowModal] = useState(false);
+  const [targetIdForRemove, setTargetIdForRemove] = useState(null);
   const isAuthenticated = cookies.refreshToken ? true : false;
   useEffect(() => {
     if (!isAuthenticated) {
@@ -42,16 +45,17 @@ const Favourites = () => {
     fetchLibrary();
   }, []);
 
-  const removeFromLibrary = async (id) => {
+  const removeFromLibrary = async () => {
     try {
       const res = await axios.delete(
-        `/members/Delete_file_audio_list_fav/?resource_id=${id}`
+        `/members/Delete_file_resources_list_fav/?resource_id=${targetIdForRemove}`
       );
       if (res.status === 200) {
         toast.success(t("sounds.removedFromLibrary"));
+        setShowModal(false);
         setLibrary((prev) => ({
           ...prev,
-          files: prev?.files?.filter((file) => file?.id !== id)
+          files: prev?.files?.filter((file) => file?.id !== targetIdForRemove)
         }));
       } else {
         toast.error(res?.response?.data?.message);
@@ -92,6 +96,11 @@ const Favourites = () => {
     }
   };
 
+  const getId = (id) => {
+    setTargetIdForRemove(id);
+    setShowModal(true);
+  };
+
   return (
     <div className="row m-0">
       {loading ? (
@@ -121,7 +130,7 @@ const Favourites = () => {
                     file={file}
                     onReact={handleReacting}
                     hasRemoveBtn={true}
-                    onRemove={removeFromLibrary}
+                    onRemove={getId}
                   />
                 </div>
               ))}
@@ -129,6 +138,13 @@ const Favourites = () => {
           )}
         </>
       )}
+      <ConfirmDeleteModal
+        text={t("sounds.removeSoundFromFavourites")}
+        buttonText={t("sounds.remove")}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        onDelete={removeFromLibrary}
+      />
     </div>
   );
 };

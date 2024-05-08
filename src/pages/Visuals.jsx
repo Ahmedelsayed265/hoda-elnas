@@ -9,6 +9,7 @@ import Visual from "../components/Visuals/Visual";
 import PlayList from "../components/Visuals/PlayList";
 import Favourites from "../components/Visuals/Favourites";
 import MyLists from "../components/Visuals/MyLists";
+import MyList from "../components/Visuals/MyList";
 
 const Visuals = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -55,8 +56,7 @@ const Visuals = () => {
               <Route path="/playlists/:slug" element={<PlayList />} />
               <Route path="/my-library" element={<Favourites />} />
               <Route path="/my-playlists/*" element={<MyLists />} />
-              {/* 
-              <Route path="/my-playlists/:id" element={<MyPlayList />} /> */}
+              <Route path="/my-playlists/:id" element={<MyList />} />
             </Routes>
           </div>
         </div>

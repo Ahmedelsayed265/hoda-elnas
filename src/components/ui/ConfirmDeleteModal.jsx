@@ -13,7 +13,7 @@ const ConfirmDeleteModal = ({
   const { t } = useTranslation();
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-      <Modal.Header closeButton />
+      <Modal.Header className="pb-0" closeButton />
       <Modal.Body className="confirm-delete">
         <p>
           {text} {target}

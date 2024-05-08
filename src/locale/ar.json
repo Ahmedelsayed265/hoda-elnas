@@ -352,7 +352,7 @@
         "myLists": "قوائمي",
         "noPlayLists": "لا توجد قوائم تشغيل",
         "noPlayListsSub": "أنشئ واحدة واحتفظ بمفضلاتك في قائمة واحدة",
-        "createPlayList": "انشاء قائمة تشغيل جديدة",
+        "createPlayList": "انشاء قائمة جديدة",
         "renamePlayList": "تغيير اسم القائمة ",
         "noLibirary": "لم تقم بإضافة صوتيات إلى مكتبتك",
         "noLibrarySub": "استمع الآن واحتفظ بالمزيد",
@@ -385,6 +385,10 @@
         "browseNow": "تصفح الان",
         "emptyResourcesLibrary": "مكتبة المرئيات فارغة",
         "videoDuration": "مدة الفيديو",
-        "pages": "الصفحات"
+        "pages": "الصفحات",
+        "remove": "إزالة",
+        "removeSoundFromFavourites": "هل أنت متأكد أنك تريد إزالة هذا الملف من المفضلة؟",
+        "removeSoundFromList": "هل أنت متأكد أنك تريد إزالة هذا الملف من القائمة؟",
+        "deletePlayList": "هل أنت متأكد أنك تريد حذف هذه القائمة؟"
     }
 }

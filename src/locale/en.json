@@ -343,7 +343,7 @@
         "myLists": "My Lists",
         "noPlayLists": "No playlists found",
         "noPlayListsSub": "Create one and keep your favorites in one place",
-        "createPlayList": "Create New Playlist",
+        "createPlayList": "Create List",
         "renamePlayList": "Rename Playlist",
         "noLibirary": "You haven't added any sounds to your library",
         "noLibrarySub": "Listen now and save more",
@@ -376,6 +376,10 @@
         "browseNow": "Browse Now",
         "emptyResourcesLibrary": "Visuals Library Is Empty",
         "videoDuration": "Duration",
-        "pages": "Pages"
+        "pages": "Pages",
+        "remove": "Remove",
+        "removeSoundFromFavourites": "Are you sure you want to remove this file from your favourites?",
+        "removeSoundFromList": "Are you sure you want to remove this file from this list?",
+        "deletePlayList": "Are you sure you want to delete this list?"
     }
 }

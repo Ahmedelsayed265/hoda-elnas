@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import axios from "./../../util/axios";
 import { useTranslation } from "react-i18next";
-import noResults from "../../assets/images/no-results.svg";
+import noResults from "../../assets/images/nodata.svg";
 import DataLoader from "../ui/DataLoader";
-import AudioCard from "../layout/AudioCard";
 import { toast } from "react-toastify";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
+import VisualCard from './../layout/VisualCard';
 
-const MyPlayList = () => {
+const MyList = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
@@ -22,7 +22,7 @@ const MyPlayList = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `/members/List_useraudiolist_files/${id}/`
+          `/members/List_userresourcelist_files/${id}/`
         );
         if (response.status === 200 || response.status === 201) {
           setPlayList(response?.data?.message);
@@ -39,7 +39,7 @@ const MyPlayList = () => {
   const handleReacting = async (id, react) => {
     try {
       const res = await axios.post(
-        "/learningcenter/Add_like_or_dislike/audio/",
+        "/learningcenter/Add_like_or_dislike/resource/",
         {
           item_id: id,
           react: react
@@ -75,7 +75,7 @@ const MyPlayList = () => {
   const removeFromPlayList = async () => {
     try {
       const res = await axios.delete(
-        `/members/Delete_file_audio_list/${id}/?file_id=${targetIdForRemove}`
+        `/members/Delete_file_resources_list/${id}/?file_id=${targetIdForRemove}`
       );
       if (res.status === 200) {
         toast.success(t("sounds.removedFromPlayList"));
@@ -113,17 +113,17 @@ const MyPlayList = () => {
           {playList?.files?.length < 1 ? (
             <div className="col-12 p-2">
               <div className="noDataFound">
-                <img src={noResults} alt="no results" />
+                <img className="mb-3" src={noResults} alt="no results" />
                 <h5 className="mb-2">{t("sounds.emptyPlayList")}</h5>
-                <Link to="/audios">{t("sounds.listenNow")}</Link>
+                <Link to="/visuals">{t("sounds.browseNow")}</Link>
               </div>
             </div>
           ) : (
             <>
               {playList?.files?.map((file) => (
                 <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
-                  <AudioCard
-                    audio={file}
+                  <VisualCard
+                    file={file}
                     hasRemoveBtn={true}
                     onReact={handleReacting}
                     onRemove={getId}
@@ -145,4 +145,4 @@ const MyPlayList = () => {
   );
 };
 
-export default MyPlayList;
+export default MyList;

@@ -9,6 +9,7 @@ import AddPlayListModal from "./AddPlayListModal";
 import lib from "../../assets/images/lib.svg";
 import ListCard from "./ListCard";
 import { toast } from "react-toastify";
+import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 
 const MyPlayLists = () => {
   const { t } = useTranslation();
@@ -16,6 +17,8 @@ const MyPlayLists = () => {
   const [cookies] = useCookies(["refreshToken"]);
   const isAuthenticated = cookies.refreshToken ? true : false;
   const [showModal, setShowModal] = useState(false);
+  const [targetIdForRemove, setTargetIdForRemove] = useState(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [playLists, setPlayLists] = useState([]);
   const [playList, setPlayList] = useState({});
   const [loading, setLoading] = useState(false);
@@ -43,12 +46,15 @@ const MyPlayLists = () => {
     fetchLibrary();
   }, []);
 
-  const deleteList = async (id) => {
+  const deleteList = async () => {
     try {
-      const res = await axios.delete(`/members/Delete_audio_list/${id}/`);
+      const res = await axios.delete(
+        `/members/Delete_audio_list/${targetIdForRemove}/`
+      );
       if (res.status === 200 || res.status === 201) {
         toast.success(t("sounds.playListDeleted"));
-        setPlayLists(playLists.filter((list) => list.id !== id));
+        setPlayLists(playLists.filter((list) => list.id !== targetIdForRemove));
+        setShowDeleteModal(false);
       }
     } catch (error) {
       console.log(error);
@@ -58,6 +64,11 @@ const MyPlayLists = () => {
   const editList = async (playList) => {
     setShowModal(true);
     setPlayList(playList);
+  };
+
+  const getId = (id) => {
+    setTargetIdForRemove(id);
+    setShowDeleteModal(true);
   };
 
   return (
@@ -94,11 +105,7 @@ const MyPlayLists = () => {
               </div>
               {playLists?.map((list) => (
                 <div className="col-lg-4 p-2" key={list?.id}>
-                  <ListCard
-                    list={list}
-                    onDelete={deleteList}
-                    onEdit={editList}
-                  />
+                  <ListCard list={list} onDelete={getId} onEdit={editList} />
                 </div>
               ))}
             </>
@@ -111,6 +118,13 @@ const MyPlayLists = () => {
         setPlayLists={setPlayLists}
         forEditPlayList={playList}
         setPlayList={setPlayList}
+      />
+      <ConfirmDeleteModal
+        text={t("sounds.deletePlayList")}
+        buttonText={t("sounds.remove")}
+        showModal={showDeleteModal}
+        setShowModal={setShowDeleteModal}
+        onDelete={deleteList}
       />
     </div>
   );
