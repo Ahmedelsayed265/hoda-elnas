@@ -64,7 +64,7 @@ const VisualContent = () => {
           </div>
           {file?.type === "PDF" ? (
             <div className="col-12 p-2">
-              <PdfViewer file={fileSrc} />
+              {fileSrc && <PdfViewer pdfUrl={fileSrc} />}
             </div>
           ) : (
             <div className="col-12 p-2">

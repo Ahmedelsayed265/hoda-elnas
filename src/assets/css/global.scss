@@ -1297,6 +1297,9 @@ body {
     }
     .library_section {
       padding: 40px 0;
+      @media screen and (max-width: 576px) {
+        padding: 20px 0;
+      }
       .create_list {
         button {
           border-radius: 8px;

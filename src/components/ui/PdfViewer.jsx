@@ -8,6 +8,7 @@ const PdfViewer = ({ pdfUrl }) => {
         title="pdf"
         frameborder="0"
         className="w-100 h-100"
+        style={{ border: "none", minHeight: "500px" }}
       ></iframe>
     </div>
   );

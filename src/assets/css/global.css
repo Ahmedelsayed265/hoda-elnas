@@ -1340,6 +1340,11 @@ body main .section_title a i {
 body main .library_section {
   padding: 40px 0;
 }
+@media screen and (max-width: 576px) {
+  body main .library_section {
+    padding: 20px 0;
+  }
+}
 body main .library_section .create_list button {
   border-radius: 8px;
   padding: 4px 12px;
