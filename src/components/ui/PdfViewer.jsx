@@ -7,6 +7,7 @@ const PdfViewer = ({ pdfUrl }) => {
         src={`${pdfUrl}#toolbar=0&navpanes=0`}
         title="pdf"
         frameborder="0"
+        className="w-100 h-100"
       ></iframe>
     </div>
   );

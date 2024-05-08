@@ -189,6 +189,12 @@ const Visual = () => {
             <div className="sound_content">
               <h5 className="mb-0">{file?.name}</h5>
               <p className="mb-0">{file?.description}</p>
+              <Link
+                to={`/visuals/${file?.slug}/view-content`}
+                className="play_btnn"
+              >
+                {t("sounds.previewContent")}
+              </Link>
             </div>
           </div>
         </div>

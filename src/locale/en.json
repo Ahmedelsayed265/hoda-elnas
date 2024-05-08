@@ -380,6 +380,7 @@
         "remove": "Remove",
         "removeSoundFromFavourites": "Are you sure you want to remove this file from your favourites?",
         "removeSoundFromList": "Are you sure you want to remove this file from this list?",
-        "deletePlayList": "Are you sure you want to delete this list?"
+        "deletePlayList": "Are you sure you want to delete this list?",
+        "previewContent": "Preview Content"
     }
 }

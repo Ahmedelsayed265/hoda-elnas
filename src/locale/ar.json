@@ -389,6 +389,7 @@
         "remove": "إزالة",
         "removeSoundFromFavourites": "هل أنت متأكد أنك تريد إزالة هذا الملف من المفضلة؟",
         "removeSoundFromList": "هل أنت متأكد أنك تريد إزالة هذا الملف من القائمة؟",
-        "deletePlayList": "هل أنت متأكد أنك تريد حذف هذه القائمة؟"
+        "deletePlayList": "هل أنت متأكد أنك تريد حذف هذه القائمة؟",
+        "previewContent": "عرض المحتوى"
     }
 }

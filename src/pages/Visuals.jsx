@@ -10,6 +10,7 @@ import PlayList from "../components/Visuals/PlayList";
 import Favourites from "../components/Visuals/Favourites";
 import MyLists from "../components/Visuals/MyLists";
 import MyList from "../components/Visuals/MyList";
+import VisualContent from "../components/Visuals/VisualContent";
 
 const Visuals = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -50,6 +51,7 @@ const Visuals = () => {
             <Routes>
               <Route path="/" element={<RecentVisuals />} />
               <Route path="/:slug" element={<Visual />} />
+              <Route path="/:slug/view-content" element={<VisualContent />} />
               <Route path="/categories" element={<Categories />} />
               <Route path="/categories/:slug" element={<Category />} />
               <Route path="/playlists/*" element={<PlayLists />} />

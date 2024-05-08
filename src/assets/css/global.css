@@ -1622,6 +1622,21 @@ body main .library_section .sound_content .buttons .play_btnn {
 body main .library_section .sound_content .buttons .play_btnn i {
   font-size: 14px;
 }
+body main .library_section .sound_content .play_btnn {
+  background: #31535a;
+  padding: 2px 12px;
+  border-radius: 20px;
+  display: flex;
+  color: #fff;
+  width: 120px;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+}
+body main .library_section .sound_content .play_btnn i {
+  font-size: 14px;
+}
 body main .swiper {
   padding: 4px 4px 60px;
 }

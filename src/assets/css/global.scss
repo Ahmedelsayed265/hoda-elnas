@@ -1559,6 +1559,21 @@ body {
             }
           }
         }
+        .play_btnn {
+          background: $main;
+          padding: 2px 12px;
+          border-radius: 20px;
+          display: flex;
+          color: $white;
+          width: 120px;
+          justify-content: center;
+          cursor: pointer;
+          align-items: center;
+          gap: 8px;
+          i {
+            font-size: 14px;
+          }
+        }
       }
     }
     .swiper {
