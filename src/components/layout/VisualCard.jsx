@@ -5,6 +5,7 @@ import pagesIcon from "../../assets/images/pages.svg";
 import { BASE_URL } from "../../constants";
 import { useSelector } from "react-redux";
 import useTruncateString from "../../hooks/useTruncateString";
+import videoIcon from "../../assets/images/video.svg";
 import { useTranslation } from "react-i18next";
 const VisualCard = ({ file, onReact, hasRemoveBtn, onRemove }) => {
   const { t } = useTranslation();
@@ -36,7 +37,11 @@ const VisualCard = ({ file, onReact, hasRemoveBtn, onRemove }) => {
         <p className="mb-2">{truncatedString || "وصف الصفحة"}</p>
         <div className="d-flex justify-content-between">
           <p>
-            <img src={pagesIcon} alt="pages" />
+            {file?.type === "PDF" ? (
+              <img src={pagesIcon} alt="pages" />
+            ) : (
+              <img src={videoIcon} alt="pages" />
+            )}
             {file?.type === "PDF" ? (
               <span>
                 {t("sounds.pages")}: {file?.length || "0"}

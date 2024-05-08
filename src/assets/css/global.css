@@ -880,13 +880,14 @@ body main .audio-card .content p {
   font-size: 14px;
   line-height: 24px;
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
 }
 body main .audio-card .content p img {
   height: 16px;
 }
 body main .audio-card .content p span {
+  font-size: 14px;
   font-weight: 600;
 }
 body main .audio-card .content .likes_container {

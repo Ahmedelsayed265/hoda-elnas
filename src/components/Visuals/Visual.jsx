@@ -7,12 +7,14 @@ import { BASE_URL } from "../../constants";
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
 import { toast } from "react-toastify";
+import AddFileToListModal from "./AddFileToListModal";
 
 const Visual = () => {
   const { slug } = useParams();
   const { t } = useTranslation();
   const { lang } = useSelector((state) => state.language);
   const hasAccess = useSelector((state) => state.authedUser.access_token);
+  const [showModal, setShowModal] = useState(false);
   const [file, setFile] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -168,7 +170,10 @@ const Visual = () => {
                           ? t("sounds.removeFromMyLibrary")
                           : t("sounds.addToMyLibrary")}
                       </button>
-                      <button className="add_to_library">
+                      <button
+                        className="add_to_library"
+                        onClick={() => setShowModal(true)}
+                      >
                         <span>
                           <i className="fa-regular fa-plus"></i>
                         </span>
@@ -188,6 +193,11 @@ const Visual = () => {
           </div>
         </div>
       )}
+      <AddFileToListModal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        file={file}
+      />
     </>
   );
 };
