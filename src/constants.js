@@ -1,4 +1,4 @@
-export const BASE_URL = "http://khirallah.pythonanywhere.com";
+export const BASE_URL = "https://backend.hodaelnas.online";
 export const DAYS_AR = [
   "الأحد",
   "الاثنين",

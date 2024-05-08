@@ -5,10 +5,12 @@ import pagesIcon from "../../assets/images/pages.svg";
 import { BASE_URL } from "../../constants";
 import { useSelector } from "react-redux";
 import useTruncateString from "../../hooks/useTruncateString";
-const VisualCard = ({ file, onReact }) => {
-  const hasAccess = useSelector((state) => state.authedUser.access_token);
-  console.log(file);
+import { useTranslation } from "react-i18next";
+const VisualCard = ({ file, onReact, hasRemoveBtn, onRemove }) => {
+  const { t } = useTranslation();
   const truncatedString = useTruncateString(file?.description);
+  const hasAccess = useSelector((state) => state.authedUser.access_token);
+
   return (
     <div className="audio-card">
       <Link to={`/visuals/${file?.slug}`} className="img">
@@ -16,6 +18,16 @@ const VisualCard = ({ file, onReact }) => {
           src={file?.background ? `${BASE_URL}${file?.background}` : book}
           alt="course"
         />
+        {file?.paid === true && (
+          <Link to="/library-subscribe" className="subscribe">
+            {t("sounds.subscribeNow")}
+          </Link>
+        )}
+        {hasRemoveBtn && (
+          <Link className="remove" onClick={() => onRemove(file?.id)}>
+            <i className="fa-solid fa-trash-xmark"></i>
+          </Link>
+        )}
       </Link>
       <div className="content">
         <div to={`/visuals/${file?.slug}`} className="mb-2">
@@ -25,7 +37,15 @@ const VisualCard = ({ file, onReact }) => {
         <div className="d-flex justify-content-between">
           <p>
             <img src={pagesIcon} alt="pages" />
-            <span>الصفحات: 300</span>
+            {file?.type === "PDF" ? (
+              <span>
+                {t("sounds.pages")}: {file?.length || "0"}
+              </span>
+            ) : (
+              <span>
+                {t("sounds.videoDuration")}: {file?.length || "00:00:00"}
+              </span>
+            )}
           </p>
           <div
             className={`likes_container justify-content-end ${

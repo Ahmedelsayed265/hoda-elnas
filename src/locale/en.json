@@ -374,6 +374,8 @@
         "playListCreated": "Playlist Created Successfully",
         "addTolist": "Add To List",
         "browseNow": "Browse Now",
-        "emptyResourcesLibrary": "Visuals Library Is Empty"
+        "emptyResourcesLibrary": "Visuals Library Is Empty",
+        "videoDuration": "Duration",
+        "pages": "Pages"
     }
 }

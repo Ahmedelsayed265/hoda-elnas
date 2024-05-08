@@ -383,7 +383,8 @@
         "playListCreated": "تم انشاء القائمة بنجاح",
         "addTolist": "إضافة الى قائمة",
         "browseNow": "تصفح الان",
-        "emptyResourcesLibrary": "مكتبة المرئيات فارغة"
-        
+        "emptyResourcesLibrary": "مكتبة المرئيات فارغة",
+        "videoDuration": "مدة الفيديو",
+        "pages": "الصفحات"
     }
 }
