@@ -2217,9 +2217,70 @@ body main .contact_section .form-ui {
     flex-direction: column;
   }
 }
+body main .apply-for-job .form-ui .buttons,
+body main .contact_section .form-ui .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+body main .apply-for-job .form-ui .buttons button,
+body main .contact_section .form-ui .buttons button {
+  width: auto;
+  height: 48px;
+  padding: 0 24px;
+  margin: 0;
+  border-radius: 8px;
+}
+body main .apply-for-job .form-ui .buttons button.next,
+body main .contact_section .form-ui .buttons button.next {
+  background: #81a63d;
+  color: #fff;
+}
+body main .apply-for-job .form-ui .buttons button.back,
+body main .contact_section .form-ui .buttons button.back {
+  background: transparent;
+  border: 1px solid #31535a;
+  color: #31535a;
+}
 body main .apply-for-job .form-ui textarea,
 body main .contact_section .form-ui textarea {
-  height: 120px;
+  height: 100px;
+}
+body main .apply-for-job .form-ui .cv_area,
+body main .contact_section .form-ui .cv_area {
+  width: 100%;
+  padding: 16px;
+  background: #f8f8f8;
+  gap: 6px;
+  border-radius: 12px;
+  flex-direction: column;
+  border: 1px solid #f2f2f2;
+  cursor: pointer;
+  color: #777777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .apply-for-job .form-ui .cv_area input,
+body main .contact_section .form-ui .cv_area input {
+  display: none;
+}
+body main .apply-for-job .form-ui .cv_area span,
+body main .contact_section .form-ui .cv_area span {
+  color: #000000;
+  line-height: normal;
+}
+body main .apply-for-job .form-ui .cv_area .content,
+body main .contact_section .form-ui .cv_area .content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+body main .apply-for-job .form-ui .cv_area .content p,
+body main .contact_section .form-ui .cv_area .content p {
+  margin: 0;
+  line-height: normal;
 }
 body main .apply-for-job .contact_info h3,
 body main .contact_section .contact_info h3 {

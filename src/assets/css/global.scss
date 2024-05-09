@@ -2119,8 +2119,56 @@ body {
             flex-direction: column;
           }
         }
+        .buttons {
+          @include space-between();
+          margin-top: 12px;
+          button {
+            width: auto;
+            height: 48px;
+            padding: 0 24px;
+            margin: 0;
+            border-radius: 8px;
+            &.next {
+              background: $secondary;
+              color: $white;
+            }
+            &.back {
+              background: transparent;
+              border: 1px solid $main;
+              color: $main;
+            }
+          }
+        }
         textarea {
-          height: 120px;
+          height: 100px;
+        }
+        .cv_area {
+          width: 100%;
+          padding: 16px;
+          background: $inputBG;
+          gap: 6px;
+          border-radius: 12px;
+          flex-direction: column;
+          border: 1px solid $inputStroke;
+          cursor: pointer;
+          color: $gray;
+          @include centerFlex();
+          input {
+            display: none;
+          }
+          span {
+            color: $dark;
+            line-height: normal;
+          }
+          .content {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            p {
+              margin: 0;
+              line-height: normal;
+            }
+          }
         }
       }
       .contact_info {

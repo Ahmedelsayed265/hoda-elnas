@@ -409,6 +409,16 @@
         "workEnvironmentPreference": "Work Environment Preference",
         "teamworkPreference": "Teamwork Preference",
         "conflictResolution": "Conflict Resolution",
-        "workingUnderPressure": "Working Under Pressure"
+        "workingUnderPressure": "Working Under Pressure",
+        "cv": "CV",
+        "uploadCv": "Upload CV",
+        "highSchool": "High School",
+        "associateDegree": "Associate Degree",
+        "bachelorDegree": "Bachelor Degree",
+        "phd": "PhD",
+        "next": "Next",
+        "previous": "Previous",
+        "submit": "Submit",
+        "applicationSentSuccessfully": "Application Sent Successfully"
     }
 }
