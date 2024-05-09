@@ -419,6 +419,7 @@
         "next": "Next",
         "previous": "Previous",
         "submit": "Submit",
-        "applicationSentSuccessfully": "Application Sent Successfully"
+        "applicationSentSuccessfully": "Application Sent Successfully",
+        "incompleteDataError": "Some data is not complete, please review the questions again step by step, for example"
     }
 }

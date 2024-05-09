@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import InputField from "../components/ui/form-elements/InputField";
 import TextField from "../components/ui/form-elements/TextField";
@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import SelectField from "../components/ui/form-elements/SelectField";
 import axios from "./../util/axios";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 const ApplyForJob = () => {
   const { id } = useParams();
@@ -15,7 +16,15 @@ const ApplyForJob = () => {
   const userId = useSelector((state) => state.authedUser?.user?.id);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [cookies] = useCookies(["refreshToken"]);
   const [stepName, setStepName] = useState("education");
+  const isAuthenticated = cookies.refreshToken ? true : false;
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
 
   const wizardTabs = [
     { step: "education", label: t("applyForJob.education") },
@@ -70,6 +79,13 @@ const ApplyForJob = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      for (const key in formData) {
+        if (formData[key] === "") {
+          setStepName("education");
+          toast.error(t("applyForJob.incompleteDataError"));
+          return;
+        }
+      }
       const response = await axios.post(`/hr/Create_employee/`, formData);
       if (response.status === 200 || response.status === 201) {
         toast.success(t("applyForJob.applicationSentSuccessfully"));
