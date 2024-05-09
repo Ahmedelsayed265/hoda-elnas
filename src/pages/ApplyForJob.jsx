@@ -43,7 +43,7 @@ const ApplyForJob = () => {
     job_id: id,
     user_id: userId,
     address: "",
-    education_level: "",
+    education_level: "Bachelor",
     degrees_or_certifications: "",
     major_or_area_of_study: "",
     work_history: "",
@@ -70,7 +70,7 @@ const ApplyForJob = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(`/hr/Create_employee/${id}/`, formData);
+      const response = await axios.post(`/hr/Create_employee/`, formData);
       if (response.status === 200 || response.status === 201) {
         toast.success(t("applyForJob.applicationSentSuccessfully"));
         navigate("/jobs");
@@ -149,7 +149,15 @@ const ApplyForJob = () => {
                     />
                   </div>
                   <div className="buttons justify-content-end">
-                    <button className="next">{t("applyForJob.next")}</button>
+                    <button
+                      className="next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("experience");
+                      }}
+                    >
+                      {t("applyForJob.next")}
+                    </button>
                   </div>
                 </>
               )}
@@ -207,10 +215,24 @@ const ApplyForJob = () => {
                     />
                   </div>
                   <div className="buttons">
-                    <button className="back">
+                    <button
+                      className="back"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("education");
+                      }}
+                    >
                       {t("applyForJob.previous")}
                     </button>
-                    <button className="next">{t("applyForJob.next")}</button>
+                    <button
+                      className="next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("personal");
+                      }}
+                    >
+                      {t("applyForJob.next")}
+                    </button>
                   </div>
                 </>
               )}
@@ -248,10 +270,24 @@ const ApplyForJob = () => {
                     />
                   </div>
                   <div className="buttons">
-                    <button className="back">
+                    <button
+                      className="back"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("experience");
+                      }}
+                    >
                       {t("applyForJob.previous")}
                     </button>
-                    <button className="next">{t("applyForJob.next")}</button>
+                    <button
+                      className="next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("work_details");
+                      }}
+                    >
+                      {t("applyForJob.next")}
+                    </button>
                   </div>
                 </>
               )}
@@ -330,10 +366,24 @@ const ApplyForJob = () => {
                     />
                   </div>
                   <div className="buttons">
-                    <button className="back">
+                    <button
+                      className="back"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("personal");
+                      }}
+                    >
                       {t("applyForJob.previous")}
                     </button>
-                    <button className="next">{t("applyForJob.next")}</button>
+                    <button
+                      className="next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("closer_shot");
+                      }}
+                    >
+                      {t("applyForJob.next")}
+                    </button>
                   </div>
                 </>
               )}
@@ -396,7 +446,13 @@ const ApplyForJob = () => {
                     </div>
                   </div>
                   <div className="buttons">
-                    <button className="back">
+                    <button
+                      className="back"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("work_details");
+                      }}
+                    >
                       {t("applyForJob.previous")}
                     </button>
                     <SubmitButton
