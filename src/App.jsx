@@ -97,7 +97,7 @@ const App = () => {
           />
           <Route path="/audios/*" element={<Audios />} />
           <Route path="/visuals/*" element={<Visuals />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<Profile />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
           <Route path="/jobs/:id/apply" element={<ApplyForJob />} />

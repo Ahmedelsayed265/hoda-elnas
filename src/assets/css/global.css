@@ -2287,6 +2287,14 @@ body main .contact_section .contact_info h3 {
   color: #31535a;
   font-size: 20px;
 }
+body main .profile_sec {
+  padding: 40px 0;
+}
+@media screen and (max-width: 576px) {
+  body main .profile_sec .form-ui .form_group {
+    flex-direction: column !important;
+  }
+}
 body main .terms_section {
   padding: 40px 0;
 }
@@ -2874,6 +2882,7 @@ body main .sideMenu {
 body main .sideMenu .user_img {
   flex-direction: column;
   display: flex;
+  align-items: center;
   padding: 12px 8px;
   gap: 12px;
 }
@@ -2918,6 +2927,12 @@ body main .sideMenu ul li a {
 }
 body main .sideMenu ul li a img {
   height: 18px;
+}
+body main .sideMenu ul li a i {
+  color: #81a63d;
+}
+body main .sideMenu ul li a i.fa-user-xmark {
+  color: red;
 }
 body main .sideMenu ul li a:hover, body main .sideMenu ul li a.active {
   background: #fff;

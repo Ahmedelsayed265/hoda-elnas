@@ -24,6 +24,7 @@ const PasswordField = ({
           placeholder="************"
           type={showPass ? "text" : "password"}
           id={id}
+          required
           name={id}
           value={value || formData[htmlFor]}
           onChange={(e) => {

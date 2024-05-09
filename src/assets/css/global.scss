@@ -2178,6 +2178,14 @@ body {
         }
       }
     }
+    .profile_sec {
+      padding: 40px 0;
+      .form-ui .form_group {
+        @media screen and (max-width: 576px) {
+          flex-direction: column !important;
+        }
+      }
+    }
     .terms_section {
       padding: 40px 0;
       h4 {
@@ -2718,6 +2726,7 @@ body {
       .user_img {
         flex-direction: column;
         display: flex;
+        align-items: center;
         padding: 12px 8px;
         gap: 12px;
         .img {
@@ -2758,6 +2767,12 @@ body {
             font-weight: 600;
             img {
               height: 18px;
+            }
+            i {
+              color: $secondary;
+              &.fa-user-xmark {
+                color: red;
+              }
             }
             &:hover,
             &.active {

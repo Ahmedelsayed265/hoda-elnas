@@ -27,7 +27,7 @@ const Jobs = () => {
     };
     fetchJobs();
   }, []);
-  
+
   return (
     <section className="jobs_page">
       <div className="container">
