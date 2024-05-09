@@ -17,7 +17,7 @@ const JobDetails = () => {
     const fetchJob = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`/hr/List_jobs/?id=${id}`);
+        const response = await axios.get(`/hr/List_jobs/?job_id=${id}`);
         if (response.status === 200) {
           setJob(response?.data?.message[0]);
         }
@@ -45,7 +45,7 @@ const JobDetails = () => {
                       <h4>
                         <i className="fa-light fa-briefcase"></i> {job?.title}
                       </h4>
-                      <Link to={hasAccess ? "/jobs/1/apply" : "/login"}>
+                      <Link to={hasAccess ? `/jobs/${id}/apply` : "/login"}>
                         {t("applyNow")}{" "}
                         <i className="fa-regular fa-arrow-up-left"></i>
                       </Link>

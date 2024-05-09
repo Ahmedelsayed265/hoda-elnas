@@ -416,7 +416,7 @@
         "majorOrAreaOfStudy": "التخصص الدراسي",
         "degreesOrCertifications": "الدرجات العلمية أو الشهادات",
         "relevantExperience": "الخبرة ذات الصلة",
-        "significantAccomplishment": "إنجازاتك البارزة",
+        "significantAccomplishment": "الإنجازات البارزة",
         "workEnvironmentPreference": "تفضيلات بيئة العمل",
         "teamworkPreference": "تفضيلات العمل الجماعي",
         "challengesOvercome": "كيف تتغلب على التحديات؟",
@@ -432,6 +432,13 @@
         "previous": "السابق",
         "submit": "إرسال",
         "applicationSentSuccessfully": "تم إرسال الطلب بنجاح",
-        "incompleteDataError": "بعض البيانات غير ممتلئة من فضلك راجع الأسئلة مرة أخرى خطوة خطوة"
+        "incompleteDataError": "بعض البيانات غير ممتلئة، يرجى التحقق من الأسئلة مرة أخرى خطوة بخطوة",
+        "teamOriented": "العمل ضمن فريق",
+        "independent": "مستقل",
+        "both": "كلاهما",
+        "strongTeam": "فريق قوي",
+        "moderatelyPreferTeamwork": "تفضيل العمل بشكل جماعي بشكل معتدل",
+        "moderatelyPreferIndependentWork": "تفضيل العمل بشكل مستقل بشكل معتدل",
+        "stronglyPreferIndependentWork": "تفضيل العمل بشكل مستقل بشكل قوي"
     }
 }

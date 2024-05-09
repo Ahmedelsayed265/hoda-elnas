@@ -17,7 +17,7 @@ const JobCard = ({ job }) => {
       <div className="content">
         <h4>{job?.title}</h4>
         <p>{job?.job_type}</p>
-        <Link to={"/jobs/1"}>{t("details")}</Link>
+        <Link to={`/jobs/${job?.id}`}>{t("details")}</Link>
       </div>
     </div>
   );
