@@ -138,16 +138,12 @@ const ApplyForJob = () => {
                       }
                       options={[
                         {
-                          name: t("applyForJob.highSchool"),
-                          value: "High School"
-                        },
-                        {
-                          name: t("applyForJob.associateDegree"),
-                          value: "Associate Degree"
-                        },
-                        {
                           name: t("applyForJob.bachelorDegree"),
                           value: "Bachelor"
+                        },
+                        {
+                          name: t("applyForJob.masterDegree"),
+                          value: "Master Degree"
                         },
                         { name: t("applyForJob.phd"), value: "PhD" }
                       ]}
@@ -211,7 +207,7 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.significantAccomplishment")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t("applyForJob.significantAccomplishmentPlaceHolder")}
                       id="significant_accomplishment"
                       htmlFor="significant_accomplishment"
                       value={formData.significant_accomplishment}
@@ -231,7 +227,7 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.softwareExperience")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t("applyForJob.softwareExperiencePlaceHolder")}
                       id="software_experience"
                       htmlFor="software_experience"
                       value={formData.software_experience}
@@ -275,7 +271,7 @@ const ApplyForJob = () => {
                     />
                     <TextField
                       label={t("applyForJob.conflictResolution")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t("applyForJob.conflictResolutionPlaceHolder")}
                       id="conflict_resolution"
                       htmlFor="conflict_resolution"
                       value={formData.conflict_resolution}
@@ -286,7 +282,7 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.workingUnderPressure")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t("applyForJob.workingUnderPressurePlaceHolder")}
                       id="working_under_pressure"
                       htmlFor="working_under_pressure"
                       value={formData.working_under_pressure}
@@ -400,7 +396,7 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.additionalInfo")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t("applyForJob.additionalInfoPlaceHolder")}
                       htmlFor="additional_info"
                       id="additional_info"
                       value={formData.additional_info}
@@ -409,7 +405,9 @@ const ApplyForJob = () => {
                     />
                     <TextField
                       label={t("applyForJob.questionsForCompany")}
-                      placeholder={t("dashboard.writeHere")}
+                      placeholder={t(
+                        "applyForJob.questionsForCompanyPlaceHolder"
+                      )}
                       htmlFor="questions_for_company"
                       id="questions_for_company"
                       value={formData.questions_for_company}

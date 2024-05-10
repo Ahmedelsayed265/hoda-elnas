@@ -242,7 +242,7 @@ const MySubscriptions = () => {
     <section className="my-subscriptions">
       <div className="container">
         <div className="row m-0">
-          {librarySubs.length < 1 ? (
+          {/* {librarySubs.length < 1 ? (
             <div className="col-12 p-2">
               <div className="librarySubLink">
                 <Link to="/library-subscribe">{t("librarySubAds")}</Link>
@@ -269,7 +269,7 @@ const MySubscriptions = () => {
                 </div>
               ))}
             </>
-          )}
+          )} */}
           <div className="col-12 p-2 mt-4">
             <div className="section_title">
               <div className="img">

@@ -12,6 +12,10 @@ const JobDetails = () => {
   const [loading, setLoading] = useState(true);
   const [job, setJob] = useState({});
   const hasAccess = useSelector((state) => state.authedUser.access_token);
+  const applyLink =
+    job?.job_type === "instructor"
+      ? `/jobs/${id}/apply-instructor`
+      : `/jobs/${id}/apply`;
 
   useEffect(() => {
     const fetchJob = async () => {
@@ -45,7 +49,7 @@ const JobDetails = () => {
                       <h4>
                         <i className="fa-light fa-briefcase"></i> {job?.title}
                       </h4>
-                      <Link to={hasAccess ? `/jobs/${id}/apply` : "/login"}>
+                      <Link to={hasAccess ? applyLink : "/login"}>
                         {t("applyNow")}{" "}
                         <i className="fa-regular fa-arrow-up-left"></i>
                       </Link>

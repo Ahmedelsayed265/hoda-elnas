@@ -40,6 +40,7 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { setId, setIsPlaying, setSrc } from "./redux/slices/audioSrc";
 import LibirarySubscribe from "./components/libirary/LibirarySubscribe";
+import InstructorApplyForJob from "./pages/InstructorApplyForJob";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -101,6 +102,10 @@ const App = () => {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/:id" element={<JobDetails />} />
           <Route path="/jobs/:id/apply" element={<ApplyForJob />} />
+          <Route
+            path="/jobs/:id/apply-instructor"
+            element={<InstructorApplyForJob />}
+          />
           <Route path="/about-us" element={<About />} />
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />

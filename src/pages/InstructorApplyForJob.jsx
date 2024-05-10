@@ -10,7 +10,7 @@ import axios from "./../util/axios";
 import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
 
-const ApplyForJob = () => {
+const InstructorApplyForJob = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const userId = useSelector((state) => state.authedUser?.user?.id);
@@ -51,28 +51,38 @@ const ApplyForJob = () => {
   const [formData, setFormData] = useState({
     job_id: +id,
     user_id: userId,
+    name_ar: "",
+    name_en: "",
     address: "",
-    education_level: "Bachelor",
-    degrees_or_certifications: "",
+    licensed: true,
+    available_hours: "",
+    date_of_birth: "",
     major_or_area_of_study: "",
-    work_history: "",
-    relevant_experience: "",
-    significant_accomplishment: "",
-    technical_skills: "",
-    software_experience: "",
-    challenges_overcome: "",
-    conflict_resolution: "",
-    working_under_pressure: "",
-    work_environment_preference: "Team-oriented",
-    teamwork_preference: "strong_team",
-    salary_expectation: "",
-    availability_start_date: "",
-    availability_restrictions: "",
-    additional_info: "",
+    academic_achievements: "",
+    years_teaching: "",
+    previous_institutions: "",
+    grade_levels_taught: "",
+    subjects_taught: "",
+    teaching_awards_recognitions: "",
+    teaching_philosophy: "",
+    student_engagement_approach: "",
+    individualized_learning_approach: "",
+    goal_setting_progress_monitoring: "",
+    customized_learning_plans: "",
+    feedback_reflection: "",
+    communication_support: "",
+    documentation_record_keeping: "",
+    student_retention_strategies: "",
+    personality_traits: "",
+    handling_challenging_situations: "",
+    daily_routine: "",
+    hobbies_interests: "",
     questions_for_company: "",
     cv: "",
-    linkedin: "",
-    why_you: ""
+    why_you: "",
+    certification: "",
+    personal_image: "",
+    introduction_video: ""
   });
 
   const handleSubmit = async (e) => {
@@ -95,7 +105,10 @@ const ApplyForJob = () => {
         headers: headers,
         data: formData
       };
-      const response = await axios.request(`/hr/Create_employee/`, reqOptions);
+      const response = await axios.request(
+        `/hr/Create_instructor/`,
+        reqOptions
+      );
       if (response.status === 200 || response.status === 201) {
         toast.success(t("applyForJob.applicationSentSuccessfully"));
         navigate("/jobs");
@@ -533,4 +546,4 @@ const ApplyForJob = () => {
   );
 };
 
-export default ApplyForJob;
+export default InstructorApplyForJob;
