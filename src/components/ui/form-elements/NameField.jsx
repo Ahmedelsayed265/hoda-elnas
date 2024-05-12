@@ -6,9 +6,7 @@ const NameField = ({ setFormData, formData }) => {
   return (
     <div className="form_group">
       <div className="input-field">
-        <label htmlFor="firstName">
-          <i className="fa-light fa-user"></i> {t("auth.firstName")}
-        </label>
+        <label htmlFor="firstName">{t("auth.firstName")}</label>
         <input
           placeholder={t("auth.abdallah")}
           type="text"
@@ -22,9 +20,7 @@ const NameField = ({ setFormData, formData }) => {
         />
       </div>
       <div className="input-field">
-        <label htmlFor="firstName">
-          <i className="fa-light fa-user"></i> {t("auth.lastName")}
-        </label>
+        <label htmlFor="firstName">{t("auth.lastName")}</label>
         <input
           placeholder={t("auth.rashed")}
           type="text"

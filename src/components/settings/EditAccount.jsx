@@ -7,6 +7,8 @@ import SubmitButton from "../ui/form-elements/SubmitButton";
 import InputField from "../ui/form-elements/InputField";
 import NameField from "../ui/form-elements/NameField";
 import { useSelector } from "react-redux";
+import axios from "./../../util/axios";
+import { toast } from "react-toastify";
 
 const EditAccount = () => {
   const { t } = useTranslation();
@@ -24,6 +26,7 @@ const EditAccount = () => {
         phone_number: user.phone || "",
         whatsapp_number: user.whatsapp || "",
         gender: user.gender || "",
+        age: user.age || ""
       });
     }
   }, [user]);
@@ -43,7 +46,18 @@ const EditAccount = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    try {
+      const res = await axios.put(`/accounts/Edit_user/${user?.id}/`, formData);
+      if (res.status === 200 || res.status === 201) {
+        toast.success(t("profileUpdated"));
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
+
   return (
     <form className="form-ui" onSubmit={handleSubmit}>
       <div className="input-field image-change-wrapper">
@@ -68,17 +82,30 @@ const EditAccount = () => {
       </div>
       {/* name */}
       <NameField setFormData={setFormData} formData={formData} />
-      {/* email */}
-      <InputField
-        label={t("auth.email")}
-        placeholder={t("auth.emailPlaceHolder")}
-        htmlFor="email"
-        value={formData.email}
-        formData={formData}
-        id={"email"}
-        setFormData={setFormData}
-        icon={<i className="fa-light fa-envelope"></i>}
-      />
+      <div className="form_group">
+        {/* email */}
+        <InputField
+          label={t("auth.email")}
+          placeholder={t("auth.emailPlaceHolder")}
+          htmlFor="email"
+          value={formData.email}
+          formData={formData}
+          id={"email"}
+          setFormData={setFormData}
+          icon={<i className="fa-light fa-envelope"></i>}
+        />
+        {/* age */}
+        <InputField
+          label={t("dashboard.studentAge")}
+          placeholder={"00"}
+          htmlFor="age"
+          value={formData.age}
+          formData={formData}
+          id={"age"}
+          setFormData={setFormData}
+          icon={<i className="fa-light fa-calendar"></i>}
+        />
+      </div>
       <div className="form_group">
         {/* phone */}
         <PhoneField

@@ -3881,6 +3881,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   cursor: pointer;
   gap: 12px;
+  min-width: 130px;
 }
 .wizard_tabs .wizard_tab.active .num {
   background: #81a63d;

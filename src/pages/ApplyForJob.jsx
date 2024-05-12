@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import InputField from "../components/ui/form-elements/InputField";
 import TextField from "../components/ui/form-elements/TextField";
@@ -8,7 +8,9 @@ import { useSelector } from "react-redux";
 import SelectField from "../components/ui/form-elements/SelectField";
 import axios from "./../util/axios";
 import { toast } from "react-toastify";
-import { useCookies } from "react-cookie";
+import NameField from "../components/ui/form-elements/NameField";
+import PhoneField from "../components/ui/form-elements/PhoneField";
+import Gender from "../components/ui/form-elements/Gender";
 
 const ApplyForJob = () => {
   const { id } = useParams();
@@ -16,15 +18,7 @@ const ApplyForJob = () => {
   const userId = useSelector((state) => state.authedUser?.user?.id);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [cookies] = useCookies(["refreshToken"]);
   const [stepName, setStepName] = useState("education");
-  const isAuthenticated = cookies.refreshToken ? true : false;
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
 
   const wizardTabs = [
     { step: "education", label: t("applyForJob.education") },
@@ -52,6 +46,11 @@ const ApplyForJob = () => {
     job_id: +id,
     user_id: userId,
     address: "",
+    firstname: "",
+    lastname: "",
+    phone_number: "",
+    whatsapp_number: "",
+    gender: "male",
     education_level: "Bachelor",
     degrees_or_certifications: "",
     major_or_area_of_study: "",
@@ -207,7 +206,9 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.significantAccomplishment")}
-                      placeholder={t("applyForJob.significantAccomplishmentPlaceHolder")}
+                      placeholder={t(
+                        "applyForJob.significantAccomplishmentPlaceHolder"
+                      )}
                       id="significant_accomplishment"
                       htmlFor="significant_accomplishment"
                       value={formData.significant_accomplishment}
@@ -227,7 +228,9 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.softwareExperience")}
-                      placeholder={t("applyForJob.softwareExperiencePlaceHolder")}
+                      placeholder={t(
+                        "applyForJob.softwareExperiencePlaceHolder"
+                      )}
                       id="software_experience"
                       htmlFor="software_experience"
                       value={formData.software_experience}
@@ -271,7 +274,9 @@ const ApplyForJob = () => {
                     />
                     <TextField
                       label={t("applyForJob.conflictResolution")}
-                      placeholder={t("applyForJob.conflictResolutionPlaceHolder")}
+                      placeholder={t(
+                        "applyForJob.conflictResolutionPlaceHolder"
+                      )}
                       id="conflict_resolution"
                       htmlFor="conflict_resolution"
                       value={formData.conflict_resolution}
@@ -282,7 +287,9 @@ const ApplyForJob = () => {
                   <div className="form_group">
                     <TextField
                       label={t("applyForJob.workingUnderPressure")}
-                      placeholder={t("applyForJob.workingUnderPressurePlaceHolder")}
+                      placeholder={t(
+                        "applyForJob.workingUnderPressurePlaceHolder"
+                      )}
                       id="working_under_pressure"
                       htmlFor="working_under_pressure"
                       value={formData.working_under_pressure}
@@ -450,6 +457,40 @@ const ApplyForJob = () => {
               )}
               {stepName === "closer_shot" && (
                 <>
+                  <div className="form_group">
+                    {/* name */}
+                    <NameField setFormData={setFormData} formData={formData} />
+                    <InputField
+                      label={t("auth.email")}
+                      placeholder={t("auth.emailPlaceHolder")}
+                      htmlFor="email"
+                      value={formData.email}
+                      formData={formData}
+                      id={"email"}
+                      setFormData={setFormData}
+                    />
+                    <Gender
+                      setFormData={setFormData}
+                      formData={formData}
+                      dataKey="gender"
+                    />
+                  </div>
+                  <div className="form_group">
+                    <PhoneField
+                      label={t("auth.phone")}
+                      formData={formData}
+                      setFormData={setFormData}
+                      value={formData.phone_number}
+                      id="phone_number"
+                    />
+                    <PhoneField
+                      label={t("auth.whatsapp")}
+                      formData={formData}
+                      setFormData={setFormData}
+                      value={formData.whatsapp_number}
+                      id="whatsapp_number"
+                    />
+                  </div>
                   <div className="form_group">
                     <InputField
                       label={t("applyForJob.address")}

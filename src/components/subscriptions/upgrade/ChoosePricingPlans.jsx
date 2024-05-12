@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import InputField from "../../ui/InputField";
 import { useTranslation } from "react-i18next";
 import RadiosSelect from "../../ui/RadiosSelect";
-import AdditionalServices from "../../courses/subscription/AdditionalServices";
+import AdditionalServices from "./AdditionalServices";
 import useUserLocation from "../../../hooks/useUserLocation";
 import { useSelector } from "react-redux";
 import axios from "./../../../util/axios";
@@ -109,12 +109,14 @@ const ChoosePricingPlans = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    formData?.studentsNumber,
     formData?.courseDuration,
+    formData?.studentsNumber,
     formData?.lessonsDuration,
     formData?.plan,
     pricingPlan?.interval,
     pricingPlans,
+    formData?.addons,
+    pricingPlan,
     location
   ]);
 
