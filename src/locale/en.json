@@ -465,6 +465,12 @@
         "nameEn": "Name in English (displayed to the student)",
         "birthDate": "Date of Birth",
         "personalImage": "Personal Image",
-        "introductionVideo": "Introduction Video"
+        "introductionVideo": "Introduction Video",
+        "age": "Age",
+        "attachments": "Attachments",
+        "certification": "Certification",
+        "uploadCertification": "Upload Certification",
+        "uploadImage": "Upload Image",
+        "uploadVideo": "Upload Video"
     }
 }

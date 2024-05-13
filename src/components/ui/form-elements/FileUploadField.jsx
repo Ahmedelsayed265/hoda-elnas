@@ -5,48 +5,31 @@ const FileUploadField = ({
   htmlFor,
   formData,
   setFormData,
-  icon,
+  uploadText,
   Accept
 }) => {
   return (
     <div className="input-field">
-      <label htmlFor={htmlFor}>
-        {icon} {label}
-      </label>
-      <div className="upload_wrapper">
+      <label htmlFor={htmlFor}>{label}</label>
+      <label htmlFor={htmlFor} className="cv_area">
         <input
           type="file"
-          id={htmlFor}
           accept={Accept}
+          name={htmlFor}
+          id={htmlFor}
           onChange={(e) => {
-            setFormData({ ...formData, [htmlFor]: e.target.files[0] });
+            setFormData({
+              ...formData,
+              [htmlFor]: e.target.files[0]
+            });
           }}
         />
-        {formData[htmlFor] ? (
-          <div className="img">
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                setFormData({ ...formData, [htmlFor]: null });
-              }}
-            >
-              <i className="fa-light fa-xmark"></i>
-            </button>
-            {formData[htmlFor].type.startsWith("image/") ? (
-              <img
-                src={URL.createObjectURL(formData[htmlFor])}
-                alt="uploaded"
-              />
-            ) : (
-              <p>{formData[htmlFor].name}</p>
-            )}
-          </div>
-        ) : (
-          <label htmlFor={htmlFor}>
-            <i className="fa-sharp fa-solid fa-rectangle-history-circle-plus"></i>
-          </label>
-        )}
-      </div>
+        <div className="content">
+          <i className="fa-regular fa-paperclip"></i>
+          <p>{uploadText}</p>
+        </div>
+        {formData[htmlFor] && <span>{formData[htmlFor]?.name}</span>}
+      </label>
     </div>
   );
 };

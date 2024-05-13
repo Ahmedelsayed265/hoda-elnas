@@ -19,7 +19,7 @@ const ReportViewer = () => {
       try {
         setLoading(true);
         const res = await axios.get(
-          `/members/List_reports/?report_id=${reportId}`
+          `/members/List_sessions/?session_id=${reportId}`
         );
         if (res.status === 200) {
           setReport(res?.data?.message[0]);

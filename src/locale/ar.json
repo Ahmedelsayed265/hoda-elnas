@@ -475,6 +475,12 @@
         "nameEn": "الاسم باللغة الانجليزية (يعرض للطالب)",
         "birthDate": "تاريخ الميلاد",
         "personalImage": "الصورة الشخصية",
-        "introductionVideo": "فيديو  تقديمى"
+        "introductionVideo": "فيديو  تقديمى",
+        "age": "السن",
+        "attachments": "المرفقات",
+        "certification": "الشهادة",
+        "uploadCertification": "تحميل الشهادة",
+        "uploadImage": "تحميل الصورة الشخصية",
+        "uploadVideo": "تحميل الفيديو التقديمى"
     }
 }

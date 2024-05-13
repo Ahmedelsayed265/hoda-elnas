@@ -42,7 +42,7 @@ const InstructorApplyForJob = () => {
       step: "relations_with_students",
       label: t("applyForJob.relationsWithStudents")
     },
-    { step: "personal", label: t("applyForJob.personal") }
+    { step: "personal", label: t("applyForJob.attachments") }
   ];
   const generateWizardTab = (step, label, index) => (
     <div
@@ -62,46 +62,38 @@ const InstructorApplyForJob = () => {
   const [formData, setFormData] = useState({
     job_id: +id,
     user_id: userId,
-    name_ar: "", // c
-    name_en: "", // c
-    address: "", // c
-    firstname: "", // c
-    lastname: "", // c
-    phone_number: "", // c
-    whatsapp_number: "", // c
-    gender: "male", // c
-    email: "", // c
-    licensed: false, // c
-    available_hours: "", // c
-    date_of_birth: "", // c
-    education_level: "Bachelor", // c
-    major_or_area_of_study: "", // c
-    academic_achievements: "", // c
-    years_teaching: "", // c
-    previous_institutions: "", // c
-    grade_levels_taught: "", // c
-    subjects_taught: "", // c
-    teaching_awards_recognitions: "", // c
-    languages_spoken: "", // c
-    teaching_philosophy: "", // c
-    student_engagement_approach: "", // c
-    individualized_learning_approach: "", // c
-    goal_setting_progress_monitoring: "", // c
-    customized_learning_plans: "", // c
-    feedback_reflection: "", // c
-    communication_support: "", // c
-    documentation_record_keeping: "", // c
-    student_retention_strategies: "", // c
-    personality_traits: "", // c
-    handling_challenging_situations: "", // c
-    daily_routine: "", // c
-    hobbies_interests: "", // c
-    questions_for_company: "",
-    cv: "", // c
-    why_you: "", //c
+    name_ar: "",
+    name_en: "",
+    firstname: "",
+    lastname: "",
+    phone_number: "",
+    whatsapp_number: "",
+    gender: "male",
+    email: "",
+    licensed: false,
+    available_hours: "",
+    age: "",
+    education_level: "Bachelor",
+    major_or_area_of_study: "",
+    academic_achievements: "",
+    years_teaching: "",
+    previous_institutions: "",
+    grade_levels_taught: "",
+    subjects_taught: "",
+    languages_spoken: "",
+    teaching_philosophy: "",
+    student_engagement_approach: "",
+    individualized_learning_approach: "",
+    goal_setting_progress_monitoring: "",
+    customized_learning_plans: "",
+    feedback_reflection: "",
+    communication_support: "",
+    documentation_record_keeping: "",
+    student_retention_strategies: "",
+    handling_challenging_situations: "",
+    cv: "",
     certification: "",
-    linkedin: "", // c
-    personal_image: "",// c
+    personal_image: "",
     introduction_video: ""
   });
 
@@ -159,50 +151,15 @@ const InstructorApplyForJob = () => {
               {stepName === "closer_shot" && (
                 <>
                   <div className="form_group">
-                    <FileUploadField
-                      label={t("applyForJob.personalImage")}
-                      htmlFor={"personal_image"}
-                      formData={formData}
-                      setFormData={setFormData}
-                      Accept="image/*"
-                    />
-                    <FileUploadField
-                      label={t("applyForJob.introductionVideo")}
-                      htmlFor={"introduction_video"}
-                      formData={formData}
-                      setFormData={setFormData}
-                      Accept="video/mp4,video/x-m4v,video/*"
-                    />
-                  </div>
-                  <div className="form_group">
-                    <InputField
-                      label={t("applyForJob.nameAr")}
-                      placeholder={t("dashboard.writeHere")}
-                      htmlFor="name_ar"
-                      value={formData.name_ar}
-                      formData={formData}
-                      id={"name_ar"}
-                      setFormData={setFormData}
-                    />
-                    <InputField
-                      label={t("applyForJob.nameEn")}
-                      placeholder={t("dashboard.writeHere")}
-                      htmlFor="name_en"
-                      value={formData.name_en}
-                      formData={formData}
-                      id={"name_en"}
-                      setFormData={setFormData}
-                    />
-                  </div>
-                  <div className="form_group">
                     {/* name */}
                     <NameField setFormData={setFormData} formData={formData} />
                     <InputField
-                      label={t("applyForJob.birthDate")}
-                      type="date"
-                      htmlFor="date_of_birth"
-                      id={"date_of_birth"}
-                      value={formData.date_of_birth}
+                      label={t("applyForJob.age")}
+                      placeholder={"00"}
+                      type="number"
+                      htmlFor="age"
+                      id={"age"}
+                      value={formData.age}
                       formData={formData}
                       setFormData={setFormData}
                     />
@@ -239,76 +196,16 @@ const InstructorApplyForJob = () => {
                       id="whatsapp_number"
                     />
                   </div>
-                  <div className="form_group">
-                    <InputField
-                      label={t("applyForJob.address")}
-                      placeholder={t("dashboard.writeHere")}
-                      type="text"
-                      htmlFor="address"
-                      value={formData.address}
-                      formData={formData}
-                      id="address"
-                      setFormData={setFormData}
-                    />
-                    <InputField
-                      label={t("applyForJob.linkedin")}
-                      placeholder={t("dashboard.writeHere")}
-                      type="url"
-                      id="linkedin"
-                      htmlFor="linkedin"
-                      value={formData.linkedin}
-                      formData={formData}
-                      setFormData={setFormData}
-                    />
-                  </div>
-                  <div className="form_group">
-                    <TextField
-                      label={t("applyForJob.whyYou")}
-                      placeholder={t("dashboard.writeHere")}
-                      htmlFor="why_you"
-                      id="why_you"
-                      value={formData.why_you}
-                      formData={formData}
-                      setFormData={setFormData}
-                    />
-                  </div>
-                  <div className="form_group">
-                    <div className="input-field">
-                      <label htmlFor="cv">{t("applyForJob.cv")}</label>
-                      <label htmlFor="cv" className="cv_area">
-                        <input
-                          type="file"
-                          name="cv"
-                          id="cv"
-                          onChange={(e) => {
-                            setFormData({
-                              ...formData,
-                              cv: e.target.files[0]
-                            });
-                          }}
-                        />
-                        <div className="content">
-                          <i className="fa-regular fa-paperclip"></i>
-                          <p>{t("applyForJob.uploadCv")}</p>
-                        </div>
-                        {formData.cv && <span>{formData.cv?.name}</span>}
-                      </label>
-                    </div>
-                  </div>
-                  <div className="buttons">
+                  <div className="buttons justify-content-end">
                     <button
-                      className="back"
+                      className="next"
                       onClick={(e) => {
                         e.preventDefault();
-                        setStepName("work_details");
+                        setStepName("education");
                       }}
                     >
-                      {t("applyForJob.previous")}
+                      {t("applyForJob.next")}
                     </button>
-                    <SubmitButton
-                      name={t("jobsPage.submit")}
-                      loading={loading}
-                    />
                   </div>
                 </>
               )}
@@ -399,7 +296,16 @@ const InstructorApplyForJob = () => {
                       }
                     />
                   </div>
-                  <div className="buttons justify-content-end">
+                  <div className="buttons">
+                    <button
+                      className="back"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStepName("closer_shot");
+                      }}
+                    >
+                      {t("applyForJob.previous")}
+                    </button>
                     <button
                       className="next"
                       onClick={(e) => {
@@ -438,15 +344,6 @@ const InstructorApplyForJob = () => {
                   </div>
                   <div className="form_group">
                     <TextField
-                      label={t("applyForJob.teachingAwardsRecognitions")}
-                      placeholder={t("dashboard.writeHere")}
-                      id="teaching_awards_recognitions"
-                      htmlFor="teaching_awards_recognitions"
-                      value={formData.teaching_awards_recognitions}
-                      formData={formData}
-                      setFormData={setFormData}
-                    />
-                    <TextField
                       label={t("applyForJob.previousInstitutions")}
                       placeholder={t("dashboard.writeHere")}
                       id="previous_institutions"
@@ -455,8 +352,6 @@ const InstructorApplyForJob = () => {
                       formData={formData}
                       setFormData={setFormData}
                     />
-                  </div>
-                  <div className="form_group">
                     <TextField
                       label={t("applyForJob.handlingChallengingSituations")}
                       placeholder={t("dashboard.writeHere")}
@@ -631,34 +526,59 @@ const InstructorApplyForJob = () => {
               {stepName === "personal" && (
                 <>
                   <div className="form_group">
-                    <TextField
-                      label={t("applyForJob.personalityTraits")}
+                    <InputField
+                      label={t("applyForJob.nameAr")}
                       placeholder={t("dashboard.writeHere")}
-                      id="personality_traits"
-                      htmlFor="personality_traits"
-                      value={formData.personality_traits}
+                      htmlFor="name_ar"
+                      value={formData.name_ar}
                       formData={formData}
+                      id={"name_ar"}
+                      setFormData={setFormData}
+                    />
+                    <InputField
+                      label={t("applyForJob.nameEn")}
+                      placeholder={t("dashboard.writeHere")}
+                      htmlFor="name_en"
+                      value={formData.name_en}
+                      formData={formData}
+                      id={"name_en"}
                       setFormData={setFormData}
                     />
                   </div>
                   <div className="form_group">
-                    <TextField
-                      label={t("applyForJob.dailyRoutine")}
-                      placeholder={t("dashboard.writeHere")}
-                      id="daily_routine"
-                      htmlFor="daily_routine"
-                      value={formData.daily_routine}
+                    <FileUploadField
+                      label={t("applyForJob.cv")}
+                      htmlFor={"cv"}
                       formData={formData}
                       setFormData={setFormData}
+                      Accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      uploadText={t("applyForJob.uploadCv")}
                     />
-                    <TextField
-                      label={t("applyForJob.hobbiesInterests")}
-                      placeholder={t("dashboard.writeHere")}
-                      id="hobbies_interests"
-                      htmlFor="hobbies_interests"
-                      value={formData.hobbies_interests}
+                    <FileUploadField
+                      label={t("applyForJob.certification")}
+                      htmlFor={"certification"}
                       formData={formData}
                       setFormData={setFormData}
+                      Accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      uploadText={t("applyForJob.uploadCertification")}
+                    />
+                  </div>
+                  <div className="form_group">
+                    <FileUploadField
+                      label={t("applyForJob.personalImage")}
+                      htmlFor={"personal_image"}
+                      formData={formData}
+                      setFormData={setFormData}
+                      Accept="image/*"
+                      uploadText={t("applyForJob.uploadImage")}
+                    />
+                    <FileUploadField
+                      label={t("applyForJob.introductionVideo")}
+                      htmlFor={"introduction_video"}
+                      formData={formData}
+                      setFormData={setFormData}
+                      Accept="video/mp4,video/x-m4v,video/*"
+                      uploadText={t("applyForJob.uploadVideo")}
                     />
                   </div>
                   <div className="buttons">
@@ -671,15 +591,10 @@ const InstructorApplyForJob = () => {
                     >
                       {t("applyForJob.previous")}
                     </button>
-                    <button
-                      className="next"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setStepName("work_details");
-                      }}
-                    >
-                      {t("applyForJob.next")}
-                    </button>
+                    <SubmitButton
+                      name={t("jobsPage.submit")}
+                      loading={loading}
+                    />
                   </div>
                 </>
               )}
