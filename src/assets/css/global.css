@@ -3271,6 +3271,59 @@ body .form-ui .input-field {
   display: flex;
   flex-direction: column;
 }
+body .form-ui .input-field .upload_wrapper {
+  height: 256px;
+  width: 100%;
+  background: #f8f8f8;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .form-ui .input-field .upload_wrapper label {
+  cursor: pointer;
+}
+body .form-ui .input-field .upload_wrapper i {
+  font-size: 32px;
+  color: #81a63d;
+}
+body .form-ui .input-field .upload_wrapper input {
+  display: none;
+}
+body .form-ui .input-field .upload_wrapper .img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .form-ui .input-field .upload_wrapper .img p {
+  padding: 12px;
+}
+body .form-ui .input-field .upload_wrapper .img button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #81a63d;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+body .form-ui .input-field .upload_wrapper .img button i {
+  font-size: 16px;
+  color: #fff;
+}
+body .form-ui .input-field .upload_wrapper .img img {
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
 body .form-ui .input-field .pass-group {
   display: flex;
 }

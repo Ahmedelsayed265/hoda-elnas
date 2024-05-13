@@ -460,6 +460,11 @@
         "subjectsTaught": "Subjects Taught",
         "gradeLevelsTaught": "Grade Levels Taught",
         "languagesSpoken": "Languages Spoken",
-        "licensed": "Do you have a license?"
+        "licensed": "Do you have a license?",
+        "nameAr": "Name in Arabic (displayed to the student)",
+        "nameEn": "Name in English (displayed to the student)",
+        "birthDate": "Date of Birth",
+        "personalImage": "Personal Image",
+        "introductionVideo": "Introduction Video"
     }
 }

@@ -6,7 +6,7 @@ import male from "../../../assets/images/male.svg";
 export default function Gender({ formData, setFormData, noLabel, dataKey }) {
   const { t } = useTranslation();
   return (
-    <div className="gender_select">
+    <div className="gender_select w-100">
       {!noLabel && (
         <label>
           <i className="fa-regular fa-venus-mars"></i> {t("auth.gender")}

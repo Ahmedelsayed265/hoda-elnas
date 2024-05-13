@@ -51,6 +51,7 @@ const ApplyForJob = () => {
     phone_number: "",
     whatsapp_number: "",
     gender: "male",
+    email: "",
     education_level: "Bachelor",
     degrees_or_certifications: "",
     major_or_area_of_study: "",

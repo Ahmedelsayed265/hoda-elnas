@@ -470,6 +470,11 @@
         "subjectsTaught": "المواضيع التدريسية",
         "gradeLevelsTaught": "المراحل التدريسية",
         "languagesSpoken": "اللغات التي تدرس",
-        "licensed": "لديك إجازة"
+        "licensed": "لديك إجازة",
+        "nameAr": "الاسم باللغة العربية (يعرض للطالب)",
+        "nameEn": "الاسم باللغة الانجليزية (يعرض للطالب)",
+        "birthDate": "تاريخ الميلاد",
+        "personalImage": "الصورة الشخصية",
+        "introductionVideo": "فيديو  تقديمى"
     }
 }
