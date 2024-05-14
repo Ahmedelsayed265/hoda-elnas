@@ -4614,6 +4614,18 @@ input::-webkit-inner-spin-button {
     font-weight: 600;
     text-align: center;
   }
+  .cancel {
+    background: red;
+    width: 100%;
+    color: $white;
+    border-radius: 4px;
+  }
+  .edit {
+    background: $secondary;
+    width: 100%;
+    color: $white;
+    border-radius: 4px;
+  }
   .countDownTimer {
     padding: 4px 0;
     @include centerFlex();
@@ -4642,7 +4654,7 @@ input::-webkit-inner-spin-button {
   a {
     @include centerFlex();
     width: 100%;
-    height: 48px;
+    height: 40px;
     background: $main;
     color: $white;
     border-radius: 4px;

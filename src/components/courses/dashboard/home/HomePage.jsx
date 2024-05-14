@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import AppointmentCard from "../cards/AppointmentCard";
 import DataLoader from "./../../../ui/DataLoader";
 import ChangeInstructorModal from "../appointments/ChangeInstructorModal";
+import EditAppointmentModal from "../appointments/EditAppointmentModal";
+import ConfirmDeleteModal from "../../../ui/ConfirmDeleteModal";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -15,6 +17,9 @@ const HomePage = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
+  const [rowData, setRowData] = useState({});
   const [showChangeInstructorModal, setShowChangeInstructorModal] =
     useState(false);
   const [forWhom, setForWhom] = useState("");
@@ -75,6 +80,28 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscriptionId, forWhom, lang, subscriptionStudents]);
 
+  const handleEdit = (id) => {
+    setShowEditModal(true);
+    setRowData(appointments.find((a) => a.id === id));
+  };
+
+  const handleCancel = (id) => {
+    setShowCancelModal(true);
+    setRowData(appointments.find((a) => a.id === id));
+  };
+
+  const handleCancelSession = async (id) => {
+    try {
+      const response = await axios.post(`/instructor/Cancel_session/${id}/`);
+      if (response.status === 200) {
+        toast.success(response?.data?.message);
+        setShowCancelModal(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <section className="assignments">
       <div className="container p-0">
@@ -121,6 +148,8 @@ const HomePage = () => {
                 {appointments?.map((appointment) => (
                   <AppointmentCard
                     key={appointment?.id}
+                    handleEdit={handleEdit}
+                    handleCancel={handleCancel}
                     appointment={appointment}
                   />
                 ))}
@@ -133,6 +162,19 @@ const HomePage = () => {
         subscriptionStudents={subscriptionStudents}
         showModal={showChangeInstructorModal}
         setShowModal={setShowChangeInstructorModal}
+      />
+      <EditAppointmentModal
+        rowData={rowData}
+        showModal={showEditModal}
+        setShowModal={setShowEditModal}
+        setAppointments={setAppointments}
+      />
+      <ConfirmDeleteModal
+        buttonText={t("dashboard.cancelAppointment")}
+        showModal={showCancelModal}
+        setShowModal={setShowCancelModal}
+        onDelete={() => handleCancelSession(rowData?.id)}
+        text={t("dashboard.cancelAppointmentText")}
       />
     </section>
   );

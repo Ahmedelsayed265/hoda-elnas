@@ -4855,6 +4855,18 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
   text-align: center;
 }
+.appointment_card .cancel {
+  background: red;
+  width: 100%;
+  color: #fff;
+  border-radius: 4px;
+}
+.appointment_card .edit {
+  background: #81a63d;
+  width: 100%;
+  color: #fff;
+  border-radius: 4px;
+}
 .appointment_card .countDownTimer {
   padding: 4px 0;
   display: flex;
@@ -4891,7 +4903,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 48px;
+  height: 40px;
   background: #31535a;
   color: #fff;
   border-radius: 4px;

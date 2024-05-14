@@ -41,6 +41,7 @@ import "react-h5-audio-player/lib/styles.css";
 import { setId, setIsPlaying, setSrc } from "./redux/slices/audioSrc";
 import LibirarySubscribe from "./components/libirary/LibirarySubscribe";
 import InstructorApplyForJob from "./pages/InstructorApplyForJob";
+import JoinSession from "./pages/JoinSession";
 
 const App = () => {
   const [cookies, , removeCookie] = useCookies();
@@ -114,6 +115,7 @@ const App = () => {
           <Route path="/my-subscriptions" element={<MySubscriptions />} />
           <Route path="/my-students" element={<MyStudents />} />
           <Route path="/library-subscribe" element={<LibirarySubscribe />} />
+          <Route path="join-session" element={<JoinSession />} />
           {/* auth pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

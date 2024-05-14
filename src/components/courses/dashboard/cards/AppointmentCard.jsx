@@ -9,9 +9,9 @@ import { Link } from "react-router-dom";
 import axios from "./../../../../util/axios";
 import { toast } from "react-toastify";
 
-const AppointmentCard = ({ appointment }) => {
+const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
   const { t } = useTranslation();
-  const [enable, setEnable] = useState(false);
+  const [enable, setEnable] = useState(true);
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
 
@@ -21,8 +21,10 @@ const AppointmentCard = ({ appointment }) => {
     );
     if (res?.status === 200 || res?.status === 201) {
       const meetingLink = res?.data?.message?.meeting_link;
-      if (meetingLink) {
+      const host = res?.data?.message?.host;
+      if (meetingLink && host !== "vconnect") {
         window.open(meetingLink, "_blank");
+      } else {
       }
     } else {
       toast.error(res?.response?.data?.message);
@@ -152,12 +154,23 @@ const AppointmentCard = ({ appointment }) => {
           <span>{t("dashboard.seconds")}</span>
         </div>
       </div>
-      <Link
-        className={enable ? "" : "disabled"}
-        onClick={() => handleJoinSession(appointment?.id)}
-      >
-        {t("dashboard.joinNow")}
-      </Link>
+      <div className="d-flex gap-2">
+        <Link
+          className={enable ? "w-100" : "w-100 disabled"}
+          onClick={() => handleJoinSession(appointment?.id)}
+        >
+          {t("dashboard.joinNow")}
+        </Link>
+        <button
+          className="cancel"
+          onClick={() => handleCancel(appointment?.id)}
+        >
+          {t("dashboard.cancelAppointement")}
+        </button>
+        <button className="edit" onClick={() => handleEdit(appointment?.id)}>
+          {t("dashboard.editAppointment")}
+        </button>
+      </div>
     </div>
   );
 };

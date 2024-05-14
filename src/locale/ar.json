@@ -347,7 +347,9 @@
         "addNewAppointment": "اضافة موعد جديد",
         "sameInstructor": "المعلم الحالي",
         "newInstructor": "معلم جديد",
-        "chhoseAppointment": "اختيار الموعد"
+        "chhoseAppointment": "اختيار الموعد",
+        "cancelAppointmentText": "هل تريد الغاء هذا الموعد؟",
+        "cancelAppointement": "الغاء الموعد"
     },
     "error": {
         "chooseStudent": "يجب أختيار الطالب",
