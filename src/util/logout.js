@@ -11,11 +11,9 @@ const Logout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    deleteCookie("refreshToken");
     const performLogout = async () => {
       try {
-        console.log("Before deletion:", document.cookie);
-        deleteCookie("refreshToken");
-        console.log("After deletion:", document.cookie);
         delete axios.defaults.headers.common["Authorization"];
         dispatch(setUser({}));
         dispatch(setLogged(false));
@@ -26,7 +24,8 @@ const Logout = () => {
       }
     };
     performLogout();
-  }, [deleteCookie, navigate, dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return null;
 };
 

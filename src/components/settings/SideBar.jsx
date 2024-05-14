@@ -23,9 +23,9 @@ const SideBar = ({ menuOpen, setMenuOpen, menuRef }) => {
           </NavLink>
         </li>
         <li onClick={() => setMenuOpen(false)}>
-          <NavLink end to="categories">
-            <i className="fa-solid fa-user-xmark"></i>
-            {t("deleteAccount")}
+          <NavLink end to="/logout">
+            <i className="fa-regular fa-arrow-right-from-bracket"></i>
+            {t("logout")}
           </NavLink>
         </li>
       </ul>

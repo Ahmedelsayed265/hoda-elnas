@@ -351,7 +351,9 @@
         "cancelAppointmentText": "هل تريد الغاء هذا الموعد؟",
         "cancelAppointement": "الغاء الموعد",
         "lessonReport": "تقرير الدرس",
-        "lessonRecord": "تسجيل الدرس"
+        "lessonRecord": "تسجيل الدرس",
+        "reportNotAvailable": "تقرير الدرس غير متوفر",
+        "recordNotAvailable": "تسجيل الدرس غير متوفر"
     },
     "error": {
         "chooseStudent": "يجب أختيار الطالب",

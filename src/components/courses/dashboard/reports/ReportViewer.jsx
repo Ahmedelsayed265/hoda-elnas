@@ -4,17 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "./../../../../util/axios";
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../../../ui/DataLoader";
+import { BASE_URL } from "../../../../constants";
 
 const ReportViewer = () => {
-  const { reportId } = useParams();
+  const { reportId, subscriptionId } = useParams();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { subscriptionId } = useParams();
   const [loading, setLoading] = useState(false);
   const [report, setReport] = useState({});
   const [pdfUrl, setPdfUrl] = useState("");
-  const [view, setView] = useState("report");
   const [recordSrc, setRecordSrc] = useState("");
+  const [view, setView] = useState("report");
 
   useEffect(() => {
     const fetchPdf = async () => {
@@ -25,14 +25,8 @@ const ReportViewer = () => {
         );
         if (res.status === 200) {
           setReport(res?.data?.message[0]);
-          setPdfUrl(
-            "https://backend.hodaelnas.online" +
-              res?.data?.message[0]?.report_file
-          );
-          setRecordSrc(
-            "https://backend.hodaelnas.online" +
-              res?.data?.message[0]?.recording
-          );
+          setPdfUrl(res?.data?.message[0]?.report_file);
+          setRecordSrc(res?.data?.message[0]?.recording);
         }
       } catch (error) {
         console.log(error);
@@ -74,16 +68,30 @@ const ReportViewer = () => {
           <div className="container p-0">
             <div className="row m-0">
               {view === "report" ? (
-                <div className="col-12 p-2 pt-3">
-                  <PdfViewer pdfUrl={pdfUrl} />
-                </div>
+                <>
+                  {pdfUrl ? (
+                    <div className="col-12 p-2 pt-3">
+                      <PdfViewer pdfUrl={`${BASE_URL}${pdfUrl}`} />
+                    </div>
+                  ) : (
+                    <div className="noStudents">
+                      <h5>{t("dashboard.reportNotAvailable")}</h5>
+                    </div>
+                  )}
+                </>
               ) : (
                 <div className="col-12 p-2 pt-3">
-                  <video
-                    src={recordSrc}
-                    controls
-                    className="w-100 h-100"
-                  ></video>
+                  {recordSrc ? (
+                    <video
+                      src={`${BASE_URL}${recordSrc}`}
+                      controls
+                      className="w-100 h-100"
+                    ></video>
+                  ) : (
+                    <div className="noStudents">
+                      <h5>{t("dashboard.recordNotAvailable")}</h5>
+                    </div>
+                  )}
                 </div>
               )}
             </div>

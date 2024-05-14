@@ -340,7 +340,9 @@
         "cancelAppointmentText": "Are you sure you want to cancel this appointment?",
         "cancelAppointement": "Cancel Appointment",
         "lessonReport": "Lesson Report",
-        "lessonRecord": "Lesson Record"
+        "lessonRecord": "Lesson Record",
+        "reportNotAvailable": "Lesson Report Not Available",
+        "recordNotAvailable": "Lesson Record Not Available"
     },
     "error": {
         "chooseStudent": "Please Choose Student",
