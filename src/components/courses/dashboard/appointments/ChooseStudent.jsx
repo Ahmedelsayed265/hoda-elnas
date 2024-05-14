@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import studentImage from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import axios from "./../../../../util/axios";
 
-const ChooseStudent = ({
-  subscriptionStudents,
-  formData,
-  setFormData,
-  reasons,
-  setStep
-}) => {
+const ChooseStudent = ({ formData, setFormData, reasons, setStep }) => {
   const [isReasonFieldError, setIsReasonFieldError] = useState(false);
+  const { subscriptionId } = useParams();
+  const [subscriptionStudents, setSubscriptionStudents] = useState([]);
   const [isStudentFieldError, setIsStudentFieldError] = useState(false);
   const { t } = useTranslation();
   const handleNext = () => {
@@ -24,6 +22,24 @@ const ChooseStudent = ({
         : setIsReasonFieldError(false);
     }
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `/members/list_Student/?subscription_id=${subscriptionId}`
+        );
+        if (response.status === 200) {
+          setSubscriptionStudents(response?.data?.message);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+      }
+    };
+
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subscriptionId]);
 
   return (
     <div className="form-ui">
