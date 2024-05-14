@@ -51,7 +51,6 @@ const ChoosePricingPlans = ({
           plan?.duration === duration
       );
       setPricingPlan(plan);
-      console.log(plan);
 
       let totalPrice;
       if (location === "EG") {
@@ -81,6 +80,7 @@ const ChoosePricingPlans = ({
       formData?.plan,
       formData?.lessonsDuration
     );
+
     const calculateTotalPrice = (studentsNumber, addons, planInterval) => {
       let totalAddonPrice = addons.reduce((total, addon) => {
         const addonPrice =
@@ -170,7 +170,6 @@ const ChoosePricingPlans = ({
       ) : (
         <form className="form-ui">
           <div className="form_group">
-            {/* students count */}
             <InputField
               labelPlaceholder={t("courseSubscribe.subscribersNumer")}
               icon={<i className="fa-solid fa-users"></i>}
@@ -180,7 +179,6 @@ const ChoosePricingPlans = ({
               value={formData.studentsNumber}
               handleChange={handleStudentsCountChange}
             />
-            {/* lessons per week */}
             <InputField
               labelPlaceholder={t("courseSubscribe.courseDuration")}
               icon={<i className="fa-light fa-calendar-days"></i>}
@@ -196,38 +194,39 @@ const ChoosePricingPlans = ({
               }
             />
           </div>
-          {formData?.studentsNumber < subStudents?.length && (
-            <div className="choose_student">
-              {subStudents.map((student) => (
-                <div className="choose_student" key={student.studentclass_id}>
-                  <label className="student_check">
-                    <input
-                      type="checkbox"
-                      name="student"
-                      value={student.studentclass_id}
-                      required
-                      checked={formData?.active_student_id?.includes(
-                        student.studentclass_id
-                      )}
-                      onChange={(e) => handleStudentsCheck(e, student)}
-                    />
-                    <div className="content">
-                      <div className="img">
-                        <img
-                          src={
-                            student?.profile ? student?.profile : studentImage
-                          }
-                          alt="student"
-                        />
+          {subStudents &&
+            subStudents.length > 0 &&
+            formData?.studentsNumber < subStudents?.length && (
+              <div className="choose_student">
+                {subStudents.map((student) => (
+                  <div className="choose_student" key={student.studentclass_id}>
+                    <label className="student_check">
+                      <input
+                        type="checkbox"
+                        name="student"
+                        value={student.studentclass_id}
+                        required
+                        checked={formData?.active_student_id?.includes(
+                          student.studentclass_id
+                        )}
+                        onChange={(e) => handleStudentsCheck(e, student)}
+                      />
+                      <div className="content">
+                        <div className="img">
+                          <img
+                            src={
+                              student?.profile ? student?.profile : studentImage
+                            }
+                            alt="student"
+                          />
+                        </div>
+                        <p>{student.name}</p>
                       </div>
-                      <p>{student.name}</p>
-                    </div>
-                  </label>
-                </div>
-              ))}
-            </div>
-          )}
-          {/* lessons duration */}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            )}
           <RadiosSelect
             labelPlaceholder={t("courseSubscribe.lessonsDuration")}
             icon={<i className="fa-light fa-clock"></i>}
@@ -242,7 +241,6 @@ const ChoosePricingPlans = ({
             }
             additionalInfo={t("courseSubscribe.minutes")}
           />
-          {/* subscriptions plan */}
           <RadiosSelect
             labelPlaceholder={t("courseSubscribe.subscriptionsPlan")}
             icon={<i className="fa-light fa-clock"></i>}

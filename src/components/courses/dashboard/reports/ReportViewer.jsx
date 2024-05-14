@@ -80,19 +80,21 @@ const ReportViewer = () => {
                   )}
                 </>
               ) : (
-                <div className="col-12 p-2 pt-3">
+                <>
                   {recordSrc ? (
-                    <video
-                      src={`${BASE_URL}${recordSrc}`}
-                      controls
-                      className="w-100 h-100"
-                    ></video>
+                    <div className="col-12 p-2 pt-3">
+                      <video
+                        src={`${BASE_URL}${recordSrc}`}
+                        controls
+                        className="w-100 h-100"
+                      ></video>
+                    </div>
                   ) : (
                     <div className="noStudents">
                       <h5>{t("dashboard.recordNotAvailable")}</h5>
                     </div>
                   )}
-                </div>
+                </>
               )}
             </div>
           </div>
