@@ -13,7 +13,9 @@ const Logout = () => {
   useEffect(() => {
     const performLogout = async () => {
       try {
+        console.log("Before deletion:", document.cookie);
         deleteCookie("refreshToken");
+        console.log("After deletion:", document.cookie);
         delete axios.defaults.headers.common["Authorization"];
         dispatch(setUser({}));
         dispatch(setLogged(false));

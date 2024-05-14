@@ -12,6 +12,7 @@ import DataLoader from "../../../ui/DataLoader";
 import EditAppointmentModal from "./EditAppointmentModal";
 import { useTimeFormatting } from "./../../../../hooks/useTimeFormatting";
 import ChangeInstructorModal from "./ChangeInstructorModal";
+import AddAppointmentModal from "./add-appointment/AddAppointmentModal";
 
 const Appointments = () => {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ const Appointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [showEditModal, setShowEditModal] = useState(false);
   const [subscriptionStudents, setSubscriptionStudents] = useState([]);
+  const [showAddAppointmentModal, setShowAddAppointmentModal] = useState(false);
   const [showChangeInstructorModal, setShowChangeInstructorModal] =
     useState(false);
 
@@ -154,7 +156,9 @@ const Appointments = () => {
                   <div className="noAppointments">
                     <img src={noAppointments} alt="noAppointments" />
                     <p>{t("dashboard.noAppointments")}</p>
-                    <button>{t("dashboard.addAppointment")}</button>
+                    <button onClick={() => setShowAddAppointmentModal(true)}>
+                      {t("dashboard.addAppointment")}
+                    </button>
                   </div>
                 </div>
               ) : (
@@ -292,6 +296,12 @@ const Appointments = () => {
         subscriptionStudents={subscriptionStudents}
         showModal={showChangeInstructorModal}
         setShowModal={setShowChangeInstructorModal}
+      />
+      <AddAppointmentModal
+        subscriptionStudents={subscriptionStudents}
+        showModal={showAddAppointmentModal}
+        setAppointments={setAppointments}
+        setShowModal={setShowAddAppointmentModal}
       />
     </section>
   );

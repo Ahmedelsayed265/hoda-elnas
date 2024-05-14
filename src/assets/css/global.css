@@ -4503,6 +4503,8 @@ input::-webkit-inner-spin-button {
 .appointments-modal .back {
   padding: 4px 24px;
   background: #81a63d;
+  width: auto;
+  height: auto;
   border-radius: 4px;
   color: #fff;
   font-size: 14px;

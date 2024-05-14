@@ -334,7 +334,9 @@
         "completed": "Completed",
         "rate": "Rate",
         "didYouFinishFromThisStep": "Did you finish from this step?",
-        "youDidn'tReachThisStep": "You didn't reach this step Yet."
+        "youDidn'tReachThisStep": "You didn't reach this step Yet.",
+        "addNewAppointment": "Add New Appointment",
+        "chhoseAppointment": "Choose Appointment"
     },
     "error": {
         "chooseStudent": "Please Choose Student",

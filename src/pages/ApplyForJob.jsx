@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import NameField from "../components/ui/form-elements/NameField";
 import PhoneField from "../components/ui/form-elements/PhoneField";
 import Gender from "../components/ui/form-elements/Gender";
+import FileUploadField from "../components/ui/form-elements/FileUploadField";
 
 const ApplyForJob = () => {
   const { id } = useParams();
@@ -526,27 +527,14 @@ const ApplyForJob = () => {
                     />
                   </div>
                   <div className="form_group">
-                    <div className="input-field">
-                      <label htmlFor="cv">{t("applyForJob.cv")}</label>
-                      <label htmlFor="cv" className="cv_area">
-                        <input
-                          type="file"
-                          name="cv"
-                          id="cv"
-                          onChange={(e) => {
-                            setFormData({
-                              ...formData,
-                              cv: e.target.files[0]
-                            });
-                          }}
-                        />
-                        <div className="content">
-                          <i className="fa-regular fa-paperclip"></i>
-                          <p>{t("applyForJob.uploadCv")}</p>
-                        </div>
-                        {formData.cv && <span>{formData.cv?.name}</span>}
-                      </label>
-                    </div>
+                    <FileUploadField
+                      label={t("applyForJob.cv")}
+                      htmlFor={"cv"}
+                      formData={formData}
+                      setFormData={setFormData}
+                      Accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                      uploadText={t("applyForJob.uploadCv")}
+                    />
                   </div>
                   <div className="buttons">
                     <button

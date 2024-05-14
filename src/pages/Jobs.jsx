@@ -9,6 +9,7 @@ const Jobs = () => {
   const { t } = useTranslation();
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -38,7 +39,7 @@ const Jobs = () => {
         {loading ? (
           <DataLoader />
         ) : (
-          <div className="row m-0">
+          <div className="row m-0 justify-content-center">
             {jobs?.map((job) => (
               <div className="col-lg-3 col-md-4 col-6 p-2" key={job.id}>
                 <JobCard job={job} />

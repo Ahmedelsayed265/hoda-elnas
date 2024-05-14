@@ -4282,6 +4282,8 @@ input::-webkit-inner-spin-button {
   .back {
     padding: 4px 24px;
     background: $secondary;
+    width: auto;
+    height: auto;
     border-radius: 4px;
     color: $white;
     font-size: 14px;
