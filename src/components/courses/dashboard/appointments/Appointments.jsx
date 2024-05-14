@@ -13,6 +13,7 @@ import EditAppointmentModal from "./EditAppointmentModal";
 import { useTimeFormatting } from "./../../../../hooks/useTimeFormatting";
 import ChangeInstructorModal from "./ChangeInstructorModal";
 import AddAppointmentModal from "./add-appointment/AddAppointmentModal";
+import { DAYS_EN } from "../../../../constants";
 
 const Appointments = () => {
   const { t } = useTranslation();
@@ -88,6 +89,33 @@ const Appointments = () => {
   const handleEdit = (id) => {
     setShowEditModal(true);
     setRowData(appointments.find((a) => a.id === id));
+  };
+
+  const handleEditAppointment = async (e, formData) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const day = DAYS_EN[formData.day];
+      const res = await axios.put(`/instructor/Change_Time/${rowData?.id}/`, {
+        ...formData,
+        day: day
+      });
+      if (res.status === 200) {
+        toast.success(t("dashboard.editAppointmentSuccess"));
+        setShowEditModal(false);
+        setAppointments((prev) =>
+          prev.map((item) =>
+            item.id === rowData.id ? res?.data?.object : item
+          )
+        );
+      } else {
+        toast.error(res?.response?.data?.message);
+      }
+    } catch (error) {
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCancelSession = async (id) => {
@@ -290,6 +318,8 @@ const Appointments = () => {
         rowData={rowData}
         showModal={showEditModal}
         setShowModal={setShowEditModal}
+        loading={loading}
+        onEdit={handleEditAppointment}
         setAppointments={setAppointments}
       />
       <ChangeInstructorModal

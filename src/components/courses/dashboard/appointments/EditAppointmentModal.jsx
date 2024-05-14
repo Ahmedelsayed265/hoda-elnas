@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { useSelector } from "react-redux";
 import { DAYS_AR, DAYS_EN } from "../../../../constants";
-import { toast } from "react-toastify";
 import { Form } from "react-bootstrap";
 import SubmitButton from "../../../ui/form-elements/SubmitButton";
 
@@ -13,13 +12,13 @@ const EditAppointmentModal = ({
   showModal,
   setShowModal,
   rowData,
-  setAppointments
+  onEdit,
+  loading
 }) => {
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
   const { t } = useTranslation();
   const [availableTimes, setAvailableTimes] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     day: "",
     time: "",
@@ -50,33 +49,6 @@ const EditAppointmentModal = ({
     fetchAvailableTimes();
   }, [formData.day, rowData.id]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const day = DAYS_EN[formData.day];
-      const res = await axios.put(`/instructor/Change_Time/${rowData?.id}/`, {
-        ...formData,
-        day: day
-      });
-      if (res.status === 200) {
-        toast.success(t("dashboard.editAppointmentSuccess"));
-        setShowModal(false);
-        setAppointments((prev) =>
-          prev.map((item) =>
-            item.id === rowData.id ? res?.data?.object : item
-          )
-        );
-      } else {
-        toast.error(res?.response?.data?.message);
-      }
-    } catch (error) {
-      toast.error(t("auth.someThingWentWrong"));
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
       <Modal.Header closeButton>
@@ -98,7 +70,7 @@ const EditAppointmentModal = ({
               : convertTo12HourFormat(rowData?.endtime)}
           </span>
         </p>
-        <form onSubmit={handleSubmit} className="form-ui">
+        <form onSubmit={(e) => onEdit(e, formData)} className="form-ui">
           <div className="timingRow d-flex align-items-end gap-2">
             <div className="input-field">
               <label htmlFor="day">{t("dashboard.day")}</label>

@@ -10,6 +10,7 @@ import DataLoader from "./../../../ui/DataLoader";
 import ChangeInstructorModal from "../appointments/ChangeInstructorModal";
 import EditAppointmentModal from "../appointments/EditAppointmentModal";
 import ConfirmDeleteModal from "../../../ui/ConfirmDeleteModal";
+import { DAYS_EN } from "../../../../constants";
 
 const HomePage = () => {
   const { t } = useTranslation();
@@ -54,28 +55,29 @@ const HomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscriptionId]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let url;
-        if (forWhom === t("dashboard.allStudents")) {
-          url = `/members/List_appointments/?sub_id=${subscriptionId}&nearest=true`;
-        } else {
-          const studentId = subscriptionStudents.find(
-            (s) => s.name === forWhom
-          ).studentclass_id;
-          url = `/members/List_appointments/?student_id=${studentId}&nearest=true`;
-        }
-        const response = await axios.get(url);
-        if (response.status === 200) {
-          setAppointments(response?.data?.message);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
+  const fetchAppointmentsData = async () => {
+    try {
+      let url;
+      if (forWhom === t("dashboard.allStudents")) {
+        url = `/members/List_appointments/?sub_id=${subscriptionId}&nearest=true`;
+      } else {
+        const studentId = subscriptionStudents.find(
+          (s) => s.name === forWhom
+        ).studentclass_id;
+        url = `/members/List_appointments/?student_id=${studentId}&nearest=true`;
       }
-    };
-    fetchData();
+      const response = await axios.get(url);
+      if (response.status === 200) {
+        setAppointments(response?.data?.message);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    fetchAppointmentsData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscriptionId, forWhom, lang, subscriptionStudents]);
@@ -83,6 +85,29 @@ const HomePage = () => {
   const handleEdit = (id) => {
     setShowEditModal(true);
     setRowData(appointments.find((a) => a.id === id));
+  };
+
+  const handleEditAppointment = async (e, formData) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const day = DAYS_EN[formData.day];
+      const res = await axios.put(`/instructor/Change_Time/${rowData?.id}/`, {
+        ...formData,
+        day: day
+      });
+      if (res.status === 200) {
+        toast.success(t("dashboard.editAppointmentSuccess"));
+        setShowEditModal(false);
+        fetchAppointmentsData();
+      } else {
+        toast.error(res?.response?.data?.message);
+      }
+    } catch (error) {
+      toast.error(t("auth.someThingWentWrong"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCancel = (id) => {
@@ -95,6 +120,7 @@ const HomePage = () => {
       const response = await axios.post(`/instructor/Cancel_session/${id}/`);
       if (response.status === 200) {
         toast.success(response?.data?.message);
+        fetchAppointmentsData();
         setShowCancelModal(false);
       }
     } catch (error) {
@@ -167,6 +193,8 @@ const HomePage = () => {
         rowData={rowData}
         showModal={showEditModal}
         setShowModal={setShowEditModal}
+        loading={loading}
+        onEdit={handleEditAppointment}
         setAppointments={setAppointments}
       />
       <ConfirmDeleteModal
