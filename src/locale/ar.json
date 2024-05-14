@@ -349,7 +349,9 @@
         "newInstructor": "معلم جديد",
         "chhoseAppointment": "اختيار الموعد",
         "cancelAppointmentText": "هل تريد الغاء هذا الموعد؟",
-        "cancelAppointement": "الغاء الموعد"
+        "cancelAppointement": "الغاء الموعد",
+        "lessonReport": "تقرير الدرس",
+        "lessonRecord": "تسجيل الدرس"
     },
     "error": {
         "chooseStudent": "يجب أختيار الطالب",

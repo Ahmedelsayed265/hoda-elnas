@@ -42,7 +42,8 @@ const ReportCard = ({ report }) => {
           <h6>{report.instructor}</h6>
         </div>
         <p>
-          <i className="fa-duotone fa-calendar-days"></i> {report?.date}
+          <i className="fa-duotone fa-calendar-days"></i> {report?.date} -{" "}
+          {report?.status}
         </p>
       </div>
       <div className="pdf">

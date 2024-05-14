@@ -5265,6 +5265,12 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
   margin: 0;
 }
+.page_title .buttons button {
+  background: #81a63d;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0 12px;
+}
 
 .back {
   display: flex;

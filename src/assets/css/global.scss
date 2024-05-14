@@ -4990,6 +4990,14 @@ input::-webkit-inner-spin-button {
     font-weight: 600;
     margin: 0;
   }
+  .buttons {
+    button {
+      background: $secondary;
+      color: $white;
+      border-radius: 4px;
+      padding: 0 12px;
+    }
+  }
 }
 .back {
   @include centerFlex();

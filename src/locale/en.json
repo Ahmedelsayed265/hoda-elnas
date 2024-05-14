@@ -338,7 +338,9 @@
         "addNewAppointment": "Add New Appointment",
         "chhoseAppointment": "Choose Appointment",
         "cancelAppointmentText": "Are you sure you want to cancel this appointment?",
-        "cancelAppointement": "Cancel Appointment"
+        "cancelAppointement": "Cancel Appointment",
+        "lessonReport": "Lesson Report",
+        "lessonRecord": "Lesson Record"
     },
     "error": {
         "chooseStudent": "Please Choose Student",
