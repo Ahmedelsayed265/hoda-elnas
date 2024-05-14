@@ -47,7 +47,7 @@ const ReportViewer = () => {
         <DataLoader />
       ) : (
         <section className="course_reports pt-3">
-          <div className="page_title mb-2 justify-content-between flex-lg-row flex-column">
+          <div className="page_title mb-2 justify-content-between flex-lg-row flex-column align-items-start">
             <div className="d-flex align-items-center gap-2">
               <button className="back" onClick={goBack}>
                 <i className="fa-solid fa-arrow-right-long"></i>
