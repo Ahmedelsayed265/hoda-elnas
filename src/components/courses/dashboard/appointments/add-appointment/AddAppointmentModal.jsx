@@ -135,15 +135,16 @@ const AddAppointmentModal = ({
         return;
       }
       const payLoad = {
-        student_id: formData.student_id,
-        changing_reason_id: formData.changing_reason_id,
-        same_time: formData.instructor
+        subscription_id: formData.subscription_id,
+        studentclass_id: formData.student_id,
+        appointments: updatedAppointments,
+        instructor_status: "new_instructor"
       };
       if (!formData.instructor) {
         payLoad.appointments = updatedAppointmentsFinal;
       }
       const response = await axios.post(
-        `/instructor/Change_instructor/`,
+        `/instructor/Set_New_appointment/`,
         payLoad
       );
       if (response.status === 200) {
