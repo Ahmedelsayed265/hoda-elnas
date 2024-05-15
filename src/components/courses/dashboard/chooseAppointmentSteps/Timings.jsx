@@ -84,7 +84,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     <label htmlFor="appointment">
                       {t("dashboard.appointment")}
                     </label>
-                    <input
+                    <Form.Control
                       type="time"
                       placeholder="Select a time"
                       name="appointment"
@@ -134,7 +134,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.from")}</label>
-                    <input
+                    <Form.Control
                       type="time"
                       placeholder="Select a time"
                       name="from_time"
@@ -148,7 +148,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.to")}</label>
-                    <input
+                    <Form.Control
                       type="time"
                       placeholder="Select a time"
                       name="to_time"
