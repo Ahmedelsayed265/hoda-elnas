@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 const InputField = ({
   name,
@@ -16,7 +17,7 @@ const InputField = ({
         {icon}
         {labelPlaceholder}
       </label>
-      <input
+      <Form.Control
         required={required}
         type={type}
         name={name}
