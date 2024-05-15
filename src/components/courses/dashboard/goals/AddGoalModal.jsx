@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import SubmitButton from "../../../ui/form-elements/SubmitButton";
 import { useTranslation } from "react-i18next";
@@ -98,7 +98,7 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
             <div className="timingRow">
               <div className="input-field">
                 <label htmlFor="student">{t("dashboard.student")}</label>
-                <select
+                <Form.Select
                   name="student"
                   value={studentId}
                   id="student"
@@ -114,11 +114,11 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
                       </option>
                     );
                   })}
-                </select>
+                </Form.Select>
               </div>
               <div className="input-field">
                 <label htmlFor="goal">{t("dashboard.goal")}</label>
-                <select
+                <Form.Select
                   name="goal"
                   id="goal"
                   value={formData.goal_id}
@@ -139,13 +139,13 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
                       </option>
                     );
                   })}
-                </select>
+                </Form.Select>
               </div>
               {goals?.find((g) => g.id === formData.goal_id)?.custom_options
                 ?.length > 0 && (
                 <div className="input-field">
                   <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
-                  <select
+                  <Form.Select
                     name="surah"
                     id="surah"
                     value={formData.custom_option_id}
@@ -168,12 +168,12 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
                           </option>
                         );
                       })}
-                  </select>
+                  </Form.Select>
                 </div>
               )}
               <div className="input-field">
                 <label htmlFor="goalLevel">{t("dashboard.goalLevel")}</label>
-                <select
+                <Form.Select
                   name="goalLevel"
                   id="goalLevel"
                   value={formData.option_id}
@@ -196,7 +196,7 @@ const AddGoalModal = ({ showModal, setShowModal }) => {
                         </option>
                       );
                     })}
-                </select>
+                </Form.Select>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import studentImage from "../../../../assets/images/student.svg";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import axios from "./../../../../util/axios";
+import { Form } from "react-bootstrap";
 
 const ChooseStudent = ({ formData, setFormData, reasons, setStep }) => {
   const [isReasonFieldError, setIsReasonFieldError] = useState(false);
@@ -85,7 +86,7 @@ const ChooseStudent = ({ formData, setFormData, reasons, setStep }) => {
         <div className="col-12 p-2">
           <div className="input-field">
             <label htmlFor="change_reason">{t("dashboard.changeReason")}</label>
-            <select
+            <Form.Select
               name="change_reason"
               id="change_reason"
               value={formData.changing_reason_id}
@@ -102,7 +103,7 @@ const ChooseStudent = ({ formData, setFormData, reasons, setStep }) => {
                   {reason.reason}
                 </option>
               ))}
-            </select>
+            </Form.Select>
             {isReasonFieldError && (
               <span className="error">{t("error.chooseReason")}</span>
             )}

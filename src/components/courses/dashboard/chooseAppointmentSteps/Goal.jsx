@@ -1,4 +1,5 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
 const Goal = ({ formData, setFormData, setStep, goals }) => {
@@ -10,7 +11,7 @@ const Goal = ({ formData, setFormData, setStep, goals }) => {
         <div className="timingRow">
           <div className="input-field">
             <label htmlFor="goal">{t("dashboard.goal")}</label>
-            <select
+            <Form.Select
               name="goal"
               id="goal"
               value={formData.goal_id}
@@ -28,13 +29,13 @@ const Goal = ({ formData, setFormData, setStep, goals }) => {
                   </option>
                 );
               })}
-            </select>
+            </Form.Select>
           </div>
           {goals?.find((g) => g.id === formData.goal_id)?.custom_options
             ?.length > 0 && (
             <div className="input-field">
               <label htmlFor="surah">{t("dashboard.chooseSurah")}</label>
-              <select
+              <Form.Select
                 name="surah"
                 id="surah"
                 value={formData.custom_option_id}
@@ -57,12 +58,12 @@ const Goal = ({ formData, setFormData, setStep, goals }) => {
                       </option>
                     );
                   })}
-              </select>
+              </Form.Select>
             </div>
           )}
           <div className="input-field">
             <label htmlFor="goalLevel">{t("dashboard.goalLevel")}</label>
-            <select
+            <Form.Select
               name="goalLevel"
               id="goalLevel"
               value={formData.option_id}
@@ -82,7 +83,7 @@ const Goal = ({ formData, setFormData, setStep, goals }) => {
                     </option>
                   );
                 })}
-            </select>
+            </Form.Select>
           </div>
         </div>
       </div>

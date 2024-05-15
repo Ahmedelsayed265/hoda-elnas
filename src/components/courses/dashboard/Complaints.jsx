@@ -5,6 +5,7 @@ import axios from "./../../../util/axios";
 import { useParams } from "react-router-dom";
 import SubmitButton from "./../../ui/form-elements/SubmitButton";
 import { toast } from "react-toastify";
+import { Form } from 'react-bootstrap';
 
 const Complaints = () => {
   const cForm = useRef(null);
@@ -85,7 +86,7 @@ const Complaints = () => {
             <div className="form_group">
               <div className="input-field">
                 <label htmlFor="complaintType">{t("complainType")}</label>
-                <select
+                <Form.Select
                   name="complaintType"
                   id="complaintType"
                   value={formData.title_id}
@@ -104,11 +105,11 @@ const Complaints = () => {
                       {complaintType?.title}
                     </option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
               <div className="input-field">
                 <label htmlFor="student">{t("dashboard.student")}</label>
-                <select
+                <Form.Select
                   name="student"
                   id="student"
                   value={formData.studnent_id}
@@ -127,7 +128,7 @@ const Complaints = () => {
                       {student?.name}
                     </option>
                   ))}
-                </select>
+                </Form.Select>
               </div>
             </div>
             <TextField

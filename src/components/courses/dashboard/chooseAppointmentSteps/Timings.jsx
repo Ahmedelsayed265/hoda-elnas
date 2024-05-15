@@ -4,6 +4,7 @@ import { DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Form } from "react-bootstrap";
 
 const Timings = ({ formData, setFormData, setStep }) => {
   const { t } = useTranslation();
@@ -51,7 +52,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                 <div className="timingRow" key={index}>
                   <div className="input-field">
                     <label htmlFor="day">{t("dashboard.day")}</label>
-                    <select
+                    <Form.Select
                       name="day"
                       id={`day-${index}`}
                       required
@@ -77,7 +78,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                               {day}
                             </option>
                           ))}
-                    </select>
+                    </Form.Select>
                   </div>
                   <div className="input-field">
                     <label htmlFor="appointment">
@@ -103,7 +104,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                 <div className="timingRow" key={index}>
                   <div className="input-field">
                     <label htmlFor="day">{t("dashboard.day")}</label>
-                    <select
+                    <Form.Select
                       name="day"
                       id={`day-${index}`}
                       required
@@ -129,7 +130,7 @@ const Timings = ({ formData, setFormData, setStep }) => {
                               {day}
                             </option>
                           ))}
-                    </select>
+                    </Form.Select>
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.from")}</label>

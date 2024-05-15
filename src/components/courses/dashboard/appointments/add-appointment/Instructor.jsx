@@ -7,6 +7,7 @@ import SubmitButton from "../../../../ui/form-elements/SubmitButton";
 import { useTimeFormatting } from "../../../../../hooks/useTimeFormatting";
 import { useSelector } from "react-redux";
 import DataLoader from "../../../../ui/DataLoader";
+import { Form } from "react-bootstrap";
 
 const Instructor = ({
   formData,
@@ -117,7 +118,7 @@ const Instructor = ({
                 <div className="availabilty_row" key={index}>
                   <div className="day">{day.day}</div>
                   <div className="input-field">
-                    <select
+                    <Form.Select
                       name="appointment"
                       id="saturdayAppointment"
                       value={formData.appointments[index].starttime}
@@ -145,7 +146,7 @@ const Instructor = ({
                             : convertTo12HourFormat(time[1])}
                         </option>
                       ))}
-                    </select>
+                    </Form.Select>
                   </div>
                 </div>
               ))}

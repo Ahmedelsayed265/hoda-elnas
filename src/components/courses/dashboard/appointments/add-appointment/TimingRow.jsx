@@ -4,6 +4,7 @@ import axios from "./../../../../../util/axios";
 import { useTimeFormatting } from "../../../../../hooks/useTimeFormatting";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { Form } from "react-bootstrap";
 
 const TimingRow = ({ formData, setFormData, index }) => {
   const lang = useSelector((state) => state.language.lang);
@@ -28,7 +29,7 @@ const TimingRow = ({ formData, setFormData, index }) => {
     <div className="timingRow d-flex align-items-end gap-2" key={index}>
       <div className="input-field">
         <label htmlFor={`day${index}`}>{t("dashboard.day")}</label>
-        <select
+        <Form.Select
           name={`day${index}`}
           id={`day${index}`}
           required
@@ -56,10 +57,10 @@ const TimingRow = ({ formData, setFormData, index }) => {
                   {day}
                 </option>
               ))}
-        </select>
+        </Form.Select>
       </div>
       <div className="input-field">
-        <select
+        <Form.Select
           name={`appointment${index}`}
           id={`appointment${index}`}
           value={formData.appointments[index]?.starttime || ""}
@@ -90,7 +91,7 @@ const TimingRow = ({ formData, setFormData, index }) => {
                   : convertTo12HourFormat(time.end_time)}
               </option>
             ))}
-        </select>
+        </Form.Select>
       </div>
     </div>
   );

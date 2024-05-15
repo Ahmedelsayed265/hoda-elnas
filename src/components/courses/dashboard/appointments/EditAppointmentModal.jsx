@@ -74,7 +74,7 @@ const EditAppointmentModal = ({
           <div className="timingRow d-flex align-items-end gap-2">
             <div className="input-field">
               <label htmlFor="day">{t("dashboard.day")}</label>
-              <select
+              <Form.Select
                 name="day"
                 id="day"
                 required
@@ -95,10 +95,10 @@ const EditAppointmentModal = ({
                         {day}
                       </option>
                     ))}
-              </select>
+              </Form.Select>
             </div>
             <div className="input-field">
-              <select
+              <Form.Select
                 name="appointment"
                 id="saturdayAppointment"
                 value={formData.time}
@@ -123,7 +123,7 @@ const EditAppointmentModal = ({
                       : convertTo12HourFormat(time.end_time)}
                   </option>
                 ))}
-              </select>
+              </Form.Select>
             </div>
           </div>
           <Form.Check
