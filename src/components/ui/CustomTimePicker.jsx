@@ -1,5 +1,5 @@
 import React from "react";
-import { TimePicker } from "@mui/x-date-pickers";
+import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
@@ -15,7 +15,7 @@ const CustomTimePicker = ({ value, onChange }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <TimePicker
+      <DesktopTimePicker
         value={value ? dayjs(value, "hh:mm A") : null}
         onChange={handleChange}
         minutesStep={30}
