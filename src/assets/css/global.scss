@@ -5208,9 +5208,12 @@ input::-webkit-inner-spin-button {
   background: $inputBG;
   align-items: center;
   justify-content: center;
+  fieldset{
+    display: none !important;
+  }
 }
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  display: none;
+  display: none !important;
 }
 .MuiSvgIcon-root {
   width: 20px !important;

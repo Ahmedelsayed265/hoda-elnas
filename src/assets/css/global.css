@@ -5503,9 +5503,12 @@ input::-webkit-inner-spin-button {
   align-items: center;
   justify-content: center;
 }
+.MuiFormControl-root fieldset {
+  display: none !important;
+}
 
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  display: none;
+  display: none !important;
 }
 
 .MuiSvgIcon-root {
