@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Form } from "react-bootstrap";
+import CustomTimePicker from "../../../ui/CustomTimePicker";
 
 const Timings = ({ formData, setFormData, setStep }) => {
   const { t } = useTranslation();
@@ -84,16 +85,9 @@ const Timings = ({ formData, setFormData, setStep }) => {
                     <label htmlFor="appointment">
                       {t("dashboard.appointment")}
                     </label>
-                    <Form.Control
-                      type="time"
-                      placeholder="Select a time"
-                      name="appointment"
-                      id={`appointment-${index}`}
-                      required
+                    <CustomTimePicker
                       value={formData.appointments[index].starttime}
-                      onChange={(e) =>
-                        handleStartTimeChange(index, e.target.value)
-                      }
+                      onChange={(e) => handleStartTimeChange(index, e)}
                     />
                   </div>
                 </div>
@@ -134,30 +128,16 @@ const Timings = ({ formData, setFormData, setStep }) => {
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.from")}</label>
-                    <Form.Control
-                      type="time"
-                      placeholder="Select a time"
-                      name="from_time"
-                      id={`from_time-${index}`}
-                      required
+                    <CustomTimePicker
                       value={formData.appointments[index].starttime}
-                      onChange={(e) =>
-                        handleStartTimeChange(index, e.target.value)
-                      }
+                      onChange={(e) => handleStartTimeChange(index, e)}
                     />
                   </div>
                   <div className="input-field">
                     <label htmlFor="time">{t("dashboard.to")}</label>
-                    <Form.Control
-                      type="time"
-                      placeholder="Select a time"
-                      name="to_time"
-                      id={`to_time-${index}`}
-                      required
+                    <CustomTimePicker
                       value={formData.appointments[index].endtime}
-                      onChange={(e) =>
-                        handleEndTimeChange(index, e.target.value)
-                      }
+                      onChange={(e) => handleEndTimeChange(index, e)}
                     />
                   </div>
                 </div>

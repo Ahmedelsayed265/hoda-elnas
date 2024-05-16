@@ -5194,3 +5194,28 @@ input::-webkit-inner-spin-button {
     }
   }
 }
+.MuiInputBase-input {
+  padding: 0 !important;
+  height: auto !important;
+  border: 0 !important;
+  background: none !important;
+}
+.MuiFormControl-root {
+  height: 54px;
+  border: 1px solid $inputStroke;
+  border-radius: 12px;
+  display: flex;
+  background: $inputBG;
+  align-items: center;
+  justify-content: center;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border: 0 !important;
+}
+.MuiSvgIcon-root {
+  width: 20px !important;
+  height: 20px !important;
+}
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 100%;
+}
