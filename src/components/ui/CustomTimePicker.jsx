@@ -20,6 +20,8 @@ const CustomTimePicker = ({ value, onChange }) => {
         onChange={handleChange}
         minutesStep={30}
         ampm={true}
+        desktopModeMediaQuery="@media (pointer: fine)"
+        views={['hours', 'minutes']}
       />
     </LocalizationProvider>
   );
