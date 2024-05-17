@@ -1,5 +1,5 @@
 import React from "react";
-import { DesktopTimePicker } from '@mui/x-date-pickers/DesktopTimePicker';
+import { DesktopTimePicker } from "@mui/x-date-pickers/DesktopTimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
@@ -7,7 +7,7 @@ import dayjs from "dayjs";
 const CustomTimePicker = ({ value, onChange }) => {
   const handleChange = (newValue) => {
     if (newValue) {
-      onChange(newValue.format("hh:mm A"));
+      onChange(newValue.format("HH:mm"));
     } else {
       onChange("");
     }
@@ -16,12 +16,11 @@ const CustomTimePicker = ({ value, onChange }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DesktopTimePicker
-        value={value ? dayjs(value, "hh:mm A") : null}
+        value={value ? dayjs(value, "HH:mm") : null}
         onChange={handleChange}
         minutesStep={30}
         ampm={true}
-        desktopModeMediaQuery="@media (pointer: fine)"
-        views={['hours', 'minutes']}
+        views={["hours", "minutes"]}
       />
     </LocalizationProvider>
   );
