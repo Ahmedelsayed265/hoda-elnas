@@ -18,7 +18,7 @@ const CustomTimePicker = ({ value, onChange }) => {
       <DesktopTimePicker
         value={value ? dayjs(value, "HH:mm") : null}
         onChange={handleChange}
-        minutesStep={30}
+        minutesStep={15}
         ampm={true}
         views={["hours", "minutes"]}
       />
