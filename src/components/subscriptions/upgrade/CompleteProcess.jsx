@@ -44,7 +44,7 @@ const CompleteProcess = ({
         student_number: formData?.studentsNumber,
         currency: location === "EG" ? "EGP" : "USD",
         method: method?.identifier,
-        inactive_student_id: formData?.active_student_id,
+        active_student_id: formData?.active_student_id,
         addons: addonIds,
         amount: formData?.totalPrice,
         coupon: formData?.copun_name
