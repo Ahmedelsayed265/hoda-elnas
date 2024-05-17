@@ -86,6 +86,7 @@
     "editAccount": "Edit Account",
     "deleteAccount": "Delete Account",
     "profileUpdated": "Profile Updated Successfully",
+    "backToCourses": "Back to Courses",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
