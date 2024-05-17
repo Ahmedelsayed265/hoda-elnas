@@ -14,6 +14,7 @@ import comparsion from "./slices/comparsion";
 import feedBacks from "./slices/feedBacks";
 import sectionsTitles from "./slices/sectionsTitles";
 import audioSrc from "./slices/audioSrc";
+import vConnectLink from "./slices/vConnectLink";
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +32,7 @@ export const store = configureStore({
     comparsion,
     feedBacks,
     sectionsTitles,
-    audioSrc
+    audioSrc,
+    vConnectLink
   }
 });

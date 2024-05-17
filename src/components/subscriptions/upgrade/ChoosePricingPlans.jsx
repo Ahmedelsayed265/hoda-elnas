@@ -127,6 +127,10 @@ const ChoosePricingPlans = ({
       : formData.price;
     setFormData((prevFormData) => ({
       ...prevFormData,
+      active_student_id: []
+    }));
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       studentsNumber,
       totalPrice
     }));

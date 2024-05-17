@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import man from "../../../../assets/images/man.svg";
 import student from "../../../../assets/images/student.svg";
+import axios from "./../../../../util/axios";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL, DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
-import { Link } from "react-router-dom";
-import axios from "./../../../../util/axios";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { setLink } from "../../../../redux/slices/vConnectLink";
 
 const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
   const { t } = useTranslation();
   const [enable, setEnable] = useState(true);
   const { convertTo12HourFormat, translateToArabic } = useTimeFormatting();
   const { lang } = useSelector((state) => state.language);
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleJoinSession = async (id) => {
     const res = await axios.post(
       `instructor/Student_join_session/?day_id=${id}`
@@ -22,9 +24,12 @@ const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
     if (res?.status === 200 || res?.status === 201) {
       const meetingLink = res?.data?.message?.meeting_link;
       const host = res?.data?.message?.host;
-      if (meetingLink && host !== "vconnect") {
+      if (host !== "vconnect") {
         window.open(meetingLink, "_blank");
       } else {
+        console.log(meetingLink);
+        dispatch(setLink(meetingLink));
+        navigate(`/join-session`);
       }
     } else {
       toast.error(res?.response?.data?.message);
@@ -155,12 +160,12 @@ const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
         </div>
       </div>
       <div className="d-flex gap-2">
-        <Link
+        <button
           className={enable ? "w-100" : "w-100 disabled"}
           onClick={() => handleJoinSession(appointment?.id)}
         >
           {t("dashboard.joinNow")}
-        </Link>
+        </button>
         <button
           className="cancel"
           onClick={() => handleCancel(appointment?.id)}

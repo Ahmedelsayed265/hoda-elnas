@@ -115,7 +115,7 @@ const App = () => {
           <Route path="/my-subscriptions" element={<MySubscriptions />} />
           <Route path="/my-students" element={<MyStudents />} />
           <Route path="/library-subscribe" element={<LibirarySubscribe />} />
-          <Route path="join-session" element={<JoinSession />} />
+          <Route path="/join-session" element={<JoinSession />} />
           {/* auth pages */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

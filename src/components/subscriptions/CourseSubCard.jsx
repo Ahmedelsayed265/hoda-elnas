@@ -37,7 +37,7 @@ const CourseSubCard = ({
             <i className="fa-duotone fa-calendar-days"></i>
             {t("renewDate")}
           </b>
-          <p>{subscription?.renewingtdate}</p>
+          <p>{subscription?.enddate}</p>
         </p>
         <div className="buttons">
           <button onClick={onRenewOrder}>{t("renewSub")}</button>
