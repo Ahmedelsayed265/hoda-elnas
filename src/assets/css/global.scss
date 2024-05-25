@@ -1588,7 +1588,7 @@ body {
         border-radius: 50%;
         background: $secondary;
       }
-      .swiper-slide{
+      .swiper-slide {
         height: auto;
       }
     }
@@ -1925,9 +1925,10 @@ body {
       padding-bottom: 60px;
       .table_container {
         overflow: scroll;
+        padding-bottom: 8px;
         width: 100%;
         &::-webkit-scrollbar {
-          display: none;
+          height: 3px;
         }
       }
       table {
@@ -1951,6 +1952,7 @@ body {
           border: 1px solid $inputStroke;
           position: relative;
           max-width: 300px;
+          min-width: 250px;
           white-space: normal;
           .check {
             color: $secondary;
@@ -5214,7 +5216,7 @@ input::-webkit-inner-spin-button {
   background: $inputBG;
   align-items: center;
   justify-content: center;
-  fieldset{
+  fieldset {
     display: none !important;
   }
 }
@@ -5228,15 +5230,15 @@ input::-webkit-inner-spin-button {
 .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
   width: 100% !important;
 }
-.join_session{
+.join_session {
   width: 100%;
   height: calc(100vh - 100px);
   position: relative;
-  iframe{
+  iframe {
     width: 100%;
     height: 100%;
   }
-  a{
+  a {
     top: 16px;
     right: 16px;
     background: $white;

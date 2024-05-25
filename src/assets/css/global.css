@@ -2010,10 +2010,11 @@ body main .what_we_offer {
 }
 body main .what_we_offer .table_container {
   overflow: scroll;
+  padding-bottom: 8px;
   width: 100%;
 }
 body main .what_we_offer .table_container::-webkit-scrollbar {
-  display: none;
+  height: 3px;
 }
 body main .what_we_offer table {
   white-space: nowrap;
@@ -2031,6 +2032,7 @@ body main .what_we_offer table th {
   border: 1px solid #f2f2f2;
   position: relative;
   max-width: 300px;
+  min-width: 250px;
   white-space: normal;
 }
 body main .what_we_offer table td .check,
