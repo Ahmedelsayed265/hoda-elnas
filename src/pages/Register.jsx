@@ -22,10 +22,11 @@ const Register = () => {
     password: "",
     confirm_password: "",
     whatsapp_number: "",
-    gender: ""
+    gender: "male"
   });
   const { t } = useTranslation();
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -48,8 +49,7 @@ const Register = () => {
           });
           navigate("/");
           toast.success(t("auth.accountCreatedSuccessfully"));
-        }
-        else{
+        } else {
           toast.error(loginRes?.response?.data?.message);
         }
       } else {
@@ -61,6 +61,7 @@ const Register = () => {
       setLoading(false);
     }
   };
+
   return (
     <section className="auth">
       <div className="form_wrapper">
@@ -76,20 +77,18 @@ const Register = () => {
         </div>
         <div className="form_container">
           <form className="form-ui" onSubmit={handleSubmit}>
-            {/* name */}
             <NameField setFormData={setFormData} formData={formData} />
-            {/* email */}
             <InputField
               label={t("auth.email")}
               placeholder={t("auth.emailPlaceHolder")}
               htmlFor="email"
+              type="email"
               value={formData.email}
               formData={formData}
               id={"email"}
               setFormData={setFormData}
               icon={<i className="fa-light fa-envelope"></i>}
             />
-            {/* phone */}
             <PhoneField
               label={t("auth.phone")}
               icon={<i className="fa-sharp fa-light fa-phone"></i>}
@@ -98,7 +97,6 @@ const Register = () => {
               value={formData.phone_number}
               id="phone_number"
             />
-            {/* whats app */}
             <PhoneField
               label={t("auth.whatsapp")}
               icon={<i className="fa-brands fa-whatsapp"></i>}
@@ -127,13 +125,11 @@ const Register = () => {
                 icon={<i className="fa-regular fa-lock-keyhole"></i>}
               />
             </div>
-            {/* gender */}
             <Gender
               setFormData={setFormData}
               formData={formData}
               dataKey="gender"
             />
-            {/* agreement and submit */}
             <p className="continue">
               {t("auth.byContinue")}{" "}
               <Link to="/terms-conditions">{t("auth.termsAndCondition")}</Link>{" "}
