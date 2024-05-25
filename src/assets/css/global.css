@@ -633,6 +633,7 @@ body main .courses .inner_search__form input {
 body main .custom-card {
   direction: rtl;
   width: 100%;
+  height: 100%;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -1651,6 +1652,9 @@ body main .swiper .swiper-pagination-bullet {
   border-radius: 50%;
   background: #81a63d;
 }
+body main .swiper .swiper-slide {
+  height: auto;
+}
 body main .feature_and_statistics {
   padding: 60px 0;
 }
@@ -2026,6 +2030,8 @@ body main .what_we_offer table th {
   padding: 8px 16px;
   border: 1px solid #f2f2f2;
   position: relative;
+  max-width: 300px;
+  white-space: normal;
 }
 body main .what_we_offer table td .check,
 body main .what_we_offer table th .check {
