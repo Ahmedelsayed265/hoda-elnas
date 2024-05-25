@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import InputField from "../components/ui/form-elements/InputField";
 import TextField from "../components/ui/form-elements/TextField";
@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import SelectField from "../components/ui/form-elements/SelectField";
 import axios from "./../util/axios";
 import { toast } from "react-toastify";
-import { useCookies } from "react-cookie";
 import PhoneField from "../components/ui/form-elements/PhoneField";
 import Gender from "../components/ui/form-elements/Gender";
 import NameField from "../components/ui/form-elements/NameField";
@@ -20,15 +19,7 @@ const InstructorApplyForJob = () => {
   const userId = useSelector((state) => state.authedUser?.user?.id);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [cookies] = useCookies(["refreshToken"]);
   const [stepName, setStepName] = useState("closer_shot");
-  const isAuthenticated = cookies.refreshToken ? true : false;
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
 
   const wizardTabs = [
     { step: "closer_shot", label: t("applyForJob.closerShot") },
