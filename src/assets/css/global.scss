@@ -1942,16 +1942,16 @@ body {
         border-collapse: collapse;
         border-radius: 16px;
         position: relative;
-        &::after {
-          width: 250px;
-          height: 100%;
-          border: 2px solid $secondary;
-          position: absolute;
-          top: 0;
-          border-radius: 12px;
-          right: 250px;
-          content: "";
-        }
+        // &::after {
+        //   width: 250px;
+        //   height: 100%;
+        //   border: 2px solid $secondary;
+        //   position: absolute;
+        //   top: 0;
+        //   border-radius: 12px;
+        //   right: 250px;
+        //   content: "";
+        // }
         thead {
           tr {
             th {
@@ -1967,6 +1967,7 @@ body {
           border: 1px solid $inputStroke;
           position: relative;
           min-width: 250px;
+          max-width: 250px;
           white-space: normal;
           .icon {
             @include centerFlex();
@@ -1991,6 +1992,20 @@ body {
               border-radius: 50%;
             }
           }
+        }
+        thead th:nth-child(2) {
+          border-left: 2px solid $secondary;
+          border-top: 2px solid $secondary;
+        }
+        thead th:nth-child(1) {
+          border-left: 2px solid $secondary;
+        }
+        tbody tr td:nth-child(2),
+        tbody tr td:nth-child(1) {
+          border-left: 2px solid $secondary;
+        }
+        tbody tr:last-child td:nth-child(2) {
+          border-bottom: 2px solid $secondary;
         }
       }
     }

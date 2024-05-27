@@ -2029,16 +2029,6 @@ body main .what_we_offer table {
   border-radius: 16px;
   position: relative;
 }
-body main .what_we_offer table::after {
-  width: 250px;
-  height: 100%;
-  border: 2px solid #81a63d;
-  position: absolute;
-  top: 0;
-  border-radius: 12px;
-  right: 250px;
-  content: "";
-}
 body main .what_we_offer table thead tr th img {
   height: 80px;
 }
@@ -2048,6 +2038,7 @@ body main .what_we_offer table th {
   border: 1px solid #f2f2f2;
   position: relative;
   min-width: 250px;
+  max-width: 250px;
   white-space: normal;
 }
 body main .what_we_offer table td .icon,
@@ -2079,6 +2070,20 @@ body main .what_we_offer table th.circled:before {
   height: 8px;
   background: #81a63d;
   border-radius: 50%;
+}
+body main .what_we_offer table thead th:nth-child(2) {
+  border-left: 2px solid #81a63d;
+  border-top: 2px solid #81a63d;
+}
+body main .what_we_offer table thead th:nth-child(1) {
+  border-left: 2px solid #81a63d;
+}
+body main .what_we_offer table tbody tr td:nth-child(2),
+body main .what_we_offer table tbody tr td:nth-child(1) {
+  border-left: 2px solid #81a63d;
+}
+body main .what_we_offer table tbody tr:last-child td:nth-child(2) {
+  border-bottom: 2px solid #81a63d;
 }
 body main .testimonials {
   padding: 60px 0 30px;
