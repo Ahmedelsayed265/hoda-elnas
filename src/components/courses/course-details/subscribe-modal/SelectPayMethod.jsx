@@ -1,10 +1,16 @@
 import React from "react";
-import debitCard from "../../assets/images/debit_card.svg";
+import debitCard from "../../../../assets/images/debit_card.svg";
 import { useTranslation } from "react-i18next";
-import { BASE_URL } from "../../constants";
+import { BASE_URL } from "../../../../constants";
 import { toast } from "react-toastify";
 
-const SelectPayMethod = ({ plan, setMethod, setStepName, method }) => {
+const SelectPayMethod = ({
+  plan,
+  setMethod,
+  setStepName,
+  method,
+  paymentMethods
+}) => {
   const { t } = useTranslation();
   const handleNext = () => {
     if (!method?.id) {
@@ -17,7 +23,7 @@ const SelectPayMethod = ({ plan, setMethod, setStepName, method }) => {
     <div className="select_pay_method">
       <div className="container p-0">
         <div className="row m-0">
-          {plan?.payment_methods?.map((me) => {
+          {paymentMethods?.map((me) => {
             return (
               <div className="col-lg-6 col-12 p-2">
                 <label htmlFor={me?.id} className="pay_method">

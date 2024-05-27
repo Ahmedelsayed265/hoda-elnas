@@ -11,9 +11,17 @@ const WhatWeOffer = () => {
   const renderComparableValue = (value) => {
     if (value === "True" || value === "False") {
       if (value === "True") {
-        return <i className="check fa-regular fa-check"></i>;
+        return (
+          <div className="icon">
+            <i className="check fa-regular fa-check"></i>;
+          </div>
+        );
       } else if (value === "False") {
-        return <i className="x fa-regular fa-xmark"></i>;
+        return (
+          <div className="icon">
+            <i className="x fa-regular fa-xmark"></i>
+          </div>
+        );
       }
     } else {
       return value;

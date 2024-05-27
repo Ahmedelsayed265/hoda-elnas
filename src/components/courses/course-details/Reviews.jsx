@@ -22,7 +22,7 @@ const Reviews = () => {
     getCourseReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang]);
-  return (
+  return reviews.length > 0 ? (
     <section className="course_reviews">
       <div className="container">
         <div className="title">
@@ -32,7 +32,7 @@ const Reviews = () => {
         <ReviewsSlider reviews={reviews} />
       </div>
     </section>
-  );
+  ) : null;
 };
 
 export default Reviews;

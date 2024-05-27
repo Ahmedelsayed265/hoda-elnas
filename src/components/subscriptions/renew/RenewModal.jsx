@@ -58,7 +58,7 @@ const RenewModal = ({
       <Modal.Body className="subcribeModal">
         {/* tabs */}
         <div className="container pb-3">
-          <div className="row m-0 justify-content-between wizard_tabs">
+          <div className="row m-0 justify-content-between wizard_tabs gap-0">
             <div className="col-lg-4 col-12 p-2">
               <div
                 className={`wizard_tab ${

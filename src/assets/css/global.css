@@ -54,6 +54,10 @@ button {
   height: 300px !important;
 }
 
+:target {
+  scroll-margin-top: 100px;
+}
+
 /*+++++++++ colors +++++++++*/
 body {
   direction: rtl;
@@ -1124,7 +1128,7 @@ body main .course-details .content ul.iconCheck li::before {
 }
 body main .course_faqs {
   padding: 40px 0;
-  background: #eeeeee;
+  background: #f8f8f8;
 }
 body main .course_faqs .title {
   text-align: center;
@@ -1145,6 +1149,7 @@ body main .course_faqs .title::after {
 }
 body main .in_course_why_us {
   padding: 40px 0;
+  background: #f8f8f8;
 }
 body main .in_course_why_us .title {
   display: flex;
@@ -2022,6 +2027,17 @@ body main .what_we_offer table {
   border: 1px solid #f2f2f2;
   border-collapse: collapse;
   border-radius: 16px;
+  position: relative;
+}
+body main .what_we_offer table::after {
+  width: 250px;
+  height: 100%;
+  border: 2px solid #81a63d;
+  position: absolute;
+  top: 0;
+  border-radius: 12px;
+  right: 250px;
+  content: "";
 }
 body main .what_we_offer table thead tr th img {
   height: 80px;
@@ -2031,9 +2047,14 @@ body main .what_we_offer table th {
   padding: 8px 16px;
   border: 1px solid #f2f2f2;
   position: relative;
-  max-width: 300px;
   min-width: 250px;
   white-space: normal;
+}
+body main .what_we_offer table td .icon,
+body main .what_we_offer table th .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 body main .what_we_offer table td .check,
 body main .what_we_offer table th .check {
@@ -5546,4 +5567,125 @@ input::-webkit-inner-spin-button {
   border-radius: 8px;
   position: absolute;
   font-size: 16px;
+}
+
+.course_plans {
+  padding: 60px 0;
+}
+.course_plans .title {
+  text-align: center;
+  color: #31535a;
+  font-size: 32px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.course_plans .title::after {
+  position: absolute;
+  content: "";
+  top: 45px;
+  width: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: #81a63d;
+}
+.course_plans .plan {
+  height: 100%;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.course_plans .plan .convertion {
+  color: red;
+  line-height: normal;
+  margin: 0;
+  font-weight: 600;
+  font-size: 14px;
+}
+.course_plans .plan h3 {
+  font-size: 24px;
+  text-align: center;
+  color: #81a63d;
+}
+.course_plans .plan ul {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+.course_plans .plan ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  font-size: 14px;
+  color: #777777;
+  line-height: 24px;
+}
+.course_plans .plan ul li::before {
+  content: "\f058";
+  font-weight: 600;
+  font-size: 16px;
+  color: #81a63d;
+  font-family: "Font Awesome 6 pro";
+}
+.course_plans .plan .line {
+  margin: 16px 0;
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+}
+.course_plans .plan .price_subscribe {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.course_plans .plan .price_subscribe button {
+  background: #81a63d;
+  color: #fff;
+  font-size: 16px;
+  width: auto;
+  padding: 2px 24px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.course_plans .plan .price_subscribe .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course_plans .plan .price_subscribe .price h5 {
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #81a63d;
+  margin: 0;
+}
+.course_plans .plan .price_subscribe .price h5 span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  line-height: normal;
+}
+.course_plans .plan .price_subscribe .price p {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  line-height: normal;
+  color: #777777;
+  text-decoration: line-through;
+}
+.course_plans .plan .price_subscribe .price p span {
+  line-height: normal;
+}
+.course_plans .plan.active {
+  border: 2px solid #81a63d;
+  box-shadow: none;
 }/*# sourceMappingURL=global.css.map */

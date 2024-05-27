@@ -16,7 +16,7 @@ const CourseFaqs = ({ faqs }) => {
       <div className="container">
         <h3 className="title">{t("faqs")}</h3>
         <div className="row m-0 justify-content-center">
-          <div className="col-lg-10 col-12">
+          <div className="col-lg-11 col-12">
             <Accordion defaultActiveKey={firstItemEventKey}>
               {sortedFaqs.map((faq) => (
                 <Accordion.Item

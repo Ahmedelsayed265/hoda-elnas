@@ -33,6 +33,7 @@ const CompleteProcess = ({
       }
       // pay load
       const dataToSend = {
+        direct_order: false,
         user_id: user?.id,
         start_date: formData?.startDate,
         students: formData?.studentsNumber,

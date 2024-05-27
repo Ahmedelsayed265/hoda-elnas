@@ -3,6 +3,10 @@ import { useTranslation } from "react-i18next";
 
 const Plan = ({ plan, location, onSubscribe }) => {
   const { t } = useTranslation();
+
+  const isSamePriceEgp = plan.price_egp === plan.saleprice_egp;
+  const isSamePriceUsd = plan.price_usd === plan.saleprice_usd;
+
   return (
     <div className="col-lg-5 col-md-6 col-12 mb-4">
       <div className="plan">
@@ -20,7 +24,7 @@ const Plan = ({ plan, location, onSubscribe }) => {
         <div className="price_subscribe">
           <div className="price">
             <h5>
-              {location === "EG" ? plan?.saleprice_egp : plan?.slaeprice_usd}{" "}
+              {location === "EG" ? plan?.saleprice_egp : plan?.saleprice_usd}{" "}
               <span>
                 {location === "EG"
                   ? t("courseSubscribe.egyptianPound")
@@ -28,17 +32,22 @@ const Plan = ({ plan, location, onSubscribe }) => {
               </span>
               <span>/ {plan?.interval === 12 ? t("year") : t("month")}</span>
             </h5>
-            <p>
-              {t("insteadOf")}{" "}
-              <span>
-                {location === "EG" ? plan?.price_egp : plan?.price_usd}{" "}
-              </span>{" "}
-              <span>
-                {location === "EG"
-                  ? t("courseSubscribe.egyptianPound")
-                  : t("courseSubscribe.dollar")}
-              </span>{" "}
-            </p>
+            {!(
+              (location === "EG" && isSamePriceEgp) ||
+              (location !== "EG" && isSamePriceUsd)
+            ) && (
+              <p>
+                {t("insteadOf")}{" "}
+                <span>
+                  {location === "EG" ? plan?.price_egp : plan?.price_usd}{" "}
+                </span>{" "}
+                <span>
+                  {location === "EG"
+                    ? t("courseSubscribe.egyptianPound")
+                    : t("courseSubscribe.dollar")}
+                </span>{" "}
+              </p>
+            )}
           </div>
           <button onClick={() => onSubscribe(plan)}>
             {t("sounds.subscribe")}

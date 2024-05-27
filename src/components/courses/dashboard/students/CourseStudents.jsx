@@ -25,7 +25,7 @@ const CourseStudents = () => {
     studentname: "",
     studentage: "",
     studentcontact: "",
-    sex: "",
+    sex: "male",
     notes: ""
   });
 

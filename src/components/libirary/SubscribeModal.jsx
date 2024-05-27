@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import LoginOrRegiester from "../courses/subscription/auth/LoginOrRegiester";
 import SelectPayMethod from "./SelectPayMethod";
-// import CompleteProcess from "../subscription/subscription-steps/CompleteProcess";
 import CompleteProcess from "./CompleteProcess";
 
 const SubscribeModal = ({ showModal, setShowModal, plan, location }) => {
@@ -53,7 +52,7 @@ const SubscribeModal = ({ showModal, setShowModal, plan, location }) => {
       <Modal.Body className="subcribeModal">
         {/* tabs */}
         <div className="container pb-3">
-          <div className="row m-0 justify-content-between wizard_tabs">
+          <div className="row m-0 justify-content-between wizard_tabs gap-0">
             {!logged && (
               <div className="col-lg-4 col-12 p-2">
                 <div

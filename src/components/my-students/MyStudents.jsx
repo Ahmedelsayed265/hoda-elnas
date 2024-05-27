@@ -28,7 +28,7 @@ const MyStudents = () => {
     studentname: "",
     studentage: "",
     studentcontact: "",
-    sex: "",
+    sex: "male",
     notes: ""
   });
 
@@ -45,7 +45,7 @@ const MyStudents = () => {
         studentname: "",
         studentage: "",
         studentcontact: "",
-        sex: "",
+        sex: "male",
         notes: ""
       });
     }
@@ -84,7 +84,7 @@ const MyStudents = () => {
           studentname: "",
           studentage: "",
           studentcontact: "",
-          sex: "",
+          sex: "male",
           notes: ""
         });
       } else {

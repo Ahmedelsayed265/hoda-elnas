@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import LoginOrRegiester from "../subscription/auth/LoginOrRegiester";
-import SelectPayMethod from "../../subscriptions/upgrade/SelectPayMethod";
-import CompleteProcess from "../subscription/subscription-steps/CompleteProcess";
+import LoginOrRegiester from "../../../courses/subscription/auth/LoginOrRegiester";
+import SelectPayMethod from "./SelectPayMethod";
+import CompleteProcess from "./CompleteProcess";
 
 const SubscribeModal = ({
   showModal,
   setShowModal,
-  formData,
-  course,
-  location
+  plan,
+  location,
+  paymentMethods
 }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
@@ -30,8 +30,9 @@ const SubscribeModal = ({
   } else if (stepName === "payment_method") {
     targetComponent = (
       <SelectPayMethod
-        formData={formData}
         setStepName={setStepName}
+        paymentMethods={paymentMethods}
+        plan={plan}
         method={method}
         setMethod={setMethod}
       />
@@ -40,9 +41,8 @@ const SubscribeModal = ({
     targetComponent = (
       <CompleteProcess
         setStepName={setStepName}
-        formData={formData}
+        plan={plan}
         location={location}
-        course={course}
         method={method}
       />
     );
