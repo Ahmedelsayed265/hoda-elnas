@@ -226,7 +226,11 @@
         "active": "نشط",
         "deactive": "غير نشط",
         "perMonth": "شهريا",
-        "couponAlreadyApplied": "تم تطبيق هذا الكوبون من قبل"
+        "couponAlreadyApplied": "تم تطبيق هذا الكوبون من قبل",
+        "subscriperData": "بيانات المشترك",
+        "subscriperDataSubTitle": "أدخل معلوماتك الشخصية",
+        "fillAllFields": "من فضلك أدخل جميع الحقول",
+        "invalidEmail": "البريد الالكتروني غير صحيح"
     },
     "dashboard": {
         "tasks": "المهام",

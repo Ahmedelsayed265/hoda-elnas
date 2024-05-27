@@ -5,26 +5,36 @@ import { useSelector } from "react-redux";
 import LoginOrRegiester from "../../../courses/subscription/auth/LoginOrRegiester";
 import SelectPayMethod from "./SelectPayMethod";
 import CompleteProcess from "./CompleteProcess";
+import UserInfo from "./UserInfo";
 
 const SubscribeModal = ({
   showModal,
   setShowModal,
   plan,
   location,
-  paymentMethods
+  paymentMethods,
+  requiresLogin
 }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
   const [method, setMethod] = useState({});
-  const logged = useSelector((state) => state.authedUser.logged);
+  const userId = useSelector((state) => state.authedUser?.user?.id);
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    phone_number: ""
+  });
   let targetComponent;
   useEffect(() => {
-    if (!logged) {
+    if (!userId && requiresLogin) {
       setStepName("login");
+    } else if (!userId && !requiresLogin) {
+      setStepName("user_info");
     } else {
       setStepName("payment_method");
     }
-  }, [logged]);
+  }, [userId, requiresLogin]);
   if (stepName === "login") {
     targetComponent = <LoginOrRegiester setStepName={setStepName} />;
   } else if (stepName === "payment_method") {
@@ -32,9 +42,18 @@ const SubscribeModal = ({
       <SelectPayMethod
         setStepName={setStepName}
         paymentMethods={paymentMethods}
-        plan={plan}
         method={method}
+        userId={userId}
+        requiresLogin={requiresLogin}
         setMethod={setMethod}
+      />
+    );
+  } else if (stepName === "user_info") {
+    targetComponent = (
+      <UserInfo
+        formData={formData}
+        setFormData={setFormData}
+        setStepName={setStepName}
       />
     );
   } else {
@@ -42,6 +61,8 @@ const SubscribeModal = ({
       <CompleteProcess
         setStepName={setStepName}
         plan={plan}
+        requiresLogin={requiresLogin}
+        formData={formData}
         location={location}
         method={method}
       />
@@ -60,7 +81,7 @@ const SubscribeModal = ({
         {/* tabs */}
         <div className="container pb-3">
           <div className="row m-0 justify-content-between wizard_tabs gap-0">
-            {!logged && (
+            {!userId && requiresLogin && (
               <div className="col-lg-4 col-12 p-2">
                 <div
                   className={`wizard_tab ${
@@ -77,6 +98,23 @@ const SubscribeModal = ({
                 </div>
               </div>
             )}
+            {!userId && !requiresLogin && (
+              <div className="col-lg-4 col-12 p-2">
+                <div
+                  className={`wizard_tab ${
+                    stepName === "user_info" ? "active" : ""
+                  }`}
+                >
+                  <div className="num">
+                    <span>1</span>
+                  </div>
+                  <div className="content">
+                    <h6>{t("courseSubscribe.subscriperData")}</h6>
+                    <p>{t("courseSubscribe.subscriperDataSubTitle")}</p>
+                  </div>
+                </div>
+              </div>
+            )}
             <div className="col-lg-4 col-12 p-2">
               <div
                 className={`wizard_tab ${
@@ -84,7 +122,9 @@ const SubscribeModal = ({
                 }`}
               >
                 <div className="num">
-                  <span>{!logged ? 2 : 1}</span>
+                  <span>
+                    {!userId || requiresLogin || !requiresLogin ? 2 : 1}
+                  </span>
                 </div>
                 <div className="content">
                   <h6>{t("courseSubscribe.paymentMethods")}</h6>
@@ -99,7 +139,9 @@ const SubscribeModal = ({
                 }`}
               >
                 <div className="num">
-                  <span>{!logged ? 3 : 2}</span>
+                  <span>
+                    {!userId || requiresLogin || !requiresLogin ? 3 : 2}
+                  </span>
                 </div>
                 <div className="content">
                   <h6>{t("courseSubscribe.completeProcess")}</h6>

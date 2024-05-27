@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import useUserLocation from "../../../hooks/useUserLocation";
 import SubscribeModal from "./subscribe-modal/SubscribeModal";
 
-const Plans = forwardRef(({ slug, paymentMethods }, ref) => {
+const Plans = forwardRef(({ slug, paymentMethods, requiresLogin }, ref) => {
   const { t } = useTranslation();
   const [pricingPlans, setPricingPlans] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -118,6 +118,7 @@ const Plans = forwardRef(({ slug, paymentMethods }, ref) => {
         setShowModal={setShowModal}
         plan={plan}
         paymentMethods={paymentMethods}
+        requiresLogin={requiresLogin}
         location={location}
       />
     </section>

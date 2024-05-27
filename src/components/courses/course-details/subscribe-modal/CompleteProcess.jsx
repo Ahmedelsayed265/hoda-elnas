@@ -8,7 +8,15 @@ import InputField from "../../../ui/InputField";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../../../../constants";
 
-const CompleteProcess = ({ setStepName, method, plan, location }) => {
+const CompleteProcess = ({
+  setStepName,
+  method,
+  plan,
+  location,
+  formData,
+  requiresLogin
+}) => {
+  console.log(formData);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [reciept, setReciept] = useState(null);
@@ -44,7 +52,8 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
         referralcode: referralCode,
         recipt: reciept,
         direct_order: true,
-        amount: finalAmount
+        amount: finalAmount,
+        ...(!requiresLogin ? formData : {})
       };
       const headers = {
         Accept: "application/json",

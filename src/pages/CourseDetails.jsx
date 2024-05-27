@@ -93,6 +93,7 @@ const CourseDetails = () => {
           ref={plansRef}
           slug={course?.slug}
           paymentMethods={course?.payment_methods}
+          requiresLogin={course?.requires_login}
         />
       )}
       <CourseFaqs faqs={course?.FAQ} />

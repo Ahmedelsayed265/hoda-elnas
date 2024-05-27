@@ -225,7 +225,11 @@
         "active": "Active",
         "deactive": "Deactive",
         "perMonth": "Per Month",
-        "couponAlreadyApplied": "Coupon already applied"
+        "couponAlreadyApplied": "Coupon already applied",
+        "subscriperData": "Subscriber data",
+        "subscriperDataSubTitle": "Enter your personal info",
+        "fillAllFields": "Please fill all the fields",
+        "invalidEmail": "Invalid Email"
     },
     "dashboard": {
         "tasks": "Tasks",

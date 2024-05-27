@@ -5,7 +5,8 @@ import { BASE_URL } from "../../../../constants";
 import { toast } from "react-toastify";
 
 const SelectPayMethod = ({
-  plan,
+  requiresLogin,
+  userId,
   setMethod,
   setStepName,
   method,
@@ -52,15 +53,33 @@ const SelectPayMethod = ({
               </div>
             );
           })}
-          <div className="col-12 p-2 d-flex justify-content-end">
-            <button
-              className="w-25 save_btn"
-              onClick={handleNext}
-              disabled={!method?.id}
-            >
-              {t("next")}
-            </button>
-          </div>
+          {userId ? (
+            <div className="col-12 p-2 d-flex justify-content-end">
+              <button
+                className="w-25 save_btn"
+                onClick={handleNext}
+                disabled={!method?.id}
+              >
+                {t("next")}
+              </button>
+            </div>
+          ) : (
+            <div className="col-12 p-2 d-flex justify-content-between">
+              <button
+                className="w-25 back_btn"
+                onClick={() => setStepName("user_info")}
+              >
+                {t("back")}
+              </button>
+              <button
+                className="w-25 save_btn"
+                onClick={handleNext}
+                disabled={!method?.id}
+              >
+                {t("next")}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
