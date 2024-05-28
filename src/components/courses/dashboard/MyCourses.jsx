@@ -8,26 +8,24 @@ import AvailableCourse from "./cards/AvailableCourse";
 import inReview from "../../../assets/images/inReview.svg";
 import availableCoursesIcon from "../../../assets/images/availableCourses.svg";
 import DataLoader from "../../ui/DataLoader";
+import { useCookies } from "react-cookie";
 
 const MyCourses = () => {
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.authedUser.user);
-  const logged = useSelector((state) => state.authedUser.logged);
   const [mySubscriptions, setMySubscriptions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [orders, setOrders] = useState([]);
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
 
-  // handle protected route
   useEffect(() => {
-    if (!user) {
-      return;
-    }
-    if (!logged) {
+    if (!isAuthenticated) {
       navigate("/login");
     }
-  }, [logged, navigate, user]);
+  }, [isAuthenticated, navigate]);
 
   // get data
   useEffect(() => {

@@ -59,7 +59,7 @@ const UserInfo = ({ formData, setFormData, setStepName }) => {
               />
             </div>
           </div>
-          <div className="form_group">
+          <div className="form_group flex-lg-row flex-column">
             <InputField
               label={t("auth.email")}
               placeholder={t("auth.emailPlaceHolder")}

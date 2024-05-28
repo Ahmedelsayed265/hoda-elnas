@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../components/settings/SideBar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import EditAccount from "../components/settings/EditAccount";
+import { useCookies } from 'react-cookie';
 
 const Profile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -26,6 +31,12 @@ const Profile = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [menuOpen]);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/login");
+    }
+  }, [isAuthenticated, navigate]);
   
   return (
     <section className="profile_sec">
