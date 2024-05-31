@@ -5639,3 +5639,16 @@ input::-webkit-inner-spin-button {
     }
   }
 }
+body.en .roadmap .pathGrid {
+  @media screen and (max-width: 576px) {
+    padding: 0 36px 0 24px;
+    &::after {
+      left: initial;
+      right: 16px;
+    }
+    .path::after {
+      right: -28px;
+      left: initial;
+    }
+  }
+}

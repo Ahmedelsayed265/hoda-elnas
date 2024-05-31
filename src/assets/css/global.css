@@ -5953,4 +5953,18 @@ input::-webkit-inner-spin-button {
   .roadmap .pathGrid .path .path_title {
     margin: 0;
   }
+}
+
+@media screen and (max-width: 576px) {
+  body.en .roadmap .pathGrid {
+    padding: 0 36px 0 24px;
+  }
+  body.en .roadmap .pathGrid::after {
+    left: initial;
+    right: 16px;
+  }
+  body.en .roadmap .pathGrid .path::after {
+    right: -28px;
+    left: initial;
+  }
 }/*# sourceMappingURL=global.css.map */
