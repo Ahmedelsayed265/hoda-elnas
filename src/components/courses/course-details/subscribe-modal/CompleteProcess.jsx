@@ -7,6 +7,7 @@ import SubmitButton from "../../../ui/form-elements/SubmitButton";
 import InputField from "../../../ui/InputField";
 import { useSelector } from "react-redux";
 import { BASE_URL } from "../../../../constants";
+import { Form } from "react-bootstrap";
 
 const CompleteProcess = ({
   setStepName,
@@ -14,14 +15,15 @@ const CompleteProcess = ({
   plan,
   location,
   formData,
-  requiresLogin
+  requiresLogin,
+  studentsNumField
 }) => {
-  console.log(formData);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [reciept, setReciept] = useState(null);
   const [loading, setLoading] = useState(false);
   const [promoCode, setPromoCode] = useState("");
+  const [studentsNumber, setStudentsNumber] = useState(1);
   const [referralCode, setReferralCode] = useState("");
   const [showMethod, setShowMethod] = useState(false);
   const [finalAmount, setFinalAmount] = useState(
@@ -42,12 +44,17 @@ const CompleteProcess = ({
         toast.error(t("uploadTransferPhoto"));
         return;
       }
+      if (studentsNumber < 1) {
+        toast.error(t("courseSubscribe.atLeastOneStudent"));
+        return;
+      }
       // pay load
       const dataToSend = {
         user_id: userId ? userId : null,
         currency: location === "EG" ? "EGP" : "USD",
         method: method?.identifier,
         pricing_plan_id: plan?.id,
+        students: studentsNumber,
         couponcode: promoCode,
         referralcode: referralCode,
         recipt: reciept,
@@ -168,19 +175,27 @@ const CompleteProcess = ({
   };
 
   useEffect(() => {
-    if (couponData.value && couponData.discount_type === "percentage") {
-      location === "EG"
-        ? setFinalAmount((plan?.saleprice_egp * (100 - couponData.value)) / 100)
-        : setFinalAmount(
-            (plan?.saleprice_usd * (100 - couponData.value)) / 100
-          );
-    } else {
-      location === "EG"
-        ? setFinalAmount(plan?.saleprice_egp - couponData.value)
-        : setFinalAmount(plan?.saleprice_usd - couponData.value);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [couponData, location, plan]);
+    const calculateFinalAmount = () => {
+      let baseAmount =
+        location === "EG" ? plan?.saleprice_egp : plan?.saleprice_usd;
+      baseAmount *= studentsNumber;
+
+      if (couponData.value && couponData.discount_type === "percentage") {
+        return (baseAmount * (100 - couponData.value)) / 100;
+      } else if (couponData.value && couponData.discount_type === "fixed") {
+        return baseAmount - couponData.value;
+      } else {
+        return baseAmount;
+      }
+    };
+
+    setFinalAmount(calculateFinalAmount());
+  }, [couponData, location, plan, studentsNumber]);
+
+  const handleChangeStudentsNumber = (e) => {
+    const newStudentsNumber = e.target.value;
+    setStudentsNumber(newStudentsNumber);
+  };
 
   return (
     <div className="complete_process">
@@ -192,11 +207,6 @@ const CompleteProcess = ({
             }`}
           >
             <h2>{plan?.name}</h2>
-            <ul>
-              {plan?.benefits?.split("\r\n").map((benefit, index) => (
-                <li key={index}>{benefit}</li>
-              ))}
-            </ul>
             <div className="price">
               <h5>
                 {finalAmount}{" "}
@@ -272,6 +282,32 @@ const CompleteProcess = ({
             </div>
           )}
         </div>
+        {studentsNumField && (
+          <div className="col-12 p-2">
+            <div className="form-ui">
+              <div className=" w-100 d-flex align-items-end gap-2">
+                <div className="input-field">
+                  <label htmlFor="student_number">
+                    <i className="fa-solid fa-users"></i>
+                    {t("courseSubscribe.subscribersNumer")}
+                  </label>
+                  <Form.Control
+                    required={true}
+                    type="number"
+                    name="student_number"
+                    id="student_number"
+                    placeholder="00"
+                    min={1}
+                    step={1}
+                    max={100}
+                    value={studentsNumber}
+                    onChange={handleChangeStudentsNumber}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="col-lg-6 col-12 p-2">
           <div className="form-ui">
             <div className=" w-100 d-flex align-items-end gap-2">

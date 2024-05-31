@@ -88,6 +88,8 @@
     "profileUpdated": "Profile Updated Successfully",
     "backToCourses": "Back to Courses",
     "samePagePlans": "Course Subscription Plans",
+    "subscribeNow": "Subscribe Now",
+    "planLabel": "live session weekly",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -179,6 +181,7 @@
         "error": "Something went wrong, please try again"
     },
     "courseSubscribe": {
+        "atLeastOneStudent": "You must select at least one student",
         "subscribersNumer": "Students number",
         "courseDuration": "Lessons per week",
         "subscribed": "Subscribed",

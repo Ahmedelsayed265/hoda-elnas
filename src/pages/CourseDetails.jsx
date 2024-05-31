@@ -94,6 +94,7 @@ const CourseDetails = () => {
           slug={course?.slug}
           paymentMethods={course?.payment_methods}
           requiresLogin={course?.requires_login}
+          course={course}
         />
       )}
       <CourseFaqs faqs={course?.FAQ} />

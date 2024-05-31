@@ -663,9 +663,10 @@ body main .custom-card h6 {
 }
 body main .custom-card .img {
   width: 100%;
+  aspect-ratio: 3/2;
 }
 body main .custom-card .img img {
-  aspect-ratio: 3/2;
+  height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -3399,6 +3400,9 @@ body .form-ui .input-field label {
   color: #000000;
   font-weight: 500;
   font-size: 14px;
+  gap: 4px;
+  align-items: center;
+  display: flex;
 }
 body .form-ui .phone-group .PhoneInput {
   display: flex;
@@ -5596,7 +5600,7 @@ input::-webkit-inner-spin-button {
 }
 .course_plans .plan {
   height: 100%;
-  padding: 24px 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
@@ -5609,10 +5613,64 @@ input::-webkit-inner-spin-button {
   font-weight: 600;
   font-size: 14px;
 }
-.course_plans .plan h3 {
-  font-size: 24px;
+.course_plans .plan .planHeader {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+}
+.course_plans .plan .planHeader h3 {
+  font-size: 28px;
+  font-size: 600;
+  margin: 0;
   text-align: center;
+  color: #000000;
+}
+.course_plans .plan .planHeader .price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.course_plans .plan .planHeader .price h5 {
+  font-size: 36px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   color: #81a63d;
+  margin: 0;
+}
+.course_plans .plan .planHeader .price h5 span {
+  font-weight: 600;
+  font-size: 14px;
+  color: #000000;
+  line-height: normal;
+}
+.course_plans .plan .planHeader .price p {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+  line-height: normal;
+  color: #777777;
+  text-decoration: line-through;
+}
+.course_plans .plan .planHeader .price p span {
+  line-height: normal;
+}
+.course_plans .plan .planHeader .label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  padding: 6px 16px;
+  border-radius: 20px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.course_plans .plan .planHeader .label h6 {
+  margin: 0;
+  font-size: 14px;
+  color: #000000;
 }
 .course_plans .plan ul {
   display: flex;
@@ -5645,50 +5703,18 @@ input::-webkit-inner-spin-button {
 }
 .course_plans .plan .price_subscribe {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding-top: 16px;
 }
 .course_plans .plan .price_subscribe button {
   background: #81a63d;
   color: #fff;
+  width: 100%;
   font-size: 16px;
-  width: auto;
-  padding: 2px 24px;
+  padding: 4px;
   border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.course_plans .plan .price_subscribe .price {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.course_plans .plan .price_subscribe .price h5 {
-  font-size: 20px;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #81a63d;
-  margin: 0;
-}
-.course_plans .plan .price_subscribe .price h5 span {
-  font-weight: 600;
-  font-size: 14px;
-  color: #000000;
-  line-height: normal;
-}
-.course_plans .plan .price_subscribe .price p {
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0;
-  line-height: normal;
-  color: #777777;
-  text-decoration: line-through;
-}
-.course_plans .plan .price_subscribe .price p span {
-  line-height: normal;
 }
 .course_plans .plan.active {
   border: 2px solid #81a63d;

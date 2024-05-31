@@ -13,7 +13,8 @@ const SubscribeModal = ({
   plan,
   location,
   paymentMethods,
-  requiresLogin
+  requiresLogin,
+  studentsNumField
 }) => {
   const { t } = useTranslation();
   const [stepName, setStepName] = useState("payment_method");
@@ -65,6 +66,7 @@ const SubscribeModal = ({
         formData={formData}
         location={location}
         method={method}
+        studentsNumField={studentsNumField}
       />
     );
   }

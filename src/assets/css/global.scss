@@ -655,8 +655,9 @@ body {
       }
       .img {
         width: 100%;
+        aspect-ratio: 3 / 2;
         img {
-          aspect-ratio: 3 / 2;
+          height: 100%;
           width: 100%;
           object-fit: cover;
         }
@@ -3223,6 +3224,9 @@ body {
         color: $dark;
         font-weight: 500;
         font-size: 14px;
+        gap: 4px;
+        align-items: center;
+        display: flex;
       }
     }
     .phone-group {
@@ -5302,7 +5306,7 @@ input::-webkit-inner-spin-button {
   }
   .plan {
     height: 100%;
-    padding: 24px 16px;
+    padding: 24px;
     display: flex;
     flex-direction: column;
     border-radius: 12px;
@@ -5314,10 +5318,62 @@ input::-webkit-inner-spin-button {
       font-weight: 600;
       font-size: 14px;
     }
-    h3 {
-      font-size: 24px;
-      text-align: center;
-      color: $secondary;
+
+    .planHeader {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 8px;
+      h3 {
+        font-size: 28px;
+        font-size: 600;
+        margin: 0;
+        text-align: center;
+        color: $dark;
+      }
+      .price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        h5 {
+          font-size: 36px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: $secondary;
+          margin: 0;
+          span {
+            font-weight: 600;
+            font-size: 14px;
+            color: $dark;
+            line-height: normal;
+          }
+        }
+        p {
+          font-size: 12px;
+          font-weight: 600;
+          margin: 0;
+          line-height: normal;
+          color: $gray;
+          text-decoration: line-through;
+          span {
+            line-height: normal;
+          }
+        }
+      }
+      .label {
+        @include centerFlex();
+        background: $inputBG;
+        padding: 6px 16px;
+        border-radius: 20px;
+        width: fit-content;
+        h6 {
+          margin: 0;
+          font-size: 14px;
+          color: $dark;
+        }
+      }
     }
     ul {
       display: flex;
@@ -5349,46 +5405,16 @@ input::-webkit-inner-spin-button {
       background: $inputStroke;
     }
     .price_subscribe {
-      @include space-between();
+      display: flex;
+      padding-top: 16px;
       button {
         background: $secondary;
         color: $white;
+        width: 100%;
         font-size: 16px;
-        width: auto;
-        padding: 2px 24px;
+        padding: 4px;
         border-radius: 100px;
         @include centerFlex();
-      }
-      .price {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        h5 {
-          font-size: 20px;
-          font-weight: 600;
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          color: $secondary;
-          margin: 0;
-          span {
-            font-weight: 600;
-            font-size: 14px;
-            color: $dark;
-            line-height: normal;
-          }
-        }
-        p {
-          font-size: 12px;
-          font-weight: 600;
-          margin: 0;
-          line-height: normal;
-          color: $gray;
-          text-decoration: line-through;
-          span {
-            line-height: normal;
-          }
-        }
       }
     }
     &.active {
