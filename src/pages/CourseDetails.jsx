@@ -2,12 +2,13 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import VideoModal from "../components/ui/VideoModal";
 import { BASE_URL } from "../constants";
+import VideoModal from "../components/ui/VideoModal";
 import CourseFaqs from "../components/courses/course-details/CourseFaqs";
 import WhyUs from "../components/courses/course-details/WhyUs";
 import Reviews from "../components/courses/course-details/Reviews";
 import Plans from "../components/courses/course-details/Plans";
+import RoadMap from "../components/courses/course-details/RoadMap";
 
 const CourseDetails = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -88,6 +89,7 @@ const CourseDetails = () => {
         </div>
       </section>
       <WhyUs grantees={course?.grantees} title={course?.grantees_title} />
+      <RoadMap />
       {course?.same_page_checkout && (
         <Plans
           ref={plansRef}

@@ -5719,4 +5719,238 @@ input::-webkit-inner-spin-button {
 .course_plans .plan.active {
   border: 2px solid #81a63d;
   box-shadow: none;
+}
+
+.roadmap {
+  padding-top: 40px;
+}
+.roadmap .title {
+  text-align: center;
+  color: #31535a;
+  font-size: 32px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.roadmap .title::after {
+  position: absolute;
+  content: "";
+  top: 45px;
+  width: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 2px;
+  background: #81a63d;
+}
+.roadmap .pathGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  position: relative;
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 24px 0 36px;
+  }
+}
+.roadmap .pathGrid::after {
+  position: absolute;
+  content: "";
+  height: 1px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  border-bottom: 2px dashed #31535a;
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid::after {
+    height: 100%;
+    width: 1px;
+    left: 16px;
+    border-bottom: 0;
+    border-left: 2px dashed #31535a;
+  }
+}
+.roadmap .pathGrid .path {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid .path {
+    flex-direction: row;
+  }
+}
+.roadmap .pathGrid .path::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  width: 18px;
+  height: 18px;
+  background: #31535a;
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid .path::after {
+    left: -28px;
+    top: 50%;
+    bottom: initial;
+    transform: translateY(-50%);
+  }
+}
+.roadmap .pathGrid .path .flipCard {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  perspective: 1000px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid .path .flipCard {
+    height: 180px;
+    flex-shrink: initial;
+  }
+}
+.roadmap .pathGrid .path .flipCard .cardFront {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-size: cover !important;
+  background-position: top !important;
+  background-repeat: no-repeat !important;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.roadmap .pathGrid .path .flipCard .cardFront .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: auto;
+  gap: 4px;
+}
+.roadmap .pathGrid .path .flipCard .cardFront .content .job {
+  color: #fff;
+  font-size: 12px;
+}
+.roadmap .pathGrid .path .flipCard .cardFront .content .title {
+  font-size: 18px;
+  color: #fff;
+}
+.roadmap .pathGrid .path .flipCard .cardFront .time {
+  display: flex;
+  gap: 24px;
+}
+.roadmap .pathGrid .path .flipCard .cardFront .time p {
+  color: #fff;
+  font-size: 14px;
+}
+.roadmap .pathGrid .path .flipCard .cardFront .time p i {
+  margin-left: 4px;
+}
+.roadmap .pathGrid .path .flipCard .cardBack {
+  padding: 20px;
+  position: absolute;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #fff;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content .sponser {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content img {
+  height: 32px;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content h2 {
+  font-size: 18px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  color: #31535a;
+  font-weight: 600;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content h2 img {
+  height: 24px;
+  margin-left: 8px;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content p {
+  font-size: 14px;
+  line-height: 24px;
+  color: #777777;
+  margin: 0;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #31535a;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content ol {
+  padding: 0 16px 0 0;
+  margin: 0;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content ol li {
+  font-size: 14px;
+  line-height: 24px;
+  color: #777777;
+  margin: 0;
+}
+.roadmap .pathGrid .path .flipCard .cardBack .content .btns {
+  display: flex;
+  gap: 32px;
+}
+.roadmap .pathGrid .path .flipCard:hover {
+  z-index: 2;
+}
+.roadmap .pathGrid .path .flipCard:hover .cardFront {
+  transform: rotateY(-180deg);
+}
+.roadmap .pathGrid .path .flipCard:hover .cardBack {
+  transform: rotateY(0deg);
+}
+.roadmap .pathGrid .path .path_title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 16px;
+  justify-content: center;
+  white-space: nowrap;
+}
+.roadmap .pathGrid .path .path_title h3 {
+  font-size: 20px;
+  color: #000000;
+}
+.roadmap .pathGrid .path .path_title h5 {
+  font-size: 14px;
+  color: #777777;
+}
+@media screen and (max-width: 576px) {
+  .roadmap .pathGrid .path .path_title {
+    margin: 0;
+  }
 }/*# sourceMappingURL=global.css.map */
