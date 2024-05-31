@@ -89,7 +89,7 @@ const CourseDetails = () => {
         </div>
       </section>
       <WhyUs grantees={course?.grantees} title={course?.grantees_title} />
-      <RoadMap />
+      <RoadMap learningPath={course?.LearningPath} />
       {course?.same_page_checkout && (
         <Plans
           ref={plansRef}

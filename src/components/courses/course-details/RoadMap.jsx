@@ -1,8 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import feature from "../../../assets/images/features.jpg";
 
-const RoadMap = () => {
+const RoadMap = ({ learningPath }) => {
   const { t } = useTranslation();
   return (
     <section className="roadmap">
@@ -13,90 +12,27 @@ const RoadMap = () => {
           </div>
           <div className="col-12 p-2">
             <div className="pathGrid">
-              <div className="path">
-                <div className="flipCard m-auto w-100">
-                  <div
-                    className="cardFront"
-                    style={{ backgroundImage: `url(${feature})` }}
-                  />
-                  <div className="cardBack">
-                    <div className="content">
-                      <p>
-                        اكتب قصتك الخاصة وشارك في مسابقة القصة القصيرة، حيث
-                        ينتظرك عالم من الخيال والإبداع. فرصتك لجذب الانتباه
-                        بأحداث مشوقة وشخصيات لا تُنسى.
-                      </p>
+              {learningPath?.map((path) => (
+                <div className="path" key={path.id}>
+                  <div className="flipCard m-auto w-100">
+                    <div
+                      className="cardFront"
+                      style={{
+                        backgroundImage: `url(${path?.image})`
+                      }}
+                    />
+                    <div className="cardBack">
+                      <div className="content">
+                        <p>{path.description}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="path_title">
-                  <h3>3 شهور</h3>
-                  <h5>( 12 حصة )</h5>
-                </div>
-              </div>
-              <div className="path">
-                <div className="flipCard m-auto w-100">
-                  <div
-                    className="cardFront"
-                    style={{ backgroundImage: `url(${feature})` }}
-                  />
-                  <div className="cardBack">
-                    <div className="content">
-                      <p>
-                        اكتب قصتك الخاصة وشارك في مسابقة القصة القصيرة، حيث
-                        ينتظرك عالم من الخيال والإبداع. فرصتك لجذب الانتباه
-                        بأحداث مشوقة وشخصيات لا تُنسى.
-                      </p>
-                    </div>
+                  <div className="path_title">
+                    <h3>{path?.title}</h3>
+                    <h5>{path?.sub_title}</h5>
                   </div>
                 </div>
-                <div className="path_title">
-                  <h3>3 شهور</h3>
-                  <h5>( 12 حصة )</h5>
-                </div>
-              </div>
-              <div className="path">
-                <div className="flipCard m-auto w-100">
-                  <div
-                    className="cardFront"
-                    style={{ backgroundImage: `url(${feature})` }}
-                  />
-                  <div className="cardBack">
-                    <div className="content">
-                      <p>
-                        اكتب قصتك الخاصة وشارك في مسابقة القصة القصيرة، حيث
-                        ينتظرك عالم من الخيال والإبداع. فرصتك لجذب الانتباه
-                        بأحداث مشوقة وشخصيات لا تُنسى.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="path_title">
-                  <h3>3 شهور</h3>
-                  <h5>( 12 حصة )</h5>
-                </div>
-              </div>
-              <div className="path">
-                <div className="flipCard m-auto w-100">
-                  <div
-                    className="cardFront"
-                    style={{ backgroundImage: `url(${feature})` }}
-                  />
-                  <div className="cardBack">
-                    <div className="content">
-                      <p>
-                        اكتب قصتك الخاصة وشارك في مسابقة القصة القصيرة، حيث
-                        ينتظرك عالم من الخيال والإبداع. فرصتك لجذب الانتباه
-                        بأحداث مشوقة وشخصيات لا تُنسى.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="path_title">
-                  <h3>3 شهور</h3>
-                  <h5>( 12 حصة )</h5>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
