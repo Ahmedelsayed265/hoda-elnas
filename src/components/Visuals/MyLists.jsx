@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 import noResults from "../../assets/images/nodata.svg";
 import { useTranslation } from "react-i18next";
 import axios from "./../../util/axios";
@@ -10,10 +9,11 @@ import { toast } from "react-toastify";
 import AddPlayListModal from "./AddPlayListModal";
 import ListCard from "./ListCard";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
+import { Link } from "react-router-dom";
+import loginImage from "../../assets/images/login.webp";
 
 const MyLists = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [cookies] = useCookies(["refreshToken"]);
   const isAuthenticated = cookies.refreshToken ? true : false;
   const [showModal, setShowModal] = useState(false);
@@ -22,11 +22,6 @@ const MyLists = () => {
   const [playList, setPlayList] = useState({});
   const [loading, setLoading] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const fetchLibrary = async () => {
@@ -79,37 +74,57 @@ const MyLists = () => {
         <DataLoader minHeight="300px" />
       ) : (
         <>
-          {playLists.length === 0 ? (
-            <div className="col-12 p-2">
-              <div className="noDataFound">
-                <img src={noResults} alt="no results" className="mb-3" />
-                <h5>{t("sounds.noPlayLists")}</h5>
-                <p>{t("sounds.noPlayListsSub")}</p>
-                <button onClick={() => setShowModal(true)}>
-                  {t("sounds.createPlayList")}
-                </button>
-              </div>
-            </div>
-          ) : (
+          {isAuthenticated ? (
             <>
-              <div className="col-12 p-2 mb-3">
-                <div className="swiper_pagination_title">
-                  <h5>
-                    <img src={lib} alt="list" /> {t("sounds.myLists")}
-                  </h5>
-                  <div className="create_list">
+              {playLists.length === 0 ? (
+                <div className="col-12 p-2">
+                  <div className="noDataFound">
+                    <img src={noResults} alt="no results" className="mb-3" />
+                    <h5>{t("sounds.noPlayLists")}</h5>
+                    <p>{t("sounds.noPlayListsSub")}</p>
                     <button onClick={() => setShowModal(true)}>
-                      <i className="fa-light fa-plus"></i>{" "}
                       {t("sounds.createPlayList")}
                     </button>
                   </div>
                 </div>
-              </div>
-              {playLists?.map((list) => (
-                <div className="col-lg-4 p-2" key={list?.id}>
-                  <ListCard list={list} onDelete={getId} onEdit={editList} />
+              ) : (
+                <>
+                  <div className="col-12 p-2 mb-3">
+                    <div className="swiper_pagination_title">
+                      <h5>
+                        <img src={lib} alt="list" /> {t("sounds.myLists")}
+                      </h5>
+                      <div className="create_list">
+                        <button onClick={() => setShowModal(true)}>
+                          <i className="fa-light fa-plus"></i>{" "}
+                          {t("sounds.createPlayList")}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  {playLists?.map((list) => (
+                    <div className="col-lg-4 p-2" key={list?.id}>
+                      <ListCard
+                        list={list}
+                        onDelete={getId}
+                        onEdit={editList}
+                      />
+                    </div>
+                  ))}
+                </>
+              )}
+            </>
+          ) : (
+            <>
+              <div className="col-12 p-2">
+                <div className="noDataFound">
+                  <img src={loginImage} alt="no results" className="mb-3" />
+                  <h5>{t("sounds.noPlayListsLoginMessage")}</h5>
+                  <Link to="/login" className="mt-2">
+                    {t("login")}
+                  </Link>
                 </div>
-              ))}
+              </div>
             </>
           )}
         </>

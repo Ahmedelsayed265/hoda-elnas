@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import BestAudios from "./BestAudios";
-import BestVisuals from "./BestVisuals";
+// import BestVisuals from "./BestVisuals";
 
 const Library = () => {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ const Library = () => {
           <div className="col-12 p-2">
             <div className="section_title">
               <h3>{t("homePage.bestAudios")}</h3>
-              <Link to="/acoustics">
+              <Link to="/audios">
                 {t("homePage.allAudios")}{" "}
                 <i className="fa-regular fa-arrow-left-long"></i>
               </Link>
@@ -26,7 +26,7 @@ const Library = () => {
           <div className="col-12 p-2">
             <BestAudios />
           </div>
-          <div className="col-12 p-2">
+          {/* <div className="col-12 p-2">
             <div className="section_title">
               <h3>{t("homePage.bestVisuals")}</h3>
               <Link to="/visuals">
@@ -37,7 +37,7 @@ const Library = () => {
           </div>
           <div className="col-12 p-2">
             <BestVisuals />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

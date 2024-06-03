@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
 import { toast } from "react-toastify";
 import AddAudioToPlayListModal from "./AddAudioToPlayListModal";
+import { useCookies } from "react-cookie";
 
 const Sound = () => {
   const { slug } = useParams();
@@ -25,6 +26,8 @@ const Sound = () => {
   const [audio, setAudio] = useState({});
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [cookies] = useCookies(["refreshToken"]);
+  const isAuthenticated = cookies.refreshToken ? true : false;
 
   useEffect(() => {
     const fetchAudio = async () => {
@@ -169,38 +172,41 @@ const Sound = () => {
                   </Link>
                 ) : (
                   <div className="d-flex flex-column gap-3">
-                    <div className="d-flex gap-4">
-                      <button
-                        className={`add_to_library ${
-                          audio?.in_fav === true ? "danger" : ""
-                        }`}
-                        onClick={
-                          audio?.in_fav === true
-                            ? removeFromLibrary
-                            : addToLibrary
-                        }
-                      >
-                        <span>
-                          {audio?.in_fav === true ? (
-                            <i className="fa-sharp fa-solid fa-bookmark-slash"></i>
-                          ) : (
-                            <i className="fa-regular fa-bookmark"></i>
-                          )}
-                        </span>
-                        {audio?.in_fav === true
-                          ? t("sounds.removeFromMyLibrary")
-                          : t("sounds.addToMyLibrary")}
-                      </button>
-                      <button
-                        className="add_to_library"
-                        onClick={() => setShowModal(true)}
-                      >
-                        <span>
-                          <i className="fa-regular fa-plus"></i>
-                        </span>
-                        {t("sounds.addToPlaylist")}
-                      </button>
-                    </div>
+                    {isAuthenticated && (
+                      <div className="d-flex gap-4">
+                        <button
+                          className={`add_to_library ${
+                            audio?.in_fav === true ? "danger" : ""
+                          }`}
+                          onClick={
+                            audio?.in_fav === true
+                              ? removeFromLibrary
+                              : addToLibrary
+                          }
+                        >
+                          <span>
+                            {audio?.in_fav === true ? (
+                              <i className="fa-sharp fa-solid fa-bookmark-slash"></i>
+                            ) : (
+                              <i className="fa-regular fa-bookmark"></i>
+                            )}
+                          </span>
+                          {audio?.in_fav === true
+                            ? t("sounds.removeFromMyLibrary")
+                            : t("sounds.addToMyLibrary")}
+                        </button>
+                        <button
+                          className="add_to_library"
+                          onClick={() => setShowModal(true)}
+                        >
+                          <span>
+                            <i className="fa-regular fa-plus"></i>
+                          </span>
+                          {t("sounds.addToPlaylist")}
+                        </button>
+                      </div>
+                    )}
+
                     {soundId === audio?.id && isPlaying === true ? (
                       <div className="play_btnn" onClick={stopSound}>
                         <i className="fa-duotone fa-pause"></i>

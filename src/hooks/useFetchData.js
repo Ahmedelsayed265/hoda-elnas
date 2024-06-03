@@ -13,6 +13,8 @@ import { setGrantees } from "../redux/slices/granteesObj";
 import { setBody, setHeader } from "../redux/slices/comparsion";
 import { setFeedBacks } from "../redux/slices/feedBacks";
 import { setTitles } from "../redux/slices/sectionsTitles";
+import { setHighLightedAudios } from "../redux/slices/highlightedAudios";
+import { setPartners } from "../redux/slices/partners";
 
 const useFetchData = (dispatch, lang) => {
   const [loading, setLoading] = useState(true);
@@ -25,6 +27,7 @@ const useFetchData = (dispatch, lang) => {
         const endpoints = [
           "/learningcenter/list_courses/",
           "/learningcenter/list_courses/?highlight=true",
+          "/learningcenter/list_sound_files/?highlight=true",
           "/landingpages/List_web_header/",
           "/landingpages/List_statistics_section/",
           "/landingpages/List_why_you_join_us/",
@@ -35,7 +38,8 @@ const useFetchData = (dispatch, lang) => {
           "/landingpages/List_comparsion_header/",
           "/landingpages/List_comparsion_body/",
           "/landingpages/List_reviews/?type=audio&status=published",
-          "/landingpages/List_sections_title/"
+          "/landingpages/List_sections_title/",
+          "/landingpages/List_partner/"
         ];
 
         // fetch all
@@ -53,37 +57,43 @@ const useFetchData = (dispatch, lang) => {
               dispatch(setHighLightedCourses(response?.data?.message));
               break;
             case 2:
-              dispatch(setHomeIntro(response?.data?.message[0]));
+              dispatch(setHighLightedAudios(response?.data?.message));
               break;
             case 3:
-              dispatch(setStatistics(response?.data?.message));
+              dispatch(setHomeIntro(response?.data?.message[0]));
               break;
             case 4:
-              dispatch(setWhyUs(response?.data?.message));
+              dispatch(setStatistics(response?.data?.message));
               break;
             case 5:
-              dispatch(setFaqs(response?.data?.message));
+              dispatch(setWhyUs(response?.data?.message));
               break;
             case 6:
-              dispatch(setTermsConditions(response?.data?.message));
+              dispatch(setFaqs(response?.data?.message));
               break;
             case 7:
-              dispatch(setPrivacy(response?.data?.message));
+              dispatch(setTermsConditions(response?.data?.message));
               break;
             case 8:
-              dispatch(setGrantees(response?.data?.message[0]));
+              dispatch(setPrivacy(response?.data?.message));
               break;
             case 9:
-              dispatch(setHeader(response?.data?.message[0]));
+              dispatch(setGrantees(response?.data?.message[0]));
               break;
             case 10:
-              dispatch(setBody(response?.data?.message));
+              dispatch(setHeader(response?.data?.message[0]));
               break;
             case 11:
-              dispatch(setFeedBacks(response?.data?.message));
+              dispatch(setBody(response?.data?.message));
               break;
             case 12:
+              dispatch(setFeedBacks(response?.data?.message));
+              break;
+            case 13:
               dispatch(setTitles(response?.data?.message[0]));
+              break;
+            case 14:
+              dispatch(setPartners(response?.data?.message));
               break;
             default:
               break;

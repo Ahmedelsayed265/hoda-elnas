@@ -77,19 +77,21 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
           )}
         </div>
         <p>{truncatedString || "وصف الصوت"}</p>
-        <div className="d-flex align-items-center justify-content-between mt-2">
+        <div className="d-flex align-items-center justify-content-between mt-auto">
           <p>
             <img src={sound} alt="sound" />
             <span>{audio?.length || "00:00:00"}</span>
           </p>
           <div
             className={`likes_container ${
-              audio?.paid === true && !hasAccess ? "disabled" : ""
+              audio?.paid === true || !hasAccess ? "disabled" : ""
             }`}
           >
             <div className="likes">
               <button
-                className={audio?.user_reaction === "like" ? "active" : ""}
+                className={
+                  audio?.user_reaction === "like" && hasAccess ? "active" : ""
+                }
                 onClick={() => onReact(audio?.id, "like")}
               >
                 <i className="fa-solid fa-thumbs-up"></i>
@@ -98,7 +100,11 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
             </div>
             <div className="dislikes">
               <button
-                className={audio?.user_reaction === "dislike" ? "active" : ""}
+                className={
+                  audio?.user_reaction === "dislike" && hasAccess
+                    ? "active"
+                    : ""
+                }
                 onClick={() => onReact(audio?.id, "dislike")}
               >
                 <i className="fa-solid fa-thumbs-down"></i>

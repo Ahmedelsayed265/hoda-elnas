@@ -91,6 +91,17 @@
     "subscribeNow": "Subscribe Now",
     "planLabel": "live session weekly",
     "learningPath": "Your learning path",
+    "coupons": "Discount coupons",
+    "shareFriend": "Share with friend",
+    "couponsHead": "Discount coupons available",
+    "couponsDesc": "Get discount coupons for yourself",
+    "generate": "Generate coupon",
+    "invites": "Invites",
+    "shareWithFriendTitle": "Share with your friend now and get points",
+    "availablePoints": "Available points",
+    "shareWithFriendDesc": "Share this coupon with your friend and get 50 points",
+    "copy": "Copy",
+    "copied": "Copied",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",
@@ -403,7 +414,9 @@
         "removeSoundFromFavourites": "Are you sure you want to remove this file from your favourites?",
         "removeSoundFromList": "Are you sure you want to remove this file from this list?",
         "deletePlayList": "Are you sure you want to delete this list?",
-        "previewContent": "Preview Content"
+        "previewContent": "Preview Content",
+        "noLibiraryLoginMessage": "You must be logged in to view your favourits",
+        "noPlayListsLoginMessage": "You must be logged in to view your lists"
     },
     "applyForJob": {
         "education": "Education",

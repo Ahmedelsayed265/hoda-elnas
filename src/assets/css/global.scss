@@ -835,7 +835,10 @@ body {
         }
       }
       .content {
+        height: 100%;
         padding: 16px;
+        display: flex;
+        flex-direction: column;
         h4 {
           font-size: 16px;
           font-weight: 600;
@@ -5652,3 +5655,125 @@ body.en .roadmap .pathGrid {
     }
   }
 }
+.coupons_sec {
+  h3 {
+    text-align: center;
+    color: $main;
+    font-size: 32px;
+  }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray;
+    text-align: center;
+  }
+  .coupon_card {
+    background-color: $white;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: $lightShadow;
+    .content {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      p {
+        text-align: start;
+        font-size: 12px;
+        margin: 0;
+        line-height: 18px;
+      }
+      h6 {
+        font-size: 22px;
+        color: $main;
+      }
+      .img {
+        min-width: 75px;
+        height: 75px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .links {
+      @include space-between();
+      a {
+        font-size: 16px;
+        color: $secondary;
+        i {
+          font-size: 12px;
+        }
+      }
+      button {
+        background: $secondary;
+        padding: 6px 10px;
+        border-radius: 4px;
+        line-height: 18px;
+        font-size: 14px;
+        color: $white;
+      }
+    }
+  }
+}
+.share_with_friend {
+  h3 {
+    text-align: center;
+    color: $main;
+    font-size: 22px;
+  }
+  h5 {
+    text-align: center;
+    color: $main;
+    font-size: 16px;
+  }
+  .copyShareLinkArea {
+    background: $inputBG;
+    border-radius: 8px;
+    padding: 12px;
+    @include centerFlex();
+    position: relative;
+    h6 {
+      color: $dark;
+      font-weight: 600;
+      margin: 0;
+      line-height: 32px;
+      font-size: 22px;
+    }
+    span {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $secondary;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+  .table_header,
+  .table_body {
+    background: $secondary;
+    padding: 8px;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    .cell {
+      flex: 1;
+      padding: 0 12px;
+      width: 100%;
+      h6 {
+        line-height: 28px;
+        color: $white;
+        margin: 0;
+      }
+    }
+  }
+  .table_body {
+    background: $inputBG;
+    border-radius: 0 0 4px 4px;
+    .cell h6 {
+      color: $dark;
+      font-weight: 600;
+    }
+  }
+}
+

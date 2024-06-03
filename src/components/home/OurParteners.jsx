@@ -1,16 +1,10 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { Autoplay } from "swiper/modules";
-import partener1 from "../../assets/images/p1-min.png";
-import partener2 from "../../assets/images/p2-min.png";
-import partener3 from "../../assets/images/p3-min.png";
-import partener4 from "../../assets/images/p4-min.png";
-import partener5 from "../../assets/images/p5-min.png";
-import partener6 from "../../assets/images/p6-min.png";
+import { Link } from "react-router-dom";
 
-const OurParteners = () => {
+const OurParteners = ({ partners }) => {
   const { t } = useTranslation();
   return (
     <section className="our_parteners">
@@ -40,36 +34,13 @@ const OurParteners = () => {
               }}
               className="teamSwiper"
             >
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener1} alt="partner" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener2} alt="partner" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener3} alt="partner" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener4} alt="partner" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener5} alt="partner" />
-                </div>
-              </SwiperSlide>
-              <SwiperSlide>
-                <div className="img">
-                  <img src={partener6} alt="partner" />
-                </div>
-              </SwiperSlide>
+              {partners?.map((partner, index) => (
+                <SwiperSlide key={index}>
+                  <Link to={partner?.url} target="_blank" className="img">
+                    <img src={partner?.image} alt="partner" />
+                  </Link>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </div>
         </div>

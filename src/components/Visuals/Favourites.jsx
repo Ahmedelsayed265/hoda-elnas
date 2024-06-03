@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import noResults from "../../assets/images/nodata.svg";
 import axios from "./../../util/axios";
@@ -9,21 +9,16 @@ import DataLoader from "./../ui/DataLoader";
 import list from "../../assets/images/favourites.svg";
 import VisualCard from "../layout/VisualCard";
 import ConfirmDeleteModal from "./../ui/ConfirmDeleteModal";
+import loginImage from "../../assets/images/login.webp";
 
 const Favourites = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [library, setLibrary] = useState([]);
   const [cookies] = useCookies(["refreshToken"]);
   const [showModal, setShowModal] = useState(false);
   const [targetIdForRemove, setTargetIdForRemove] = useState(null);
   const isAuthenticated = cookies.refreshToken ? true : false;
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const fetchLibrary = async () => {
@@ -36,7 +31,7 @@ const Favourites = () => {
           setLibrary(libraryResponse?.data?.message);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
@@ -46,6 +41,8 @@ const Favourites = () => {
   }, []);
 
   const removeFromLibrary = async () => {
+    if (!targetIdForRemove) return;
+
     try {
       const res = await axios.delete(
         `/members/Delete_file_resources_list_fav/?resource_id=${targetIdForRemove}`
@@ -61,7 +58,7 @@ const Favourites = () => {
         toast.error(res?.response?.data?.message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -75,24 +72,22 @@ const Favourites = () => {
         }
       );
       if (res.status === 200) {
-        const files = [...library?.files];
         setLibrary((prev) => ({
           ...prev,
-          files: files.map((file) => {
-            if (file?.id === id) {
-              return {
-                ...file,
-                likes: res?.data?.object?.likes,
-                dislikes: res?.data?.object?.dislikes,
-                user_reaction: res?.data?.object?.user_reaction
-              };
-            }
-            return file;
-          })
+          files: prev.files.map((file) =>
+            file?.id === id
+              ? {
+                  ...file,
+                  likes: res?.data?.object?.likes,
+                  dislikes: res?.data?.object?.dislikes,
+                  user_reaction: res?.data?.object?.user_reaction
+                }
+              : file
+          )
         }));
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -105,7 +100,7 @@ const Favourites = () => {
     <div className="row m-0">
       {loading ? (
         <DataLoader minHeight="300px" />
-      ) : (
+      ) : isAuthenticated ? (
         <>
           {library?.files?.length < 1 ? (
             <div className="col-12 p-2">
@@ -137,6 +132,16 @@ const Favourites = () => {
             </>
           )}
         </>
+      ) : (
+        <div className="col-12 p-2">
+          <div className="noDataFound">
+            <img src={loginImage} alt="no results" className="mb-3" />
+            <h5>{t("sounds.noLibiraryLoginMessage")}</h5>
+            <Link to="/login" className="mt-2">
+              {t("login")}
+            </Link>
+          </div>
+        </div>
       )}
       <ConfirmDeleteModal
         text={t("sounds.removeSoundFromFavourites")}

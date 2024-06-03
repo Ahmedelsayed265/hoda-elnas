@@ -2,7 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import SideBar from "../components/settings/SideBar";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import EditAccount from "../components/settings/EditAccount";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
+import Coupons from "../components/settings/Coupons";
+import ShareWithFriend from './../components/settings/ShareWithFriend';
 
 const Profile = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -37,7 +39,7 @@ const Profile = () => {
       navigate("/login");
     }
   }, [isAuthenticated, navigate]);
-  
+
   return (
     <section className="profile_sec">
       <div className="container">
@@ -52,6 +54,8 @@ const Profile = () => {
           <div className="col-lg-9 col-12 p-2">
             <Routes>
               <Route path="/" element={<EditAccount />} />
+              <Route path="/coupons" element={<Coupons />} />
+              <Route path="/share-with-friend" element={<ShareWithFriend />} />
             </Routes>
           </div>
         </div>

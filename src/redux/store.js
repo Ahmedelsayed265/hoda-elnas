@@ -15,6 +15,8 @@ import feedBacks from "./slices/feedBacks";
 import sectionsTitles from "./slices/sectionsTitles";
 import audioSrc from "./slices/audioSrc";
 import vConnectLink from "./slices/vConnectLink";
+import highlightedAudios from "./slices/highlightedAudios";
+import partners from "./slices/partners";
 
 export const store = configureStore({
   reducer: {
@@ -33,6 +35,8 @@ export const store = configureStore({
     feedBacks,
     sectionsTitles,
     audioSrc,
-    vConnectLink
+    vConnectLink,
+    highlightedAudios,
+    partners
   }
 });

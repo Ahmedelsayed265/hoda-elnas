@@ -3,8 +3,6 @@ import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import CourseCard from "../layout/CourseCard";
-import "swiper/css";
-import "swiper/css/pagination";
 
 const BestCoursesSlider = () => {
   const hightLightedCourses = useSelector(

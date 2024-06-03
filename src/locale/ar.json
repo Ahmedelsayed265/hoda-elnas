@@ -91,6 +91,17 @@
     "subscribeNow": "اشترك الان",
     "planLabel": "حصة لايف أسبوعياَ",
     "learningPath": "مسار التعلم الخاص بك",
+    "coupons": "كوبونات الخصم",
+    "shareFriend": "مشاركه صديق",
+    "couponsHead": "كوبونات خصم متاحه لك",
+    "couponsDesc": "كوبونات خصيصا لك استمتع الان",
+    "generate": "احصل على كوبون",
+    "invites": "الدعوات",
+    "shareWithFriendTitle": "إدعو أصدقائك الان واحصل على النقاط",
+    "availablePoints": "النقاط المتوفره",
+    "shareWithFriendDesc": "شارك هذا الكود مع أصدقائك واحصل علي  50 نقطه",
+    "copy": "نسخ الدعوه",
+    "copied": "تم النسخ",
     "auth": {
         "login": "سجل الان",
         "subTitle": "كل من معلمينا لديهم العلم الكافي والخبرة الكافية للشرح وإعداد المادة العلمية الموجودة المستخدمة في المحاضرات.",
@@ -414,7 +425,9 @@
         "removeSoundFromFavourites": "هل أنت متأكد أنك تريد إزالة هذا الملف من المفضلة؟",
         "removeSoundFromList": "هل أنت متأكد أنك تريد إزالة هذا الملف من القائمة؟",
         "deletePlayList": "هل أنت متأكد أنك تريد حذف هذه القائمة؟",
-        "previewContent": "عرض المحتوى"
+        "previewContent": "عرض المحتوى",
+        "noLibiraryLoginMessage": "قم بتسجيل الدخول لمشاهدة مفضلاتك",
+        "noPlayListsLoginMessage": "قم بتسجيل الدخول لمشاهدة قوائم التشغيل"
     },
     "applyForJob": {
         "education": "الدراسة",

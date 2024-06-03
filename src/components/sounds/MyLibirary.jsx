@@ -1,29 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import noResults from "../../assets/images/nodata.svg";
 import axios from "./../../util/axios";
 import DataLoader from "./../ui/DataLoader";
 import AudioCard from "../layout/AudioCard";
 import list from "../../assets/images/favourites.svg";
+import loginImage from "../../assets/images/login.webp";
 import { toast } from "react-toastify";
 import ConfirmDeleteModal from "../ui/ConfirmDeleteModal";
 
 const MyLibirary = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [library, setLibrary] = useState([]);
   const [cookies] = useCookies(["refreshToken"]);
   const [showModal, setShowModal] = useState(false);
   const [targetIdForRemove, setTargetIdForRemove] = useState(null);
   const isAuthenticated = cookies.refreshToken ? true : false;
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const fetchLibrary = async () => {
@@ -107,35 +102,54 @@ const MyLibirary = () => {
         <DataLoader minHeight="300px" />
       ) : (
         <>
-          {library?.files?.length < 1 ? (
+          {isAuthenticated ? (
+            <>
+              {library?.files?.length < 1 ? (
+                <div className="col-12 p-2">
+                  <div className="noDataFound">
+                    <img src={noResults} alt="no results" className="mb-3" />
+                    <h5>{t("sounds.noLibirary")}</h5>
+                    <p>{t("sounds.noLibrarySub")}</p>
+                    <Link to="/sounds" className="mt-2">
+                      {t("sounds.listenNow")}
+                    </Link>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <div className="col-12 p-2 mb-2">
+                    <div className="swiper_pagination_title">
+                      <h5>
+                        <img src={list} alt="list" /> {t("sounds.library")}
+                      </h5>
+                    </div>
+                  </div>
+                  {library?.files?.map((file) => (
+                    <div
+                      className="col-lg-4 col-md-6 col-12 p-2"
+                      key={file?.id}
+                    >
+                      <AudioCard
+                        audio={file}
+                        onReact={handleReacting}
+                        hasRemoveBtn={true}
+                        onRemove={getId}
+                      />
+                    </div>
+                  ))}
+                </>
+              )}
+            </>
+          ) : (
             <div className="col-12 p-2">
               <div className="noDataFound">
-                <img src={noResults} alt="no results" className="mb-3" />
-                <h5>{t("sounds.noLibirary")}</h5>
-                <p>{t("sounds.noLibrarySub")}</p>
-                <Link to="/audios">{t("sounds.listenNow")}</Link>
+                <img src={loginImage} alt="no results" className="mb-3" />
+                <h5>{t("sounds.noLibiraryLoginMessage")}</h5>
+                <Link to="/login" className="mt-2">
+                  {t("login")}
+                </Link>
               </div>
             </div>
-          ) : (
-            <>
-              <div className="col-12 p-2 mb-2">
-                <div className="swiper_pagination_title">
-                  <h5>
-                    <img src={list} alt="list" /> {t("sounds.library")}
-                  </h5>
-                </div>
-              </div>
-              {library?.files?.map((file) => (
-                <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
-                  <AudioCard
-                    audio={file}
-                    onReact={handleReacting}
-                    hasRemoveBtn={true}
-                    onRemove={getId}
-                  />
-                </div>
-              ))}
-            </>
           )}
         </>
       )}

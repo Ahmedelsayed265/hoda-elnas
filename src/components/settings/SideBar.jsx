@@ -23,6 +23,18 @@ const SideBar = ({ menuOpen, setMenuOpen, menuRef }) => {
           </NavLink>
         </li>
         <li onClick={() => setMenuOpen(false)}>
+          <NavLink end to="coupons">
+            <i className="fa-solid fa-ticket-simple"></i>
+            {t("coupons")}
+          </NavLink>
+        </li>
+        <li onClick={() => setMenuOpen(false)}>
+          <NavLink end to="share-with-friend">
+            <i className="fa-sharp fa-solid fa-share"></i>
+            {t("shareFriend")}
+          </NavLink>
+        </li>
+        <li onClick={() => setMenuOpen(false)}>
           <NavLink end to="/logout">
             <i className="fa-regular fa-arrow-right-from-bracket"></i>
             {t("logout")}
