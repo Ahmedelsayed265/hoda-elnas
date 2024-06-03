@@ -4,7 +4,7 @@ import student from "../../../../assets/images/student.svg";
 import axios from "./../../../../util/axios";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL, DAYS_AR, DAYS_EN } from "../../../../constants";
+import { DAYS_AR, DAYS_EN } from "../../../../constants";
 import { useTimeFormatting } from "../../../../hooks/useTimeFormatting";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -108,7 +108,7 @@ const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
             <img
               src={
                 appointment?.student_details?.student_img
-                  ? `${BASE_URL}${appointment?.student_details?.student_img}`
+                  ? appointment?.student_details?.student_img
                   : student
               }
               alt="instructor"
@@ -123,7 +123,7 @@ const AppointmentCard = ({ appointment, handleEdit, handleCancel }) => {
             <img
               src={
                 appointment?.instructor_details?.instructor_img
-                  ? `${BASE_URL}${appointment?.instructor_details?.instructor_img}`
+                  ? appointment?.instructor_details?.instructor_img
                   : man
               }
               alt="instructor"

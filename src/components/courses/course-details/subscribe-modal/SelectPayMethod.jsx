@@ -1,7 +1,6 @@
 import React from "react";
 import debitCard from "../../../../assets/images/debit_card.svg";
 import { useTranslation } from "react-i18next";
-import { BASE_URL } from "../../../../constants";
 import { toast } from "react-toastify";
 
 const SelectPayMethod = ({
@@ -36,10 +35,7 @@ const SelectPayMethod = ({
                   />
                   <div className="content">
                     <div className="icon_title">
-                      <img
-                        src={`${BASE_URL}${me?.icon}` || debitCard}
-                        alt="debit_card"
-                      />
+                      <img src={me?.icon || debitCard} alt="debit_card" />
                       <h6>{me?.title}</h6>
                     </div>
                     <p>{me?.description}</p>

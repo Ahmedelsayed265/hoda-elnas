@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import DataLoader from "./../ui/DataLoader";
 import PdfViewer from "./../ui/PdfViewer";
-import { BASE_URL } from "../../constants";
 
 const VisualContent = () => {
   const { slug } = useParams();
@@ -36,7 +35,7 @@ const VisualContent = () => {
   const decodeFileUrl = (file) => {
     const decodedUrlBase64 = decodeURIComponent(file);
     const decodedUrl = atob(decodedUrlBase64);
-    setFileSrc(`${BASE_URL}${decodedUrl}`);
+    setFileSrc(decodedUrl);
   };
 
   useEffect(() => {

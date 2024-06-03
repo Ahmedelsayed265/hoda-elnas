@@ -1,5 +1,4 @@
 import React from "react";
-import { BASE_URL } from "../../constants";
 import { useTranslation } from "react-i18next";
 
 const CourseSubCard = ({
@@ -18,7 +17,7 @@ const CourseSubCard = ({
         >
           <span>{subscription?.status}</span>
         </div>
-        <img src={`${BASE_URL}${subscription?.background}`} alt="course" />
+        <img src={subscription?.background} alt="course" />
       </div>
       <div className="content">
         <div className="d-flex align-items-start justify-content-between">

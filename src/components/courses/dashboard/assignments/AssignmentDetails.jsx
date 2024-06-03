@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "./../../../../util/axios";
 import { toast } from "react-toastify";
 import { useNavigate, useParams } from "react-router-dom";
-import { BASE_URL } from "../../../../constants";
 import { useTranslation } from "react-i18next";
 import imagePlus from "../../../../assets/images/upload.svg";
 import man from "../../../../assets/images/man.svg";
@@ -191,7 +190,7 @@ const AssignmentDetails = () => {
                         <img
                           src={
                             assignment?.instructor?.instructor_img
-                              ? `${BASE_URL}${assignment?.instructor?.instructor_img}`
+                              ? assignment?.instructor?.instructor_img
                               : man
                           }
                           alt="instructor"
@@ -286,7 +285,7 @@ const AssignmentDetails = () => {
                                 <source
                                   src={
                                     typeof formData?.st_voice === "string"
-                                      ? `${BASE_URL}${formData?.st_voice}`
+                                      ? formData?.st_voice
                                       : URL.createObjectURL(formData?.st_voice)
                                   }
                                   type="audio/mp3"
@@ -320,10 +319,7 @@ const AssignmentDetails = () => {
                   {assignment?.st_voice && (
                     <div className="voice_answer">
                       <audio controls>
-                        <source
-                          src={`${BASE_URL}${assignment?.st_voice}`}
-                          type="audio/mp3"
-                        />
+                        <source src={assignment?.st_voice} type="audio/mp3" />
                       </audio>
                     </div>
                   )}
@@ -339,10 +335,7 @@ const AssignmentDetails = () => {
                   {assignment?.inst_voice && (
                     <div className="voice_answer">
                       <audio controls>
-                        <source
-                          src={`${BASE_URL}${assignment?.inst_voice}`}
-                          type="audio/mp3"
-                        />
+                        <source src={assignment?.inst_voice} type="audio/mp3" />
                       </audio>
                     </div>
                   )}

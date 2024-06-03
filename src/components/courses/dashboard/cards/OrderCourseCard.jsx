@@ -1,5 +1,4 @@
 import React from "react";
-import { BASE_URL } from "../../../../constants";
 import { useTranslation } from "react-i18next";
 import timer from "../../../../assets/images/timer.svg";
 
@@ -12,10 +11,7 @@ const OrderCourseCard = ({ order }) => {
         <p>{t("joinRequestInReview")}</p>
       </div>
       <div className="img">
-        <img
-          src={`${BASE_URL}${order?.course_details?.background}`}
-          alt="course"
-        />
+        <img src={order?.course_details?.background} alt="course" />
       </div>
       <div className="content">
         <div className="d-flex align-items-start justify-content-between">

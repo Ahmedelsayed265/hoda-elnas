@@ -2,7 +2,6 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { BASE_URL } from "../constants";
 import VideoModal from "../components/ui/VideoModal";
 import CourseFaqs from "../components/courses/course-details/CourseFaqs";
 import WhyUs from "../components/courses/course-details/WhyUs";
@@ -54,7 +53,7 @@ const CourseDetails = () => {
               <div
                 className="video_wrapper"
                 style={{
-                  backgroundImage: `url(${BASE_URL}${course?.background})`
+                  backgroundImage: `url(${course?.background})`
                 }}
               >
                 {course?.installment && <span>{t("installment")}</span>}

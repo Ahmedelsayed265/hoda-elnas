@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../../../constants";
 import { useTranslation } from "react-i18next";
 import axios from "../../../../util/axios";
 
@@ -37,7 +36,7 @@ const AvailableCourse = ({ subscription }) => {
         >
           <span>{subscription?.status}</span>
         </div>
-        <img src={`${BASE_URL}${subscription?.background}`} alt="course" />
+        <img src={subscription?.background} alt="course" />
       </div>
       <div className="content">
         <div className="d-flex align-items-start justify-content-between">

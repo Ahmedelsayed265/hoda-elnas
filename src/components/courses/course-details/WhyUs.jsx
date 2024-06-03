@@ -1,6 +1,5 @@
 import React from "react";
 import arrow from "../../../assets/images/arrow.svg";
-import { BASE_URL } from "../../../constants";
 
 const WhyUs = ({ title, grantees }) => {
   return (
@@ -15,7 +14,7 @@ const WhyUs = ({ title, grantees }) => {
             <div className="col-lg-3 col-md-6 col-12 p-2" key={index}>
               <div className="grantee_card">
                 <div className="icon">
-                  <img src={`${BASE_URL}${grantee?.icon}`} alt="grantee" />
+                  <img src={grantee?.icon} alt="grantee" />
                 </div>
                 <h4>{grantee?.title}</h4>
                 <p>{grantee?.description}</p>

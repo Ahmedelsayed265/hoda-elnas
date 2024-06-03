@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import audioPoster from "../../assets/images/audio.jpeg";
@@ -25,7 +24,7 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
     if (file) {
       const decodedUrlBase64 = decodeURIComponent(file);
       const decodedUrl = atob(decodedUrlBase64);
-      dispatch(setSrc(`${BASE_URL}${decodedUrl}`));
+      dispatch(setSrc(decodedUrl));
       dispatch(setId(id));
       dispatch(setIsPlaying(true));
       dispatch(setName(audio?.name));
@@ -41,9 +40,7 @@ const AudioCard = ({ audio, onReact, hasRemoveBtn, onRemove }) => {
     <div className="audio-card">
       <Link to={`/audios/${audio?.slug}`} className="img">
         <img
-          src={
-            audio?.background ? `${BASE_URL}${audio?.background}` : audioPoster
-          }
+          src={audio?.background ? audio?.background : audioPoster}
           alt="course"
         />
         {audio?.paid === true && (

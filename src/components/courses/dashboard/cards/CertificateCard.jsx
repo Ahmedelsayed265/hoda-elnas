@@ -4,7 +4,6 @@ import man from "../../../../assets/images/man.svg";
 import pdf from "../../../../assets/images/pdf.svg";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import { BASE_URL } from "../../../../constants";
 
 const CertificateCard = ({ certificate }) => {
   const { t } = useTranslation();
@@ -28,9 +27,7 @@ const CertificateCard = ({ certificate }) => {
           <div className="img">
             <img
               src={
-                certificate.Instructor_img
-                  ? `${BASE_URL}${certificate.Instructor_img}`
-                  : man
+                certificate.Instructor_img ? certificate.Instructor_img : man
               }
               alt="instructor"
             />

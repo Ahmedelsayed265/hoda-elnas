@@ -3,7 +3,6 @@ import audioPoster from "../../assets/images/audio.jpeg";
 import axios from "./../../util/axios";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 import {
   setId,
   setIsPlaying,
@@ -50,7 +49,7 @@ const Sound = () => {
     if (file) {
       const decodedUrlBase64 = decodeURIComponent(file);
       const decodedUrl = atob(decodedUrlBase64);
-      dispatch(setSrc(`${BASE_URL}${decodedUrl}`));
+      dispatch(setSrc(decodedUrl));
       dispatch(setId(id));
       dispatch(setIsPlaying(true));
       dispatch(setName(audio?.name));
@@ -132,10 +131,7 @@ const Sound = () => {
           </div>
           <div className="col-lg-5 col-12 p-2">
             <div className="sound_img">
-              <img
-                src={`${BASE_URL}${audio?.background}` || audioPoster}
-                alt={audio?.name}
-              />
+              <img src={audio?.background || audioPoster} alt={audio?.name} />
             </div>
             <div
               className={`likes_container mt-3 ${

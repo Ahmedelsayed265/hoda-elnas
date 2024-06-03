@@ -3,7 +3,6 @@ import VideoModal from "../ui/VideoModal";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { BASE_URL } from "../../constants";
 
 const HeroSection = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -34,7 +33,7 @@ const HeroSection = () => {
               <div
                 className="video_wrapper"
                 style={{
-                  backgroundImage: `url(${BASE_URL}${appIntro?.image})`
+                  backgroundImage: `url(${appIntro?.image})`
                 }}
               >
                 {appIntro?.video && (

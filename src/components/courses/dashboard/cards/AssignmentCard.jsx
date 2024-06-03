@@ -4,7 +4,6 @@ import student from "../../../../assets/images/student.svg";
 import instructor from "../../../../assets/images/man.svg";
 import { useTranslation } from "react-i18next";
 import useTruncateString from "../../../../hooks/useTruncateString";
-import { BASE_URL } from "../../../../constants";
 
 const AssignmentCard = ({ assignment, path }) => {
   const { t } = useTranslation();
@@ -19,7 +18,7 @@ const AssignmentCard = ({ assignment, path }) => {
             <img
               src={
                 assignment?.instructor?.instructor_img
-                  ? `${BASE_URL}${assignment?.instructor?.instructor_img}`
+                  ? assignment?.instructor?.instructor_img
                   : instructor
               }
               alt="instructor"

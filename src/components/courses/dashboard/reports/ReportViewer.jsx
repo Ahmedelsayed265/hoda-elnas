@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "./../../../../util/axios";
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../../../ui/DataLoader";
-import { BASE_URL } from "../../../../constants";
 
 const ReportViewer = () => {
   const { reportId, subscriptionId } = useParams();
@@ -71,7 +70,7 @@ const ReportViewer = () => {
                 <>
                   {pdfUrl ? (
                     <div className="col-12 p-2 pt-3">
-                      <PdfViewer pdfUrl={`${BASE_URL}${pdfUrl}`} />
+                      <PdfViewer pdfUrl={pdfUrl} />
                     </div>
                   ) : (
                     <div className="noStudents">
@@ -84,7 +83,7 @@ const ReportViewer = () => {
                   {recordSrc ? (
                     <div className="col-12 p-2 pt-3">
                       <video
-                        src={`${BASE_URL}${recordSrc}`}
+                        src={recordSrc}
                         controls
                         className="w-100 h-100"
                       ></video>

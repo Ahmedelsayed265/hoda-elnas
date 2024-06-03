@@ -3,7 +3,6 @@ import audioPoster from "../../assets/images/audio.jpeg";
 import axios from "./../../util/axios";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 import { useTranslation } from "react-i18next";
 import DataLoader from "./../ui/DataLoader";
 import { toast } from "react-toastify";
@@ -108,11 +107,7 @@ const Visual = () => {
           <div className="col-lg-5 col-12 p-2">
             <div className="sound_img">
               <img
-                src={
-                  file?.background
-                    ? `${BASE_URL}${file?.background}`
-                    : audioPoster
-                }
+                src={file?.background ? file?.background : audioPoster}
                 alt={file?.name}
               />
             </div>

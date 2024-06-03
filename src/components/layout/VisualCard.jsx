@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import book from "../../assets/images/book.jpeg";
 import pagesIcon from "../../assets/images/pages.svg";
-import { BASE_URL } from "../../constants";
 import { useSelector } from "react-redux";
 import useTruncateString from "../../hooks/useTruncateString";
 import videoIcon from "../../assets/images/video.svg";
@@ -15,10 +14,7 @@ const VisualCard = ({ file, onReact, hasRemoveBtn, onRemove }) => {
   return (
     <div className="audio-card">
       <Link to={`/visuals/${file?.slug}`} className="img">
-        <img
-          src={file?.background ? `${BASE_URL}${file?.background}` : book}
-          alt="course"
-        />
+        <img src={file?.background ? file?.background : book} alt="course" />
         {file?.paid === true && (
           <Link to="/library-subscribe" className="subscribe">
             {t("sounds.subscribeNow")}

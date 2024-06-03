@@ -3,7 +3,6 @@ import axios from "../../../util/axios";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../../constants";
 import TotalPrice from "../../courses/subscription/TotalPrice";
 import SubmitButton from "../../ui/form-elements/SubmitButton";
 import InputField from "../../ui/InputField";
@@ -238,7 +237,7 @@ const CompleteProcess = ({
               </div>
               {showMethod ? (
                 <div className="img">
-                  <img src={`${BASE_URL}${method?.image}`} alt="method" />
+                  <img src={method?.image} alt="method" />
                 </div>
               ) : (
                 <div className="upload_wrapper">

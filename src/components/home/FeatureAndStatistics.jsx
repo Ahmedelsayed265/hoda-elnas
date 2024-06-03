@@ -3,7 +3,6 @@ import CountUp from "react-countup";
 import icon1 from "../../assets/images/cashBack.svg";
 import icon2 from "../../assets/images/switchTeacher.svg";
 import { useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 
 const FeatureAndStatistics = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -92,7 +91,7 @@ const FeatureAndStatistics = () => {
             <div className="img">
               <img
                 style={{ opacity: imageLoaded ? 1 : 0 }}
-                src={`${BASE_URL}${whyus[activeFeature]?.image}`}
+                src={whyus[activeFeature]?.image}
                 alt="features"
                 onLoad={handleImageLoad}
               />

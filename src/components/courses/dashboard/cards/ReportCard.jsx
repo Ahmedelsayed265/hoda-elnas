@@ -4,7 +4,6 @@ import man from "../../../../assets/images/man.svg";
 import pdf from "../../../../assets/images/pdf.svg";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import { BASE_URL } from "../../../../constants";
 
 const ReportCard = ({ report }) => {
   const { t } = useTranslation();
@@ -18,11 +17,7 @@ const ReportCard = ({ report }) => {
         <div className="name_img">
           <div className="img">
             <img
-              src={
-                report.Student_img
-                  ? `${BASE_URL}${report.Student_img}`
-                  : studentAvatar
-              }
+              src={report.Student_img ? report.Student_img : studentAvatar}
               alt="student"
             />
           </div>
@@ -31,11 +26,7 @@ const ReportCard = ({ report }) => {
         <div className="name_img">
           <div className="img">
             <img
-              src={
-                report.Instructor_img
-                  ? `${BASE_URL}${report?.Instructor_img}`
-                  : man
-              }
+              src={report.Instructor_img ? report?.Instructor_img : man}
               alt="instructor"
             />
           </div>

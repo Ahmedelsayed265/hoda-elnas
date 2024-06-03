@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BASE_URL } from "../../constants";
 
 const CourseCard = ({ course }) => {
   return (
     <div className="custom-card">
       <Link to={`/courses/${course?.slug}`} className="img">
-        <img src={`${BASE_URL}${course?.background}`} alt="course" />
+        <img src={course?.background} alt="course" />
       </Link>
       <div className="content">
         <div className="d-flex align-items-start justify-content-between">

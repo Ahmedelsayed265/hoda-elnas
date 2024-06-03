@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { BASE_URL } from "../../../constants";
 import SubscribeForm from "./SubscribeForm";
 import axios from "../../../util/axios";
 import CourseBenifits from "../course-details/CourseBenifits";
@@ -73,10 +72,7 @@ const Subscribe = () => {
           </div>
           <div className="col-lg-4 col-12 p-2 order-lg-1 order-0">
             <div className="image">
-              <img
-                src={`${BASE_URL}${course?.background}`}
-                alt={course?.name}
-              />
+              <img src={course?.background} alt={course?.name} />
             </div>
             <div className="course_header">
               <h3>{course?.name}</h3>

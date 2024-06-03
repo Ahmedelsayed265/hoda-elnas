@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import SubmitButton from "../ui/form-elements/SubmitButton";
 import InputField from "../ui/InputField";
 import { useSelector } from "react-redux";
-import { BASE_URL } from "../../constants";
 
 const CompleteProcess = ({ setStepName, method, plan, location }) => {
   const { t } = useTranslation();
@@ -228,7 +227,7 @@ const CompleteProcess = ({ setStepName, method, plan, location }) => {
               </div>
               {showMethod ? (
                 <div className="img">
-                  <img src={`${BASE_URL}${method?.image}`} alt="method" />
+                  <img src={method?.image} alt="method" />
                 </div>
               ) : (
                 <div className="upload_wrapper">

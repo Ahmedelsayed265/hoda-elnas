@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import StarsList from "./StarsList";
-import { BASE_URL } from "../../constants";
 
 const TestimonialCard = ({ feedback }) => {
   const [play, setPlay] = useState(false);
@@ -64,7 +63,7 @@ const TestimonialCard = ({ feedback }) => {
         )}
         {feedback?.type === "image" && (
           <div className="img">
-            <img src={`${BASE_URL}${feedback?.review}`} alt="" />
+            <img src={feedback?.review} alt="" />
           </div>
         )}
         {feedback?.type === "text" && (
@@ -74,7 +73,7 @@ const TestimonialCard = ({ feedback }) => {
         )}
         {feedback?.type === "video" && (
           <div className="img">
-            <video src={`${BASE_URL}${feedback?.review}`} controls></video>
+            <video src={feedback?.review} controls></video>
           </div>
         )}
         <div className="rate">
@@ -86,7 +85,7 @@ const TestimonialCard = ({ feedback }) => {
         ref={audio}
         className="hidden_audio"
         onEnded={handleAudioEnd}
-        src={`${BASE_URL}${feedback?.review}`}
+        src={feedback?.review}
       />
     </>
   );

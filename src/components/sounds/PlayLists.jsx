@@ -4,7 +4,6 @@ import list from "../../assets/images/list.svg";
 import axios from "./../../util/axios";
 import { useSelector } from "react-redux";
 import DataLoader from "../ui/DataLoader";
-import { BASE_URL } from "../../constants";
 import { Link } from "react-router-dom";
 
 const PlayLists = () => {
@@ -52,7 +51,7 @@ const PlayLists = () => {
               >
                 <h5>{list?.name}</h5>
                 <div className="img">
-                  <img src={`${BASE_URL}${list?.icon}`} alt={list?.name} />
+                  <img src={list?.icon} alt={list?.name} />
                 </div>
               </Link>
             </div>
