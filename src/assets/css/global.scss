@@ -1711,7 +1711,7 @@ body {
             background: $main;
             flex: 1;
             .icon {
-              width: 80px;
+              min-width: 80px;
               height: 80px;
               border-radius: 50%;
               background: $white;
@@ -1884,6 +1884,7 @@ body {
           margin-bottom: 8px;
         }
         p {
+          text-align: center;
           color: $white;
         }
         .slider {
@@ -5776,4 +5777,3 @@ body.en .roadmap .pathGrid {
     }
   }
 }
-

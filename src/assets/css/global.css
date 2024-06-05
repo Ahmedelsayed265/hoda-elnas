@@ -1789,7 +1789,7 @@ body main .feature_and_statistics .good_Experience .solutions .solution {
   flex: 1;
 }
 body main .feature_and_statistics .good_Experience .solutions .solution .icon {
-  width: 80px;
+  min-width: 80px;
   height: 80px;
   border-radius: 50%;
   background: #fff;
@@ -1970,6 +1970,7 @@ body main .our_parteners .slider_wrapper h3 {
   margin-bottom: 8px;
 }
 body main .our_parteners .slider_wrapper p {
+  text-align: center;
   color: #fff;
 }
 body main .our_parteners .slider_wrapper .slider {

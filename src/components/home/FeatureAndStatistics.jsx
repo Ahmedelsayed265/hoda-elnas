@@ -137,7 +137,7 @@ const FeatureAndStatistics = () => {
       <div className="row justify-content-center m-0 mt-5">
         <div className="col-lg-9 col-12 p-2">
           <div className="good_Experience">
-            <h3>{grantees?.title}</h3>
+            <h3 className="text-center">{grantees?.title}</h3>
             <div className="notSatisfied">
               <h5>{grantees?.sub_title}</h5>
             </div>

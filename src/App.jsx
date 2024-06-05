@@ -52,6 +52,14 @@ const App = () => {
   const currentAudio = useSelector((state) => state.audioSrc);
 
   useEffect(() => {
+    sessionStorage.setItem("lang", lang);
+    const body = document.querySelector("body");
+    lang === "en" ? body.classList.add("en") : body.classList.remove("en");
+  }, [lang]);
+
+  console.log(lang);
+
+  useEffect(() => {
     if (decodedToken && !isExpired) {
       const userId = decodedToken?.user_id;
       const token = axios.post(`/api/token/refresh/`, {

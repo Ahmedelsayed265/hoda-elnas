@@ -14,14 +14,16 @@ const resources = {
   }
 };
 
+const lang = sessionStorage.getItem("lang") || "ar";
+
 i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: "ar",
-    lng: "ar",
+    fallbackLng: lang,
+    lng: lang,
     debug: true,
     interpolation: {
       escapeValue: false

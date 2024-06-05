@@ -1,10 +1,10 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
-
+const lang = sessionStorage.getItem("lang");
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.headers.common["Content-Type"] = "application/json";
 axios.defaults.headers.common["Accept"] = "application/json";
-axios.defaults.headers.common["Accept-Language"] = "ar";
+axios.defaults.headers.common["Accept-Language"] = lang;
 axios.defaults.headers.common["x-api-key"] =
   "3f80d796-eec7-4163-91c2-991550076cbf";
 
