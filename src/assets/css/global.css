@@ -5944,19 +5944,22 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
   margin-bottom: 16px;
   justify-content: center;
-  white-space: nowrap;
 }
 .roadmap .pathGrid .path .path_title h3 {
+  text-align: center;
   font-size: 20px;
   color: #000000;
 }
 .roadmap .pathGrid .path .path_title h5 {
   font-size: 14px;
   color: #777777;
+  text-align: center;
 }
 @media screen and (max-width: 576px) {
   .roadmap .pathGrid .path .path_title {
     margin: 0;
+    min-width: 60px;
+    max-width: 60px;
   }
 }
 

@@ -5628,17 +5628,20 @@ input::-webkit-inner-spin-button {
         flex-direction: column;
         margin-bottom: 16px;
         justify-content: center;
-        white-space: nowrap;
         h3 {
+          text-align: center;
           font-size: 20px;
           color: $dark;
         }
         h5 {
           font-size: 14px;
           color: $gray;
+          text-align: center;
         }
         @media screen and (max-width: 576px) {
           margin: 0;
+          min-width: 60px;
+          max-width: 60px;
         }
       }
     }
