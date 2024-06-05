@@ -817,11 +817,12 @@ body main .audio-card {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 body main .audio-card .img {
+  aspect-ratio: 3/2;
   position: relative;
   width: 100%;
 }
 body main .audio-card .img img {
-  aspect-ratio: 3/2;
+  height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;

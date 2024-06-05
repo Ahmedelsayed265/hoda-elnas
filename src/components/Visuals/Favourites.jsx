@@ -28,7 +28,7 @@ const Favourites = () => {
           `/members/List_userresourcelist_files_fav/`
         );
         if (libraryResponse.status === 200) {
-          setLibrary(libraryResponse?.data?.message);
+          setLibrary(libraryResponse?.data?.message?.files);
         }
       } catch (error) {
         console.error(error);
@@ -50,10 +50,7 @@ const Favourites = () => {
       if (res.status === 200) {
         toast.success(t("sounds.removedFromLibrary"));
         setShowModal(false);
-        setLibrary((prev) => ({
-          ...prev,
-          files: prev?.files?.filter((file) => file?.id !== targetIdForRemove)
-        }));
+        setLibrary(library?.filter((file) => file?.id !== targetIdForRemove));
       } else {
         toast.error(res?.response?.data?.message);
       }
@@ -102,7 +99,7 @@ const Favourites = () => {
         <DataLoader minHeight="300px" />
       ) : isAuthenticated ? (
         <>
-          {library?.files?.length < 1 ? (
+          {library?.length === 0 ? (
             <div className="col-12 p-2">
               <div className="noDataFound">
                 <img src={noResults} alt="no results" className="mb-3" />
@@ -119,7 +116,7 @@ const Favourites = () => {
                   </h5>
                 </div>
               </div>
-              {library?.files?.map((file) => (
+              {library?.map((file) => (
                 <div className="col-lg-4 col-md-6 col-12 p-2" key={file?.id}>
                   <VisualCard
                     file={file}
