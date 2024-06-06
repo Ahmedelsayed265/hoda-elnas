@@ -3901,12 +3901,38 @@ body.en .audio-card {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
-.loader i {
-  font-size: 48px;
-  color: #81a63d;
+.loader img {
+  height: 70px;
+}
+.loader span {
+  width: 120px;
+  height: 2px;
+  background: #f8f8f8;
+  position: relative;
+  overflow: hidden;
+}
+.loader span::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  background: #31535a;
+  height: 100%;
+  animation: loading 0.5s linear infinite alternate;
 }
 
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120px);
+  }
+}
 .hidden_audio {
   width: 0 !important;
   height: 0 !important;

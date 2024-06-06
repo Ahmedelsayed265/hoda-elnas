@@ -3724,9 +3724,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  i {
-    font-size: 48px;
-    color: $secondary;
+  flex-direction: column;
+  gap: 16px;
+  img {
+    height: 70px;
+  }
+  span {
+    width: 120px;
+    height: 2px;
+    background: $inputBG;
+    position: relative;
+    overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 24px;
+      background: $main;
+      height: 100%;
+      animation: loading 0.5s linear infinite alternate;
+    }
+  }
+}
+@keyframes loading {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120px);
   }
 }
 .hidden_audio {
