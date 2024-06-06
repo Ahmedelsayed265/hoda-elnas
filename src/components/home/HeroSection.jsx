@@ -51,7 +51,11 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-      <VideoModal showModal={showModal} setShowModal={setShowModal} />
+      <VideoModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        video={appIntro?.video}
+      />
     </>
   );
 };

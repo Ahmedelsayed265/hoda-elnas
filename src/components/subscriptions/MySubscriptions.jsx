@@ -17,8 +17,6 @@ const MySubscriptions = () => {
   const navigate = useNavigate();
   const lang = useSelector((state) => state.language.lang);
   const user = useSelector((state) => state.authedUser.user);
-  const logged = useSelector((state) => state.authedUser.logged);
-
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [librarySubs, setLibrarySubs] = useState([]);
@@ -94,16 +92,6 @@ const MySubscriptions = () => {
       }));
     }
   }, [course, mySubscriptions, subscriptionId]);
-
-  // check if user is logged
-  useEffect(() => {
-    if (!user) {
-      return;
-    }
-    if (!logged) {
-      navigate("/login");
-    }
-  }, [logged, navigate, user]);
 
   // fetch course
   useEffect(() => {
@@ -247,37 +235,53 @@ const MySubscriptions = () => {
               {librarySubs.length < 1 && (
                 <div className="col-12 p-2">
                   <div className="librarySubLink">
-                    <Link to="/library-subscribe">{t("librarySubAds")}</Link>
+                    <Link to="/library-subscribe">
+                      {t("librarySubAds")}{" "}
+                      <i className="fa-regular fa-arrow-up-right-from-square"></i>
+                    </Link>
                   </div>
                 </div>
               )}
             </>
           )}
-          <div className="col-12 p-2 mt-4">
-            <div className="section_title">
-              <div className="img">
-                <img src={subsIcon} alt="subs" />
-              </div>
-              <h2>{t("coursesSubs")}</h2>
-            </div>
-          </div>
           {loading ? (
             <DataLoader />
           ) : (
             <>
-              {mySubscriptions?.map((subscription) => (
-                <div
-                  className="col-lg-4 col-md-6 col-12 p-2"
-                  key={subscription?.id}
-                >
-                  <CourseSubCard
-                    subscription={subscription}
-                    onRenewOrder={() => renewOrder(subscription?.id)}
-                    onUpgradeOrder={() => upgradeOrder(subscription?.id)}
-                    onCancel={() => handleCancelSubscription(subscription?.id)}
-                  />
+              {librarySubs.length > 0 ? (
+                <>
+                  <div className="col-12 p-2 ">
+                    <div className="section_title">
+                      <div className="img">
+                        <img src={subsIcon} alt="subs" />
+                      </div>
+                      <h2>{t("coursesSubs")}</h2>
+                    </div>
+                  </div>
+                  {mySubscriptions?.map((subscription) => (
+                    <div
+                      className="col-lg-4 col-md-6 col-12 p-2"
+                      key={subscription?.id}
+                    >
+                      <CourseSubCard
+                        subscription={subscription}
+                        onRenewOrder={() => renewOrder(subscription?.id)}
+                        onUpgradeOrder={() => upgradeOrder(subscription?.id)}
+                        onCancel={() =>
+                          handleCancelSubscription(subscription?.id)
+                        }
+                      />
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <div className="col-12 p-2">
+                  <div className="noSubs">
+                    <h1>{t("noSubs")}</h1>
+                    <Link to="/courses">{t("browseAndStartLearning")}</Link>
+                  </div>
                 </div>
-              ))}
+              )}
             </>
           )}
         </div>

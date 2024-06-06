@@ -1,8 +1,7 @@
 import { Modal } from "react-bootstrap";
 import React from "react";
-import video from "../../assets/images/video.mp4";
 
-const VideoModal = ({ showModal, setShowModal }) => {
+const VideoModal = ({ showModal, setShowModal, video }) => {
   return (
     <Modal show={showModal} onHide={() => setShowModal(false)} centered>
       <Modal.Header closeButton />

@@ -102,6 +102,9 @@
     "shareWithFriendDesc": "Share this coupon with your friend and get 50 points",
     "copy": "Copy",
     "copied": "Copied",
+    "noSubs": "You don't have any subscriptions",
+    "errorPageTitle": "This link doesn't exist or it has been deleted..!",
+    "backToHome":  "Back to Home",
     "auth": {
         "login": "Login Now",
         "subTitle": "All of our teachers have sufficient knowledge and experience to explain and prepare the existing scientific material used in lectures.",

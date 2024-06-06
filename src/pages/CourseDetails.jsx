@@ -100,7 +100,11 @@ const CourseDetails = () => {
       )}
       <CourseFaqs faqs={course?.FAQ} />
       <Reviews />
-      <VideoModal showModal={showModal} setShowModal={setShowModal} />
+      <VideoModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        video={course?.promo}
+      />
     </>
   );
 };

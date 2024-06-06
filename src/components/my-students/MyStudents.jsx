@@ -87,6 +87,7 @@ const MyStudents = () => {
           sex: "male",
           notes: ""
         });
+        setAllStudents([...allStudents, response?.data?.object[0]]);
       } else {
         toast.error(response?.response?.data?.message);
       }
