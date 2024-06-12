@@ -40,6 +40,7 @@ const RecentSounds = () => {
           react: react
         }
       );
+      
       if (res.status === 200) {
         setLists((prevLists) => {
           return prevLists.map((list) => {
