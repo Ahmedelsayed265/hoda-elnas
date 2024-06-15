@@ -110,7 +110,7 @@ const MyLibirary = () => {
                     <img src={noResults} alt="no results" className="mb-3" />
                     <h5>{t("sounds.noLibirary")}</h5>
                     <p>{t("sounds.noLibrarySub")}</p>
-                    <Link to="/sounds" className="mt-2">
+                    <Link to="/audios" className="mt-2">
                       {t("sounds.listenNow")}
                     </Link>
                   </div>

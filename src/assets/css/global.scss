@@ -3492,7 +3492,9 @@ body {
     }
     .form-ui {
       .input-field {
-        input {
+        input,
+        select,
+        textarea {
           direction: ltr;
         }
         .pass-group {
@@ -3520,7 +3522,7 @@ body {
       }
     }
     main {
-      .acoustics .list-card .buttons {
+      .library_section .list-card .buttons {
         margin-left: auto;
         margin-right: 0;
       }
@@ -3596,8 +3598,16 @@ body {
         padding-right: 80px;
         padding-left: 0;
       }
-      .acoustics .swiper_pagination_title .swiper_pagination {
+      .library_section .swiper_pagination_title .swiper_pagination {
         flex-direction: row-reverse;
+      }
+      .what_we_offer table tbody tr td:nth-child(1),
+      .what_we_offer table thead tr th:nth-child(1) {
+        border-left: 0;
+      }
+      .what_we_offer table tbody tr td:nth-child(2),
+      .what_we_offer table thead tr th:nth-child(2) {
+        border-right: 2px solid $secondary;
       }
     }
     .goal_card .icon i {
@@ -5077,7 +5087,7 @@ input::-webkit-inner-spin-button {
 }
 .back {
   @include centerFlex();
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: $secondary;
   border-radius: 50%;
@@ -5719,6 +5729,7 @@ body.en .roadmap .pathGrid {
       }
       .img {
         min-width: 75px;
+        max-width: 75px;
         height: 75px;
         img {
           width: 100%;

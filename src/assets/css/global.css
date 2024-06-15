@@ -3671,7 +3671,9 @@ body.en .open_menu {
 body.en header .drop_menu {
   padding: 8px 36px 8px 20px;
 }
-body.en .form-ui .input-field input {
+body.en .form-ui .input-field input,
+body.en .form-ui .input-field select,
+body.en .form-ui .input-field textarea {
   direction: ltr;
 }
 body.en .form-ui .input-field .pass-group button {
@@ -3692,7 +3694,7 @@ body.en footer ul li {
   padding-left: 0;
   padding-right: 16px;
 }
-body.en main .acoustics .list-card .buttons {
+body.en main .library_section .list-card .buttons {
   margin-left: auto;
   margin-right: 0;
 }
@@ -3772,8 +3774,16 @@ body.en main .goal_details .inner_wrap .goal_steps li:nth-child(even) {
   padding-right: 80px;
   padding-left: 0;
 }
-body.en main .acoustics .swiper_pagination_title .swiper_pagination {
+body.en main .library_section .swiper_pagination_title .swiper_pagination {
   flex-direction: row-reverse;
+}
+body.en main .what_we_offer table tbody tr td:nth-child(1),
+body.en main .what_we_offer table thead tr th:nth-child(1) {
+  border-left: 0;
+}
+body.en main .what_we_offer table tbody tr td:nth-child(2),
+body.en main .what_we_offer table thead tr th:nth-child(2) {
+  border-right: 2px solid #81a63d;
 }
 body.en .goal_card .icon i {
   transform: scale(-1);
@@ -5346,7 +5356,7 @@ input::-webkit-inner-spin-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
+  min-width: 30px;
   height: 30px;
   background: #81a63d;
   border-radius: 50%;
@@ -6037,6 +6047,7 @@ input::-webkit-inner-spin-button {
 }
 .coupons_sec .coupon_card .content .img {
   min-width: 75px;
+  max-width: 75px;
   height: 75px;
 }
 .coupons_sec .coupon_card .content .img img {
