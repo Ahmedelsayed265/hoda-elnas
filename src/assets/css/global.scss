@@ -2150,6 +2150,11 @@ body {
     .apply-for-job,
     .contact_section {
       padding: 40px 0;
+      .title {
+        color: $main;
+        font-size: 28px;
+        margin-bottom: 16px;
+      }
       h3 {
         text-align: center;
         color: $secondary;
@@ -5696,6 +5701,7 @@ body.en .roadmap .pathGrid {
     }
   }
 }
+
 .coupons_sec {
   h3 {
     text-align: center;
@@ -5741,7 +5747,7 @@ body.en .roadmap .pathGrid {
     .links {
       @include space-between();
       a {
-        font-size: 16px;
+        font-size: 14px;
         color: $secondary;
         i {
           font-size: 12px;

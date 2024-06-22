@@ -2238,6 +2238,12 @@ body main .apply-for-job,
 body main .contact_section {
   padding: 40px 0;
 }
+body main .apply-for-job .title,
+body main .contact_section .title {
+  color: #31535a;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
 body main .apply-for-job h3,
 body main .contact_section h3 {
   text-align: center;
@@ -6062,7 +6068,7 @@ input::-webkit-inner-spin-button {
   justify-content: space-between;
 }
 .coupons_sec .coupon_card .links a {
-  font-size: 16px;
+  font-size: 14px;
   color: #81a63d;
 }
 .coupons_sec .coupon_card .links a i {

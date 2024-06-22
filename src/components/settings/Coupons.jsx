@@ -24,8 +24,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>
@@ -44,8 +44,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>
@@ -64,8 +64,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>
@@ -84,8 +84,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>
@@ -104,8 +104,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>
@@ -124,8 +124,8 @@ const Coupons = () => {
           </div>
           <div className="links">
             <Link to="">
-              <i className="fa-regular fa-arrow-up-right-from-square"></i> رابط
-              الشركة{" "}
+              <i className="fa-regular fa-arrow-up-right-from-square"></i>{" "}
+              {t("companyLink")}
             </Link>
             <button>{t("generate")}</button>
           </div>

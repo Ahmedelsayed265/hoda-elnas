@@ -39,6 +39,9 @@ const Contact = () => {
     <section className="contact_section">
       <div className="container">
         <div className="row m-0 justify-content-center">
+          <div className="col-12 p-2">
+            <h2 className="title">{t("contactPageTitle")}</h2>
+          </div>
           <div className="col-lg-10 col-12 p-2">
             <form className="form-ui" ref={form} onSubmit={handleSubmit}>
               <div className="form_group">
